@@ -1,0 +1,6 @@
+[install]
+# Configure module resolution
+
+[resolve]
+# Map src/ to the src directory
+alias = { "src" = "./src" }
