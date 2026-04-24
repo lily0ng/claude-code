@@ -35,8 +35,8 @@ import {
   ResourceListChangedNotificationSchema,
   ToolListChangedNotificationSchema,
 } from '@modelcontextprotocol/sdk/types.ts'
-import omit from 'lodash-es/omit.ts'
-import reject from 'lodash-es/reject.ts'
+import omit from 'lodash-es/omit'
+import reject from 'lodash-es/reject'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
@@ -53,12 +53,12 @@ import type { AppState } from './state/AppState.ts'
 import type { PluginError } from './types/plugin.ts'
 import { logForDebugging } from './utils/debug.ts'
 import { getAllowedChannels } from '../../bootstrap/state.ts'
-import { useNotifications } from '../../context/notifications.ts'
+import { useNotifications } from '../../context/notifications.tsx'
 import {
   useAppState,
   useAppStateStore,
   useSetAppState,
-} from '../../state/AppState.ts'
+} from '../../state/AppState.tsx'
 import { errorMessage } from '../../utils/errors.ts'
 /* eslint-enable @typescript-eslint/no-require-imports */
 import { logMCPDebug, logMCPError } from '../../utils/log.ts'

@@ -7,7 +7,7 @@
 // endpoint (conversation_engine) for STT.
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useSetVoiceState } from '../context/voice.ts'
+import { useSetVoiceState } from '../context/voice.tsx'
 import { useTerminalFocus } from '../ink/hooks/use-terminal-focus.ts'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,

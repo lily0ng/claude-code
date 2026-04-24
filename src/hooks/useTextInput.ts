@@ -1,7 +1,7 @@
 import { isInputModeCharacter } from './components/PromptInput/inputModes.ts'
 import { useNotifications } from './context/notifications.ts'
 import stripAnsi from 'strip-ansi'
-import { markBackslashReturnUsed } from '../commands/terminalSetup/terminalSetup.ts'
+import { markBackslashReturnUsed } from '../commands/terminalSetup/terminalSetup.tsx'
 import { addToHistory } from '../history.ts'
 import type { Key } from '../ink.ts'
 import type {

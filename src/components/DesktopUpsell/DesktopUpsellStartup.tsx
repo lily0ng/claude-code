@@ -5,9 +5,9 @@ import { Box, Text } from '../../ink.ts';
 import { getDynamicConfig_CACHED_MAY_BE_STALE } from '../../services/analytics/growthbook.ts';
 import { logEvent } from '../../services/analytics/index.ts';
 import { getGlobalConfig, saveGlobalConfig } from '../../utils/config.ts';
-import { Select } from '../CustomSelect/select.ts';
-import { DesktopHandoff } from '../DesktopHandoff.ts';
-import { PermissionDialog } from '../permissions/PermissionDialog.ts';
+import { Select } from '../CustomSelect/select.tsx';
+import { DesktopHandoff } from '../DesktopHandoff.tsx';
+import { PermissionDialog } from '../permissions/PermissionDialog.tsx';
 type DesktopUpsellConfig = {
   enable_shortcut_tip: boolean;
   enable_startup_dialog: boolean;

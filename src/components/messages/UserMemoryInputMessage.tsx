@@ -1,10 +1,10 @@
 import { c as _c } from "react/compiler-runtime";
-import sample from 'lodash-es/sample.ts';
+import sample from 'lodash-es/sample';
 import * as React from 'react';
 import { useMemo } from 'react';
 import { Box, Text } from '../../ink.ts';
 import { extractTag } from '../../utils/messages.ts';
-import { MessageResponse } from '../MessageResponse.ts';
+import { MessageResponse } from '../MessageResponse.tsx';
 function getSavingMessage(): string {
   return sample(['Got it.', 'Good to know.', 'Noted.']);
 }

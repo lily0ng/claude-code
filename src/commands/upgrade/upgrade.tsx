@@ -5,7 +5,7 @@ import type { LocalJSXCommandOnDone } from '../../types/command.ts';
 import { getClaudeAIOAuthTokens, isClaudeAISubscriber } from '../../utils/auth.ts';
 import { openBrowser } from '../../utils/browser.ts';
 import { logError } from '../../utils/log.ts';
-import { Login } from '../login/login.ts';
+import { Login } from '../login/login.tsx';
 export async function call(onDone: LocalJSXCommandOnDone, context: LocalJSXCommandContext): Promise<React.ReactNode | null> {
   try {
     // Check if user is already on the highest Max plan (20x)

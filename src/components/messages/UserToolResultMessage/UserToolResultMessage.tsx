@@ -4,11 +4,11 @@ import * as React from 'react';
 import type { Tools } from '../../../Tool.ts';
 import type { NormalizedUserMessage, ProgressMessage } from '../../../types/message.ts';
 import { type buildMessageLookups, CANCEL_MESSAGE, INTERRUPT_MESSAGE_FOR_TOOL_USE, REJECT_MESSAGE } from '../../../utils/messages.ts';
-import { UserToolCanceledMessage } from './UserToolCanceledMessage.ts';
-import { UserToolErrorMessage } from './UserToolErrorMessage.ts';
-import { UserToolRejectMessage } from './UserToolRejectMessage.ts';
-import { UserToolSuccessMessage } from './UserToolSuccessMessage.ts';
-import { useGetToolFromMessages } from './utils.ts';
+import { UserToolCanceledMessage } from './UserToolCanceledMessage.tsx';
+import { UserToolErrorMessage } from './UserToolErrorMessage.tsx';
+import { UserToolRejectMessage } from './UserToolRejectMessage.tsx';
+import { UserToolSuccessMessage } from './UserToolSuccessMessage.tsx';
+import { useGetToolFromMessages } from './utils.tsx';
 type Props = {
   param: ToolResultBlockParam;
   message: NormalizedUserMessage;

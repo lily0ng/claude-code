@@ -1,8 +1,8 @@
 import { POWERSHELL_TOOL_NAME } from '../../../tools/PowerShellTool/toolName.ts';
 import type { PermissionUpdate } from '../../../utils/permissions/PermissionUpdateSchema.ts';
 import { shouldShowAlwaysAllowOptions } from '../../../utils/permissions/permissionsLoader.ts';
-import type { OptionWithDescription } from '../../CustomSelect/select.ts';
-import { generateShellSuggestionsLabel } from '../shellPermissionHelpers.ts';
+import type { OptionWithDescription } from '../../CustomSelect/select.tsx';
+import { generateShellSuggestionsLabel } from '../shellPermissionHelpers.tsx';
 export type PowerShellToolUseOption = 'yes' | 'yes-apply-suggestions' | 'yes-prefix-edited' | 'no';
 export function powershellToolUseOptions({
   suggestions = [],

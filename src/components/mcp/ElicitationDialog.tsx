@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import type { ElicitRequestFormParams, ElicitRequestURLParams, ElicitResult, PrimitiveSchemaDefinition } from '@modelcontextprotocol/sdk/types.ts';
 import figures from 'figures';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useRegisterOverlay } from '../../context/overlayContext.ts';
+import { useRegisterOverlay } from '../../context/overlayContext.tsx';
 import { useNotifyAfterTimeout } from '../../hooks/useNotifyAfterTimeout.ts';
 import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- raw text input for elicitation form
@@ -12,11 +12,11 @@ import type { ElicitationRequestEvent } from '../../services/mcp/elicitationHand
 import { openBrowser } from '../../utils/browser.ts';
 import { getEnumLabel, getEnumValues, getMultiSelectLabel, getMultiSelectValues, isDateTimeSchema, isEnumSchema, isMultiSelectEnumSchema, validateElicitationInput, validateElicitationInputAsync } from '../../utils/mcp/elicitationValidation.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
-import TextInput from '../TextInput.ts';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
+import { Byline } from '../design-system/Byline.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
+import TextInput from '../TextInput.tsx';
 type Props = {
   event: ElicitationRequestEvent;
   onResponse: (action: ElicitResult['action'], content?: ElicitResult['content']) => void;

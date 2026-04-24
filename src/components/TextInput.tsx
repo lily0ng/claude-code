@@ -1,7 +1,7 @@
 import { feature } from 'bun:bundle';
 import chalk from 'chalk';
 import React, { useMemo, useRef } from 'react';
-import { useVoiceState } from '../context/voice.ts';
+import { useVoiceState } from '../context/voice.tsx';
 import { useClipboardImageHint } from '../hooks/useClipboardImageHint.ts';
 import { useSettings } from '../hooks/useSettings.ts';
 import { useTextInput } from '../hooks/useTextInput.ts';
@@ -9,7 +9,7 @@ import { Box, color, useAnimationFrame, useTerminalFocus, useTheme } from '../in
 import type { BaseTextInputProps } from '../types/textInputTypes.ts';
 import { isEnvTruthy } from '../utils/envUtils.ts';
 import type { TextHighlight } from '../utils/textHighlighting.ts';
-import { BaseTextInput } from './BaseTextInput.ts';
+import { BaseTextInput } from './BaseTextInput.tsx';
 import { hueToRgb } from './Spinner/utils.ts';
 
 // Block characters for waveform bars: space (silent) + 8 rising block elements.

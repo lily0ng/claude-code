@@ -15,7 +15,7 @@ import {
   isDurableCronEnabled,
   isKairosCronEnabled,
 } from './prompt.ts'
-import { renderDeleteResultMessage, renderDeleteToolUseMessage } from './UI.ts'
+import { renderDeleteResultMessage, renderDeleteToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() =>
   z.strictObject({

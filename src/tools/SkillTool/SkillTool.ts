@@ -1,6 +1,6 @@
 import { feature } from 'bun:bundle'
 import type { ToolResultBlockParam } from '@anthropic-ai/sdk/resources/index.mjs'
-import uniqBy from 'lodash-es/uniqBy.ts'
+import uniqBy from 'lodash-es/uniqBy'
 import { dirname } from 'path'
 import { getProjectRoot } from './bootstrap/state.ts'
 import {
@@ -40,7 +40,7 @@ import {
   getSessionId,
 } from '../../bootstrap/state.ts'
 import { COMMAND_MESSAGE_TAG } from '../../constants/xml.ts'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_PII_TAGGED,
@@ -72,7 +72,7 @@ import {
   renderToolUseMessage,
   renderToolUseProgressMessage,
   renderToolUseRejectedMessage,
-} from './UI.ts'
+} from './UI.tsx'
 
 /**
  * Gets all commands including MCP skills/prompts from AppState.

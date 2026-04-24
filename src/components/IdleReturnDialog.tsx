@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Text } from '../ink.ts';
 import { formatTokens } from '../utils/format.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 type IdleReturnAction = 'continue' | 'clear' | 'dismiss' | 'never';
 type Props = {
   idleMinutes: number;

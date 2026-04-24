@@ -11,9 +11,9 @@ import { type AgentColorName, setAgentColor } from '../../tools/AgentTool/agentC
 import { type AgentDefinition, getActiveAgentsFromList, isCustomAgent, isPluginAgent } from '../../tools/AgentTool/loadAgentsDir.ts';
 import { editFileInEditor } from '../../utils/promptEditor.ts';
 import { getActualAgentFilePath, updateAgentFile } from './agentFileUtils.ts';
-import { ColorPicker } from './ColorPicker.ts';
-import { ModelSelector } from './ModelSelector.ts';
-import { ToolSelector } from './ToolSelector.ts';
+import { ColorPicker } from './ColorPicker.tsx';
+import { ModelSelector } from './ModelSelector.tsx';
+import { ToolSelector } from './ToolSelector.tsx';
 import { getAgentSourceDisplayName } from './utils.ts';
 type Props = {
   agent: AgentDefinition;

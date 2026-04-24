@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useRegisterOverlay } from '../../context/overlayContext.ts'
+import { useRegisterOverlay } from '../../context/overlayContext.tsx'
 import type { InputEvent } from '../../ink/events/input-event.ts'
 import { useInput } from '../../ink.ts'
 import { useKeybindings } from '../../keybindings/useKeybinding.ts'
@@ -7,7 +7,7 @@ import {
   normalizeFullWidthDigits,
   normalizeFullWidthSpace,
 } from '../../utils/stringUtils.ts'
-import type { OptionWithDescription } from './select.ts'
+import type { OptionWithDescription } from './select.tsx'
 import type { SelectState } from './use-select-state.ts'
 
 export type UseSelectProps<T> = {

@@ -3,8 +3,8 @@ import React from 'react';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from './services/analytics/index.ts';
 import { getSettings_DEPRECATED, updateSettingsForSource } from '../utils/settings/settings.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
-import { MCPServerDialogCopy } from './MCPServerDialogCopy.ts';
+import { Dialog } from './design-system/Dialog.tsx';
+import { MCPServerDialogCopy } from './MCPServerDialogCopy.tsx';
 type Props = {
   serverName: string;
   onDone(): void;

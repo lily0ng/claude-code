@@ -6,9 +6,9 @@ import { Ansi, Text } from '../../ink.ts';
 import { createHyperlink } from '../../utils/hyperlink.ts';
 import { jsonParse, jsonStringify } from '../../utils/slowOperations.ts';
 import { renderTruncatedContent } from '../../utils/terminal.ts';
-import { MessageResponse } from '../MessageResponse.ts';
-import { InVirtualListContext } from '../messageActions.ts';
-import { useExpandShellOutput } from './ExpandShellOutputContext.ts';
+import { MessageResponse } from '../MessageResponse.tsx';
+import { InVirtualListContext } from '../messageActions.tsx';
+import { useExpandShellOutput } from './ExpandShellOutputContext.tsx';
 export function tryFormatJson(line: string): string {
   try {
     const parsed = jsonParse(line);

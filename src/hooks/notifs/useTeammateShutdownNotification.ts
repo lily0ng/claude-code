@@ -3,8 +3,8 @@ import { getIsRemoteMode } from '../../bootstrap/state.ts'
 import {
   type Notification,
   useNotifications,
-} from '../../context/notifications.ts'
-import { useAppState } from '../../state/AppState.ts'
+} from '../../context/notifications.tsx'
+import { useAppState } from '../../state/AppState.tsx'
 import { isInProcessTeammateTask } from '../../tasks/InProcessTeammateTask/types.ts'
 
 function parseCount(notif: Notification): number {

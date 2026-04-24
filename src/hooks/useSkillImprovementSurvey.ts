@@ -5,7 +5,7 @@ import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_PII_TAGGED,
   logEvent,
 } from '../services/analytics/index.ts'
-import { useAppState, useSetAppState } from '../state/AppState.ts'
+import { useAppState, useSetAppState } from '../state/AppState.tsx'
 import type { Message } from '../types/message.ts'
 import type { SkillUpdate } from '../utils/hooks/skillImprovement.ts'
 import { applySkillImprovement } from '../utils/hooks/skillImprovement.ts'

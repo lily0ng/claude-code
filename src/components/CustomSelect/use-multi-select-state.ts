@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 import { isDeepStrictEqual } from 'util'
-import { useRegisterOverlay } from '../../context/overlayContext.ts'
+import { useRegisterOverlay } from '../../context/overlayContext.tsx'
 import type { InputEvent } from '../../ink/events/input-event.ts'
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- raw space/arrow multiselect input
 import { useInput } from '../../ink.ts'
@@ -8,7 +8,7 @@ import {
   normalizeFullWidthDigits,
   normalizeFullWidthSpace,
 } from '../../utils/stringUtils.ts'
-import type { OptionWithDescription } from './select.ts'
+import type { OptionWithDescription } from './select.tsx'
 import { useSelectNavigation } from './use-select-navigation.ts'
 
 export type UseMultiSelectStateProps<T> = {

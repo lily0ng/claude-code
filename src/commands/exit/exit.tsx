@@ -1,8 +1,8 @@
 import { feature } from 'bun:bundle';
 import { spawnSync } from 'child_process';
-import sample from 'lodash-es/sample.ts';
+import sample from 'lodash-es/sample';
 import * as React from 'react';
-import { ExitFlow } from '../../components/ExitFlow.ts';
+import { ExitFlow } from '../../components/ExitFlow.tsx';
 import type { LocalJSXCommandOnDone } from '../../types/command.ts';
 import { isBgSession } from '../../utils/concurrentSessions.ts';
 import { gracefulShutdown } from '../../utils/gracefulShutdown.ts';

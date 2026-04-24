@@ -4,8 +4,8 @@ import * as React from 'react';
 import { useTerminalSize } from '../hooks/useTerminalSize.ts';
 import { Box, Text } from '../ink.ts';
 import { count } from '../utils/array.ts';
-import { MessageResponse } from './MessageResponse.ts';
-import { StructuredDiffList } from './StructuredDiffList.ts';
+import { MessageResponse } from './MessageResponse.tsx';
+import { StructuredDiffList } from './StructuredDiffList.tsx';
 type Props = {
   filePath: string;
   structuredPatch: StructuredPatchHunk[];

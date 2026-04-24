@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useContext } from 'react';
 import { Box, NoSelect, Text } from '../ink.ts';
-import { Ratchet } from './design-system/Ratchet.ts';
+import { Ratchet } from './design-system/Ratchet.tsx';
 type Props = {
   children: React.ReactNode;
   height?: number;

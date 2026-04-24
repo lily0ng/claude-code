@@ -1,4 +1,4 @@
-import noop from 'lodash-es/noop.ts'
+import noop from 'lodash-es/noop'
 import type { ReactElement } from 'react'
 import { LegacyRoot } from 'react-reconciler/constants.ts'
 import { logForDebugging } from '../utils/debug.ts'

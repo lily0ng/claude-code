@@ -1,12 +1,12 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { type ReactNode } from 'react';
 import type { Tools } from '../../../../Tool.ts';
-import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.ts';
-import { Byline } from '../../../design-system/Byline.ts';
-import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.ts';
+import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.tsx';
+import { Byline } from '../../../design-system/Byline.tsx';
+import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.tsx';
 import { useWizard } from '../../../wizard/index.ts';
-import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.ts';
-import { ToolSelector } from '../../ToolSelector.ts';
+import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.tsx';
+import { ToolSelector } from '../../ToolSelector.tsx';
 import type { AgentWizardData } from '../types.ts';
 type Props = {
   tools: Tools;

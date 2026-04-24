@@ -81,7 +81,7 @@ import {
 import type { ReadResourceResult } from '@modelcontextprotocol/sdk/types.ts'
 import { getSkillToolCommands, getMcpSkillCommands } from '../commands.ts'
 import type { Command } from '../types/command.ts'
-import uniqBy from 'lodash-es/uniqBy.ts'
+import uniqBy from 'lodash-es/uniqBy'
 import { getProjectRoot } from '../bootstrap/state.ts'
 import { formatCommandsWithinBudget } from '../tools/SkillTool/prompt.ts'
 import { getContextWindowForModel } from './context.ts'
@@ -138,7 +138,7 @@ import {
   applyTaskOffsetsAndEvictions,
 } from './task/framework.ts'
 import { getTaskOutputPath } from './task/diskOutput.ts'
-import { drainPendingMessages } from '../tasks/LocalAgentTask/LocalAgentTask.ts'
+import { drainPendingMessages } from '../tasks/LocalAgentTask/LocalAgentTask.tsx'
 import type { TaskType, TaskStatus } from '../Task.ts'
 import {
   getOriginalCwd,

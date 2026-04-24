@@ -1,12 +1,12 @@
 import { logEvent } from '../services/analytics/index.ts'
 import { isTerminalTaskStatus } from '../Task.ts'
-import type { LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask.ts'
+import type { LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask.tsx'
 
 // Inlined from framework.ts — importing creates a cycle through
 // BackgroundTasksDialog. Keep in sync with PANEL_GRACE_MS there.
 const PANEL_GRACE_MS = 30_000
 
-import type { AppState } from './AppState.ts'
+import type { AppState } from './AppState.tsx'
 
 // Inline type check instead of importing isLocalAgentTask — breaks the
 // teammateViewHelpers → LocalAgentTask runtime edge that creates a cycle

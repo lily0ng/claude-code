@@ -5,7 +5,7 @@ import { logEvent } from './services/analytics/index.ts';
 import { Box, Link, Newline, Text, useInput } from '../ink.ts';
 import { isChromeExtensionInstalled } from '../utils/claudeInChrome/setup.ts';
 import { saveGlobalConfig } from '../utils/config.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 const CHROME_EXTENSION_URL = 'https://claude.ai/chrome';
 const CHROME_PERMISSIONS_URL = 'https://clau.de/chrome/permissions';
 type Props = {

@@ -5,8 +5,8 @@ import { Box, Text } from '../ink.ts';
 import { DiagnosticTrackingService } from '../services/diagnosticTracking.ts';
 import type { Attachment } from '../utils/attachments.ts';
 import { getCwd } from '../utils/cwd.ts';
-import { CtrlOToExpand } from './CtrlOToExpand.ts';
-import { MessageResponse } from './MessageResponse.ts';
+import { CtrlOToExpand } from './CtrlOToExpand.tsx';
+import { MessageResponse } from './MessageResponse.tsx';
 type DiagnosticsAttachment = Extract<Attachment, {
   type: 'diagnostics';
 }>;

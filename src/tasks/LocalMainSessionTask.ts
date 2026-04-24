@@ -49,7 +49,7 @@ import {
   initTaskOutputAsSymlink,
 } from '../utils/task/diskOutput.ts'
 import { registerTask, updateTaskState } from '../utils/task/framework.ts'
-import type { LocalAgentTaskState } from './LocalAgentTask/LocalAgentTask.ts'
+import type { LocalAgentTaskState } from './LocalAgentTask/LocalAgentTask.tsx'
 
 // Main session tasks use LocalAgentTaskState with agentType='main-session'
 export type LocalMainSessionTaskState = LocalAgentTaskState & {

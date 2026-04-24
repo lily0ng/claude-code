@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import type { KeybindingAction, KeybindingContextName } from '../keybindings/types.ts';
 import { useShortcutDisplay } from '../keybindings/useShortcutDisplay.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
 type Props = {
   /** The keybinding action (e.g., 'app:toggleTranscript') */
   action: KeybindingAction;

@@ -10,7 +10,7 @@ import { logMCPError } from '../../utils/log.ts'
 import { jsonStringify } from '../../utils/slowOperations.ts'
 import { isOutputLineTruncated } from '../../utils/terminal.ts'
 import { DESCRIPTION, LIST_MCP_RESOURCES_TOOL_NAME, PROMPT } from './prompt.ts'
-import { renderToolResultMessage, renderToolUseMessage } from './UI.ts'
+import { renderToolResultMessage, renderToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() =>
   z.object({

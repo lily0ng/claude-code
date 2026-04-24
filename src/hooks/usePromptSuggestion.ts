@@ -5,7 +5,7 @@ import {
   logEvent,
 } from '../services/analytics/index.ts'
 import { abortSpeculation } from '../services/PromptSuggestion/speculation.ts'
-import { useAppState, useSetAppState } from '../state/AppState.ts'
+import { useAppState, useSetAppState } from '../state/AppState.tsx'
 
 type Props = {
   inputValue: string

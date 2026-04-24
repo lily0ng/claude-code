@@ -2,7 +2,7 @@ import type { z } from 'zod/v4'
 import type { ToolPermissionContext } from '../../Tool.ts'
 import { splitCommand_DEPRECATED } from '../../utils/bash/commands.ts'
 import type { PermissionResult } from '../../utils/permissions/PermissionResult.ts'
-import type { BashTool } from './BashTool.ts'
+import type { BashTool } from './BashTool.tsx'
 
 const ACCEPT_EDITS_ALLOWED_COMMANDS = [
   'mkdir',

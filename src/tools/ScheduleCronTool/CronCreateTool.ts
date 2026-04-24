@@ -20,7 +20,7 @@ import {
   isDurableCronEnabled,
   isKairosCronEnabled,
 } from './prompt.ts'
-import { renderCreateResultMessage, renderCreateToolUseMessage } from './UI.ts'
+import { renderCreateResultMessage, renderCreateToolUseMessage } from './UI.tsx'
 
 const MAX_JOBS = 50
 

@@ -16,7 +16,7 @@
 import { feature } from 'bun:bundle'
 import { basename } from 'path'
 import { getIsRemoteMode } from '../../bootstrap/state.ts'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import { ENTRYPOINT_NAME } from '../../memdir/memdir.ts'
 import {
   formatMemoryManifest,

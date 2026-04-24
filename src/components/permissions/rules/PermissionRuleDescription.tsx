@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Text } from '../../../ink.ts';
-import { BashTool } from '../../../tools/BashTool/BashTool.ts';
+import { BashTool } from '../../../tools/BashTool/BashTool.tsx';
 import type { PermissionRuleValue } from '../../../utils/permissions/PermissionRule.ts';
 type RuleSubtitleProps = {
   ruleValue: PermissionRuleValue;

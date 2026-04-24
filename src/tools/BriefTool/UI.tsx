@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import React from 'react';
-import { Markdown } from '../../components/Markdown.ts';
+import { Markdown } from '../../components/Markdown.tsx';
 import { BLACK_CIRCLE } from '../../constants/figures.ts';
 import { Box, Text } from '../../ink.ts';
 import type { ProgressMessage } from '../../types/message.ts';

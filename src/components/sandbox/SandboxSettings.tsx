@@ -6,12 +6,12 @@ import type { CommandResultDisplay } from '../../types/command.ts';
 import type { SandboxDependencyCheck } from '../../utils/sandbox/sandbox-adapter.ts';
 import { SandboxManager } from '../../utils/sandbox/sandbox-adapter.ts';
 import { getSettings_DEPRECATED } from '../../utils/settings/settings.ts';
-import { Select } from '../CustomSelect/select.ts';
-import { Pane } from '../design-system/Pane.ts';
-import { Tab, Tabs, useTabHeaderFocus } from '../design-system/Tabs.ts';
-import { SandboxConfigTab } from './SandboxConfigTab.ts';
-import { SandboxDependenciesTab } from './SandboxDependenciesTab.ts';
-import { SandboxOverridesTab } from './SandboxOverridesTab.ts';
+import { Select } from '../CustomSelect/select.tsx';
+import { Pane } from '../design-system/Pane.tsx';
+import { Tab, Tabs, useTabHeaderFocus } from '../design-system/Tabs.tsx';
+import { SandboxConfigTab } from './SandboxConfigTab.tsx';
+import { SandboxDependenciesTab } from './SandboxDependenciesTab.tsx';
+import { SandboxOverridesTab } from './SandboxOverridesTab.tsx';
 type Props = {
   onComplete: (result?: string, options?: {
     display?: CommandResultDisplay;

@@ -1,12 +1,12 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { removeSandboxViolationTags } from './utils/sandbox/sandbox-ui-utils.ts';
-import { KeyboardShortcutHint } from '../../components/design-system/KeyboardShortcutHint.ts';
-import { MessageResponse } from '../../components/MessageResponse.ts';
-import { OutputLine } from '../../components/shell/OutputLine.ts';
-import { ShellTimeDisplay } from '../../components/shell/ShellTimeDisplay.ts';
+import { KeyboardShortcutHint } from '../../components/design-system/KeyboardShortcutHint.tsx';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
+import { OutputLine } from '../../components/shell/OutputLine.tsx';
+import { ShellTimeDisplay } from '../../components/shell/ShellTimeDisplay.tsx';
 import { Box, Text } from '../../ink.ts';
-import type { Out as BashOut } from './BashTool.ts';
+import type { Out as BashOut } from './BashTool.tsx';
 type Props = {
   content: Omit<BashOut, 'interrupted'>;
   verbose: boolean;

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useAppState, useAppStateStore } from '../../state/AppState.ts'
+import { useAppState, useAppStateStore } from '../../state/AppState.tsx'
 import {
   getActiveAgentForInput,
   getViewedTeammateTask,

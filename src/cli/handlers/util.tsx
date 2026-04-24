@@ -7,14 +7,14 @@ import { c as _c } from "react/compiler-runtime";
 
 import { cwd } from 'process';
 import React from 'react';
-import { WelcomeV2 } from '../../components/LogoV2/WelcomeV2.ts';
+import { WelcomeV2 } from '../../components/LogoV2/WelcomeV2.tsx';
 import { useManagePlugins } from '../../hooks/useManagePlugins.ts';
 import type { Root } from '../../ink.ts';
 import { Box, Text } from '../../ink.ts';
-import { KeybindingSetup } from '../../keybindings/KeybindingProviderSetup.ts';
+import { KeybindingSetup } from '../../keybindings/KeybindingProviderSetup.tsx';
 import { logEvent } from '../../services/analytics/index.ts';
-import { MCPConnectionManager } from '../../services/mcp/MCPConnectionManager.ts';
-import { AppStateProvider } from '../../state/AppState.ts';
+import { MCPConnectionManager } from '../../services/mcp/MCPConnectionManager.tsx';
+import { AppStateProvider } from '../../state/AppState.tsx';
 import { onChangeAppState } from '../../state/onChangeAppState.ts';
 import { isAnthropicAuthEnabled } from '../../utils/auth.ts';
 export async function setupTokenHandler(root: Root): Promise<void> {
@@ -22,7 +22,7 @@ export async function setupTokenHandler(root: Root): Promise<void> {
   const showAuthWarning = !isAnthropicAuthEnabled();
   const {
     ConsoleOAuthFlow
-  } = await import('../../components/ConsoleOAuthFlow.ts');
+  } = await import('../../components/ConsoleOAuthFlow.tsx');
   await new Promise<void>(resolve => {
     root.render(<AppStateProvider onChangeAppState={onChangeAppState}>
         <KeybindingSetup>
@@ -50,7 +50,7 @@ export async function setupTokenHandler(root: Root): Promise<void> {
 }
 
 // DoctorWithPlugins wrapper + doctor handler
-const DoctorLazy = React.lazy(() => import('../../screens/Doctor.ts').then(m => ({
+const DoctorLazy = React.lazy(() => import('../../screens/Doctor.tsx').then(m => ({
   default: m.Doctor
 })));
 function DoctorWithPlugins(t0) {
@@ -96,7 +96,7 @@ export async function installHandler(target: string | undefined, options: {
   await setup(cwd(), 'default', false, false, undefined, false);
   const {
     install
-  } = await import('../../commands/install.ts');
+  } = await import('../../commands/install.tsx');
   await new Promise<void>(resolve => {
     const args: string[] = [];
     if (target) args.push(target);

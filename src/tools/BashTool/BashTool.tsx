@@ -11,7 +11,7 @@ import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEve
 import { notifyVscodeFileUpdated } from '../../services/mcp/vscodeSdkMcp.ts';
 import type { SetToolJSXFn, ToolCallProgress, ToolUseContext, ValidationResult } from '../../Tool.ts';
 import { buildTool, type ToolDef } from '../../Tool.ts';
-import { backgroundExistingForegroundTask, markTaskNotified, registerForeground, spawnShellTask, unregisterForeground } from '../../tasks/LocalShellTask/LocalShellTask.ts';
+import { backgroundExistingForegroundTask, markTaskNotified, registerForeground, spawnShellTask, unregisterForeground } from '../../tasks/LocalShellTask/LocalShellTask.tsx';
 import type { AgentId } from '../../types/ids.ts';
 import type { AssistantMessage } from '../../types/message.ts';
 import { parseForSecurity } from '../../utils/bash/ast.ts';
@@ -38,7 +38,7 @@ import { getTaskOutputPath } from '../../utils/task/diskOutput.ts';
 import { TaskOutput } from '../../utils/task/TaskOutput.ts';
 import { isOutputLineTruncated } from '../../utils/terminal.ts';
 import { buildLargeToolResultMessage, ensureToolResultsDir, generatePreview, getToolResultPath, PREVIEW_SIZE_BYTES } from '../../utils/toolResultStorage.ts';
-import { userFacingName as fileEditUserFacingName } from '../FileEditTool/UI.ts';
+import { userFacingName as fileEditUserFacingName } from '../FileEditTool/UI.tsx';
 import { trackGitOperations } from '../shared/gitOperationTracking.ts';
 import { bashToolHasPermission, commandHasAnyCd, matchWildcardPattern, permissionRuleExtractPrefix } from './bashPermissions.ts';
 import { interpretCommandResult } from './commandSemantics.ts';
@@ -47,7 +47,7 @@ import { checkReadOnlyConstraints } from './readOnlyValidation.ts';
 import { parseSedEditCommand } from './sedEditParser.ts';
 import { shouldUseSandbox } from './shouldUseSandbox.ts';
 import { BASH_TOOL_NAME } from './toolName.ts';
-import { BackgroundHint, renderToolResultMessage, renderToolUseErrorMessage, renderToolUseMessage, renderToolUseProgressMessage, renderToolUseQueuedMessage } from './UI.ts';
+import { BackgroundHint, renderToolResultMessage, renderToolUseErrorMessage, renderToolUseMessage, renderToolUseProgressMessage, renderToolUseQueuedMessage } from './UI.tsx';
 import { buildImageToolResult, isImageOutput, resetCwdIfOutsideProject, resizeShellImageOutput, stdErrAppendShellResetMessage, stripEmptyLines } from './utils.ts';
 const EOL = '\n';
 

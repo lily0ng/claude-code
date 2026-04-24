@@ -8,7 +8,7 @@ import { getDesktopInstallStatus, openCurrentSessionInDesktop } from '../utils/d
 import { errorMessage } from '../utils/errors.ts';
 import { gracefulShutdown } from '../utils/gracefulShutdown.ts';
 import { flushSessionStorage } from '../utils/sessionStorage.ts';
-import { LoadingState } from './design-system/LoadingState.ts';
+import { LoadingState } from './design-system/LoadingState.tsx';
 const DESKTOP_DOCS_URL = 'https://clau.de/desktop';
 export function getDownloadUrl(): string {
   switch (process.platform) {

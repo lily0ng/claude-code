@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 
 export type DebugFilter = {
   include: string[]

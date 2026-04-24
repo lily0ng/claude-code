@@ -21,9 +21,9 @@ import { copyAnsiToClipboard } from '../utils/screenshotClipboard.ts';
 import { aggregateClaudeCodeStatsForRange, type ClaudeCodeStats, type DailyModelTokens, type StatsDateRange } from '../utils/stats.ts';
 import { resolveThemeSetting } from '../utils/systemTheme.ts';
 import { getTheme, themeColorToAnsi } from '../utils/theme.ts';
-import { Pane } from './design-system/Pane.ts';
-import { Tab, Tabs, useTabHeaderFocus } from './design-system/Tabs.ts';
-import { Spinner } from './Spinner.ts';
+import { Pane } from './design-system/Pane.tsx';
+import { Tab, Tabs, useTabHeaderFocus } from './design-system/Tabs.tsx';
+import { Spinner } from './Spinner.tsx';
 function formatPeakDay(dateStr: string): string {
   const date = new Date(dateStr);
   return date.toLocaleDateString('en-US', {

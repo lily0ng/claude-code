@@ -3,20 +3,20 @@ import type { RefObject } from 'react';
 import * as React from 'react';
 import { useCallback, useContext, useEffect, useImperativeHandle, useRef, useState, useSyncExternalStore } from 'react';
 import { useVirtualScroll } from '../hooks/useVirtualScroll.ts';
-import type { ScrollBoxHandle } from '../ink/components/ScrollBox.ts';
+import type { ScrollBoxHandle } from '../ink/components/ScrollBox.tsx';
 import type { DOMElement } from '../ink/dom.ts';
 import type { MatchPosition } from '../ink/render-to-screen.ts';
 import { Box } from '../ink.ts';
 import type { RenderableMessage } from '../types/message.ts';
-import { TextHoverColorContext } from './design-system/ThemedText.ts';
-import { ScrollChromeContext } from './FullscreenLayout.ts';
+import { TextHoverColorContext } from './design-system/ThemedText.tsx';
+import { ScrollChromeContext } from './FullscreenLayout.tsx';
 
 // Rows of breathing room above the target when we scrollTo.
 const HEADROOM = 3;
 import { logForDebugging } from '../utils/debug.ts';
 import { sleep } from '../utils/sleep.ts';
 import { renderableSearchText } from '../utils/transcriptSearch.ts';
-import { isNavigableMessage, type MessageActionsNav, type MessageActionsState, type NavigableMessage, stripSystemReminders, toolCallOf } from './messageActions.ts';
+import { isNavigableMessage, type MessageActionsNav, type MessageActionsState, type NavigableMessage, stripSystemReminders, toolCallOf } from './messageActions.tsx';
 
 // Fallback extractor: lower + cache here for callers without the
 // Messages.tsx tool-lookup path (tests, static contexts). Messages.tsx

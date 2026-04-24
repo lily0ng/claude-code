@@ -5,9 +5,9 @@ import type { z } from 'zod/v4';
 import { Text } from '../../../ink.ts';
 import { NotebookEditTool } from '../../../tools/NotebookEditTool/NotebookEditTool.ts';
 import { logError } from '../../../utils/log.ts';
-import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.ts';
-import type { PermissionRequestProps } from '../PermissionRequest.ts';
-import { NotebookEditToolDiff } from './NotebookEditToolDiff.ts';
+import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.tsx';
+import type { PermissionRequestProps } from '../PermissionRequest.tsx';
+import { NotebookEditToolDiff } from './NotebookEditToolDiff.tsx';
 type NotebookEditInput = z.infer<typeof NotebookEditTool.inputSchema>;
 export function NotebookEditPermissionRequest(props) {
   const $ = _c(52);

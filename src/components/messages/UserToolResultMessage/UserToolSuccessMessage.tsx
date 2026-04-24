@@ -3,13 +3,13 @@ import figures from 'figures';
 import * as React from 'react';
 import { SentryErrorBoundary } from './components/SentryErrorBoundary.ts';
 import { Box, Text, useTheme } from '../../../ink.ts';
-import { useAppState } from '../../../state/AppState.ts';
+import { useAppState } from '../../../state/AppState.tsx';
 import { filterToolProgressMessages, type Tool, type Tools } from '../../../Tool.ts';
 import type { NormalizedUserMessage, ProgressMessage } from '../../../types/message.ts';
 import { deleteClassifierApproval, getClassifierApproval, getYoloClassifierApproval } from '../../../utils/classifierApprovals.ts';
 import type { buildMessageLookups } from '../../../utils/messages.ts';
-import { MessageResponse } from '../../MessageResponse.ts';
-import { HookProgressMessage } from '../HookProgressMessage.ts';
+import { MessageResponse } from '../../MessageResponse.tsx';
+import { HookProgressMessage } from '../HookProgressMessage.tsx';
 type Props = {
   message: NormalizedUserMessage;
   lookups: ReturnType<typeof buildMessageLookups>;

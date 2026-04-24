@@ -7,7 +7,7 @@
  * precedence.
  */
 
-import type { AppState } from '../state/AppState.ts'
+import type { AppState } from '../state/AppState.tsx'
 import { getTeamName } from './teammate.ts'
 
 /**

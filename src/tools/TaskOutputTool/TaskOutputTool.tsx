@@ -1,17 +1,17 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { z } from 'zod/v4';
-import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.ts';
-import { FallbackToolUseRejectedMessage } from '../../components/FallbackToolUseRejectedMessage.ts';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.tsx';
+import { FallbackToolUseRejectedMessage } from '../../components/FallbackToolUseRejectedMessage.tsx';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { Box, Text } from '../../ink.ts';
 import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay.ts';
 import type { TaskType } from '../../Task.ts';
 import type { Tool } from '../../Tool.ts';
 import { buildTool, type ToolDef } from '../../Tool.ts';
-import type { LocalAgentTaskState } from '../../tasks/LocalAgentTask/LocalAgentTask.ts';
+import type { LocalAgentTaskState } from '../../tasks/LocalAgentTask/LocalAgentTask.tsx';
 import type { LocalShellTaskState } from '../../tasks/LocalShellTask/guards.ts';
-import type { RemoteAgentTaskState } from '../../tasks/RemoteAgentTask/RemoteAgentTask.ts';
+import type { RemoteAgentTaskState } from '../../tasks/RemoteAgentTask/RemoteAgentTask.tsx';
 import type { TaskState } from '../../tasks/types.ts';
 import { AbortError } from '../../utils/errors.ts';
 import { lazySchema } from '../../utils/lazySchema.ts';
@@ -24,8 +24,8 @@ import { getTaskOutput } from '../../utils/task/diskOutput.ts';
 import { updateTaskState } from '../../utils/task/framework.ts';
 import { formatTaskOutput } from '../../utils/task/outputFormatting.ts';
 import type { ThemeName } from '../../utils/theme.ts';
-import { AgentPromptDisplay, AgentResponseDisplay } from '../AgentTool/UI.ts';
-import BashToolResultMessage from '../BashTool/BashToolResultMessage.ts';
+import { AgentPromptDisplay, AgentResponseDisplay } from '../AgentTool/UI.tsx';
+import BashToolResultMessage from '../BashTool/BashToolResultMessage.tsx';
 import { TASK_OUTPUT_TOOL_NAME } from './constants.ts';
 const inputSchema = lazySchema(() => z.strictObject({
   task_id: z.string().describe('The task ID to get output from'),

@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import type { HookEvent } from './entrypoints/agentSdkTypes.ts'
 import {
   clearRegisteredPluginHooks,

@@ -7,10 +7,10 @@ import { FileWriteTool } from '../../../tools/FileWriteTool/FileWriteTool.ts';
 import { getCwd } from '../../../utils/cwd.ts';
 import { isENOENT } from '../../../utils/errors.ts';
 import { readFileSync } from '../../../utils/fileRead.ts';
-import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.ts';
+import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.tsx';
 import { createSingleEditDiffConfig, type FileEdit, type IDEDiffSupport } from '../FilePermissionDialog/ideDiffConfig.ts';
-import type { PermissionRequestProps } from '../PermissionRequest.ts';
-import { FileWriteToolDiff } from './FileWriteToolDiff.ts';
+import type { PermissionRequestProps } from '../PermissionRequest.tsx';
+import { FileWriteToolDiff } from './FileWriteToolDiff.tsx';
 type FileWriteToolInput = z.infer<typeof FileWriteTool.inputSchema>;
 const ideDiffSupport: IDEDiffSupport<FileWriteToolInput> = {
   getConfig: (input: FileWriteToolInput) => {

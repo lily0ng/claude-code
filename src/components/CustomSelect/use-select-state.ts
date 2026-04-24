@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import type { OptionWithDescription } from './select.ts'
+import type { OptionWithDescription } from './select.tsx'
 import { useSelectNavigation } from './use-select-navigation.ts'
 
 export type UseSelectStateProps<T> = {

@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
-import { KeyboardShortcutHint } from '../components/design-system/KeyboardShortcutHint.ts';
+import { KeyboardShortcutHint } from '../components/design-system/KeyboardShortcutHint.tsx';
 import { Box, Text } from '../ink.ts';
 import { useKeybinding } from '../keybindings/useKeybinding.ts';
 type Props = {

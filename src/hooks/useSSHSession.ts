@@ -11,7 +11,7 @@
 
 import { randomUUID } from 'crypto'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
-import type { ToolUseConfirm } from '../components/permissions/PermissionRequest.ts'
+import type { ToolUseConfirm } from '../components/permissions/PermissionRequest.tsx'
 import {
   createSyntheticAssistantMessage,
   createToolStub,

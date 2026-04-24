@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useCallback } from 'react';
-import { Select } from '../../../components/CustomSelect/select.ts';
+import { Select } from '../../../components/CustomSelect/select.tsx';
 import { Box, Text } from '../../../ink.ts';
 import type { ToolPermissionContext } from '../../../Tool.ts';
 import type { PermissionBehavior, PermissionRule, PermissionRuleValue } from '../../../utils/permissions/PermissionRule.ts';
@@ -12,9 +12,9 @@ import { SandboxManager } from '../../../utils/sandbox/sandbox-adapter.ts';
 import { type EditableSettingSource, SOURCES } from '../../../utils/settings/constants.ts';
 import { getRelativeSettingsFilePathForSource } from '../../../utils/settings/settings.ts';
 import { plural } from '../../../utils/stringUtils.ts';
-import type { OptionWithDescription } from '../../CustomSelect/select.ts';
-import { Dialog } from '../../design-system/Dialog.ts';
-import { PermissionRuleDescription } from './PermissionRuleDescription.ts';
+import type { OptionWithDescription } from '../../CustomSelect/select.tsx';
+import { Dialog } from '../../design-system/Dialog.tsx';
+import { PermissionRuleDescription } from './PermissionRuleDescription.tsx';
 export function optionForPermissionSaveDestination(saveDestination: EditableSettingSource): OptionWithDescription {
   switch (saveDestination) {
     case 'localSettings':

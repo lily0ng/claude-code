@@ -2,7 +2,7 @@ import type { ToolUseContext } from '../../../Tool.ts'
 import {
   findTeammateTaskByAgentId,
   requestTeammateShutdown,
-} from '../../../tasks/InProcessTeammateTask/InProcessTeammateTask.ts'
+} from '../../../tasks/InProcessTeammateTask/InProcessTeammateTask.tsx'
 import { parseAgentId } from '../../../utils/agentId.ts'
 import { logForDebugging } from '../../../utils/debug.ts'
 import { jsonStringify } from '../../../utils/slowOperations.ts'

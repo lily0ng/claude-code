@@ -1,5 +1,5 @@
 import figures from 'figures';
-import sample from 'lodash-es/sample.ts';
+import sample from 'lodash-es/sample';
 import * as React from 'react';
 import { useRef, useState } from 'react';
 import { getSpinnerVerbs } from '../../constants/spinnerVerbs.ts';

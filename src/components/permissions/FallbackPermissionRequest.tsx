@@ -8,10 +8,10 @@ import { shouldShowAlwaysAllowOptions } from '../../utils/permissions/permission
 import { truncateToLines } from '../../utils/stringUtils.ts';
 import { logUnaryEvent } from '../../utils/unaryLogging.ts';
 import { type UnaryEvent, usePermissionRequestLogging } from './hooks.ts';
-import { PermissionDialog } from './PermissionDialog.ts';
-import { PermissionPrompt, type PermissionPromptOption, type ToolAnalyticsContext } from './PermissionPrompt.ts';
-import type { PermissionRequestProps } from './PermissionRequest.ts';
-import { PermissionRuleExplanation } from './PermissionRuleExplanation.ts';
+import { PermissionDialog } from './PermissionDialog.tsx';
+import { PermissionPrompt, type PermissionPromptOption, type ToolAnalyticsContext } from './PermissionPrompt.tsx';
+import type { PermissionRequestProps } from './PermissionRequest.tsx';
+import { PermissionRuleExplanation } from './PermissionRuleExplanation.tsx';
 type FallbackOptionValue = 'yes' | 'yes-dont-ask-again' | 'no';
 export function FallbackPermissionRequest(t0) {
   const $ = _c(58);

@@ -12,7 +12,7 @@ import { type Node, PARSE_ABORTED } from '../../utils/bash/parser.ts'
 import type { PermissionResult } from '../../utils/permissions/PermissionResult.ts'
 import type { PermissionUpdate } from '../../utils/permissions/PermissionUpdateSchema.ts'
 import { createPermissionRequestMessage } from '../../utils/permissions/permissions.ts'
-import { BashTool } from './BashTool.ts'
+import { BashTool } from './BashTool.tsx'
 import { bashCommandIsSafeAsync_DEPRECATED } from './bashSecurity.ts'
 
 export type CommandIdentityCheckers = {

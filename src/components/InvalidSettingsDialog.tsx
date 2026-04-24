@@ -3,8 +3,8 @@ import React from 'react';
 import { Text } from '../ink.ts';
 import type { ValidationError } from '../utils/settings/validation.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
-import { ValidationErrorsList } from './ValidationErrorsList.ts';
+import { Dialog } from './design-system/Dialog.tsx';
+import { ValidationErrorsList } from './ValidationErrorsList.tsx';
 type Props = {
   settingsErrors: ValidationError[];
   onContinue: () => void;

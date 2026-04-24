@@ -4,8 +4,8 @@ import { DIAMOND_FILLED, DIAMOND_OPEN } from '../../constants/figures.ts';
 import { NO_CONTENT_MESSAGE } from '../../constants/messages.ts';
 import { Box, Text } from '../../ink.ts';
 import { extractTag } from '../../utils/messages.ts';
-import { Markdown } from '../Markdown.ts';
-import { MessageResponse } from '../MessageResponse.ts';
+import { Markdown } from '../Markdown.tsx';
+import { MessageResponse } from '../MessageResponse.tsx';
 type Props = {
   content: string;
 };

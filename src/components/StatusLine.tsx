@@ -6,7 +6,7 @@ import { useAppState, useSetAppState } from './state/AppState.ts';
 import type { PermissionMode } from './utils/permissions/PermissionMode.ts';
 import { getIsRemoteMode, getKairosActive, getMainThreadAgentType, getOriginalCwd, getSdkBetas, getSessionId } from '../bootstrap/state.ts';
 import { DEFAULT_OUTPUT_STYLE_NAME } from '../constants/outputStyles.ts';
-import { useNotifications } from '../context/notifications.ts';
+import { useNotifications } from '../context/notifications.tsx';
 import { getTotalAPIDuration, getTotalCost, getTotalDuration, getTotalInputTokens, getTotalLinesAdded, getTotalLinesRemoved, getTotalOutputTokens } from '../cost-tracker.ts';
 import { useMainLoopModel } from '../hooks/useMainLoopModel.ts';
 import { type ReadonlySettings, useSettings } from '../hooks/useSettings.ts';

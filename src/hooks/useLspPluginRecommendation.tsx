@@ -14,15 +14,15 @@ import { c as _c } from "react/compiler-runtime";
 import { extname, join } from 'path';
 import * as React from 'react';
 import { hasShownLspRecommendationThisSession, setLspRecommendationShownThisSession } from '../bootstrap/state.ts';
-import { useNotifications } from '../context/notifications.ts';
-import { useAppState } from '../state/AppState.ts';
+import { useNotifications } from '../context/notifications.tsx';
+import { useAppState } from '../state/AppState.tsx';
 import { saveGlobalConfig } from '../utils/config.ts';
 import { logForDebugging } from '../utils/debug.ts';
 import { logError } from '../utils/log.ts';
 import { addToNeverSuggest, getMatchingLspPlugins, incrementIgnoredCount } from '../utils/plugins/lspRecommendation.ts';
 import { cacheAndRegisterPlugin } from '../utils/plugins/pluginInstallationHelpers.ts';
 import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.ts';
-import { installPluginAndNotify, usePluginRecommendationBase } from './usePluginRecommendationBase.ts';
+import { installPluginAndNotify, usePluginRecommendationBase } from './usePluginRecommendationBase.tsx';
 
 // Threshold for detecting timeout vs explicit dismiss (ms)
 // Menu auto-dismisses at 30s, so anything over 28s is likely timeout

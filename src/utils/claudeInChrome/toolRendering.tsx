@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { supportsHyperlinks } from '../../ink/supports-hyperlinks.ts';
 import { Link, Text } from '../../ink.ts';
-import { renderToolResultMessage as renderDefaultMCPToolResultMessage } from '../../tools/MCPTool/UI.ts';
+import { renderToolResultMessage as renderDefaultMCPToolResultMessage } from '../../tools/MCPTool/UI.tsx';
 import type { MCPToolResult } from '../../utils/mcpValidation.ts';
 import { truncateToWidth } from '../format.ts';
 import { trackClaudeInChromeTabId } from './common.ts';

@@ -5,17 +5,17 @@ import { logEvent } from './services/analytics/index.ts';
 import { gracefulShutdown, gracefulShutdownSync } from './utils/gracefulShutdown.ts';
 import { type ChannelEntry, getAllowedChannels, setAllowedChannels, setHasDevChannels, setSessionTrustAccepted, setStatsStore } from './bootstrap/state.ts';
 import type { Command } from './commands.ts';
-import { createStatsStore, type StatsStore } from './context/stats.ts';
+import { createStatsStore, type StatsStore } from './context/stats.tsx';
 import { getSystemContext } from './context.ts';
 import { initializeTelemetryAfterTrust } from './entrypoints/init.ts';
 import { isSynchronizedOutputSupported } from './ink/terminal.ts';
 import type { RenderOptions, Root, TextProps } from './ink.ts';
-import { KeybindingSetup } from './keybindings/KeybindingProviderSetup.ts';
-import { startDeferredPrefetches } from './main.ts';
+import { KeybindingSetup } from './keybindings/KeybindingProviderSetup.tsx';
+import { startDeferredPrefetches } from './main.tsx';
 import { checkGate_CACHED_OR_BLOCKING, initializeGrowthBook, resetGrowthBook } from './services/analytics/growthbook.ts';
 import { isQualifiedForGrove } from './services/api/grove.ts';
-import { handleMcpjsonServerApprovals } from './services/mcpServerApproval.ts';
-import { AppStateProvider } from './state/AppState.ts';
+import { handleMcpjsonServerApprovals } from './services/mcpServerApproval.tsx';
+import { AppStateProvider } from './state/AppState.tsx';
 import { onChangeAppState } from './state/onChangeAppState.ts';
 import { normalizeApiKeyForConfig } from './utils/authPortable.ts';
 import { getExternalClaudeMdIncludes, getMemoryFiles, shouldShowClaudeMdExternalIncludesWarning } from './utils/claudemd.ts';
@@ -113,7 +113,7 @@ export async function showSetupScreens(root: Root, permissionMode: PermissionMod
     onboardingShown = true;
     const {
       Onboarding
-    } = await import('./components/Onboarding.ts');
+    } = await import('./components/Onboarding.tsx');
     await showSetupDialog(root, done => <Onboarding onDone={() => {
       completeOnboarding();
       void done();
@@ -135,7 +135,7 @@ export async function showSetupScreens(root: Root, permissionMode: PermissionMod
     if (!checkHasTrustDialogAccepted()) {
       const {
         TrustDialog
-      } = await import('./components/TrustDialog/TrustDialog.ts');
+      } = await import('./components/TrustDialog/TrustDialog.tsx');
       await showSetupDialog(root, done => <TrustDialog commands={commands} onDone={done} />);
     }
 
@@ -165,7 +165,7 @@ export async function showSetupScreens(root: Root, permissionMode: PermissionMod
       const externalIncludes = getExternalClaudeMdIncludes(await getMemoryFiles(true));
       const {
         ClaudeMdExternalIncludesDialog
-      } = await import('./components/ClaudeMdExternalIncludesDialog.ts');
+      } = await import('./components/ClaudeMdExternalIncludesDialog.tsx');
       await showSetupDialog(root, done => <ClaudeMdExternalIncludesDialog onDone={done} isStandaloneDialog externalIncludes={externalIncludes} />);
     }
   }
@@ -209,7 +209,7 @@ export async function showSetupScreens(root: Root, permissionMode: PermissionMod
     if (keyStatus === 'new') {
       const {
         ApproveApiKey
-      } = await import('./components/ApproveApiKey.ts');
+      } = await import('./components/ApproveApiKey.tsx');
       await showSetupDialog<boolean>(root, done => <ApproveApiKey customApiKeyTruncated={customApiKeyTruncated} onDone={done} />, {
         onChangeAppState
       });
@@ -218,7 +218,7 @@ export async function showSetupScreens(root: Root, permissionMode: PermissionMod
   if ((permissionMode === 'bypassPermissions' || allowDangerouslySkipPermissions) && !hasSkipDangerousModePermissionPrompt()) {
     const {
       BypassPermissionsModeDialog
-    } = await import('./components/BypassPermissionsModeDialog.ts');
+    } = await import('./components/BypassPermissionsModeDialog.tsx');
     await showSetupDialog(root, done => <BypassPermissionsModeDialog onAccept={done} />);
   }
   if (feature('TRANSCRIPT_CLASSIFIER')) {
@@ -229,7 +229,7 @@ export async function showSetupScreens(root: Root, permissionMode: PermissionMod
     if (permissionMode === 'auto' && !hasAutoModeOptIn()) {
       const {
         AutoModeOptInDialog
-      } = await import('./components/AutoModeOptInDialog.ts');
+      } = await import('./components/AutoModeOptInDialog.tsx');
       await showSetupDialog(root, done => <AutoModeOptInDialog onAccept={done} onDecline={() => gracefulShutdownSync(1)} declineExits />);
     }
   }
@@ -272,7 +272,7 @@ export async function showSetupScreens(root: Root, permissionMode: PermissionMod
       } else {
         const {
           DevChannelsDialog
-        } = await import('./components/DevChannelsDialog.ts');
+        } = await import('./components/DevChannelsDialog.tsx');
         await showSetupDialog(root, done => <DevChannelsDialog channels={devChannels} onAccept={() => {
           // Mark dev entries per-entry so the allowlist bypass doesn't leak
           // to --channels entries when both flags are passed.
@@ -291,7 +291,7 @@ export async function showSetupScreens(root: Root, permissionMode: PermissionMod
   if (claudeInChrome && !getGlobalConfig().hasCompletedClaudeInChromeOnboarding) {
     const {
       ClaudeInChromeOnboarding
-    } = await import('./components/ClaudeInChromeOnboarding.ts');
+    } = await import('./components/ClaudeInChromeOnboarding.tsx');
     await showSetupDialog(root, done => <ClaudeInChromeOnboarding onDone={done} />);
   }
   return onboardingShown;

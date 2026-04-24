@@ -4,14 +4,14 @@ import * as React from 'react';
 import { Suspense, use } from 'react';
 import { getSessionId } from '../../bootstrap/state.ts';
 import type { LocalJSXCommandContext } from '../../commands.ts';
-import { useIsInsideModal } from '../../context/modalContext.ts';
+import { useIsInsideModal } from '../../context/modalContext.tsx';
 import { Box, Text, useTheme } from '../../ink.ts';
-import { type AppState, useAppState } from '../../state/AppState.ts';
+import { type AppState, useAppState } from '../../state/AppState.tsx';
 import { getCwd } from '../../utils/cwd.ts';
 import { getCurrentSessionTitle } from '../../utils/sessionStorage.ts';
-import { buildAccountProperties, buildAPIProviderProperties, buildIDEProperties, buildInstallationDiagnostics, buildInstallationHealthDiagnostics, buildMcpProperties, buildMemoryDiagnostics, buildSandboxProperties, buildSettingSourcesProperties, type Diagnostic, getModelDisplayLabel, type Property } from '../../utils/status.ts';
+import { buildAccountProperties, buildAPIProviderProperties, buildIDEProperties, buildInstallationDiagnostics, buildInstallationHealthDiagnostics, buildMcpProperties, buildMemoryDiagnostics, buildSandboxProperties, buildSettingSourcesProperties, type Diagnostic, getModelDisplayLabel, type Property } from '../../utils/status.tsx';
 import type { ThemeName } from '../../utils/theme.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
 type Props = {
   context: LocalJSXCommandContext;
   diagnosticsPromise: Promise<Diagnostic[]>;

@@ -3,8 +3,8 @@ import React from 'react';
 import { Box, color, Link, Text, useTheme } from '../../ink.ts';
 import type { CommandResultDisplay } from '../../types/command.ts';
 import { SandboxManager } from '../../utils/sandbox/sandbox-adapter.ts';
-import { Select } from '../CustomSelect/select.ts';
-import { useTabHeaderFocus } from '../design-system/Tabs.ts';
+import { Select } from '../CustomSelect/select.tsx';
+import { useTabHeaderFocus } from '../design-system/Tabs.tsx';
 type Props = {
   onComplete: (result?: string, options?: {
     display?: CommandResultDisplay;

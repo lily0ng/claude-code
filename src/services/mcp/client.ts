@@ -36,15 +36,15 @@ import {
   type PromptMessage,
   type ResourceLink,
 } from '@modelcontextprotocol/sdk/types.ts'
-import mapValues from 'lodash-es/mapValues.ts'
-import memoize from 'lodash-es/memoize.ts'
-import zipObject from 'lodash-es/zipObject.ts'
+import mapValues from 'lodash-es/mapValues'
+import memoize from 'lodash-es/memoize'
+import zipObject from 'lodash-es/zipObject'
 import pMap from 'p-map'
 import { getOriginalCwd, getSessionId } from '../../bootstrap/state.ts'
 import type { Command } from '../../commands.ts'
 import { getOauthConfig } from '../../constants/oauth.ts'
 import { PRODUCT_URL } from '../../constants/product.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import {
   type Tool,
   type ToolCallProgress,
@@ -233,13 +233,13 @@ import { isClaudeInChromeMCPServer } from '../../utils/claudeInChrome/common.ts'
 // Lazy: toolRendering.tsx pulls React/ink; only needed when Claude-in-Chrome MCP server is connected
 /* eslint-disable @typescript-eslint/no-require-imports */
 const claudeInChromeToolRendering =
-  (): typeof import('../../utils/claudeInChrome/toolRendering.ts') =>
+  (): typeof import('../../utils/claudeInChrome/toolRendering.tsx') =>
     require('../../utils/claudeInChrome/toolRendering.ts')
 // Lazy: wrapper.tsx → hostAdapter.ts → executor.ts pulls both native modules
 // (@ant/computer-use-input + @ant/computer-use-swift). Runtime-gated by
 // GrowthBook tengu_malort_pedway (see gates.ts).
 const computerUseWrapper = feature('CHICAGO_MCP')
-  ? (): typeof import('../../utils/computerUse/wrapper.ts') =>
+  ? (): typeof import('../../utils/computerUse/wrapper.tsx') =>
       require('../../utils/computerUse/wrapper.ts')
   : undefined
 const isComputerUseMCPServer = feature('CHICAGO_MCP')

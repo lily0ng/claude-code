@@ -1,11 +1,11 @@
 import type { ToolUseBlock } from '@anthropic-ai/sdk/resources/index.mjs'
-import last from 'lodash-es/last.ts'
+import last from 'lodash-es/last'
 import {
   getSessionId,
   isSessionPersistenceDisabled,
 } from './bootstrap/state.ts'
 import type { SDKMessage } from './entrypoints/agentSdkTypes.ts'
-import type { CanUseToolFn } from '../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../hooks/useCanUseTool.tsx'
 import { runTools } from '../services/tools/toolOrchestration.ts'
 import { findToolByName, type Tool, type Tools } from '../Tool.ts'
 import { BASH_TOOL_NAME } from '../tools/BashTool/toolName.ts'

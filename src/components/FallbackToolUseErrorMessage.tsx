@@ -7,7 +7,7 @@ import { removeSandboxViolationTags } from './utils/sandbox/sandbox-ui-utils.ts'
 import { Box, Text } from '../ink.ts';
 import { useShortcutDisplay } from '../keybindings/useShortcutDisplay.ts';
 import { countCharInString } from '../utils/stringUtils.ts';
-import { MessageResponse } from './MessageResponse.ts';
+import { MessageResponse } from './MessageResponse.tsx';
 const MAX_RENDERED_LINES = 10;
 type Props = {
   result: ToolResultBlockParam['content'];

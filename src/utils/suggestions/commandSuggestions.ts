@@ -5,7 +5,7 @@ import {
   getCommand,
   getCommandName,
 } from '../../commands.ts'
-import type { SuggestionItem } from '../../components/PromptInput/PromptInputFooterSuggestions.ts'
+import type { SuggestionItem } from '../../components/PromptInput/PromptInputFooterSuggestions.tsx'
 import { getSkillUsageScore } from './skillUsageTracking.ts'
 
 // Treat these characters as word separators for command search

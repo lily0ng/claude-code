@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import { feature } from 'bun:bundle';
 import React, { useEffect } from 'react';
-import { useNotifications } from '../context/notifications.ts';
+import { useNotifications } from '../context/notifications.tsx';
 import { Text } from '../ink.ts';
 import { getGlobalConfig } from '../utils/config.ts';
 import { getRainbowColor } from '../utils/thinking.ts';

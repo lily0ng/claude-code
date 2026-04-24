@@ -2,16 +2,16 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import type { Command } from '../commands.ts';
 import { Box } from '../ink.ts';
-import type { Screen } from '../screens/REPL.ts';
+import type { Screen } from '../screens/REPL.tsx';
 import type { Tools } from '../Tool.ts';
 import type { RenderableMessage } from '../types/message.ts';
 import { getDisplayMessageFromCollapsed, getToolSearchOrReadInfo, getToolUseIdsFromCollapsedGroup, hasAnyToolInProgress } from '../utils/collapseReadSearch.ts';
 import { type buildMessageLookups, EMPTY_STRING_SET, getProgressMessagesFromLookup, getSiblingToolUseIDsFromLookup, getToolUseID } from '../utils/messages.ts';
-import { hasThinkingContent, Message } from './Message.ts';
-import { MessageModel } from './MessageModel.ts';
-import { shouldRenderStatically } from './Messages.ts';
-import { MessageTimestamp } from './MessageTimestamp.ts';
-import { OffscreenFreeze } from './OffscreenFreeze.ts';
+import { hasThinkingContent, Message } from './Message.tsx';
+import { MessageModel } from './MessageModel.tsx';
+import { shouldRenderStatically } from './Messages.tsx';
+import { MessageTimestamp } from './MessageTimestamp.tsx';
+import { OffscreenFreeze } from './OffscreenFreeze.tsx';
 export type Props = {
   message: RenderableMessage;
   /** Whether the previous message in renderableMessages is also a user message. */

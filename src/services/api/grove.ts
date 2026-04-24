@@ -1,5 +1,5 @@
 import axios from 'axios'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,

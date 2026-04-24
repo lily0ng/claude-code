@@ -10,12 +10,12 @@ import { isEmptyMessageText, NO_RESPONSE_REQUESTED } from '../../utils/messages.
 import { getUpgradeMessage } from '../../utils/model/contextWindowUpgradeCheck.ts';
 import { getDefaultSonnetModel, renderModelName } from '../../utils/model/model.ts';
 import { isMacOsKeychainLocked } from '../../utils/secureStorage/macOsKeychainStorage.ts';
-import { CtrlOToExpand } from '../CtrlOToExpand.ts';
-import { InterruptedByUser } from '../InterruptedByUser.ts';
-import { Markdown } from '../Markdown.ts';
-import { MessageResponse } from '../MessageResponse.ts';
-import { MessageActionsSelectedContext } from '../messageActions.ts';
-import { RateLimitMessage } from './RateLimitMessage.ts';
+import { CtrlOToExpand } from '../CtrlOToExpand.tsx';
+import { InterruptedByUser } from '../InterruptedByUser.tsx';
+import { Markdown } from '../Markdown.tsx';
+import { MessageResponse } from '../MessageResponse.tsx';
+import { MessageActionsSelectedContext } from '../messageActions.tsx';
+import { RateLimitMessage } from './RateLimitMessage.tsx';
 const MAX_API_ERROR_CHARS = 1000;
 type Props = {
   param: TextBlockParam;

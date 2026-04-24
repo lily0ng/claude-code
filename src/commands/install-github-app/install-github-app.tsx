@@ -1,7 +1,7 @@
 import { execa } from 'execa';
 import React, { useCallback, useState } from 'react';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from './services/analytics/index.ts';
-import { WorkflowMultiselectDialog } from '../../components/WorkflowMultiselectDialog.ts';
+import { WorkflowMultiselectDialog } from '../../components/WorkflowMultiselectDialog.tsx';
 import { GITHUB_ACTION_SETUP_DOCS_URL } from '../../constants/github-app.ts';
 import { useExitOnCtrlCDWithKeybindings } from '../../hooks/useExitOnCtrlCDWithKeybindings.ts';
 import type { KeyboardEvent } from '../../ink/events/keyboard-event.ts';
@@ -12,19 +12,19 @@ import { openBrowser } from '../../utils/browser.ts';
 import { execFileNoThrow } from '../../utils/execFileNoThrow.ts';
 import { getGithubRepo } from '../../utils/git.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { ApiKeyStep } from './ApiKeyStep.ts';
-import { CheckExistingSecretStep } from './CheckExistingSecretStep.ts';
-import { CheckGitHubStep } from './CheckGitHubStep.ts';
-import { ChooseRepoStep } from './ChooseRepoStep.ts';
-import { CreatingStep } from './CreatingStep.ts';
-import { ErrorStep } from './ErrorStep.ts';
-import { ExistingWorkflowStep } from './ExistingWorkflowStep.ts';
-import { InstallAppStep } from './InstallAppStep.ts';
-import { OAuthFlowStep } from './OAuthFlowStep.ts';
-import { SuccessStep } from './SuccessStep.ts';
+import { ApiKeyStep } from './ApiKeyStep.tsx';
+import { CheckExistingSecretStep } from './CheckExistingSecretStep.tsx';
+import { CheckGitHubStep } from './CheckGitHubStep.tsx';
+import { ChooseRepoStep } from './ChooseRepoStep.tsx';
+import { CreatingStep } from './CreatingStep.tsx';
+import { ErrorStep } from './ErrorStep.tsx';
+import { ExistingWorkflowStep } from './ExistingWorkflowStep.tsx';
+import { InstallAppStep } from './InstallAppStep.tsx';
+import { OAuthFlowStep } from './OAuthFlowStep.tsx';
+import { SuccessStep } from './SuccessStep.tsx';
 import { setupGitHubActions } from './setupGitHubActions.ts';
 import type { State, Warning, Workflow } from './types.ts';
-import { WarningsStep } from './WarningsStep.ts';
+import { WarningsStep } from './WarningsStep.tsx';
 const INITIAL_STATE: State = {
   step: 'check-gh',
   selectedRepoName: '',

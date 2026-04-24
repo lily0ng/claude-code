@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { Box, Text } from '../../ink.ts';
-import { Spinner } from '../Spinner.ts';
+import { Spinner } from '../Spinner.tsx';
 type LoadingStateProps = {
   /**
    * The loading message to display next to the spinner.

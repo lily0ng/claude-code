@@ -5,7 +5,7 @@ const outputStyle = {
   name: 'output-style',
   description: 'Deprecated: use /config to change output style',
   isHidden: true,
-  load: () => import('./output-style.ts'),
+  load: () => import('./output-style.tsx'),
 } satisfies Command
 
 export default outputStyle

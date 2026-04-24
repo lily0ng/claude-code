@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { Text } from '../../ink.ts';
 import { countCharInString } from '../../utils/stringUtils.ts';
 import type { Input, Output } from './RemoteTriggerTool.ts';

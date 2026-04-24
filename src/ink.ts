@@ -1,5 +1,5 @@
 import { createElement, type ReactNode } from 'react'
-import { ThemeProvider } from './components/design-system/ThemeProvider.ts'
+import { ThemeProvider } from './components/design-system/ThemeProvider.tsx'
 import inkRender, {
   type Instance,
   createRoot as inkCreateRoot,
@@ -31,35 +31,35 @@ export async function createRoot(options?: RenderOptions): Promise<Root> {
 }
 
 export { color } from './components/design-system/color.ts'
-export type { Props as BoxProps } from './components/design-system/ThemedBox.ts'
-export { default as Box } from './components/design-system/ThemedBox.ts'
-export type { Props as TextProps } from './components/design-system/ThemedText.ts'
-export { default as Text } from './components/design-system/ThemedText.ts'
+export type { Props as BoxProps } from './components/design-system/ThemedBox.tsx'
+export { default as Box } from './components/design-system/ThemedBox.tsx'
+export type { Props as TextProps } from './components/design-system/ThemedText.tsx'
+export { default as Text } from './components/design-system/ThemedText.tsx'
 export {
   ThemeProvider,
   usePreviewTheme,
   useTheme,
   useThemeSetting,
-} from './components/design-system/ThemeProvider.ts'
-export { Ansi } from './ink/Ansi.ts'
+} from './components/design-system/ThemeProvider.tsx'
+export { Ansi } from './ink/Ansi.tsx'
 export type { Props as AppProps } from './ink/components/AppContext.ts'
-export type { Props as BaseBoxProps } from './ink/components/Box.ts'
-export { default as BaseBox } from './ink/components/Box.ts'
+export type { Props as BaseBoxProps } from './ink/components/Box.tsx'
+export { default as BaseBox } from './ink/components/Box.tsx'
 export type {
   ButtonState,
   Props as ButtonProps,
-} from './ink/components/Button.ts'
-export { default as Button } from './ink/components/Button.ts'
-export type { Props as LinkProps } from './ink/components/Link.ts'
-export { default as Link } from './ink/components/Link.ts'
-export type { Props as NewlineProps } from './ink/components/Newline.ts'
-export { default as Newline } from './ink/components/Newline.ts'
-export { NoSelect } from './ink/components/NoSelect.ts'
-export { RawAnsi } from './ink/components/RawAnsi.ts'
-export { default as Spacer } from './ink/components/Spacer.ts'
+} from './ink/components/Button.tsx'
+export { default as Button } from './ink/components/Button.tsx'
+export type { Props as LinkProps } from './ink/components/Link.tsx'
+export { default as Link } from './ink/components/Link.tsx'
+export type { Props as NewlineProps } from './ink/components/Newline.tsx'
+export { default as Newline } from './ink/components/Newline.tsx'
+export { NoSelect } from './ink/components/NoSelect.tsx'
+export { RawAnsi } from './ink/components/RawAnsi.tsx'
+export { default as Spacer } from './ink/components/Spacer.tsx'
 export type { Props as StdinProps } from './ink/components/StdinContext.ts'
-export type { Props as BaseTextProps } from './ink/components/Text.ts'
-export { default as BaseText } from './ink/components/Text.ts'
+export type { Props as BaseTextProps } from './ink/components/Text.tsx'
+export { default as BaseText } from './ink/components/Text.tsx'
 export type { DOMElement } from './ink/dom.ts'
 export { ClickEvent } from './ink/events/click-event.ts'
 export { EventEmitter } from './ink/events/emitter.ts'

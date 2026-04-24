@@ -4,7 +4,7 @@ import {
 } from './services/analytics/index.ts'
 import { sanitizeToolNameForAnalytics } from './services/analytics/metadata.ts'
 import type z from 'zod/v4'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import type { AnyObject, Tool, ToolUseContext } from '../../Tool.ts'
 import type { HookProgress } from '../../types/hooks.ts'
 import type {

@@ -68,7 +68,7 @@ import {
   renderToolUseMessage,
   renderToolUseRejectedMessage,
   userFacingName,
-} from './UI.ts'
+} from './UI.tsx'
 import {
   areFileEditsInputsEquivalent,
   findActualString,

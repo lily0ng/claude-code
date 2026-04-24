@@ -7,7 +7,7 @@ const command: Command = {
   availability: ['claude-ai'],
   isEnabled: () => !getIsNonInteractiveSession(),
   type: 'local-jsx',
-  load: () => import('./chrome.ts'),
+  load: () => import('./chrome.tsx'),
 }
 
 export default command

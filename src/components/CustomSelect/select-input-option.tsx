@@ -6,12 +6,12 @@ import { useKeybinding, useKeybindings } from '../../keybindings/useKeybinding.t
 import type { PastedContent } from '../../utils/config.ts';
 import { getImageFromClipboard } from '../../utils/imagePaste.ts';
 import type { ImageDimensions } from '../../utils/imageResizer.ts';
-import { ClickableImageRef } from '../ClickableImageRef.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
-import { Byline } from '../design-system/Byline.ts';
-import TextInput from '../TextInput.ts';
-import type { OptionWithDescription } from './select.ts';
-import { SelectOption } from './select-option.ts';
+import { ClickableImageRef } from '../ClickableImageRef.tsx';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
+import { Byline } from '../design-system/Byline.tsx';
+import TextInput from '../TextInput.tsx';
+import type { OptionWithDescription } from './select.tsx';
+import { SelectOption } from './select-option.tsx';
 type Props<T> = {
   option: Extract<OptionWithDescription<T>, {
     type: 'input';

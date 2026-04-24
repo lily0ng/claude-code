@@ -1,3 +1,3 @@
-export * from './SelectMulti.ts'
-export type { OptionWithDescription } from './select.ts'
-export * from './select.ts'
+export * from './SelectMulti.tsx'
+export type { OptionWithDescription } from './select.tsx'
+export * from './select.tsx'

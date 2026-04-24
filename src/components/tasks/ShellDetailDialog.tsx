@@ -10,9 +10,9 @@ import type { LocalShellTaskState } from '../../tasks/LocalShellTask/guards.ts';
 import { formatDuration, formatFileSize, truncateToWidth } from '../../utils/format.ts';
 import { tailFile } from '../../utils/fsOperations.ts';
 import { getTaskOutputPath } from '../../utils/task/diskOutput.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
+import { Byline } from '../design-system/Byline.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
 type Props = {
   shell: DeepImmutable<LocalShellTaskState>;
   onDone: (result?: string, options?: {

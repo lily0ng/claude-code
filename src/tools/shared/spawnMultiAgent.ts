@@ -12,7 +12,7 @@ import {
   getSessionBypassPermissionsMode,
   getSessionId,
 } from '../../bootstrap/state.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import { createTaskStateBase, generateTaskId } from '../../Task.ts'
 import type { ToolUseContext } from '../../Tool.ts'
 import type { InProcessTeammateTaskState } from '../../tasks/InProcessTeammateTask/types.ts'
@@ -43,7 +43,7 @@ import {
   TEAMMATE_COMMAND_ENV_VAR,
   TMUX_COMMAND,
 } from '../../utils/swarm/constants.ts'
-import { It2SetupPrompt } from '../../utils/swarm/It2SetupPrompt.ts'
+import { It2SetupPrompt } from '../../utils/swarm/It2SetupPrompt.tsx'
 import { startInProcessTeammate } from '../../utils/swarm/inProcessRunner.ts'
 import {
   type InProcessSpawnConfig,

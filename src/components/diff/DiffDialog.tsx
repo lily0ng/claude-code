@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import type { StructuredPatchHunk } from 'diff';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { CommandResultDisplay } from '../../commands.ts';
-import { useRegisterOverlay } from '../../context/overlayContext.ts';
+import { useRegisterOverlay } from '../../context/overlayContext.tsx';
 import { type DiffData, useDiffData } from '../../hooks/useDiffData.ts';
 import { type TurnDiff, useTurnDiffs } from '../../hooks/useTurnDiffs.ts';
 import { Box, Text } from '../../ink.ts';
@@ -10,10 +10,10 @@ import { useKeybindings } from '../../keybindings/useKeybinding.ts';
 import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay.ts';
 import type { Message } from '../../types/message.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { DiffDetailView } from './DiffDetailView.ts';
-import { DiffFileList } from './DiffFileList.ts';
+import { Byline } from '../design-system/Byline.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { DiffDetailView } from './DiffDetailView.tsx';
+import { DiffFileList } from './DiffFileList.tsx';
 type Props = {
   messages: Message[];
   onDone: (result?: string, options?: {

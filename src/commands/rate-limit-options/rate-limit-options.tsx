@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useMemo, useState } from 'react';
 import type { CommandResultDisplay, LocalJSXCommandContext } from '../../commands.ts';
-import { type OptionWithDescription, Select } from '../../components/CustomSelect/select.ts';
-import { Dialog } from '../../components/design-system/Dialog.ts';
+import { type OptionWithDescription, Select } from '../../components/CustomSelect/select.tsx';
+import { Dialog } from '../../components/design-system/Dialog.tsx';
 import { getFeatureValue_CACHED_MAY_BE_STALE } from '../../services/analytics/growthbook.ts';
 import { logEvent } from '../../services/analytics/index.ts';
 import { useClaudeAiLimits } from '../../services/claudeAiLimitsHook.ts';
@@ -10,10 +10,10 @@ import type { ToolUseContext } from '../../Tool.ts';
 import type { LocalJSXCommandOnDone } from '../../types/command.ts';
 import { getOauthAccountInfo, getRateLimitTier, getSubscriptionType } from '../../utils/auth.ts';
 import { hasClaudeAiBillingAccess } from '../../utils/billing.ts';
-import { call as extraUsageCall } from '../extra-usage/extra-usage.ts';
+import { call as extraUsageCall } from '../extra-usage/extra-usage.tsx';
 import { extraUsage } from '../extra-usage/index.ts';
 import upgrade from '../upgrade/index.ts';
-import { call as upgradeCall } from '../upgrade/upgrade.ts';
+import { call as upgradeCall } from '../upgrade/upgrade.tsx';
 type RateLimitOptionsMenuOptionType = 'upgrade' | 'extra-usage' | 'cancel';
 type RateLimitOptionsMenuProps = {
   onDone: (result?: string, options?: {

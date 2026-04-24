@@ -4,8 +4,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import type { Root } from '../ink.ts';
 import { Box, Text, useAnimationFrame } from '../ink.ts';
-import { AppStateProvider } from '../state/AppState.ts';
-import { checkOutTeleportedSessionBranch, processMessagesForTeleportResume, type TeleportProgressStep, type TeleportResult, teleportResumeCodeSession } from '../utils/teleport.ts';
+import { AppStateProvider } from '../state/AppState.tsx';
+import { checkOutTeleportedSessionBranch, processMessagesForTeleportResume, type TeleportProgressStep, type TeleportResult, teleportResumeCodeSession } from '../utils/teleport.tsx';
 type Props = {
   currentStep: TeleportProgressStep;
   sessionId?: string;

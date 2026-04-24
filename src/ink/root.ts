@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { logForDebugging } from './utils/debug.ts'
 import { Stream } from 'stream'
 import type { FrameEvent } from './frame.ts'
-import Ink, { type Options as InkOptions } from './ink.ts'
+import Ink, { type Options as InkOptions } from './ink.tsx'
 import instances from './instances.ts'
 
 export type RenderOptions = {

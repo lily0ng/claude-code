@@ -3,7 +3,7 @@ import figures from 'figures';
 import React, { useState } from 'react';
 import { Box, Text } from '../ink.ts';
 import { useKeybinding } from '../keybindings/useKeybinding.ts';
-import TextInput from './TextInput.ts';
+import TextInput from './TextInput.tsx';
 type Props = {
   initialLanguage: string | undefined;
   onComplete: (language: string | undefined) => void;

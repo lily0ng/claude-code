@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HelpV2 } from '../../components/HelpV2/HelpV2.ts';
+import { HelpV2 } from '../../components/HelpV2/HelpV2.tsx';
 import type { LocalJSXCommandCall } from '../../types/command.ts';
 export const call: LocalJSXCommandCall = async (onDone, {
   options: {

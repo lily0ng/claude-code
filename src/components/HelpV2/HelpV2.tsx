@@ -3,14 +3,14 @@ import * as React from 'react';
 import { useExitOnCtrlCDWithKeybindings } from './hooks/useExitOnCtrlCDWithKeybindings.ts';
 import { useShortcutDisplay } from './keybindings/useShortcutDisplay.ts';
 import { builtInCommandNames, type Command, type CommandResultDisplay, INTERNAL_ONLY_COMMANDS } from '../../commands.ts';
-import { useIsInsideModal } from '../../context/modalContext.ts';
+import { useIsInsideModal } from '../../context/modalContext.tsx';
 import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
 import { Box, Link, Text } from '../../ink.ts';
 import { useKeybinding } from '../../keybindings/useKeybinding.ts';
-import { Pane } from '../design-system/Pane.ts';
-import { Tab, Tabs } from '../design-system/Tabs.ts';
-import { Commands } from './Commands.ts';
-import { General } from './General.ts';
+import { Pane } from '../design-system/Pane.tsx';
+import { Tab, Tabs } from '../design-system/Tabs.tsx';
+import { Commands } from './Commands.tsx';
+import { General } from './General.tsx';
 type Props = {
   onClose: (result?: string, options?: {
     display?: CommandResultDisplay;

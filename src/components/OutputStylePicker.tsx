@@ -5,9 +5,9 @@ import { getAllOutputStyles, OUTPUT_STYLE_CONFIG, type OutputStyleConfig } from 
 import { Box, Text } from '../ink.ts';
 import type { OutputStyle } from '../utils/config.ts';
 import { getCwd } from '../utils/cwd.ts';
-import type { OptionWithDescription } from './CustomSelect/select.ts';
-import { Select } from './CustomSelect/select.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import type { OptionWithDescription } from './CustomSelect/select.tsx';
+import { Select } from './CustomSelect/select.tsx';
+import { Dialog } from './design-system/Dialog.tsx';
 const DEFAULT_OUTPUT_STYLE_LABEL = 'Default';
 const DEFAULT_OUTPUT_STYLE_DESCRIPTION = 'Claude completes coding tasks efficiently and provides concise responses';
 function mapConfigsToOptions(styles: {

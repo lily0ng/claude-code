@@ -18,7 +18,7 @@ import {
 } from '../../utils/worktree.ts'
 import { ENTER_WORKTREE_TOOL_NAME } from './constants.ts'
 import { getEnterWorktreeToolPrompt } from './prompt.ts'
-import { renderToolResultMessage, renderToolUseMessage } from './UI.ts'
+import { renderToolResultMessage, renderToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() =>
   z.strictObject({

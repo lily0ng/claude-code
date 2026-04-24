@@ -3,7 +3,7 @@ import * as React from 'react';
 import type { HookEvent } from './entrypoints/agentSdkTypes.ts';
 import type { buildMessageLookups } from './utils/messages.ts';
 import { Box, Text } from '../../ink.ts';
-import { MessageResponse } from '../MessageResponse.ts';
+import { MessageResponse } from '../MessageResponse.tsx';
 type Props = {
   hookEvent: HookEvent;
   lookups: ReturnType<typeof buildMessageLookups>;

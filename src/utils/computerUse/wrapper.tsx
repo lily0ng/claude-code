@@ -19,14 +19,14 @@
 import { bindSessionContext, type ComputerUseSessionContext, type CuCallToolResult, type CuPermissionRequest, type CuPermissionResponse, DEFAULT_GRANT_FLAGS, type ScreenshotDims } from '@ant/computer-use-mcp';
 import * as React from 'react';
 import { getSessionId } from '../../bootstrap/state.ts';
-import { ComputerUseApproval } from '../../components/permissions/ComputerUseApproval/ComputerUseApproval.ts';
+import { ComputerUseApproval } from '../../components/permissions/ComputerUseApproval/ComputerUseApproval.tsx';
 import type { Tool, ToolUseContext } from '../../Tool.ts';
 import { logForDebugging } from '../debug.ts';
 import { checkComputerUseLock, tryAcquireComputerUseLock } from './computerUseLock.ts';
 import { registerEscHotkey } from './escHotkey.ts';
 import { getChicagoCoordinateMode } from './gates.ts';
 import { getComputerUseHostAdapter } from './hostAdapter.ts';
-import { getComputerUseMCPRenderingOverrides } from './toolRendering.ts';
+import { getComputerUseMCPRenderingOverrides } from './toolRendering.tsx';
 type CallOverride = Pick<Tool, 'call'>['call'];
 type Binding = {
   ctx: ComputerUseSessionContext;

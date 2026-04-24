@@ -3,9 +3,9 @@ import { isBridgeEnabled } from '../bridge/bridgeEnabled.ts';
 import { Box, Text } from '../ink.ts';
 import { getClaudeAIOAuthTokens } from '../utils/auth.ts';
 import { getGlobalConfig, saveGlobalConfig } from '../utils/config.ts';
-import type { OptionWithDescription } from './CustomSelect/select.ts';
-import { Select } from './CustomSelect/select.ts';
-import { PermissionDialog } from './permissions/PermissionDialog.ts';
+import type { OptionWithDescription } from './CustomSelect/select.tsx';
+import { Select } from './CustomSelect/select.tsx';
+import { PermissionDialog } from './permissions/PermissionDialog.tsx';
 type RemoteCalloutSelection = 'enable' | 'dismiss';
 type Props = {
   onDone: (selection: RemoteCalloutSelection) => void;

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { ClockContext } from '../components/ClockContext.ts'
+import { ClockContext } from '../components/ClockContext.tsx'
 import type { DOMElement } from '../dom.ts'
 import { useTerminalViewport } from './use-terminal-viewport.ts'
 

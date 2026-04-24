@@ -5,12 +5,12 @@ import { Box, Text } from '../../../../ink.ts';
 import { useKeybinding } from '../../../../keybindings/useKeybinding.ts';
 import { createAbortController } from '../../../../utils/abortController.ts';
 import { editPromptInEditor } from '../../../../utils/promptEditor.ts';
-import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.ts';
-import { Byline } from '../../../design-system/Byline.ts';
-import { Spinner } from '../../../Spinner.ts';
-import TextInput from '../../../TextInput.ts';
+import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.tsx';
+import { Byline } from '../../../design-system/Byline.tsx';
+import { Spinner } from '../../../Spinner.tsx';
+import TextInput from '../../../TextInput.tsx';
 import { useWizard } from '../../../wizard/index.ts';
-import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.ts';
+import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.tsx';
 import { generateAgent } from '../../generateAgent.ts';
 import type { AgentWizardData } from '../types.ts';
 export function GenerateStep(): ReactNode {

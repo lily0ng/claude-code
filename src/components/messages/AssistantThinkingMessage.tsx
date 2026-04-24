@@ -2,8 +2,8 @@ import { c as _c } from "react/compiler-runtime";
 import type { ThinkingBlock, ThinkingBlockParam } from '@anthropic-ai/sdk/resources/index.mjs';
 import React from 'react';
 import { Box, Text } from '../../ink.ts';
-import { CtrlOToExpand } from '../CtrlOToExpand.ts';
-import { Markdown } from '../Markdown.ts';
+import { CtrlOToExpand } from '../CtrlOToExpand.tsx';
+import { Markdown } from '../Markdown.tsx';
 type Props = {
   // Accept either full ThinkingBlock/ThinkingBlockParam or a minimal shape with just type and thinking
   param: ThinkingBlock | ThinkingBlockParam | {

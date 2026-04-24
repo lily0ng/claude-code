@@ -6,7 +6,7 @@ const exit = {
   aliases: ['quit'],
   description: 'Exit the REPL',
   immediate: true,
-  load: () => import('./exit.ts'),
+  load: () => import('./exit.tsx'),
 } satisfies Command
 
 export default exit

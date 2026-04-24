@@ -5,7 +5,7 @@ import { useKeybinding } from '../../keybindings/useKeybinding.ts';
 import { logEvent } from '../../services/analytics/index.ts';
 import type { Message } from '../../types/message.ts';
 import { generatePermissionExplanation, isPermissionExplainerEnabled, type PermissionExplanation as PermissionExplanationType, type RiskLevel } from '../../utils/permissions/permissionExplainer.ts';
-import { ShimmerChar } from '../Spinner/ShimmerChar.ts';
+import { ShimmerChar } from '../Spinner/ShimmerChar.tsx';
 import { useShimmerAnimation } from '../Spinner/useShimmerAnimation.ts';
 const LOADING_MESSAGE = 'Loading explanation…';
 function ShimmerLoadingText() {

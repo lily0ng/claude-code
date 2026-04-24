@@ -4,7 +4,7 @@ import {
   REJECT_MESSAGE,
   withMemoryCorrectionHint,
 } from './utils/messages.ts'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import { findToolByName, type Tools, type ToolUseContext } from '../../Tool.ts'
 import { BASH_TOOL_NAME } from '../../tools/BashTool/toolName.ts'
 import type { AssistantMessage, Message } from '../../types/message.ts'

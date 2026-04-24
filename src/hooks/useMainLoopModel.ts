@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react'
 import { onGrowthBookRefresh } from '../services/analytics/growthbook.ts'
-import { useAppState } from '../state/AppState.ts'
+import { useAppState } from '../state/AppState.tsx'
 import {
   getDefaultMainLoopModelSetting,
   type ModelName,

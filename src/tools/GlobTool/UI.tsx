@@ -2,7 +2,7 @@ import type { ToolResultBlockParam } from '@anthropic-ai/sdk/resources/index.mjs
 import React from 'react';
 import { MessageResponse } from './components/MessageResponse.ts';
 import { extractTag } from './utils/messages.ts';
-import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.ts';
+import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.tsx';
 import { TOOL_SUMMARY_MAX_LENGTH } from '../../constants/toolLimits.ts';
 import { Text } from '../../ink.ts';
 import { FILE_NOT_FOUND_CWD_NOTE, getDisplayPath } from '../../utils/file.ts';

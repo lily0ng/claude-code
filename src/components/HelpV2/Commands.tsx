@@ -4,8 +4,8 @@ import { useMemo } from 'react';
 import { type Command, formatDescriptionWithSource } from '../../commands.ts';
 import { Box, Text } from '../../ink.ts';
 import { truncate } from '../../utils/format.ts';
-import { Select } from '../CustomSelect/select.ts';
-import { useTabHeaderFocus } from '../design-system/Tabs.ts';
+import { Select } from '../CustomSelect/select.tsx';
+import { useTabHeaderFocus } from '../design-system/Tabs.tsx';
 type Props = {
   commands: Command[];
   maxHeight: number;

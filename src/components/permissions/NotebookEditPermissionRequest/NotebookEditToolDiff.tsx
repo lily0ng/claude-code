@@ -10,8 +10,8 @@ import { getPatchForDisplay } from '../../../utils/diff.ts';
 import { getFsImplementation } from '../../../utils/fsOperations.ts';
 import { safeParseJSON } from '../../../utils/json.ts';
 import { parseCellId } from '../../../utils/notebook.ts';
-import { HighlightedCode } from '../../HighlightedCode.ts';
-import { StructuredDiff } from '../../StructuredDiff.ts';
+import { HighlightedCode } from '../../HighlightedCode.tsx';
+import { StructuredDiff } from '../../StructuredDiff.tsx';
 type Props = {
   notebook_path: string;
   cell_id: string | undefined;

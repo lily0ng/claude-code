@@ -5,7 +5,7 @@ const config = {
   type: 'local-jsx',
   name: 'config',
   description: 'Open config panel',
-  load: () => import('./config.ts'),
+  load: () => import('./config.tsx'),
 } satisfies Command
 
 export default config

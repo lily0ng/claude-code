@@ -5,8 +5,8 @@ import { logForDebugging } from '../utils/debug.ts';
 import type { GitFileStatus } from '../utils/git.ts';
 import { getFileStatus, stashToCleanState } from '../utils/git.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
-import { Spinner } from './Spinner.ts';
+import { Dialog } from './design-system/Dialog.tsx';
+import { Spinner } from './Spinner.tsx';
 type TeleportStashProps = {
   onStashAndContinue: () => void;
   onCancel: () => void;

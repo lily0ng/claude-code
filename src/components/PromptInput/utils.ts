@@ -1,7 +1,7 @@
 import {
   hasUsedBackslashReturn,
   isShiftEnterKeyBindingInstalled,
-} from '../../commands/terminalSetup/terminalSetup.ts'
+} from '../../commands/terminalSetup/terminalSetup.tsx'
 import type { Key } from '../../ink.ts'
 import { getGlobalConfig } from '../../utils/config.ts'
 import { env } from '../../utils/env.ts'

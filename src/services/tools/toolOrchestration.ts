@@ -1,5 +1,5 @@
 import type { ToolUseBlock } from '@anthropic-ai/sdk/resources/index.mjs'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import { findToolByName, type ToolUseContext } from '../../Tool.ts'
 import type { AssistantMessage, Message } from '../../types/message.ts'
 import { all } from '../../utils/generators.ts'

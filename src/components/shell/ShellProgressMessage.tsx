@@ -3,9 +3,9 @@ import React from 'react';
 import stripAnsi from 'strip-ansi';
 import { Box, Text } from '../../ink.ts';
 import { formatFileSize } from '../../utils/format.ts';
-import { MessageResponse } from '../MessageResponse.ts';
-import { OffscreenFreeze } from '../OffscreenFreeze.ts';
-import { ShellTimeDisplay } from './ShellTimeDisplay.ts';
+import { MessageResponse } from '../MessageResponse.tsx';
+import { OffscreenFreeze } from '../OffscreenFreeze.tsx';
+import { ShellTimeDisplay } from './ShellTimeDisplay.tsx';
 type Props = {
   output: string;
   fullOutput: string;

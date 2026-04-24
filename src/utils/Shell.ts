@@ -1,7 +1,7 @@
 import { execFileSync, spawn } from 'child_process'
 import { constants as fsConstants, readFileSync, unlinkSync } from 'fs'
 import { type FileHandle, mkdir, open, realpath } from 'fs/promises'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { isAbsolute, resolve } from 'path'
 import { join as posixJoin } from 'path/posix'
 import { logEvent } from './services/analytics/index.ts'

@@ -15,7 +15,7 @@ export const extraUsage = {
   name: 'extra-usage',
   description: 'Configure extra usage to keep working when limits are hit',
   isEnabled: () => isExtraUsageAllowed() && !getIsNonInteractiveSession(),
-  load: () => import('./extra-usage.ts'),
+  load: () => import('./extra-usage.tsx'),
 } satisfies Command
 
 export const extraUsageNonInteractive = {

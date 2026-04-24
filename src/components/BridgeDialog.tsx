@@ -6,14 +6,14 @@ import { useEffect, useState } from 'react';
 import { getOriginalCwd } from '../bootstrap/state.ts';
 import { buildActiveFooterText, buildIdleFooterText, FAILED_FOOTER_TEXT, getBridgeStatus } from '../bridge/bridgeStatusUtil.ts';
 import { BRIDGE_FAILED_INDICATOR, BRIDGE_READY_INDICATOR } from '../constants/figures.ts';
-import { useRegisterOverlay } from '../context/overlayContext.ts';
+import { useRegisterOverlay } from '../context/overlayContext.tsx';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- raw 'd' key for disconnect, not a configurable keybinding action
 import { Box, Text, useInput } from '../ink.ts';
 import { useKeybindings } from '../keybindings/useKeybinding.ts';
-import { useAppState, useSetAppState } from '../state/AppState.ts';
+import { useAppState, useSetAppState } from '../state/AppState.tsx';
 import { saveGlobalConfig } from '../utils/config.ts';
 import { getBranch } from '../utils/git.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 type Props = {
   onDone: () => void;
 };

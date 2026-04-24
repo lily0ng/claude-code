@@ -5,7 +5,7 @@
  * from trusted sources (repository and user settings) without blocking startup.
  */
 
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import { logForDebugging } from '../../utils/debug.ts'
 import { logForDiagnosticsNoPII } from '../../utils/diagLogs.ts'
 import { logError } from '../../utils/log.ts'

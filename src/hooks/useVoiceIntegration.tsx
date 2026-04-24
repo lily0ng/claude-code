@@ -1,13 +1,13 @@
 import { feature } from 'bun:bundle';
 import * as React from 'react';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { useNotifications } from '../context/notifications.ts';
-import { useIsModalOverlayActive } from '../context/overlayContext.ts';
-import { useGetVoiceState, useSetVoiceState, useVoiceState } from '../context/voice.ts';
+import { useNotifications } from '../context/notifications.tsx';
+import { useIsModalOverlayActive } from '../context/overlayContext.tsx';
+import { useGetVoiceState, useSetVoiceState, useVoiceState } from '../context/voice.tsx';
 import { KeyboardEvent } from '../ink/events/keyboard-event.ts';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- backward-compat bridge until REPL wires handleKeyDown to <Box onKeyDown>
 import { useInput } from '../ink.ts';
-import { useOptionalKeybindingContext } from '../keybindings/KeybindingContext.ts';
+import { useOptionalKeybindingContext } from '../keybindings/KeybindingContext.tsx';
 import { keystrokesEqual } from '../keybindings/resolver.ts';
 import type { ParsedKeystroke } from '../keybindings/types.ts';
 import { normalizeFullWidthSpace } from '../utils/stringUtils.ts';

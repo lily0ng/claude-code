@@ -2,13 +2,13 @@ import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import React from 'react';
 import { Box, Text } from '../../../ink.ts';
-import type { Question } from '../../../tools/AskUserQuestionTool/AskUserQuestionTool.ts';
+import type { Question } from '../../../tools/AskUserQuestionTool/AskUserQuestionTool.tsx';
 import type { PermissionDecision } from '../../../utils/permissions/PermissionResult.ts';
 import { Select } from '../../CustomSelect/index.ts';
-import { Divider } from '../../design-system/Divider.ts';
-import { PermissionRequestTitle } from '../PermissionRequestTitle.ts';
-import { PermissionRuleExplanation } from '../PermissionRuleExplanation.ts';
-import { QuestionNavigationBar } from './QuestionNavigationBar.ts';
+import { Divider } from '../../design-system/Divider.tsx';
+import { PermissionRequestTitle } from '../PermissionRequestTitle.tsx';
+import { PermissionRuleExplanation } from '../PermissionRuleExplanation.tsx';
+import { QuestionNavigationBar } from './QuestionNavigationBar.tsx';
 type Props = {
   questions: Question[];
   currentQuestionIndex: number;

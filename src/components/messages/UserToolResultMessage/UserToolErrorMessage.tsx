@@ -7,11 +7,11 @@ import { Text } from '../../../ink.ts';
 import { filterToolProgressMessages, type Tool, type Tools } from '../../../Tool.ts';
 import type { ProgressMessage } from '../../../types/message.ts';
 import { INTERRUPT_MESSAGE_FOR_TOOL_USE, isClassifierDenial, PLAN_REJECTION_PREFIX, REJECT_MESSAGE_WITH_REASON_PREFIX } from '../../../utils/messages.ts';
-import { FallbackToolUseErrorMessage } from '../../FallbackToolUseErrorMessage.ts';
-import { InterruptedByUser } from '../../InterruptedByUser.ts';
-import { MessageResponse } from '../../MessageResponse.ts';
-import { RejectedPlanMessage } from './RejectedPlanMessage.ts';
-import { RejectedToolUseMessage } from './RejectedToolUseMessage.ts';
+import { FallbackToolUseErrorMessage } from '../../FallbackToolUseErrorMessage.tsx';
+import { InterruptedByUser } from '../../InterruptedByUser.tsx';
+import { MessageResponse } from '../../MessageResponse.tsx';
+import { RejectedPlanMessage } from './RejectedPlanMessage.tsx';
+import { RejectedToolUseMessage } from './RejectedToolUseMessage.tsx';
 type Props = {
   progressMessagesForMessage: ProgressMessage[];
   tool?: Tool; // undefined when resuming an old conversation that uses an old tool

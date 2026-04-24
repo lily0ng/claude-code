@@ -20,7 +20,7 @@ import {
   isDangerousRemovalPath,
   validatePath,
 } from '../../utils/permissions/pathValidation.ts'
-import type { BashTool } from './BashTool.ts'
+import type { BashTool } from './BashTool.tsx'
 import { stripSafeWrappers } from './bashPermissions.ts'
 import { sedCommandIsAllowedByAllowlist } from './sedValidation.ts'
 

@@ -1,10 +1,10 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { Box } from '../ink.ts';
-import { BashTool } from '../tools/BashTool/BashTool.ts';
+import { BashTool } from '../tools/BashTool/BashTool.tsx';
 import type { ShellProgress } from '../types/tools.ts';
-import { UserBashInputMessage } from './messages/UserBashInputMessage.ts';
-import { ShellProgressMessage } from './shell/ShellProgressMessage.ts';
+import { UserBashInputMessage } from './messages/UserBashInputMessage.tsx';
+import { ShellProgressMessage } from './shell/ShellProgressMessage.tsx';
 type Props = {
   input: string;
   progress: ShellProgress | null;

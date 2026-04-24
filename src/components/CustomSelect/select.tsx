@@ -7,8 +7,8 @@ import { Ansi, Box, Text } from '../../ink.ts';
 import { count } from '../../utils/array.ts';
 import type { PastedContent } from '../../utils/config.ts';
 import type { ImageDimensions } from '../../utils/imageResizer.ts';
-import { SelectInputOption } from './select-input-option.ts';
-import { SelectOption } from './select-option.ts';
+import { SelectInputOption } from './select-input-option.tsx';
+import { SelectOption } from './select-option.tsx';
 import { useSelectInput } from './use-select-input.ts';
 import { useSelectState } from './use-select-state.ts';
 

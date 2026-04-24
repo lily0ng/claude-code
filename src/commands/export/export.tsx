@@ -1,11 +1,11 @@
 import { join } from 'path';
 import React from 'react';
-import { ExportDialog } from '../../components/ExportDialog.ts';
+import { ExportDialog } from '../../components/ExportDialog.tsx';
 import type { ToolUseContext } from '../../Tool.ts';
 import type { LocalJSXCommandOnDone } from '../../types/command.ts';
 import type { Message } from '../../types/message.ts';
 import { getCwd } from '../../utils/cwd.ts';
-import { renderMessagesToPlainText } from '../../utils/exportRenderer.ts';
+import { renderMessagesToPlainText } from '../../utils/exportRenderer.tsx';
 import { writeFileSync_DEPRECATED } from '../../utils/slowOperations.ts';
 function formatTimestamp(date: Date): string {
   const year = date.getFullYear();

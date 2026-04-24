@@ -1,4 +1,4 @@
-import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages.ts'
+import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages'
 import type { Command } from '../commands.ts'
 import type { ToolUseContext } from '../Tool.ts'
 

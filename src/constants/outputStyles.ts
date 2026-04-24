@@ -1,5 +1,5 @@
 import figures from 'figures'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { getOutputStyleDirStyles } from '../outputStyles/loadOutputStylesDir.ts'
 import type { OutputStyle } from '../utils/config.ts'
 import { getCwd } from '../utils/cwd.ts'

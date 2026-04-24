@@ -1,8 +1,8 @@
 // biome-ignore-all assist/source/organizeImports: ANT-ONLY import markers must not be reordered
 import { toolMatchesName, type Tool, type Tools } from './Tool.ts'
-import { AgentTool } from './tools/AgentTool/AgentTool.ts'
+import { AgentTool } from './tools/AgentTool/AgentTool.tsx'
 import { SkillTool } from './tools/SkillTool/SkillTool.ts'
-import { BashTool } from './tools/BashTool/BashTool.ts'
+import { BashTool } from './tools/BashTool/BashTool.tsx'
 import { FileEditTool } from './tools/FileEditTool/FileEditTool.ts'
 import { FileReadTool } from './tools/FileReadTool/FileReadTool.ts'
 import { FileWriteTool } from './tools/FileWriteTool/FileWriteTool.ts'
@@ -51,11 +51,11 @@ const SubscribePRTool = feature('KAIROS_GITHUB_WEBHOOKS')
   ? require('./tools/SubscribePRTool/SubscribePRTool.ts').SubscribePRTool
   : null
 /* eslint-enable custom-rules/no-process-env-top-level, @typescript-eslint/no-require-imports */
-import { TaskOutputTool } from './tools/TaskOutputTool/TaskOutputTool.ts'
+import { TaskOutputTool } from './tools/TaskOutputTool/TaskOutputTool.tsx'
 import { WebSearchTool } from './tools/WebSearchTool/WebSearchTool.ts'
 import { TodoWriteTool } from './tools/TodoWriteTool/TodoWriteTool.ts'
 import { ExitPlanModeV2Tool } from './tools/ExitPlanModeTool/ExitPlanModeV2Tool.ts'
-import { TestingPermissionTool } from './tools/testing/TestingPermissionTool.ts'
+import { TestingPermissionTool } from './tools/testing/TestingPermissionTool.tsx'
 import { GrepTool } from './tools/GrepTool/GrepTool.ts'
 import { TungstenTool } from './tools/TungstenTool/TungstenTool.ts'
 // Lazy require to break circular dependency: tools.ts -> TeamCreateTool/TeamDeleteTool -> ... -> tools.ts
@@ -70,7 +70,7 @@ const getSendMessageTool = () =>
   require('./tools/SendMessageTool/SendMessageTool.ts')
     .SendMessageTool as typeof import('./tools/SendMessageTool/SendMessageTool.ts').SendMessageTool
 /* eslint-enable @typescript-eslint/no-require-imports */
-import { AskUserQuestionTool } from './tools/AskUserQuestionTool/AskUserQuestionTool.ts'
+import { AskUserQuestionTool } from './tools/AskUserQuestionTool/AskUserQuestionTool.tsx'
 import { LSPTool } from './tools/LSPTool/LSPTool.ts'
 import { ListMcpResourcesTool } from './tools/ListMcpResourcesTool/ListMcpResourcesTool.ts'
 import { ReadMcpResourceTool } from './tools/ReadMcpResourceTool/ReadMcpResourceTool.ts'
@@ -83,7 +83,7 @@ import { TaskCreateTool } from './tools/TaskCreateTool/TaskCreateTool.ts'
 import { TaskGetTool } from './tools/TaskGetTool/TaskGetTool.ts'
 import { TaskUpdateTool } from './tools/TaskUpdateTool/TaskUpdateTool.ts'
 import { TaskListTool } from './tools/TaskListTool/TaskListTool.ts'
-import uniqBy from 'lodash-es/uniqBy.ts'
+import uniqBy from 'lodash-es/uniqBy'
 import { isToolSearchEnabledOptimistic } from './utils/toolSearch.ts'
 import { isTodoV2Enabled } from './utils/tasks.ts'
 // Dead code elimination: conditional import for CLAUDE_CODE_VERIFY_PLAN
@@ -150,7 +150,7 @@ export { REPL_ONLY_TOOLS }
 const getPowerShellTool = () => {
   if (!isPowerShellToolEnabled()) return null
   return (
-    require('./tools/PowerShellTool/PowerShellTool.ts') as typeof import('./tools/PowerShellTool/PowerShellTool.ts')
+    require('./tools/PowerShellTool/PowerShellTool.ts') as typeof import('./tools/PowerShellTool/PowerShellTool.tsx')
   ).PowerShellTool
 }
 /* eslint-enable @typescript-eslint/no-require-imports */

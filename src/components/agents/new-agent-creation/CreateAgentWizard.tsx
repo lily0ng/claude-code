@@ -6,17 +6,17 @@ import type { AgentDefinition } from '../../../tools/AgentTool/loadAgentsDir.ts'
 import { WizardProvider } from '../../wizard/index.ts';
 import type { WizardStepComponent } from '../../wizard/types.ts';
 import type { AgentWizardData } from './types.ts';
-import { ColorStep } from './wizard-steps/ColorStep.ts';
-import { ConfirmStepWrapper } from './wizard-steps/ConfirmStepWrapper.ts';
-import { DescriptionStep } from './wizard-steps/DescriptionStep.ts';
-import { GenerateStep } from './wizard-steps/GenerateStep.ts';
-import { LocationStep } from './wizard-steps/LocationStep.ts';
-import { MemoryStep } from './wizard-steps/MemoryStep.ts';
-import { MethodStep } from './wizard-steps/MethodStep.ts';
-import { ModelStep } from './wizard-steps/ModelStep.ts';
-import { PromptStep } from './wizard-steps/PromptStep.ts';
-import { ToolsStep } from './wizard-steps/ToolsStep.ts';
-import { TypeStep } from './wizard-steps/TypeStep.ts';
+import { ColorStep } from './wizard-steps/ColorStep.tsx';
+import { ConfirmStepWrapper } from './wizard-steps/ConfirmStepWrapper.tsx';
+import { DescriptionStep } from './wizard-steps/DescriptionStep.tsx';
+import { GenerateStep } from './wizard-steps/GenerateStep.tsx';
+import { LocationStep } from './wizard-steps/LocationStep.tsx';
+import { MemoryStep } from './wizard-steps/MemoryStep.tsx';
+import { MethodStep } from './wizard-steps/MethodStep.tsx';
+import { ModelStep } from './wizard-steps/ModelStep.tsx';
+import { PromptStep } from './wizard-steps/PromptStep.tsx';
+import { ToolsStep } from './wizard-steps/ToolsStep.tsx';
+import { TypeStep } from './wizard-steps/TypeStep.tsx';
 type Props = {
   tools: Tools;
   existingAgents: AgentDefinition[];

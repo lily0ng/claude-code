@@ -9,7 +9,7 @@ import { editFileInEditor } from '../../../../utils/promptEditor.ts';
 import { useWizard } from '../../../wizard/index.ts';
 import { getNewAgentFilePath, saveAgentToFile } from '../../agentFileUtils.ts';
 import type { AgentWizardData } from '../types.ts';
-import { ConfirmStep } from './ConfirmStep.ts';
+import { ConfirmStep } from './ConfirmStep.tsx';
 type Props = {
   tools: Tools;
   existingAgents: AgentDefinition[];

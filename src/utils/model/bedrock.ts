@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { refreshAndGetAwsCredentials } from '../auth.ts'
 import { getAWSRegion, isEnvTruthy } from '../envUtils.ts'
 import { logError } from '../log.ts'

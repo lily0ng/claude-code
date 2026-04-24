@@ -1,5 +1,5 @@
 import { c as _c } from "react/compiler-runtime";
-import capitalize from 'lodash-es/capitalize.ts';
+import capitalize from 'lodash-es/capitalize';
 import * as React from 'react';
 import { useCallback, useMemo, useState } from 'react';
 import { useExitOnCtrlCDWithKeybindings } from './hooks/useExitOnCtrlCDWithKeybindings.ts';
@@ -7,16 +7,16 @@ import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEve
 import { FAST_MODE_MODEL_DISPLAY, isFastModeAvailable, isFastModeCooldown, isFastModeEnabled } from './utils/fastMode.ts';
 import { Box, Text } from '../ink.ts';
 import { useKeybindings } from '../keybindings/useKeybinding.ts';
-import { useAppState, useSetAppState } from '../state/AppState.ts';
+import { useAppState, useSetAppState } from '../state/AppState.tsx';
 import { convertEffortValueToLevel, type EffortLevel, getDefaultEffortForModel, modelSupportsEffort, modelSupportsMaxEffort, resolvePickerEffortPersistence, toPersistableEffort } from '../utils/effort.ts';
 import { getDefaultMainLoopModel, type ModelSetting, modelDisplayString, parseUserSpecifiedModel } from '../utils/model/model.ts';
 import { getModelOptions } from '../utils/model/modelOptions.ts';
 import { getSettingsForSource, updateSettingsForSource } from '../utils/settings/settings.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
 import { Select } from './CustomSelect/index.ts';
-import { Byline } from './design-system/Byline.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
-import { Pane } from './design-system/Pane.ts';
+import { Byline } from './design-system/Byline.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
+import { Pane } from './design-system/Pane.tsx';
 import { effortLevelToSymbol } from './EffortIndicator.ts';
 export type Props = {
   initial: string | null;

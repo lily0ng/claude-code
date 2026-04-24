@@ -4,12 +4,12 @@ import React, { useContext, useMemo } from 'react';
 import { getKairosActive, getUserMsgOptIn } from '../../bootstrap/state.ts';
 import { Box } from '../../ink.ts';
 import { getFeatureValue_CACHED_MAY_BE_STALE } from '../../services/analytics/growthbook.ts';
-import { useAppState } from '../../state/AppState.ts';
+import { useAppState } from '../../state/AppState.tsx';
 import { isEnvTruthy } from '../../utils/envUtils.ts';
 import { logError } from '../../utils/log.ts';
 import { countCharInString } from '../../utils/stringUtils.ts';
-import { MessageActionsSelectedContext } from '../messageActions.ts';
-import { HighlightedThinkingText } from './HighlightedThinkingText.ts';
+import { MessageActionsSelectedContext } from '../messageActions.tsx';
+import { HighlightedThinkingText } from './HighlightedThinkingText.tsx';
 type Props = {
   addMargin: boolean;
   param: TextBlockParam;

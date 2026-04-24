@@ -4,7 +4,7 @@ const memory: Command = {
   type: 'local-jsx',
   name: 'memory',
   description: 'Edit Claude memory files',
-  load: () => import('./memory.ts'),
+  load: () => import('./memory.tsx'),
 }
 
 export default memory

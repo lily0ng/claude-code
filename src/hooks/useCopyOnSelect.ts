@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useTheme } from '../components/design-system/ThemeProvider.ts'
+import { useTheme } from '../components/design-system/ThemeProvider.tsx'
 import type { useSelection } from '../ink/hooks/use-selection.ts'
 import { getGlobalConfig } from '../utils/config.ts'
 import { getTheme } from '../utils/theme.ts'

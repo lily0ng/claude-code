@@ -1,6 +1,6 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import BashToolResultMessage from '../../tools/BashTool/BashToolResultMessage.ts';
+import BashToolResultMessage from '../../tools/BashTool/BashToolResultMessage.tsx';
 import { extractTag } from '../../utils/messages.ts';
 export function UserBashOutputMessage(t0) {
   const $ = _c(10);

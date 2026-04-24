@@ -2,7 +2,7 @@ import { join } from 'path'
 import type { LocalCommandResult } from '../../commands.ts'
 import { loadInstalledPluginsV2 } from '../../utils/plugins/installedPluginsManager.ts'
 import { OFFICIAL_MARKETPLACE_NAME } from '../../utils/plugins/officialMarketplace.ts'
-import { playAnimation } from '../thinkback/thinkback.ts'
+import { playAnimation } from '../thinkback/thinkback.tsx'
 
 const INTERNAL_MARKETPLACE_NAME = 'claude-code-marketplace'
 const SKILL_NAME = 'thinkback'

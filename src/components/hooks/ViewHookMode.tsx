@@ -8,7 +8,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Box, Text } from '../../ink.ts';
 import { hookSourceDescriptionDisplayString, type IndividualHookConfig } from '../../utils/hooks/hooksSettings.ts';
-import { Dialog } from '../design-system/Dialog.ts';
+import { Dialog } from '../design-system/Dialog.tsx';
 type Props = {
   selectedHook: IndividualHookConfig;
   eventSupportsMatcher: boolean;

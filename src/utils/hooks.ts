@@ -158,7 +158,7 @@ import {
   type SessionDerivedHookMatcher,
   type FunctionHook,
 } from './hooks/sessionHooks.ts'
-import type { AppState } from '../state/AppState.ts'
+import type { AppState } from '../state/AppState.tsx'
 import { jsonStringify, jsonParse } from './slowOperations.ts'
 import { isEnvTruthy } from './envUtils.ts'
 import { errorMessage, getErrnoCode } from './errors.ts'

@@ -6,31 +6,31 @@ import { ExitPlanModeV2Tool } from './tools/ExitPlanModeTool/ExitPlanModeV2Tool.
 import { useNotifyAfterTimeout } from '../../hooks/useNotifyAfterTimeout.ts';
 import { useKeybinding } from '../../keybindings/useKeybinding.ts';
 import type { AnyObject, Tool, ToolUseContext } from '../../Tool.ts';
-import { AskUserQuestionTool } from '../../tools/AskUserQuestionTool/AskUserQuestionTool.ts';
-import { BashTool } from '../../tools/BashTool/BashTool.ts';
+import { AskUserQuestionTool } from '../../tools/AskUserQuestionTool/AskUserQuestionTool.tsx';
+import { BashTool } from '../../tools/BashTool/BashTool.tsx';
 import { FileEditTool } from '../../tools/FileEditTool/FileEditTool.ts';
 import { FileReadTool } from '../../tools/FileReadTool/FileReadTool.ts';
 import { FileWriteTool } from '../../tools/FileWriteTool/FileWriteTool.ts';
 import { GlobTool } from '../../tools/GlobTool/GlobTool.ts';
 import { GrepTool } from '../../tools/GrepTool/GrepTool.ts';
 import { NotebookEditTool } from '../../tools/NotebookEditTool/NotebookEditTool.ts';
-import { PowerShellTool } from '../../tools/PowerShellTool/PowerShellTool.ts';
+import { PowerShellTool } from '../../tools/PowerShellTool/PowerShellTool.tsx';
 import { SkillTool } from '../../tools/SkillTool/SkillTool.ts';
 import { WebFetchTool } from '../../tools/WebFetchTool/WebFetchTool.ts';
 import type { AssistantMessage } from '../../types/message.ts';
 import type { PermissionDecision } from '../../utils/permissions/PermissionResult.ts';
-import { AskUserQuestionPermissionRequest } from './AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.ts';
-import { BashPermissionRequest } from './BashPermissionRequest/BashPermissionRequest.ts';
-import { EnterPlanModePermissionRequest } from './EnterPlanModePermissionRequest/EnterPlanModePermissionRequest.ts';
-import { ExitPlanModePermissionRequest } from './ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.ts';
-import { FallbackPermissionRequest } from './FallbackPermissionRequest.ts';
-import { FileEditPermissionRequest } from './FileEditPermissionRequest/FileEditPermissionRequest.ts';
-import { FilesystemPermissionRequest } from './FilesystemPermissionRequest/FilesystemPermissionRequest.ts';
-import { FileWritePermissionRequest } from './FileWritePermissionRequest/FileWritePermissionRequest.ts';
-import { NotebookEditPermissionRequest } from './NotebookEditPermissionRequest/NotebookEditPermissionRequest.ts';
-import { PowerShellPermissionRequest } from './PowerShellPermissionRequest/PowerShellPermissionRequest.ts';
-import { SkillPermissionRequest } from './SkillPermissionRequest/SkillPermissionRequest.ts';
-import { WebFetchPermissionRequest } from './WebFetchPermissionRequest/WebFetchPermissionRequest.ts';
+import { AskUserQuestionPermissionRequest } from './AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.tsx';
+import { BashPermissionRequest } from './BashPermissionRequest/BashPermissionRequest.tsx';
+import { EnterPlanModePermissionRequest } from './EnterPlanModePermissionRequest/EnterPlanModePermissionRequest.tsx';
+import { ExitPlanModePermissionRequest } from './ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx';
+import { FallbackPermissionRequest } from './FallbackPermissionRequest.tsx';
+import { FileEditPermissionRequest } from './FileEditPermissionRequest/FileEditPermissionRequest.tsx';
+import { FilesystemPermissionRequest } from './FilesystemPermissionRequest/FilesystemPermissionRequest.tsx';
+import { FileWritePermissionRequest } from './FileWritePermissionRequest/FileWritePermissionRequest.tsx';
+import { NotebookEditPermissionRequest } from './NotebookEditPermissionRequest/NotebookEditPermissionRequest.tsx';
+import { PowerShellPermissionRequest } from './PowerShellPermissionRequest/PowerShellPermissionRequest.tsx';
+import { SkillPermissionRequest } from './SkillPermissionRequest/SkillPermissionRequest.tsx';
+import { WebFetchPermissionRequest } from './WebFetchPermissionRequest/WebFetchPermissionRequest.tsx';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 const ReviewArtifactTool = feature('REVIEW_ARTIFACT') ? (require('../../tools/ReviewArtifactTool/ReviewArtifactTool.ts') as typeof import('../../tools/ReviewArtifactTool/ReviewArtifactTool.ts')).ReviewArtifactTool : null;
@@ -43,7 +43,7 @@ import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages.mjs
 /* eslint-enable @typescript-eslint/no-require-imports */
 import type { z } from 'zod/v4';
 import type { PermissionUpdate } from '../../utils/permissions/PermissionUpdateSchema.ts';
-import type { WorkerBadgeProps } from './WorkerBadge.ts';
+import type { WorkerBadgeProps } from './WorkerBadge.tsx';
 function permissionComponentForTool(tool: Tool): React.ComponentType<PermissionRequestProps> {
   switch (tool) {
     case FileEditTool:

@@ -7,10 +7,10 @@ import { isENOENT } from './utils/errors.ts';
 import { detectEncodingForResolvedPath } from './utils/fileRead.ts';
 import { getFsImplementation } from './utils/fsOperations.ts';
 import { Text } from '../../../ink.ts';
-import { BashTool } from '../../../tools/BashTool/BashTool.ts';
+import { BashTool } from '../../../tools/BashTool/BashTool.tsx';
 import { applySedSubstitution, type SedEditInfo } from '../../../tools/BashTool/sedEditParser.ts';
-import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.ts';
-import type { PermissionRequestProps } from '../PermissionRequest.ts';
+import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.tsx';
+import type { PermissionRequestProps } from '../PermissionRequest.tsx';
 type SedEditPermissionRequestProps = PermissionRequestProps & {
   sedInfo: SedEditInfo;
 };

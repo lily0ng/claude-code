@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Box, Text } from '../ink.ts';
 import type { ContextSuggestion } from '../utils/contextSuggestions.ts';
 import { formatTokens } from '../utils/format.ts';
-import { StatusIcon } from './design-system/StatusIcon.ts';
+import { StatusIcon } from './design-system/StatusIcon.tsx';
 type Props = {
   suggestions: ContextSuggestion[];
 };

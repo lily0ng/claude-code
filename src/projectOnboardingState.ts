@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { join } from 'path'
 import {
   getCurrentProjectConfig,

@@ -3,11 +3,11 @@ import React, { useEffect } from 'react';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from './services/analytics/index.ts';
 import type { TeleportRemoteResponse } from './utils/conversationRecovery.ts';
 import type { CodeSession } from './utils/teleport/api.ts';
-import { type TeleportSource, useTeleportResume } from '../hooks/useTeleportResume.ts';
+import { type TeleportSource, useTeleportResume } from '../hooks/useTeleportResume.tsx';
 import { Box, Text } from '../ink.ts';
 import { useKeybinding } from '../keybindings/useKeybinding.ts';
-import { ResumeTask } from './ResumeTask.ts';
-import { Spinner } from './Spinner.ts';
+import { ResumeTask } from './ResumeTask.tsx';
+import { Spinner } from './Spinner.tsx';
 interface TeleportResumeWrapperProps {
   onComplete: (result: TeleportRemoteResponse) => void;
   onCancel: () => void;

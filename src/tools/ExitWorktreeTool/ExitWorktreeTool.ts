@@ -25,7 +25,7 @@ import {
 } from '../../utils/worktree.ts'
 import { EXIT_WORKTREE_TOOL_NAME } from './constants.ts'
 import { getExitWorktreeToolPrompt } from './prompt.ts'
-import { renderToolResultMessage, renderToolUseMessage } from './UI.ts'
+import { renderToolResultMessage, renderToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() =>
   z.strictObject({

@@ -13,19 +13,19 @@ import {
   useSetAppState,
 } from './state/AppState.ts'
 import { isVimModeEnabled } from '../components/PromptInput/utils.ts'
-import type { ToolUseConfirm } from '../components/permissions/PermissionRequest.ts'
+import type { ToolUseConfirm } from '../components/permissions/PermissionRequest.tsx'
 import type { SpinnerMode } from '../components/Spinner/types.ts'
-import { useNotifications } from '../context/notifications.ts'
-import { useIsOverlayActive } from '../context/overlayContext.ts'
+import { useNotifications } from '../context/notifications.tsx'
+import { useIsOverlayActive } from '../context/overlayContext.tsx'
 import { useCommandQueue } from '../hooks/useCommandQueue.ts'
 import { getShortcutDisplay } from '../keybindings/shortcutFormat.ts'
 import { useKeybinding } from '../keybindings/useKeybinding.ts'
-import type { Screen } from '../screens/REPL.ts'
+import type { Screen } from '../screens/REPL.tsx'
 import { exitTeammateView } from '../state/teammateViewHelpers.ts'
 import {
   killAllRunningAgentTasks,
   markAgentsNotified,
-} from '../tasks/LocalAgentTask/LocalAgentTask.ts'
+} from '../tasks/LocalAgentTask/LocalAgentTask.tsx'
 import type { PromptInputMode, VimMode } from '../types/textInputTypes.ts'
 import {
   clearCommandQueue,

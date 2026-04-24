@@ -1,6 +1,6 @@
 import type { ChildProcess, ExecFileException } from 'child_process'
 import { execFile, spawn } from 'child_process'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { homedir } from 'os'
 import * as path from 'path'
 import { logEvent } from './services/analytics/index.ts'

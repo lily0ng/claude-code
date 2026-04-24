@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { stringWidth } from '../../ink/stringWidth.ts';
 import { Box, Text } from '../../ink.ts';
-import TextInput from '../TextInput.ts';
+import TextInput from '../TextInput.tsx';
 type Props = {
   value: string;
   onChange: (value: string) => void;

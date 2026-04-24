@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Box, Text } from '../../ink.ts';
 import { useKeybinding } from '../../keybindings/useKeybinding.ts';
 import type { PromptRequest } from '../../types/hooks.ts';
-import { Select } from '../CustomSelect/select.ts';
-import { PermissionDialog } from '../permissions/PermissionDialog.ts';
+import { Select } from '../CustomSelect/select.tsx';
+import { PermissionDialog } from '../permissions/PermissionDialog.tsx';
 type Props = {
   title: string;
   toolInputSummary?: string | null;

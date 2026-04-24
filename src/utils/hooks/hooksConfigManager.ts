@@ -1,7 +1,7 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import type { HookEvent } from './entrypoints/agentSdkTypes.ts'
 import { getRegisteredHooks } from '../../bootstrap/state.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import {
   getAllHooks,
   type IndividualHookConfig,

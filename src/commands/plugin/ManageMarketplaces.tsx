@@ -3,9 +3,9 @@ import figures from 'figures';
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from './services/analytics/index.ts';
-import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.ts';
-import { Byline } from '../../components/design-system/Byline.ts';
-import { KeyboardShortcutHint } from '../../components/design-system/KeyboardShortcutHint.ts';
+import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.tsx';
+import { Byline } from '../../components/design-system/Byline.tsx';
+import { KeyboardShortcutHint } from '../../components/design-system/KeyboardShortcutHint.tsx';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- useInput needed for marketplace-specific u/r shortcuts and y/n confirmation not in keybinding schema
 import { Box, Text, useInput } from '../../ink.ts';
 import { useKeybinding, useKeybindings } from '../../keybindings/useKeybinding.ts';

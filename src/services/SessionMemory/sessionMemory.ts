@@ -5,11 +5,11 @@
  */
 
 import { writeFile } from 'fs/promises'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { getIsRemoteMode } from '../../bootstrap/state.ts'
 import { getSystemPrompt } from '../../constants/prompts.ts'
 import { getSystemContext, getUserContext } from '../../context.ts'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import type { Tool, ToolUseContext } from '../../Tool.ts'
 import { FILE_EDIT_TOOL_NAME } from '../../tools/FileEditTool/constants.ts'
 import {

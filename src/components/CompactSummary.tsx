@@ -2,11 +2,11 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { BLACK_CIRCLE } from '../constants/figures.ts';
 import { Box, Text } from '../ink.ts';
-import type { Screen } from '../screens/REPL.ts';
+import type { Screen } from '../screens/REPL.tsx';
 import type { NormalizedUserMessage } from '../types/message.ts';
 import { getUserMessageText } from '../utils/messages.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
-import { MessageResponse } from './MessageResponse.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
+import { MessageResponse } from './MessageResponse.tsx';
 type Props = {
   message: NormalizedUserMessage;
   screen: Screen;

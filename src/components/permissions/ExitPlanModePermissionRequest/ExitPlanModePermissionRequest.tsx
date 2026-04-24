@@ -7,7 +7,7 @@ import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEve
 import { useAppState, useAppStateStore, useSetAppState } from './state/AppState.ts';
 import { getSdkBetas, getSessionId, isSessionPersistenceDisabled, setHasExitedPlanMode, setNeedsAutoModeExitAttachment, setNeedsPlanModeExitAttachment } from '../../../bootstrap/state.ts';
 import { generateSessionName } from '../../../commands/rename/generateSessionName.ts';
-import { launchUltraplan } from '../../../commands/ultraplan.ts';
+import { launchUltraplan } from '../../../commands/ultraplan.tsx';
 import type { KeyboardEvent } from '../../../ink/events/keyboard-event.ts';
 import { Box, Text } from '../../../ink.ts';
 import type { AppState } from '../../../state/AppStateStore.ts';
@@ -34,10 +34,10 @@ import { editFileInEditor, editPromptInEditor } from '../../../utils/promptEdito
 import { getCurrentSessionTitle, getTranscriptPath, saveAgentName, saveCustomTitle } from '../../../utils/sessionStorage.ts';
 import { getSettings_DEPRECATED } from '../../../utils/settings/settings.ts';
 import { type OptionWithDescription, Select } from '../../CustomSelect/index.ts';
-import { Markdown } from '../../Markdown.ts';
-import { PermissionDialog } from '../PermissionDialog.ts';
-import type { PermissionRequestProps } from '../PermissionRequest.ts';
-import { PermissionRuleExplanation } from '../PermissionRuleExplanation.ts';
+import { Markdown } from '../../Markdown.tsx';
+import { PermissionDialog } from '../PermissionDialog.tsx';
+import type { PermissionRequestProps } from '../PermissionRequest.tsx';
+import { PermissionRuleExplanation } from '../PermissionRuleExplanation.tsx';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 const autoModeStateModule = feature('TRANSCRIPT_CLASSIFIER') ? require('../../../utils/permissions/autoModeState.ts') as typeof import('../../../utils/permissions/autoModeState.ts') : null;

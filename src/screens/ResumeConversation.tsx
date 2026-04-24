@@ -5,15 +5,15 @@ import React from 'react';
 import { useTerminalSize } from './hooks/useTerminalSize.ts';
 import { getOriginalCwd, switchSession } from '../bootstrap/state.ts';
 import type { Command } from '../commands.ts';
-import { LogSelector } from '../components/LogSelector.ts';
-import { Spinner } from '../components/Spinner.ts';
+import { LogSelector } from '../components/LogSelector.tsx';
+import { Spinner } from '../components/Spinner.tsx';
 import { restoreCostStateForSession } from '../cost-tracker.ts';
 import { setClipboard } from '../ink/termio/osc.ts';
 import { Box, Text } from '../ink.ts';
 import { useKeybinding } from '../keybindings/useKeybinding.ts';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../services/analytics/index.ts';
 import type { MCPServerConnection, ScopedMcpServerConfig } from '../services/mcp/types.ts';
-import { useAppState, useSetAppState } from '../state/AppState.ts';
+import { useAppState, useSetAppState } from '../state/AppState.tsx';
 import type { Tool } from '../Tool.ts';
 import type { AgentColorName } from '../tools/AgentTool/agentColorManager.ts';
 import type { AgentDefinition } from '../tools/AgentTool/loadAgentsDir.ts';
@@ -32,7 +32,7 @@ import { computeStandaloneAgentContext, restoreAgentFromSession, restoreWorktree
 import { adoptResumedSessionFile, enrichLogs, isCustomTitleEnabled, loadAllProjectsMessageLogsProgressive, loadSameRepoMessageLogsProgressive, recordContentReplacement, resetSessionFilePointer, restoreSessionMetadata, type SessionLogResult } from '../utils/sessionStorage.ts';
 import type { ThinkingConfig } from '../utils/thinking.ts';
 import type { ContentReplacementRecord } from '../utils/toolResultStorage.ts';
-import { REPL } from './REPL.ts';
+import { REPL } from './REPL.tsx';
 function parsePrIdentifier(value: string): number | null {
   const directNumber = parseInt(value, 10);
   if (!isNaN(directNumber) && directNumber > 0) {

@@ -13,7 +13,7 @@ import {
 import { lazySchema } from '../../utils/lazySchema.ts'
 import { jsonStringify } from '../../utils/slowOperations.ts'
 import { DESCRIPTION, PROMPT, REMOTE_TRIGGER_TOOL_NAME } from './prompt.ts'
-import { renderToolResultMessage, renderToolUseMessage } from './UI.ts'
+import { renderToolResultMessage, renderToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() =>
   z.strictObject({

@@ -3,9 +3,9 @@ import figures from 'figures';
 import React, { useEffect, useState } from 'react';
 import type { CommandResultDisplay } from '../../commands.ts';
 import { Box, color, Text, useTheme } from '../../ink.ts';
-import { useMcpReconnect } from '../../services/mcp/MCPConnectionManager.ts';
-import { useAppStateStore } from '../../state/AppState.ts';
-import { Spinner } from '../Spinner.ts';
+import { useMcpReconnect } from '../../services/mcp/MCPConnectionManager.tsx';
+import { useAppStateStore } from '../../state/AppState.tsx';
+import { Spinner } from '../Spinner.tsx';
 type Props = {
   serverName: string;
   onComplete: (result?: string, options?: {

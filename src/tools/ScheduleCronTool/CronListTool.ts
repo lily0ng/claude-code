@@ -12,7 +12,7 @@ import {
   isDurableCronEnabled,
   isKairosCronEnabled,
 } from './prompt.ts'
-import { renderListResultMessage, renderListToolUseMessage } from './UI.ts'
+import { renderListResultMessage, renderListToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() => z.strictObject({}))
 type InputSchema = ReturnType<typeof inputSchema>

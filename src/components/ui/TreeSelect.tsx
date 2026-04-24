@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import type { KeyboardEvent } from '../../ink/events/keyboard-event.ts';
 import { Box } from '../../ink.ts';
-import { type OptionWithDescription, Select } from '../CustomSelect/select.ts';
+import { type OptionWithDescription, Select } from '../CustomSelect/select.tsx';
 export type TreeNode<T> = {
   id: string | number;
   value: T;

@@ -22,7 +22,7 @@ export {
   type TeammateContext,
 } from './teammateContext.ts'
 
-import type { AppState } from '../state/AppState.ts'
+import type { AppState } from '../state/AppState.tsx'
 import { isEnvTruthy } from './envUtils.ts'
 import { getTeammateContext } from './teammateContext.ts'
 

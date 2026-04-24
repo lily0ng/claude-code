@@ -132,7 +132,7 @@ import hooks from './commands/hooks/index.ts'
 import files from './commands/files/index.ts'
 import branch from './commands/branch/index.ts'
 import agents from './commands/agents/index.ts'
-import plugin from './commands/plugin/index.ts'
+import plugin from './commands/plugin/index.tsx'
 import reloadPlugins from './commands/reload-plugins/index.ts'
 import rewind from './commands/rewind/index.ts'
 import heapDump from './commands/heapdump/index.ts'
@@ -166,7 +166,7 @@ import {
   getPluginSkills,
   clearPluginSkillsCache,
 } from './utils/plugins/loadPluginCommands.ts'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { isUsing3PServices, isClaudeAISubscriber } from './utils/auth.ts'
 import { isFirstPartyAnthropicBaseUrl } from './utils/model/providers.ts'
 import env from './commands/env/index.ts'
@@ -182,7 +182,7 @@ import {
   extraUsageNonInteractive,
 } from './commands/extra-usage/index.ts'
 import rateLimitOptions from './commands/rate-limit-options/index.ts'
-import statusline from './commands/statusline.ts'
+import statusline from './commands/statusline.tsx'
 import effort from './commands/effort/index.ts'
 import stats from './commands/stats/index.ts'
 // insights.ts is 113KB (3200 lines, includes diffLines/html rendering). Lazy

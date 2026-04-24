@@ -15,7 +15,7 @@ import {
   DESCRIPTION,
   LEGACY_BRIEF_TOOL_NAME,
 } from './prompt.ts'
-import { renderToolResultMessage, renderToolUseMessage } from './UI.ts'
+import { renderToolResultMessage, renderToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() =>
   z.strictObject({

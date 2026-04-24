@@ -3,7 +3,7 @@
  */
 
 import { readFile } from 'fs/promises'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { logForDebugging } from '../debug.ts'
 import { execFileNoThrow } from '../execFileNoThrow.ts'
 import { getPlatform } from '../platform.ts'

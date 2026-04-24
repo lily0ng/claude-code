@@ -13,8 +13,8 @@ import type {
   ToolUseBlockParam,
 } from '@anthropic-ai/sdk/resources/index.mjs'
 import { randomUUID, type UUID } from 'crypto'
-import isObject from 'lodash-es/isObject.ts'
-import last from 'lodash-es/last.ts'
+import isObject from 'lodash-es/isObject'
+import last from 'lodash-es/last'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
@@ -120,7 +120,7 @@ import { GLOB_TOOL_NAME } from './tools/GlobTool/prompt.ts'
 import { GREP_TOOL_NAME } from './tools/GrepTool/prompt.ts'
 import type { DeepImmutable } from './types/utils.ts'
 import { getStrictToolResultPairing } from '../bootstrap/state.ts'
-import type { SpinnerMode } from '../components/Spinner.ts'
+import type { SpinnerMode } from '../components/Spinner.tsx'
 import {
   COMMAND_ARGS_TAG,
   COMMAND_MESSAGE_TAG,

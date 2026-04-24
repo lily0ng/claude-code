@@ -4,13 +4,13 @@ import { useMemo } from 'react';
 import { Box } from './ink.ts';
 import { useAppState } from './state/AppState.ts';
 import { STATUS_TAG, SUMMARY_TAG, TASK_NOTIFICATION_TAG } from '../../constants/xml.ts';
-import { QueuedMessageProvider } from '../../context/QueuedMessageContext.ts';
+import { QueuedMessageProvider } from '../../context/QueuedMessageContext.tsx';
 import { useCommandQueue } from '../../hooks/useCommandQueue.ts';
 import type { QueuedCommand } from '../../types/textInputTypes.ts';
 import { isQueuedCommandVisible } from '../../utils/messageQueueManager.ts';
 import { createUserMessage, EMPTY_LOOKUPS, normalizeMessages } from '../../utils/messages.ts';
 import { jsonParse } from '../../utils/slowOperations.ts';
-import { Message } from '../Message.ts';
+import { Message } from '../Message.tsx';
 const EMPTY_SET = new Set<string>();
 
 /**

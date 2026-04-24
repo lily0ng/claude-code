@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Box, Text } from './ink.ts';
 import { type NetworkHostPattern, shouldAllowManagedSandboxDomainsOnly } from './utils/sandbox/sandbox-adapter.ts';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../../services/analytics/index.ts';
-import { Select } from '../CustomSelect/select.ts';
-import { PermissionDialog } from './PermissionDialog.ts';
+import { Select } from '../CustomSelect/select.tsx';
+import { PermissionDialog } from './PermissionDialog.tsx';
 export type SandboxPermissionRequestProps = {
   hostPattern: NetworkHostPattern;
   onUserResponse: (response: {

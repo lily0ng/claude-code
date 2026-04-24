@@ -7,12 +7,12 @@ import { Box, Text } from '../ink.ts';
 import { useKeybinding } from '../keybindings/useKeybinding.ts';
 import { getCwd } from '../utils/cwd.ts';
 import { writeFileSync_DEPRECATED } from '../utils/slowOperations.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
-import { Select } from './CustomSelect/select.ts';
-import { Byline } from './design-system/Byline.ts';
-import { Dialog } from './design-system/Dialog.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
-import TextInput from './TextInput.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
+import { Select } from './CustomSelect/select.tsx';
+import { Byline } from './design-system/Byline.tsx';
+import { Dialog } from './design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
+import TextInput from './TextInput.tsx';
 type ExportDialogProps = {
   content: string;
   defaultFilename: string;

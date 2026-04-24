@@ -6,11 +6,11 @@ import { Box, color, Text, useTheme } from '../ink.ts';
 import { addMcpConfig, getAllMcpConfigs } from '../services/mcp/config.ts';
 import type { ConfigScope, McpServerConfig, ScopedMcpServerConfig } from '../services/mcp/types.ts';
 import { plural } from '../utils/stringUtils.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
-import { SelectMulti } from './CustomSelect/SelectMulti.ts';
-import { Byline } from './design-system/Byline.ts';
-import { Dialog } from './design-system/Dialog.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
+import { SelectMulti } from './CustomSelect/SelectMulti.tsx';
+import { Byline } from './design-system/Byline.tsx';
+import { Dialog } from './design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
 type Props = {
   servers: Record<string, McpServerConfig>;
   scope: ConfigScope;

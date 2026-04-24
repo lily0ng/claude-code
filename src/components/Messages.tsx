@@ -10,11 +10,11 @@ import { getIsRemoteMode } from '../bootstrap/state.ts';
 import type { Command } from '../commands.ts';
 import { BLACK_CIRCLE } from '../constants/figures.ts';
 import { useTerminalSize } from '../hooks/useTerminalSize.ts';
-import type { ScrollBoxHandle } from '../ink/components/ScrollBox.ts';
+import type { ScrollBoxHandle } from '../ink/components/ScrollBox.tsx';
 import { useTerminalNotification } from '../ink/useTerminalNotification.ts';
 import { Box, Text } from '../ink.ts';
 import { useShortcutDisplay } from '../keybindings/useShortcutDisplay.ts';
-import type { Screen } from '../screens/REPL.ts';
+import type { Screen } from '../screens/REPL.tsx';
 import type { Tools } from '../Tool.ts';
 import { findToolByName } from '../Tool.ts';
 import type { AgentDefinitionsResult } from '../tools/AgentTool/loadAgentsDir.ts';
@@ -31,18 +31,18 @@ import { applyGrouping } from '../utils/groupToolUses.ts';
 import { buildMessageLookups, createAssistantMessage, deriveUUID, getMessagesAfterCompactBoundary, getToolUseID, getToolUseIDs, hasUnresolvedHooksFromLookup, isNotEmptyMessage, normalizeMessages, reorderMessagesInUI, type StreamingThinking, type StreamingToolUse, shouldShowUserMessage } from '../utils/messages.ts';
 import { plural } from '../utils/stringUtils.ts';
 import { renderableSearchText } from '../utils/transcriptSearch.ts';
-import { Divider } from './design-system/Divider.ts';
-import type { UnseenDivider } from './FullscreenLayout.ts';
-import { LogoV2 } from './LogoV2/LogoV2.ts';
-import { StreamingMarkdown } from './Markdown.ts';
-import { hasContentAfterIndex, MessageRow } from './MessageRow.ts';
-import { InVirtualListContext, type MessageActionsNav, MessageActionsSelectedContext, type MessageActionsState } from './messageActions.ts';
-import { AssistantThinkingMessage } from './messages/AssistantThinkingMessage.ts';
+import { Divider } from './design-system/Divider.tsx';
+import type { UnseenDivider } from './FullscreenLayout.tsx';
+import { LogoV2 } from './LogoV2/LogoV2.tsx';
+import { StreamingMarkdown } from './Markdown.tsx';
+import { hasContentAfterIndex, MessageRow } from './MessageRow.tsx';
+import { InVirtualListContext, type MessageActionsNav, MessageActionsSelectedContext, type MessageActionsState } from './messageActions.tsx';
+import { AssistantThinkingMessage } from './messages/AssistantThinkingMessage.tsx';
 import { isNullRenderingAttachment } from './messages/nullRenderingAttachments.ts';
-import { OffscreenFreeze } from './OffscreenFreeze.ts';
-import type { ToolUseConfirm } from './permissions/PermissionRequest.ts';
-import { StatusNotices } from './StatusNotices.ts';
-import type { JumpHandle } from './VirtualMessageList.ts';
+import { OffscreenFreeze } from './OffscreenFreeze.tsx';
+import type { ToolUseConfirm } from './permissions/PermissionRequest.tsx';
+import { StatusNotices } from './StatusNotices.tsx';
+import type { JumpHandle } from './VirtualMessageList.tsx';
 
 // Memoed logo header: this box is the FIRST sibling before all MessageRows
 // in main-screen mode. If it becomes dirty on every Messages re-render,
@@ -82,7 +82,7 @@ const BRIEF_TOOL_NAME: string | null = feature('KAIROS') || feature('KAIROS_BRIE
 const SEND_USER_FILE_TOOL_NAME: string | null = feature('KAIROS') ? (require('../tools/SendUserFileTool/prompt.ts') as typeof import('../tools/SendUserFileTool/prompt.ts')).SEND_USER_FILE_TOOL_NAME : null;
 
 /* eslint-enable @typescript-eslint/no-require-imports */
-import { VirtualMessageList } from './VirtualMessageList.ts';
+import { VirtualMessageList } from './VirtualMessageList.tsx';
 
 /**
  * In brief-only mode, filter messages to show ONLY Brief tool_use blocks,

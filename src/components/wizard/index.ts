@@ -4,6 +4,6 @@ export type {
   WizardStepComponent,
 } from './types.ts'
 export { useWizard } from './useWizard.ts'
-export { WizardDialogLayout } from './WizardDialogLayout.ts'
-export { WizardNavigationFooter } from './WizardNavigationFooter.ts'
-export { WizardProvider } from './WizardProvider.ts'
+export { WizardDialogLayout } from './WizardDialogLayout.tsx'
+export { WizardNavigationFooter } from './WizardNavigationFooter.tsx'
+export { WizardProvider } from './WizardProvider.tsx'

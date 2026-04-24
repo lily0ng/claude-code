@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { logForDebugging } from './debug.ts'
 import { hasNodeOption } from './envUtils.ts'
 import { getFsImplementation } from './fsOperations.ts'

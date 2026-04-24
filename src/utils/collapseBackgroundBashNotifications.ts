@@ -3,7 +3,7 @@ import {
   SUMMARY_TAG,
   TASK_NOTIFICATION_TAG,
 } from '../constants/xml.ts'
-import { BACKGROUND_BASH_SUMMARY_PREFIX } from '../tasks/LocalShellTask/LocalShellTask.ts'
+import { BACKGROUND_BASH_SUMMARY_PREFIX } from '../tasks/LocalShellTask/LocalShellTask.tsx'
 import type {
   NormalizedUserMessage,
   RenderableMessage,

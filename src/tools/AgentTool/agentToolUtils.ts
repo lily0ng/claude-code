@@ -13,7 +13,7 @@ import {
   logEvent,
 } from '../../services/analytics/index.ts'
 import { clearDumpState } from '../../services/api/dumpPrompts.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import type {
   Tool,
   ToolPermissionContext,
@@ -34,7 +34,7 @@ import {
   type ProgressTracker,
   updateAgentProgress as updateAsyncAgentProgress,
   updateProgressFromMessage,
-} from '../../tasks/LocalAgentTask/LocalAgentTask.ts'
+} from '../../tasks/LocalAgentTask/LocalAgentTask.tsx'
 import { asAgentId } from '../../types/ids.ts'
 import type { Message as MessageType } from '../../types/message.ts'
 import { isAgentSwarmsEnabled } from '../../utils/agentSwarmsEnabled.ts'

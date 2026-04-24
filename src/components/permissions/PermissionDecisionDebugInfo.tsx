@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import figures from 'figures';
 import React, { useMemo } from 'react';
 import { Ansi, Box, color, Text, useTheme } from '../../ink.ts';
-import { useAppState } from '../../state/AppState.ts';
+import { useAppState } from '../../state/AppState.tsx';
 import type { PermissionMode } from '../../utils/permissions/PermissionMode.ts';
 import { permissionModeTitle } from '../../utils/permissions/PermissionMode.ts';
 import type { PermissionDecision, PermissionDecisionReason } from '../../utils/permissions/PermissionResult.ts';

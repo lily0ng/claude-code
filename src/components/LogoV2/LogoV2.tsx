@@ -7,24 +7,24 @@ import { stringWidth } from '../../ink/stringWidth.ts';
 import { getLayoutMode, calculateLayoutDimensions, calculateOptimalLeftWidth, formatWelcomeMessage, truncatePath, getRecentActivitySync, getRecentReleaseNotesSync, getLogoDisplayData } from '../../utils/logoV2Utils.ts';
 import { truncate } from '../../utils/format.ts';
 import { getDisplayPath } from '../../utils/file.ts';
-import { Clawd } from './Clawd.ts';
-import { FeedColumn } from './FeedColumn.ts';
-import { createRecentActivityFeed, createWhatsNewFeed, createProjectOnboardingFeed, createGuestPassesFeed } from './feedConfigs.ts';
+import { Clawd } from './Clawd.tsx';
+import { FeedColumn } from './FeedColumn.tsx';
+import { createRecentActivityFeed, createWhatsNewFeed, createProjectOnboardingFeed, createGuestPassesFeed } from './feedConfigs.tsx';
 import { getGlobalConfig, saveGlobalConfig } from './utils/config.ts';
 import { resolveThemeSetting } from './utils/systemTheme.ts';
 import { getInitialSettings } from './utils/settings/settings.ts';
 import { isDebugMode, isDebugToStdErr, getDebugLogPath } from './utils/debug.ts';
 import { useEffect, useState } from 'react';
 import { getSteps, shouldShowProjectOnboarding, incrementProjectOnboardingSeenCount } from '../../projectOnboardingState.ts';
-import { CondensedLogo } from './CondensedLogo.ts';
-import { OffscreenFreeze } from '../OffscreenFreeze.ts';
+import { CondensedLogo } from './CondensedLogo.tsx';
+import { OffscreenFreeze } from '../OffscreenFreeze.tsx';
 import { checkForReleaseNotesSync } from '../../utils/releaseNotes.ts';
 import { getDumpPromptsPath } from './services/api/dumpPrompts.ts';
 import { isEnvTruthy } from './utils/envUtils.ts';
 import { getStartupPerfLogPath, isDetailedProfilingEnabled } from './utils/startupProfiler.ts';
-import { EmergencyTip } from './EmergencyTip.ts';
-import { VoiceModeNotice } from './VoiceModeNotice.ts';
-import { Opus1mMergeNotice } from './Opus1mMergeNotice.ts';
+import { EmergencyTip } from './EmergencyTip.tsx';
+import { VoiceModeNotice } from './VoiceModeNotice.tsx';
+import { Opus1mMergeNotice } from './Opus1mMergeNotice.tsx';
 import { feature } from 'bun:bundle';
 
 // Conditional require so ChannelsNotice.tsx tree-shakes when both flags are
@@ -33,13 +33,13 @@ import { feature } from 'bun:bundle';
 // whole file. VoiceModeNotice uses the unsafe helper pattern but VOICE_MODE
 // is external: true so it's moot there.
 /* eslint-disable @typescript-eslint/no-require-imports */
-const ChannelsNoticeModule = feature('KAIROS') || feature('KAIROS_CHANNELS') ? require('./ChannelsNotice.ts') as typeof import('./ChannelsNotice.ts') : null;
+const ChannelsNoticeModule = feature('KAIROS') || feature('KAIROS_CHANNELS') ? require('./ChannelsNotice.ts') as typeof import('./ChannelsNotice.tsx') : null;
 /* eslint-enable @typescript-eslint/no-require-imports */
 import { SandboxManager } from './utils/sandbox/sandbox-adapter.ts';
-import { useShowGuestPassesUpsell, incrementGuestPassesSeenCount } from './GuestPassesUpsell.ts';
-import { useShowOverageCreditUpsell, incrementOverageCreditUpsellSeenCount, createOverageCreditFeed } from './OverageCreditUpsell.ts';
+import { useShowGuestPassesUpsell, incrementGuestPassesSeenCount } from './GuestPassesUpsell.tsx';
+import { useShowOverageCreditUpsell, incrementOverageCreditUpsellSeenCount, createOverageCreditFeed } from './OverageCreditUpsell.tsx';
 import { plural } from '../../utils/stringUtils.ts';
-import { useAppState } from '../../state/AppState.ts';
+import { useAppState } from '../../state/AppState.tsx';
 import { getEffortSuffix } from '../../utils/effort.ts';
 import { useMainLoopModel } from '../../hooks/useMainLoopModel.ts';
 import { renderModelSetting } from '../../utils/model/model.ts';

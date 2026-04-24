@@ -5,9 +5,9 @@ import { FallbackToolUseErrorMessage } from './components/FallbackToolUseErrorMe
 import { FallbackToolUseRejectedMessage } from './components/FallbackToolUseRejectedMessage.ts';
 import type { z } from 'zod/v4';
 import type { Command } from '../../commands.ts';
-import { Byline } from '../../components/design-system/Byline.ts';
-import { Message as MessageComponent } from '../../components/Message.ts';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { Byline } from '../../components/design-system/Byline.tsx';
+import { Message as MessageComponent } from '../../components/Message.tsx';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { Box, Text } from '../../ink.ts';
 import type { Tools } from '../../Tool.ts';
 import type { ProgressMessage } from '../../types/message.ts';

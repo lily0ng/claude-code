@@ -4,9 +4,9 @@ import { useCallback, useEffect, useState } from 'react';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- 'r' is a view-specific key, not a global keybinding
 import { Box, Text, useInput } from '../../../ink.ts';
 import { type AutoModeDenial, getAutoModeDenials } from '../../../utils/autoModeDenials.ts';
-import { Select } from '../../CustomSelect/select.ts';
-import { StatusIcon } from '../../design-system/StatusIcon.ts';
-import { useTabHeaderFocus } from '../../design-system/Tabs.ts';
+import { Select } from '../../CustomSelect/select.tsx';
+import { StatusIcon } from '../../design-system/StatusIcon.tsx';
+import { useTabHeaderFocus } from '../../design-system/Tabs.tsx';
 type Props = {
   onHeaderFocusChange?: (focused: boolean) => void;
   /** Called when approved/retry state changes so parent can act on exit */

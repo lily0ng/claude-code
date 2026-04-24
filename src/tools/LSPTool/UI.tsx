@@ -1,9 +1,9 @@
 import { c as _c } from "react/compiler-runtime";
 import type { ToolResultBlockParam } from '@anthropic-ai/sdk/resources/index.mjs';
 import React from 'react';
-import { CtrlOToExpand } from '../../components/CtrlOToExpand.ts';
-import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.ts';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { CtrlOToExpand } from '../../components/CtrlOToExpand.tsx';
+import { FallbackToolUseErrorMessage } from '../../components/FallbackToolUseErrorMessage.tsx';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { Box, Text } from '../../ink.ts';
 import { getDisplayPath } from '../../utils/file.ts';
 import { extractTag } from '../../utils/messages.ts';

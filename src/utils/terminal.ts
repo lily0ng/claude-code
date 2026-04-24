@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import { ctrlOToExpand } from '../components/CtrlOToExpand.ts'
+import { ctrlOToExpand } from '../components/CtrlOToExpand.tsx'
 import { stringWidth } from '../ink/stringWidth.ts'
 import sliceAnsi from './sliceAnsi.ts'
 

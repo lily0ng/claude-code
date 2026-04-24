@@ -10,10 +10,10 @@ import { env } from '../../../utils/env.ts';
 import { shouldShowAlwaysAllowOptions } from '../../../utils/permissions/permissionsLoader.ts';
 import { logUnaryEvent } from '../../../utils/unaryLogging.ts';
 import { type UnaryEvent, usePermissionRequestLogging } from '../hooks.ts';
-import { PermissionDialog } from '../PermissionDialog.ts';
-import { PermissionPrompt, type PermissionPromptOption, type ToolAnalyticsContext } from '../PermissionPrompt.ts';
-import type { PermissionRequestProps } from '../PermissionRequest.ts';
-import { PermissionRuleExplanation } from '../PermissionRuleExplanation.ts';
+import { PermissionDialog } from '../PermissionDialog.tsx';
+import { PermissionPrompt, type PermissionPromptOption, type ToolAnalyticsContext } from '../PermissionPrompt.tsx';
+import type { PermissionRequestProps } from '../PermissionRequest.tsx';
+import { PermissionRuleExplanation } from '../PermissionRuleExplanation.tsx';
 type SkillOptionValue = 'yes' | 'yes-exact' | 'yes-prefix' | 'no';
 export function SkillPermissionRequest(props) {
   const $ = _c(51);

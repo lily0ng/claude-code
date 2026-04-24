@@ -3,11 +3,11 @@ import React from 'react';
 import { handlePlanModeTransition } from '../../../bootstrap/state.ts';
 import { Box, Text } from '../../../ink.ts';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../../../services/analytics/index.ts';
-import { useAppState } from '../../../state/AppState.ts';
+import { useAppState } from '../../../state/AppState.tsx';
 import { isPlanModeInterviewPhaseEnabled } from '../../../utils/planModeV2.ts';
 import { Select } from '../../CustomSelect/index.ts';
-import { PermissionDialog } from '../PermissionDialog.ts';
-import type { PermissionRequestProps } from '../PermissionRequest.ts';
+import { PermissionDialog } from '../PermissionDialog.tsx';
+import type { PermissionRequestProps } from '../PermissionRequest.tsx';
 export function EnterPlanModePermissionRequest(t0) {
   const $ = _c(18);
   const {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { stringWidth } from '../../ink/stringWidth.ts';
 import { Text } from '../../ink.ts';
 import { truncateToWidthNoEllipsis } from '../../utils/format.ts';

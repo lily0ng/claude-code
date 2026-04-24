@@ -3,12 +3,12 @@ import React, { type ReactNode, useState } from 'react';
 import { Box, Text } from '../../../../ink.ts';
 import { useKeybinding } from '../../../../keybindings/useKeybinding.ts';
 import type { AgentDefinition } from '../../../../tools/AgentTool/loadAgentsDir.ts';
-import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.ts';
-import { Byline } from '../../../design-system/Byline.ts';
-import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.ts';
-import TextInput from '../../../TextInput.ts';
+import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.tsx';
+import { Byline } from '../../../design-system/Byline.tsx';
+import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.tsx';
+import TextInput from '../../../TextInput.tsx';
 import { useWizard } from '../../../wizard/index.ts';
-import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.ts';
+import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.tsx';
 import { validateAgentType } from '../../validateAgent.ts';
 import type { AgentWizardData } from '../types.ts';
 type Props = {

@@ -1,5 +1,5 @@
 import { randomBytes } from 'crypto'
-import type { AppState } from './state/AppState.ts'
+import type { AppState } from './state/AppState.tsx'
 import type { AgentId } from './types/ids.ts'
 import { getTaskOutputPath } from './utils/task/diskOutput.ts'
 

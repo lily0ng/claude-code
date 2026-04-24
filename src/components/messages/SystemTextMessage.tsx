@@ -4,12 +4,12 @@ import { Box, Text, type TextProps } from '../../ink.ts';
 import { feature } from 'bun:bundle';
 import * as React from 'react';
 import { useState } from 'react';
-import sample from 'lodash-es/sample.ts';
+import sample from 'lodash-es/sample';
 import { BLACK_CIRCLE, REFERENCE_MARK, TEARDROP_ASTERISK } from '../../constants/figures.ts';
 import figures from 'figures';
 import { basename } from 'path';
-import { MessageResponse } from '../MessageResponse.ts';
-import { FilePathLink } from '../FilePathLink.ts';
+import { MessageResponse } from '../MessageResponse.tsx';
+import { FilePathLink } from '../FilePathLink.tsx';
 import { openPath } from '../../utils/browser.ts';
 /* eslint-disable @typescript-eslint/no-require-imports */
 const teamMemSaved = feature('TEAMMEM') ? require('./teamMemSaved.ts') as typeof import('./teamMemSaved.ts') : null;
@@ -17,16 +17,16 @@ const teamMemSaved = feature('TEAMMEM') ? require('./teamMemSaved.ts') as typeof
 import { TURN_COMPLETION_VERBS } from '../../constants/turnCompletionVerbs.ts';
 import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
 import type { SystemMessage, SystemStopHookSummaryMessage, SystemBridgeStatusMessage, SystemTurnDurationMessage, SystemThinkingMessage, SystemMemorySavedMessage } from '../../types/message.ts';
-import { SystemAPIErrorMessage } from './SystemAPIErrorMessage.ts';
+import { SystemAPIErrorMessage } from './SystemAPIErrorMessage.tsx';
 import { formatDuration, formatNumber, formatSecondsShort } from '../../utils/format.ts';
 import { getGlobalConfig } from '../../utils/config.ts';
-import Link from '../../ink/components/Link.ts';
-import ThemedText from '../design-system/ThemedText.ts';
-import { CtrlOToExpand } from '../CtrlOToExpand.ts';
-import { useAppStateStore } from '../../state/AppState.ts';
+import Link from '../../ink/components/Link.tsx';
+import ThemedText from '../design-system/ThemedText.tsx';
+import { CtrlOToExpand } from '../CtrlOToExpand.tsx';
+import { useAppStateStore } from '../../state/AppState.tsx';
 import { isBackgroundTask, type TaskState } from '../../tasks/types.ts';
 import { getPillLabel } from '../../tasks/pillLabel.ts';
-import { useSelectedMessageBg } from '../messageActions.ts';
+import { useSelectedMessageBg } from '../messageActions.tsx';
 type Props = {
   message: SystemMessage;
   addMargin: boolean;

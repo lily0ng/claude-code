@@ -4,7 +4,7 @@ import { BLACK_CIRCLE, BULLET_OPERATOR } from '../constants/figures.ts';
 import { Box, Text } from '../ink.ts';
 import type { SkillUpdate } from '../utils/hooks/skillImprovement.ts';
 import { normalizeFullWidthDigits } from '../utils/stringUtils.ts';
-import { isValidResponseInput } from './FeedbackSurvey/FeedbackSurveyView.ts';
+import { isValidResponseInput } from './FeedbackSurvey/FeedbackSurveyView.tsx';
 import type { FeedbackSurveyResponse } from './FeedbackSurvey/utils.ts';
 type Props = {
   isOpen: boolean;

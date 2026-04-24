@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { type GroveDecision, GroveDialog, PrivacySettingsDialog } from '../../components/grove/Grove.ts';
+import { type GroveDecision, GroveDialog, PrivacySettingsDialog } from '../../components/grove/Grove.tsx';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../../services/analytics/index.ts';
 import { getGroveNoticeConfig, getGroveSettings, isQualifiedForGrove } from '../../services/api/grove.ts';
 import type { LocalJSXCommandOnDone } from '../../types/command.ts';

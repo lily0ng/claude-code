@@ -1,5 +1,5 @@
 import { getIsNonInteractiveSession } from '../../bootstrap/state.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import type { Message } from '../../types/message.ts'
 import { isAgentSwarmsEnabled } from '../../utils/agentSwarmsEnabled.ts'
 import { count } from '../../utils/array.ts'

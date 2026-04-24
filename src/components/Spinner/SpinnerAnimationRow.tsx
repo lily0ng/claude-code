@@ -8,9 +8,9 @@ import type { InProcessTeammateTaskState } from '../../tasks/InProcessTeammateTa
 import { formatDuration, formatNumber } from '../../utils/format.ts';
 import { toInkColor } from '../../utils/ink.ts';
 import type { Theme } from '../../utils/theme.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { GlimmerMessage } from './GlimmerMessage.ts';
-import { SpinnerGlyph } from './SpinnerGlyph.ts';
+import { Byline } from '../design-system/Byline.tsx';
+import { GlimmerMessage } from './GlimmerMessage.tsx';
+import { SpinnerGlyph } from './SpinnerGlyph.tsx';
 import type { SpinnerMode } from './types.ts';
 import { useStalledAnimation } from './useStalledAnimation.ts';
 import { interpolateColor, toRGBColor } from './utils.ts';

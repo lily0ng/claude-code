@@ -1,7 +1,7 @@
 import React, { type RefObject, useEffect, useRef } from 'react';
-import { useNotifications } from '../context/notifications.ts';
+import { useNotifications } from '../context/notifications.tsx';
 import { useCopyOnSelect, useSelectionBgColor } from '../hooks/useCopyOnSelect.ts';
-import type { ScrollBoxHandle } from '../ink/components/ScrollBox.ts';
+import type { ScrollBoxHandle } from '../ink/components/ScrollBox.tsx';
 import { useSelection } from '../ink/hooks/use-selection.ts';
 import type { FocusMove, SelectionState } from '../ink/selection.ts';
 import { isXtermJs } from '../ink/terminal.ts';

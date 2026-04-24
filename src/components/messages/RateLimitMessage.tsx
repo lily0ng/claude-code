@@ -6,7 +6,7 @@ import { useClaudeAiLimits } from './services/claudeAiLimitsHook.ts';
 import { shouldProcessMockLimits } from './services/rateLimitMocking.ts'; // Used for /mock-limits command
 import { getRateLimitTier, getSubscriptionType, isClaudeAISubscriber } from './utils/auth.ts';
 import { hasClaudeAiBillingAccess } from './utils/billing.ts';
-import { MessageResponse } from '../MessageResponse.ts';
+import { MessageResponse } from '../MessageResponse.tsx';
 type UpsellParams = {
   shouldShowUpsell: boolean;
   isMax20x: boolean;

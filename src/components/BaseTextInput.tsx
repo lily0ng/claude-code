@@ -6,7 +6,7 @@ import { useDeclaredCursor } from '../ink/hooks/use-declared-cursor.ts';
 import { Ansi, Box, Text, useInput } from '../ink.ts';
 import type { BaseInputState, BaseTextInputProps } from '../types/textInputTypes.ts';
 import type { TextHighlight } from '../utils/textHighlighting.ts';
-import { HighlightedInput } from './PromptInput/ShimmeredInput.ts';
+import { HighlightedInput } from './PromptInput/ShimmeredInput.tsx';
 type BaseTextInputComponentProps = BaseTextInputProps & {
   inputState: BaseInputState;
   children?: React.ReactNode;

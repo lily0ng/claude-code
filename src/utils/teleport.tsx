@@ -7,15 +7,15 @@ import { checkGate_CACHED_OR_BLOCKING } from './services/analytics/growthbook.ts
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from './services/analytics/index.ts';
 import { isPolicyAllowed } from './services/policyLimits/index.ts';
 import { z } from 'zod/v4';
-import { getTeleportErrors, TeleportError, type TeleportLocalErrorType } from '../components/TeleportError.ts';
+import { getTeleportErrors, TeleportError, type TeleportLocalErrorType } from '../components/TeleportError.tsx';
 import { getOauthConfig } from '../constants/oauth.ts';
 import type { SDKMessage } from '../entrypoints/agentSdkTypes.ts';
 import type { Root } from '../ink.ts';
-import { KeybindingSetup } from '../keybindings/KeybindingProviderSetup.ts';
+import { KeybindingSetup } from '../keybindings/KeybindingProviderSetup.tsx';
 import { queryHaiku } from '../services/api/claude.ts';
 import { getSessionLogsViaOAuth, getTeleportEvents } from '../services/api/sessionIngress.ts';
 import { getOrganizationUUID } from '../services/oauth/client.ts';
-import { AppStateProvider } from '../state/AppState.ts';
+import { AppStateProvider } from '../state/AppState.tsx';
 import type { Message, SystemMessage } from '../types/message.ts';
 import type { PermissionMode } from '../types/permissions.ts';
 import { checkAndRefreshOAuthTokenIfNeeded, getClaudeAIOAuthTokens } from './auth.ts';

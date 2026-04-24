@@ -1,6 +1,6 @@
 import { feature } from 'bun:bundle'
 import type { UUID } from 'crypto'
-import uniqBy from 'lodash-es/uniqBy.ts'
+import uniqBy from 'lodash-es/uniqBy'
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 const sessionTranscriptModule = feature('KAIROS')
@@ -11,9 +11,9 @@ import { APIUserAbortError } from '@anthropic-ai/sdk'
 import { markPostCompaction } from './bootstrap/state.ts'
 import { getInvokedSkillsForAgent } from '../../bootstrap/state.ts'
 import type { QuerySource } from '../../constants/querySource.ts'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import type { Tool, ToolUseContext } from '../../Tool.ts'
-import type { LocalAgentTaskState } from '../../tasks/LocalAgentTask/LocalAgentTask.ts'
+import type { LocalAgentTaskState } from '../../tasks/LocalAgentTask/LocalAgentTask.tsx'
 import { FileReadTool } from '../../tools/FileReadTool/FileReadTool.ts'
 import {
   FILE_READ_TOOL_NAME,

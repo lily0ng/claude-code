@@ -1,4 +1,4 @@
-import isEqual from 'lodash-es/isEqual.ts'
+import isEqual from 'lodash-es/isEqual'
 import { toError } from '../errors.ts'
 import { logError } from '../log.ts'
 import { getSettingsForSource } from '../settings/settings.ts'

@@ -4,7 +4,7 @@ import type { ChannelEntry } from '../bootstrap/state.ts';
 import { Box, Text } from '../ink.ts';
 import { gracefulShutdownSync } from '../utils/gracefulShutdown.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 type Props = {
   channels: ChannelEntry[];
   onAccept(): void;

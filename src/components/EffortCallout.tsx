@@ -7,10 +7,10 @@ import type { EffortLevel } from '../utils/effort.ts';
 import { convertEffortValueToLevel, getDefaultEffortForModel, getOpusDefaultEffortConfig, toPersistableEffort } from '../utils/effort.ts';
 import { parseUserSpecifiedModel } from '../utils/model/model.ts';
 import { updateSettingsForSource } from '../utils/settings/settings.ts';
-import type { OptionWithDescription } from './CustomSelect/select.ts';
-import { Select } from './CustomSelect/select.ts';
+import type { OptionWithDescription } from './CustomSelect/select.tsx';
+import { Select } from './CustomSelect/select.tsx';
 import { effortLevelToSymbol } from './EffortIndicator.ts';
-import { PermissionDialog } from './permissions/PermissionDialog.ts';
+import { PermissionDialog } from './permissions/PermissionDialog.tsx';
 type EffortCalloutSelection = EffortLevel | undefined | 'dismiss';
 type Props = {
   model: string;

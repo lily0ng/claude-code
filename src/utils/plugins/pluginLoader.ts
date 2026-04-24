@@ -44,7 +44,7 @@ import {
   stat,
   symlink,
 } from 'fs/promises'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { basename, dirname, join, relative, resolve, sep } from 'path'
 import { getInlinePlugins } from '../../bootstrap/state.ts'
 import {

@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import type { SuggestionItem } from '../../components/PromptInput/PromptInputFooterSuggestions.ts'
+import type { SuggestionItem } from '../../components/PromptInput/PromptInputFooterSuggestions.tsx'
 import type { MCPServerConnection } from '../../services/mcp/types.ts'
 import { logForDebugging } from '../debug.ts'
 import { lazySchema } from '../lazySchema.ts'

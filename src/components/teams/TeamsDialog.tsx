@@ -4,13 +4,13 @@ import figures from 'figures';
 import * as React from 'react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
-import { useRegisterOverlay } from '../../context/overlayContext.ts';
+import { useRegisterOverlay } from '../../context/overlayContext.tsx';
 import { stringWidth } from '../../ink/stringWidth.ts';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- raw j/k/arrow dialog navigation
 import { Box, Text, useInput } from '../../ink.ts';
 import { useKeybindings } from '../../keybindings/useKeybinding.ts';
 import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay.ts';
-import { type AppState, useAppState, useSetAppState } from '../../state/AppState.ts';
+import { type AppState, useAppState, useSetAppState } from '../../state/AppState.tsx';
 import { getEmptyToolPermissionContext } from '../../Tool.ts';
 import { AGENT_COLOR_TO_THEME_COLOR } from '../../tools/AgentTool/agentColorManager.ts';
 import { logForDebugging } from '../../utils/debug.ts';
@@ -27,8 +27,8 @@ import { addHiddenPaneId, removeHiddenPaneId, removeMemberFromTeam, setMemberMod
 import { listTasks, type Task, unassignTeammateTasks } from '../../utils/tasks.ts';
 import { getTeammateStatuses, type TeammateStatus, type TeamSummary } from '../../utils/teamDiscovery.ts';
 import { createModeSetRequestMessage, sendShutdownRequestToMailbox, writeToMailbox } from '../../utils/teammateMailbox.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import ThemedText from '../design-system/ThemedText.ts';
+import { Dialog } from '../design-system/Dialog.tsx';
+import ThemedText from '../design-system/ThemedText.tsx';
 type Props = {
   initialTeams?: TeamSummary[];
   onDone: () => void;

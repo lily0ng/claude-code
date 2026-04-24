@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import type { HookEvent } from './entrypoints/agentSdkTypes.ts'
 import { getSessionId } from '../../bootstrap/state.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import type { EditableSettingSource } from '../settings/constants.ts'
 import { SOURCES } from '../settings/constants.ts'
 import {

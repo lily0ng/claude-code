@@ -5,9 +5,9 @@ import * as React from 'react';
 import { useTerminalSize } from './hooks/useTerminalSize.ts';
 import { getCwd } from './utils/cwd.ts';
 import { Box, Text } from '../ink.ts';
-import { HighlightedCode } from './HighlightedCode.ts';
-import { MessageResponse } from './MessageResponse.ts';
-import { StructuredDiffList } from './StructuredDiffList.ts';
+import { HighlightedCode } from './HighlightedCode.tsx';
+import { MessageResponse } from './MessageResponse.tsx';
+import { StructuredDiffList } from './StructuredDiffList.tsx';
 const MAX_LINES_TO_RENDER = 10;
 type Props = {
   file_path: string;

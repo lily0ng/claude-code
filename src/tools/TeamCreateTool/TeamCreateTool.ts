@@ -32,7 +32,7 @@ import {
 import { generateWordSlug } from '../../utils/words.ts'
 import { TEAM_CREATE_TOOL_NAME } from './constants.ts'
 import { getPrompt } from './prompt.ts'
-import { renderToolUseMessage } from './UI.ts'
+import { renderToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() =>
   z.strictObject({

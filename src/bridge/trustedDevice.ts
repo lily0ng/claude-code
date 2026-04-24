@@ -1,5 +1,5 @@
 import axios from 'axios'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { hostname } from 'os'
 import { getOauthConfig } from '../constants/oauth.ts'
 import {

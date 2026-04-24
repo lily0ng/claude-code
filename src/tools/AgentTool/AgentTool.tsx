@@ -11,8 +11,8 @@ import { startAgentSummarization } from '../../services/AgentSummary/agentSummar
 import { getFeatureValue_CACHED_MAY_BE_STALE } from '../../services/analytics/growthbook.ts';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../../services/analytics/index.ts';
 import { clearDumpState } from '../../services/api/dumpPrompts.ts';
-import { completeAgentTask as completeAsyncAgent, createActivityDescriptionResolver, createProgressTracker, enqueueAgentNotification, failAgentTask as failAsyncAgent, getProgressUpdate, getTokenCountFromTracker, isLocalAgentTask, killAsyncAgent, registerAgentForeground, registerAsyncAgent, unregisterAgentForeground, updateAgentProgress as updateAsyncAgentProgress, updateProgressFromMessage } from '../../tasks/LocalAgentTask/LocalAgentTask.ts';
-import { checkRemoteAgentEligibility, formatPreconditionError, getRemoteTaskSessionUrl, registerRemoteAgentTask } from '../../tasks/RemoteAgentTask/RemoteAgentTask.ts';
+import { completeAgentTask as completeAsyncAgent, createActivityDescriptionResolver, createProgressTracker, enqueueAgentNotification, failAgentTask as failAsyncAgent, getProgressUpdate, getTokenCountFromTracker, isLocalAgentTask, killAsyncAgent, registerAgentForeground, registerAsyncAgent, unregisterAgentForeground, updateAgentProgress as updateAsyncAgentProgress, updateProgressFromMessage } from '../../tasks/LocalAgentTask/LocalAgentTask.tsx';
+import { checkRemoteAgentEligibility, formatPreconditionError, getRemoteTaskSessionUrl, registerRemoteAgentTask } from '../../tasks/RemoteAgentTask/RemoteAgentTask.tsx';
 import { assembleToolPool } from '../../tools.ts';
 import { asAgentId } from '../../types/ids.ts';
 import { runWithAgentContext } from '../../utils/agentContext.ts';
@@ -36,12 +36,12 @@ import { asSystemPrompt } from '../../utils/systemPromptType.ts';
 import { getTaskOutputPath } from '../../utils/task/diskOutput.ts';
 import { getParentSessionId, isTeammate } from '../../utils/teammate.ts';
 import { isInProcessTeammate } from '../../utils/teammateContext.ts';
-import { teleportToRemote } from '../../utils/teleport.ts';
+import { teleportToRemote } from '../../utils/teleport.tsx';
 import { getAssistantMessageContentLength } from '../../utils/tokens.ts';
 import { createAgentId } from '../../utils/uuid.ts';
 import { createAgentWorktree, hasWorktreeChanges, removeAgentWorktree } from '../../utils/worktree.ts';
 import { BASH_TOOL_NAME } from '../BashTool/toolName.ts';
-import { BackgroundHint } from '../BashTool/UI.ts';
+import { BackgroundHint } from '../BashTool/UI.tsx';
 import { FILE_READ_TOOL_NAME } from '../FileReadTool/prompt.ts';
 import { spawnTeammate } from '../shared/spawnMultiAgent.ts';
 import { setAgentColor } from './agentColorManager.ts';
@@ -53,7 +53,7 @@ import type { AgentDefinition } from './loadAgentsDir.ts';
 import { filterAgentsByMcpRequirements, hasRequiredMcpServers, isBuiltInAgent } from './loadAgentsDir.ts';
 import { getPrompt } from './prompt.ts';
 import { runAgent } from './runAgent.ts';
-import { renderGroupedAgentToolUse, renderToolResultMessage, renderToolUseErrorMessage, renderToolUseMessage, renderToolUseProgressMessage, renderToolUseRejectedMessage, renderToolUseTag, userFacingName, userFacingNameBackgroundColor } from './UI.ts';
+import { renderGroupedAgentToolUse, renderToolResultMessage, renderToolUseErrorMessage, renderToolUseMessage, renderToolUseProgressMessage, renderToolUseRejectedMessage, renderToolUseTag, userFacingName, userFacingNameBackgroundColor } from './UI.tsx';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 const proactiveModule = feature('PROACTIVE') || feature('KAIROS') ? require('../../proactive/index.ts') as typeof import('../../proactive/index.ts') : null;

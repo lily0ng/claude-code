@@ -24,11 +24,11 @@ import { isEssentialTrafficOnly } from '../utils/privacyLevel.ts';
 import { extractTeammateTranscriptsFromTasks, getTranscriptPath, loadAllSubagentTranscriptsFromDisk, MAX_TRANSCRIPT_READ_BYTES } from '../utils/sessionStorage.ts';
 import { jsonStringify } from '../utils/slowOperations.ts';
 import { asSystemPrompt } from '../utils/systemPromptType.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
-import { Byline } from './design-system/Byline.ts';
-import { Dialog } from './design-system/Dialog.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
-import TextInput from './TextInput.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
+import { Byline } from './design-system/Byline.tsx';
+import { Dialog } from './design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
+import TextInput from './TextInput.tsx';
 
 // This value was determined experimentally by testing the URL length limit
 const GITHUB_URL_LIMIT = 7250;

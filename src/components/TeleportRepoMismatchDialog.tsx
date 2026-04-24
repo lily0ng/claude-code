@@ -4,8 +4,8 @@ import { Box, Text } from '../ink.ts';
 import { getDisplayPath } from '../utils/file.ts';
 import { removePathFromRepo, validateRepoAtPath } from '../utils/githubRepoPathMapping.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
-import { Spinner } from './Spinner.ts';
+import { Dialog } from './design-system/Dialog.tsx';
+import { Spinner } from './Spinner.tsx';
 type Props = {
   targetRepo: string;
   initialPaths: string[];

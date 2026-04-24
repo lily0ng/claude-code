@@ -3,12 +3,12 @@ import React, { type ReactNode } from 'react';
 import { Box } from '../../../../ink.ts';
 import { useKeybinding } from '../../../../keybindings/useKeybinding.ts';
 import type { AgentColorName } from '../../../../tools/AgentTool/agentColorManager.ts';
-import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.ts';
-import { Byline } from '../../../design-system/Byline.ts';
-import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.ts';
+import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.tsx';
+import { Byline } from '../../../design-system/Byline.tsx';
+import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.tsx';
 import { useWizard } from '../../../wizard/index.ts';
-import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.ts';
-import { ColorPicker } from '../../ColorPicker.ts';
+import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.tsx';
+import { ColorPicker } from '../../ColorPicker.tsx';
 import type { AgentWizardData } from '../types.ts';
 export function ColorStep() {
   const $ = _c(14);

@@ -12,7 +12,7 @@
  * dropped but mean tokens rose — the throw path yields a ~100-byte error
  * tool-result while truncation yields ~25K tokens of content at the cap.
  */
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { getFeatureValue_CACHED_MAY_BE_STALE } from './services/analytics/growthbook.ts'
 import { MAX_OUTPUT_SIZE } from './utils/file.ts'
 export const DEFAULT_MAX_OUTPUT_TOKENS = 25000

@@ -9,7 +9,7 @@ import type {
 import type { UUID } from 'crypto'
 import type { z } from 'zod/v4'
 import type { Command } from './commands.ts'
-import type { CanUseToolFn } from './hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from './hooks/useCanUseTool.tsx'
 import type { ThinkingConfig } from './utils/thinking.ts'
 
 export type ToolInputJSONSchema = {
@@ -20,7 +20,7 @@ export type ToolInputJSONSchema = {
   }
 }
 
-import type { Notification } from './context/notifications.ts'
+import type { Notification } from './context/notifications.tsx'
 import type {
   MCPServerConnection,
   ServerResource,
@@ -72,10 +72,10 @@ export type {
   WebSearchProgress,
 }
 
-import type { SpinnerMode } from './components/Spinner.ts'
+import type { SpinnerMode } from './components/Spinner.tsx'
 import type { QuerySource } from './constants/querySource.ts'
 import type { SDKStatus } from './entrypoints/agentSdkTypes.ts'
-import type { AppState } from './state/AppState.ts'
+import type { AppState } from './state/AppState.tsx'
 import type {
   HookProgress,
   PromptRequest,

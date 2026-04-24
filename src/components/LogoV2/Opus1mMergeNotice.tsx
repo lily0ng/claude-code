@@ -5,7 +5,7 @@ import { UP_ARROW } from '../../constants/figures.ts';
 import { Box, Text } from '../../ink.ts';
 import { getGlobalConfig, saveGlobalConfig } from '../../utils/config.ts';
 import { isOpus1mMergeEnabled } from '../../utils/model/model.ts';
-import { AnimatedAsterisk } from './AnimatedAsterisk.ts';
+import { AnimatedAsterisk } from './AnimatedAsterisk.tsx';
 const MAX_SHOW_COUNT = 6;
 export function shouldShowOpus1mMergeNotice(): boolean {
   return isOpus1mMergeEnabled() && (getGlobalConfig().opus1mMergeNoticeSeenCount ?? 0) < MAX_SHOW_COUNT;

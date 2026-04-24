@@ -2,7 +2,7 @@ import { feature } from 'bun:bundle'
 import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages.mjs'
 import type { Permutations } from './types/utils.ts'
 import { getSessionId } from '../bootstrap/state.ts'
-import type { AppState } from '../state/AppState.ts'
+import type { AppState } from '../state/AppState.tsx'
 import type {
   QueueOperation,
   QueueOperationMessage,

@@ -4,11 +4,11 @@ import { isReplBridgeActive } from '../../bootstrap/state.ts'
 import { getReplBridgeHandle } from '../../bridge/replBridgeHandle.ts'
 import type { Tool, ToolUseContext } from '../../Tool.ts'
 import { buildTool, type ToolDef } from '../../Tool.ts'
-import { findTeammateTaskByAgentId } from '../../tasks/InProcessTeammateTask/InProcessTeammateTask.ts'
+import { findTeammateTaskByAgentId } from '../../tasks/InProcessTeammateTask/InProcessTeammateTask.tsx'
 import {
   isLocalAgentTask,
   queuePendingMessage,
-} from '../../tasks/LocalAgentTask/LocalAgentTask.ts'
+} from '../../tasks/LocalAgentTask/LocalAgentTask.tsx'
 import { isMainSessionTask } from '../../tasks/LocalMainSessionTask.ts'
 import { toAgentId } from '../../types/ids.ts'
 import { generateRequestId } from '../../utils/agentId.ts'
@@ -41,7 +41,7 @@ import {
 import { resumeAgentBackground } from '../AgentTool/resumeAgent.ts'
 import { SEND_MESSAGE_TOOL_NAME } from './constants.ts'
 import { DESCRIPTION, getPrompt } from './prompt.ts'
-import { renderToolResultMessage, renderToolUseMessage } from './UI.ts'
+import { renderToolResultMessage, renderToolUseMessage } from './UI.tsx'
 
 const StructuredMessage = lazySchema(() =>
   z.discriminatedUnion('type', [

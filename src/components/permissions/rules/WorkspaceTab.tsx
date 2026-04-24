@@ -4,10 +4,10 @@ import * as React from 'react';
 import { useCallback, useEffect } from 'react';
 import { getOriginalCwd } from '../../../bootstrap/state.ts';
 import type { CommandResultDisplay } from '../../../commands.ts';
-import { Select } from '../../../components/CustomSelect/select.ts';
+import { Select } from '../../../components/CustomSelect/select.tsx';
 import { Box, Text } from '../../../ink.ts';
 import type { ToolPermissionContext } from '../../../Tool.ts';
-import { useTabHeaderFocus } from '../../design-system/Tabs.ts';
+import { useTabHeaderFocus } from '../../design-system/Tabs.tsx';
 type Props = {
   onExit: (result?: string, options?: {
     display?: CommandResultDisplay;

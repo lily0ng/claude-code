@@ -12,7 +12,7 @@ import { fetchReferralRedemptions, formatCreditAmount, getCachedOrFetchPassesEli
 import type { ReferralRedemptionsResponse, ReferrerRewardInfo } from '../../services/oauth/types.ts';
 import { count } from '../../utils/array.ts';
 import { logError } from '../../utils/log.ts';
-import { Pane } from '../design-system/Pane.ts';
+import { Pane } from '../design-system/Pane.tsx';
 type PassStatus = {
   passNumber: number;
   isAvailable: boolean;

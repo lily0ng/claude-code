@@ -1,7 +1,7 @@
 import { getSdkAgentProgressSummariesEnabled } from '../../bootstrap/state.ts';
 import { OUTPUT_FILE_TAG, STATUS_TAG, SUMMARY_TAG, TASK_ID_TAG, TASK_NOTIFICATION_TAG, TOOL_USE_ID_TAG, WORKTREE_BRANCH_TAG, WORKTREE_PATH_TAG, WORKTREE_TAG } from '../../constants/xml.ts';
 import { abortSpeculation } from '../../services/PromptSuggestion/speculation.ts';
-import type { AppState } from '../../state/AppState.ts';
+import type { AppState } from '../../state/AppState.tsx';
 import type { SetAppState, Task, TaskStateBase } from '../../Task.ts';
 import { createTaskStateBase } from '../../Task.ts';
 import type { Tools } from '../../Tool.ts';

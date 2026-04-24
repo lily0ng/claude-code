@@ -9,7 +9,7 @@ const copy = {
   name: 'copy',
   description:
     "Copy Claude's last response to clipboard (or /copy N for the Nth-latest)",
-  load: () => import('./copy.ts'),
+  load: () => import('./copy.tsx'),
 } satisfies Command
 
 export default copy

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from './services/analytics/index.ts';
-import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.ts';
-import { Byline } from '../../components/design-system/Byline.ts';
-import { KeyboardShortcutHint } from '../../components/design-system/KeyboardShortcutHint.ts';
-import { Spinner } from '../../components/Spinner.ts';
-import TextInput from '../../components/TextInput.ts';
+import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.tsx';
+import { Byline } from '../../components/design-system/Byline.tsx';
+import { KeyboardShortcutHint } from '../../components/design-system/KeyboardShortcutHint.tsx';
+import { Spinner } from '../../components/Spinner.tsx';
+import TextInput from '../../components/TextInput.tsx';
 import { Box, Text } from '../../ink.ts';
 import { toError } from '../../utils/errors.ts';
 import { logError } from '../../utils/log.ts';

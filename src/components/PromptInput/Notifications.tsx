@@ -5,7 +5,7 @@ import { type ReactNode, useEffect, useMemo, useState } from 'react';
 import { type Notification, useNotifications } from './context/notifications.ts';
 import { logEvent } from './services/analytics/index.ts';
 import { useAppState } from './state/AppState.ts';
-import { useVoiceState } from '../../context/voice.ts';
+import { useVoiceState } from '../../context/voice.tsx';
 import type { VerificationStatus } from '../../hooks/useApiKeyVerification.ts';
 import { useIdeConnectionStatus } from '../../hooks/useIdeConnectionStatus.ts';
 import type { IDESelection } from '../../hooks/useIdeSelection.ts';
@@ -25,16 +25,16 @@ import { setEnvHookNotifier } from '../../utils/hooks/fileChangedWatcher.ts';
 import { toIDEDisplayName } from '../../utils/ide.ts';
 import { getMessagesAfterCompactBoundary } from '../../utils/messages.ts';
 import { tokenCountFromLastAPIResponse } from '../../utils/tokens.ts';
-import { AutoUpdaterWrapper } from '../AutoUpdaterWrapper.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
-import { IdeStatusIndicator } from '../IdeStatusIndicator.ts';
-import { MemoryUsageIndicator } from '../MemoryUsageIndicator.ts';
+import { AutoUpdaterWrapper } from '../AutoUpdaterWrapper.tsx';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
+import { IdeStatusIndicator } from '../IdeStatusIndicator.tsx';
+import { MemoryUsageIndicator } from '../MemoryUsageIndicator.tsx';
 import { SentryErrorBoundary } from '../SentryErrorBoundary.ts';
-import { TokenWarning } from '../TokenWarning.ts';
-import { SandboxPromptFooterHint } from './SandboxPromptFooterHint.ts';
+import { TokenWarning } from '../TokenWarning.tsx';
+import { SandboxPromptFooterHint } from './SandboxPromptFooterHint.tsx';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const VoiceIndicator: typeof import('./VoiceIndicator.ts').VoiceIndicator = feature('VOICE_MODE') ? require('./VoiceIndicator.ts').VoiceIndicator : () => null;
+const VoiceIndicator: typeof import('./VoiceIndicator.tsx').VoiceIndicator = feature('VOICE_MODE') ? require('./VoiceIndicator.ts').VoiceIndicator : () => null;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 export const FOOTER_TEMPORARY_STATUS_TIMEOUT = 5000;

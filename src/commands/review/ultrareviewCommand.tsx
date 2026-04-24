@@ -1,8 +1,8 @@
-import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages.ts';
+import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages';
 import React from 'react';
 import type { LocalJSXCommandCall, LocalJSXCommandOnDone } from '../../types/command.ts';
 import { checkOverageGate, confirmOverage, launchRemoteReview } from './reviewRemote.ts';
-import { UltrareviewOverageDialog } from './UltrareviewOverageDialog.ts';
+import { UltrareviewOverageDialog } from './UltrareviewOverageDialog.tsx';
 function contentBlocksToString(blocks: ContentBlockParam[]): string {
   return blocks.map(b => b.type === 'text' ? b.text : '').filter(Boolean).join('\n');
 }

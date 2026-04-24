@@ -14,7 +14,7 @@ import { getCwd } from '../../utils/cwd.ts';
 import { getFsImplementation } from '../../utils/fsOperations.ts';
 import { gracefulShutdownSync } from '../../utils/gracefulShutdown.ts';
 import { Select } from '../CustomSelect/index.ts';
-import { PermissionDialog } from '../permissions/PermissionDialog.ts';
+import { PermissionDialog } from '../permissions/PermissionDialog.tsx';
 import { getApiKeyHelperSources, getAwsCommandsSources, getBashPermissionSources, getDangerousEnvVarsSources, getGcpCommandsSources, getHooksSources, getOtelHeadersHelperSources } from './utils.ts';
 type Props = {
   onDone(): void;

@@ -1,4 +1,4 @@
-import uniqBy from 'lodash-es/uniqBy.ts'
+import uniqBy from 'lodash-es/uniqBy'
 import { useMemo } from 'react'
 import type { Command } from '../commands.ts'
 

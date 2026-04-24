@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Text } from '../../../ink.ts';
-import { MessageResponse } from '../../MessageResponse.ts';
+import { MessageResponse } from '../../MessageResponse.tsx';
 export function RejectedToolUseMessage() {
   const $ = _c(1);
   let t0;

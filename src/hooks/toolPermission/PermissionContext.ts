@@ -5,7 +5,7 @@ import {
   logEvent,
 } from './services/analytics/index.ts'
 import { sanitizeToolNameForAnalytics } from './services/analytics/metadata.ts'
-import type { ToolUseConfirm } from '../../components/permissions/PermissionRequest.ts'
+import type { ToolUseConfirm } from '../../components/permissions/PermissionRequest.tsx'
 import type {
   ToolPermissionContext,
   Tool as ToolType,

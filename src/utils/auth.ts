@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import { exec } from 'child_process'
 import { execa } from 'execa'
 import { mkdir, stat } from 'fs/promises'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { join } from 'path'
 import { CLAUDE_AI_PROFILE_SCOPE } from './constants/oauth.ts'
 import {

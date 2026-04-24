@@ -9,5 +9,5 @@ export default {
   get immediate() {
     return shouldInferenceConfigCommandBeImmediate()
   },
-  load: () => import('./effort.ts'),
+  load: () => import('./effort.tsx'),
 } satisfies Command

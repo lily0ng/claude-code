@@ -5,17 +5,17 @@ import { useMainLoopModel } from '../../hooks/useMainLoopModel.ts';
 import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
 import { stringWidth } from '../../ink/stringWidth.ts';
 import { Box, Text } from '../../ink.ts';
-import { useAppState } from '../../state/AppState.ts';
+import { useAppState } from '../../state/AppState.tsx';
 import { getEffortSuffix } from '../../utils/effort.ts';
 import { truncate } from '../../utils/format.ts';
 import { isFullscreenEnvEnabled } from '../../utils/fullscreen.ts';
 import { formatModelAndBilling, getLogoDisplayData, truncatePath } from '../../utils/logoV2Utils.ts';
 import { renderModelSetting } from '../../utils/model/model.ts';
-import { OffscreenFreeze } from '../OffscreenFreeze.ts';
-import { AnimatedClawd } from './AnimatedClawd.ts';
-import { Clawd } from './Clawd.ts';
-import { GuestPassesUpsell, incrementGuestPassesSeenCount, useShowGuestPassesUpsell } from './GuestPassesUpsell.ts';
-import { incrementOverageCreditUpsellSeenCount, OverageCreditUpsell, useShowOverageCreditUpsell } from './OverageCreditUpsell.ts';
+import { OffscreenFreeze } from '../OffscreenFreeze.tsx';
+import { AnimatedClawd } from './AnimatedClawd.tsx';
+import { Clawd } from './Clawd.tsx';
+import { GuestPassesUpsell, incrementGuestPassesSeenCount, useShowGuestPassesUpsell } from './GuestPassesUpsell.tsx';
+import { incrementOverageCreditUpsellSeenCount, OverageCreditUpsell, useShowOverageCreditUpsell } from './OverageCreditUpsell.tsx';
 export function CondensedLogo() {
   const $ = _c(29);
   const {

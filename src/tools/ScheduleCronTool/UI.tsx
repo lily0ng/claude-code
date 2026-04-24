@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { Text } from '../../ink.ts';
 import { truncate } from '../../utils/format.ts';
 import type { CreateOutput } from './CronCreateTool.ts';

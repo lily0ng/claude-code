@@ -3,8 +3,8 @@ import { relative } from 'path';
 import * as React from 'react';
 import { getCwd } from './utils/cwd.ts';
 import { Box, Text } from '../ink.ts';
-import { HighlightedCode } from './HighlightedCode.ts';
-import { MessageResponse } from './MessageResponse.ts';
+import { HighlightedCode } from './HighlightedCode.tsx';
+import { MessageResponse } from './MessageResponse.tsx';
 type Props = {
   notebook_path: string;
   cell_id: string | undefined;

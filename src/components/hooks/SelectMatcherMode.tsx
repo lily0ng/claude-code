@@ -10,8 +10,8 @@ import type { HookEvent } from './entrypoints/agentSdkTypes.ts';
 import { Box, Text } from '../../ink.ts';
 import { type HookSource, hookSourceInlineDisplayString, type IndividualHookConfig } from '../../utils/hooks/hooksSettings.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { Select } from '../CustomSelect/select.ts';
-import { Dialog } from '../design-system/Dialog.ts';
+import { Select } from '../CustomSelect/select.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
 type MatcherWithSource = {
   matcher: string;
   sources: HookSource[];

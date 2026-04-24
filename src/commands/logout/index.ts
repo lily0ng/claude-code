@@ -6,5 +6,5 @@ export default {
   name: 'logout',
   description: 'Sign out from your Anthropic account',
   isEnabled: () => !isEnvTruthy(process.env.DISABLE_LOGOUT_COMMAND),
-  load: () => import('./logout.ts'),
+  load: () => import('./logout.tsx'),
 } satisfies Command

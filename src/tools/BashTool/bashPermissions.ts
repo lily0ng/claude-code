@@ -67,7 +67,7 @@ import { getPlatform } from '../../utils/platform.ts'
 import { SandboxManager } from '../../utils/sandbox/sandbox-adapter.ts'
 import { jsonStringify } from '../../utils/slowOperations.ts'
 import { windowsPathToPosixPath } from '../../utils/windowsPaths.ts'
-import { BashTool } from './BashTool.ts'
+import { BashTool } from './BashTool.tsx'
 import { checkCommandOperatorPermissions } from './bashCommandHelpers.ts'
 import {
   bashCommandIsSafeAsync_DEPRECATED,

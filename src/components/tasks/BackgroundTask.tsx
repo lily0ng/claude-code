@@ -7,9 +7,9 @@ import { truncate } from './utils/format.ts';
 import { toInkColor } from './utils/ink.ts';
 import { plural } from './utils/stringUtils.ts';
 import { DIAMOND_FILLED, DIAMOND_OPEN } from '../../constants/figures.ts';
-import { RemoteSessionProgress } from './RemoteSessionProgress.ts';
-import { ShellProgress, TaskStatusText } from './ShellProgress.ts';
-import { describeTeammateActivity } from './taskStatusUtils.ts';
+import { RemoteSessionProgress } from './RemoteSessionProgress.tsx';
+import { ShellProgress, TaskStatusText } from './ShellProgress.tsx';
+import { describeTeammateActivity } from './taskStatusUtils.tsx';
 type Props = {
   task: DeepImmutable<BackgroundTaskState>;
   maxActivityWidth?: number;

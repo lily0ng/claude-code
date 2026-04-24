@@ -1,10 +1,10 @@
 import { c as _c } from "react/compiler-runtime";
 import type { ReactNode } from 'react';
 import React, { useContext } from 'react';
-import Text from '../../ink/components/Text.ts';
+import Text from '../../ink/components/Text.tsx';
 import type { Color, Styles } from '../../ink/styles.ts';
 import { getTheme, type Theme } from '../../utils/theme.ts';
-import { useTheme } from './ThemeProvider.ts';
+import { useTheme } from './ThemeProvider.tsx';
 
 /** Colors uncolored ThemedText in the subtree. Precedence: explicit `color` >
  *  this > dimColor. Crosses Box boundaries (Ink's style cascade doesn't). */

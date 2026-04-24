@@ -5,7 +5,7 @@ import { stopTask } from '../../tasks/stopTask.ts'
 import { lazySchema } from '../../utils/lazySchema.ts'
 import { jsonStringify } from '../../utils/slowOperations.ts'
 import { DESCRIPTION, TASK_STOP_TOOL_NAME } from './prompt.ts'
-import { renderToolResultMessage, renderToolUseMessage } from './UI.ts'
+import { renderToolResultMessage, renderToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() =>
   z.strictObject({

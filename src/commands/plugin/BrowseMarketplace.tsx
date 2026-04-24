@@ -1,8 +1,8 @@
 import figures from 'figures';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.ts';
-import { Byline } from '../../components/design-system/Byline.ts';
+import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.tsx';
+import { Byline } from '../../components/design-system/Byline.tsx';
 import { Box, Text } from '../../ink.ts';
 import { useKeybinding, useKeybindings } from '../../keybindings/useKeybinding.ts';
 import type { LoadedPlugin } from '../../types/plugin.ts';
@@ -20,9 +20,9 @@ import { installPluginFromMarketplace } from '../../utils/plugins/pluginInstalla
 import { isPluginBlockedByPolicy } from '../../utils/plugins/pluginPolicy.ts';
 import { plural } from '../../utils/stringUtils.ts';
 import { truncateToWidth } from '../../utils/truncate.ts';
-import { findPluginOptionsTarget, PluginOptionsFlow } from './PluginOptionsFlow.ts';
-import { PluginTrustWarning } from './PluginTrustWarning.ts';
-import { buildPluginDetailsMenuOptions, extractGitHubRepo, type InstallablePlugin, PluginSelectionKeyHint } from './pluginDetailsHelpers.ts';
+import { findPluginOptionsTarget, PluginOptionsFlow } from './PluginOptionsFlow.tsx';
+import { PluginTrustWarning } from './PluginTrustWarning.tsx';
+import { buildPluginDetailsMenuOptions, extractGitHubRepo, type InstallablePlugin, PluginSelectionKeyHint } from './pluginDetailsHelpers.tsx';
 import type { ViewState as ParentViewState } from './types.ts';
 import { usePagination } from './usePagination.ts';
 type Props = {

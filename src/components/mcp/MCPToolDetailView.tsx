@@ -3,8 +3,8 @@ import React from 'react';
 import { Box, Text } from '../../ink.ts';
 import { extractMcpToolDisplayName, getMcpDisplayName } from '../../services/mcp/mcpStringUtils.ts';
 import type { Tool } from '../../Tool.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
-import { Dialog } from '../design-system/Dialog.ts';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
 import type { ServerInfo } from './types.ts';
 type Props = {
   tool: Tool;

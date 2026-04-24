@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useCallback, useEffect, useState } from 'react';
 import { type OptionWithDescription, Select } from '../../components/CustomSelect/index.ts';
-import { Pane } from '../../components/design-system/Pane.ts';
-import { Spinner } from '../../components/Spinner.ts';
+import { Pane } from '../../components/design-system/Pane.tsx';
+import { Spinner } from '../../components/Spinner.tsx';
 import { useExitOnCtrlCDWithKeybindings } from '../../hooks/useExitOnCtrlCDWithKeybindings.ts';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- enter to proceed through setup steps
 import { Box, Text, useInput } from '../../ink.ts';

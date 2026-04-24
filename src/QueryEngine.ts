@@ -1,7 +1,7 @@
 import { feature } from 'bun:bundle'
 import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages.mjs'
 import { randomUUID } from 'crypto'
-import last from 'lodash-es/last.ts'
+import last from 'lodash-es/last'
 import {
   getSessionId,
   isSessionPersistenceDisabled,
@@ -29,13 +29,13 @@ import {
   getTotalAPIDuration,
   getTotalCost,
 } from './cost-tracker.ts'
-import type { CanUseToolFn } from './hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from './hooks/useCanUseTool.tsx'
 import { loadMemoryPrompt } from './memdir/memdir.ts'
 import { hasAutoMemPathOverride } from './memdir/paths.ts'
 import { query } from './query.ts'
 import { categorizeRetryableAPIError } from './services/api/errors.ts'
 import type { MCPServerConnection } from './services/mcp/types.ts'
-import type { AppState } from './state/AppState.ts'
+import type { AppState } from './state/AppState.tsx'
 import { type Tools, type ToolUseContext, toolMatchesName } from './Tool.ts'
 import type { AgentDefinition } from './tools/AgentTool/loadAgentsDir.ts'
 import { SYNTHETIC_OUTPUT_TOOL_NAME } from './tools/SyntheticOutputTool/SyntheticOutputTool.ts'

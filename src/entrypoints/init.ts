@@ -2,7 +2,7 @@ import { profileCheckpoint } from '../utils/startupProfiler.ts'
 import '../bootstrap/state.ts'
 import '../utils/config.ts'
 import type { Attributes, MetricOptions } from '@opentelemetry/api'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { getIsNonInteractiveSession } from './bootstrap/state.ts'
 import type { AttributedCounter } from '../bootstrap/state.ts'
 import { getSessionCounter, setMeter } from '../bootstrap/state.ts'
@@ -226,7 +226,7 @@ export const init = memoize(async (): Promise<void> => {
       }
 
       // Show the invalid config dialog with the error object and wait for it to complete
-      return import('../components/InvalidConfigDialog.ts').then(m =>
+      return import('../components/InvalidConfigDialog.tsx').then(m =>
         m.showInvalidConfigDialog({ error }),
       )
       // Dialog itself handles process.exit, so we don't need additional cleanup here

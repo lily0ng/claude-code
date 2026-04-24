@@ -1,6 +1,6 @@
 import { getHostPlatformForAnalytics } from '../../utils/env.ts'
 import { type CompletionType, logUnaryEvent } from '../../utils/unaryLogging.ts'
-import type { ToolUseConfirm } from './PermissionRequest.ts'
+import type { ToolUseConfirm } from './PermissionRequest.tsx'
 
 export function logUnaryPermissionEvent(
   completion_type: CompletionType,

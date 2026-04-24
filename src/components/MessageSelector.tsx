@@ -14,8 +14,8 @@ import { useKeybinding, useKeybindings } from '../keybindings/useKeybinding.ts';
 import type { Message, PartialCompactDirection, UserMessage } from '../types/message.ts';
 import { stripDisplayTags } from '../utils/displayTags.ts';
 import { createUserMessage, extractTag, isEmptyMessageText, isSyntheticMessage, isToolUseResultMessage } from '../utils/messages.ts';
-import { type OptionWithDescription, Select } from './CustomSelect/select.ts';
-import { Spinner } from './Spinner.ts';
+import { type OptionWithDescription, Select } from './CustomSelect/select.tsx';
+import { Spinner } from './Spinner.tsx';
 function isTextBlock(block: ContentBlockParam): block is TextBlockParam {
   return block.type === 'text';
 }
@@ -27,7 +27,7 @@ import { BASH_STDERR_TAG, BASH_STDOUT_TAG, COMMAND_MESSAGE_TAG, LOCAL_COMMAND_ST
 import { count } from '../utils/array.ts';
 import { formatRelativeTimeAgo, truncate } from '../utils/format.ts';
 import type { Theme } from '../utils/theme.ts';
-import { Divider } from './design-system/Divider.ts';
+import { Divider } from './design-system/Divider.tsx';
 type RestoreOption = 'both' | 'conversation' | 'code' | 'summarize' | 'summarize_up_to' | 'nevermind';
 function isSummarizeOption(option: RestoreOption | null): option is 'summarize' | 'summarize_up_to' {
   return option === 'summarize' || option === 'summarize_up_to';

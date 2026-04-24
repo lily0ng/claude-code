@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { TOOL_SUMMARY_MAX_LENGTH } from '../../constants/toolLimits.ts';
 import { Box, Text } from '../../ink.ts';
 import type { ToolProgressData } from '../../Tool.ts';

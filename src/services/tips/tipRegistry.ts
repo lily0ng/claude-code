@@ -6,10 +6,10 @@ import {
   getSettings_DEPRECATED,
   getSettingsForSource,
 } from './utils/settings/settings.ts'
-import { shouldOfferTerminalSetup } from '../../commands/terminalSetup/terminalSetup.ts'
-import { getDesktopUpsellConfig } from '../../components/DesktopUpsell/DesktopUpsellStartup.ts'
+import { shouldOfferTerminalSetup } from '../../commands/terminalSetup/terminalSetup.tsx'
+import { getDesktopUpsellConfig } from '../../components/DesktopUpsell/DesktopUpsellStartup.tsx'
 import { color } from '../../components/design-system/color.ts'
-import { shouldShowOverageCreditUpsell } from '../../components/LogoV2/OverageCreditUpsell.ts'
+import { shouldShowOverageCreditUpsell } from '../../components/LogoV2/OverageCreditUpsell.tsx'
 import { getShortcutDisplay } from '../../keybindings/shortcutFormat.ts'
 import { isKairosCronEnabled } from '../../tools/ScheduleCronTool/prompt.ts'
 import { is1PApiCustomer } from '../../utils/auth.ts'

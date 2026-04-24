@@ -10,7 +10,7 @@ import { TOOL_SUMMARY_MAX_LENGTH } from '../../constants/toolLimits.ts';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../../services/analytics/index.ts';
 import type { SetToolJSXFn, Tool, ToolCallProgress, ValidationResult } from '../../Tool.ts';
 import { buildTool, type ToolDef } from '../../Tool.ts';
-import { backgroundExistingForegroundTask, markTaskNotified, registerForeground, spawnShellTask, unregisterForeground } from '../../tasks/LocalShellTask/LocalShellTask.ts';
+import { backgroundExistingForegroundTask, markTaskNotified, registerForeground, spawnShellTask, unregisterForeground } from '../../tasks/LocalShellTask/LocalShellTask.tsx';
 import type { AgentId } from '../../types/ids.ts';
 import type { AssistantMessage } from '../../types/message.ts';
 import { extractClaudeCodeHints } from '../../utils/claudeCodeHints.ts';
@@ -34,7 +34,7 @@ import { TaskOutput } from '../../utils/task/TaskOutput.ts';
 import { isOutputLineTruncated } from '../../utils/terminal.ts';
 import { buildLargeToolResultMessage, ensureToolResultsDir, generatePreview, getToolResultPath, PREVIEW_SIZE_BYTES } from '../../utils/toolResultStorage.ts';
 import { shouldUseSandbox } from '../BashTool/shouldUseSandbox.ts';
-import { BackgroundHint } from '../BashTool/UI.ts';
+import { BackgroundHint } from '../BashTool/UI.tsx';
 import { buildImageToolResult, isImageOutput, resetCwdIfOutsideProject, resizeShellImageOutput, stdErrAppendShellResetMessage, stripEmptyLines } from '../BashTool/utils.ts';
 import { trackGitOperations } from '../shared/gitOperationTracking.ts';
 import { interpretCommandResult } from './commandSemantics.ts';
@@ -42,7 +42,7 @@ import { powershellToolHasPermission } from './powershellPermissions.ts';
 import { getDefaultTimeoutMs, getMaxTimeoutMs, getPrompt } from './prompt.ts';
 import { hasSyncSecurityConcerns, isReadOnlyCommand, resolveToCanonical } from './readOnlyValidation.ts';
 import { POWERSHELL_TOOL_NAME } from './toolName.ts';
-import { renderToolResultMessage, renderToolUseErrorMessage, renderToolUseMessage, renderToolUseProgressMessage, renderToolUseQueuedMessage } from './UI.ts';
+import { renderToolResultMessage, renderToolUseErrorMessage, renderToolUseMessage, renderToolUseProgressMessage, renderToolUseQueuedMessage } from './UI.tsx';
 
 // Never use os.EOL for terminal output — \r\n on Windows breaks Ink rendering
 const EOL = '\n';

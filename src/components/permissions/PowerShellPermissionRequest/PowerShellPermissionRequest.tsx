@@ -5,20 +5,20 @@ import { getFeatureValue_CACHED_MAY_BE_STALE } from '../../../services/analytics
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../../../services/analytics/index.ts';
 import { sanitizeToolNameForAnalytics } from '../../../services/analytics/metadata.ts';
 import { getDestructiveCommandWarning } from '../../../tools/PowerShellTool/destructiveCommandWarning.ts';
-import { PowerShellTool } from '../../../tools/PowerShellTool/PowerShellTool.ts';
+import { PowerShellTool } from '../../../tools/PowerShellTool/PowerShellTool.tsx';
 import { isAllowlistedCommand } from '../../../tools/PowerShellTool/readOnlyValidation.ts';
 import type { PermissionUpdate } from '../../../utils/permissions/PermissionUpdateSchema.ts';
 import { getCompoundCommandPrefixesStatic } from '../../../utils/powershell/staticPrefix.ts';
-import { Select } from '../../CustomSelect/select.ts';
+import { Select } from '../../CustomSelect/select.tsx';
 import { type UnaryEvent, usePermissionRequestLogging } from '../hooks.ts';
-import { PermissionDecisionDebugInfo } from '../PermissionDecisionDebugInfo.ts';
-import { PermissionDialog } from '../PermissionDialog.ts';
-import { PermissionExplainerContent, usePermissionExplainerUI } from '../PermissionExplanation.ts';
-import type { PermissionRequestProps } from '../PermissionRequest.ts';
-import { PermissionRuleExplanation } from '../PermissionRuleExplanation.ts';
+import { PermissionDecisionDebugInfo } from '../PermissionDecisionDebugInfo.tsx';
+import { PermissionDialog } from '../PermissionDialog.tsx';
+import { PermissionExplainerContent, usePermissionExplainerUI } from '../PermissionExplanation.tsx';
+import type { PermissionRequestProps } from '../PermissionRequest.tsx';
+import { PermissionRuleExplanation } from '../PermissionRuleExplanation.tsx';
 import { useShellPermissionFeedback } from '../useShellPermissionFeedback.ts';
 import { logUnaryPermissionEvent } from '../utils.ts';
-import { powershellToolUseOptions } from './powershellToolUseOptions.ts';
+import { powershellToolUseOptions } from './powershellToolUseOptions.tsx';
 export function PowerShellPermissionRequest(props: PermissionRequestProps): React.ReactNode {
   const {
     toolUseConfirm,

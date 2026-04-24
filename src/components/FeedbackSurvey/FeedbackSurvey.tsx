@@ -2,9 +2,9 @@ import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from './services/analytics/index.ts';
 import { Box, Text } from '../../ink.ts';
-import { FeedbackSurveyView, isValidResponseInput } from './FeedbackSurveyView.ts';
-import type { TranscriptShareResponse } from './TranscriptSharePrompt.ts';
-import { TranscriptSharePrompt } from './TranscriptSharePrompt.ts';
+import { FeedbackSurveyView, isValidResponseInput } from './FeedbackSurveyView.tsx';
+import type { TranscriptShareResponse } from './TranscriptSharePrompt.tsx';
+import { TranscriptSharePrompt } from './TranscriptSharePrompt.tsx';
 import { useDebouncedDigitInput } from './useDebouncedDigitInput.ts';
 import type { FeedbackSurveyResponse } from './utils.ts';
 type Props = {

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useTerminalSize } from '../hooks/useTerminalSize.ts';
 import { stringWidth } from '../ink/stringWidth.ts';
 import { Box, Text } from '../ink.ts';
-import { useAppState } from '../state/AppState.ts';
+import { useAppState } from '../state/AppState.tsx';
 import { isInProcessTeammateTask } from '../tasks/InProcessTeammateTask/types.ts';
 import { AGENT_COLOR_TO_THEME_COLOR, type AgentColorName } from '../tools/AgentTool/agentColorManager.ts';
 import { isAgentSwarmsEnabled } from '../utils/agentSwarmsEnabled.ts';
@@ -13,7 +13,7 @@ import { summarizeRecentActivities } from '../utils/collapseReadSearch.ts';
 import { truncateToWidth } from '../utils/format.ts';
 import { isTodoV2Enabled, type Task } from '../utils/tasks.ts';
 import type { Theme } from '../utils/theme.ts';
-import ThemedText from './design-system/ThemedText.ts';
+import ThemedText from './design-system/ThemedText.tsx';
 type Props = {
   tasks: Task[];
   isStandalone?: boolean;

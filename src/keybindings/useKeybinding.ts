@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react'
 import type { InputEvent } from '../ink/events/input-event.ts'
 import { type Key, useInput } from '../ink.ts'
-import { useOptionalKeybindingContext } from './KeybindingContext.ts'
+import { useOptionalKeybindingContext } from './KeybindingContext.tsx'
 import type { KeybindingContextName } from './types.ts'
 
 type Options = {

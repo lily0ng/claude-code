@@ -1,6 +1,6 @@
 import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/index.mjs'
 import type { UUID } from 'crypto'
-import type { CanUseToolFn } from '../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../hooks/useCanUseTool.tsx'
 import type { CompactionResult } from '../services/compact/compact.ts'
 import type { ScopedMcpServerConfig } from '../services/mcp/types.ts'
 import type { ToolUseContext } from '../Tool.ts'

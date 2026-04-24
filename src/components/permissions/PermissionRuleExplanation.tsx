@@ -3,11 +3,11 @@ import { feature } from 'bun:bundle';
 import chalk from 'chalk';
 import React from 'react';
 import { Ansi, Box, Text } from '../../ink.ts';
-import { useAppState } from '../../state/AppState.ts';
+import { useAppState } from '../../state/AppState.tsx';
 import type { PermissionDecision, PermissionDecisionReason } from '../../utils/permissions/PermissionResult.ts';
 import { permissionRuleValueToString } from '../../utils/permissions/permissionRuleParser.ts';
 import type { Theme } from '../../utils/theme.ts';
-import ThemedText from '../design-system/ThemedText.ts';
+import ThemedText from '../design-system/ThemedText.tsx';
 export type PermissionRuleExplanationProps = {
   permissionResult: PermissionDecision;
   toolType: 'tool' | 'command' | 'edit' | 'read';

@@ -4,9 +4,9 @@ import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEve
 import { Box, Link, Text, useInput } from '../../ink.ts';
 import { type AccountSettings, calculateShouldShowGrove, type GroveConfig, getGroveNoticeConfig, getGroveSettings, markGroveNoticeViewed, updateGroveSettings } from '../../services/api/grove.ts';
 import { Select } from '../CustomSelect/index.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
+import { Byline } from '../design-system/Byline.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
 export type GroveDecision = 'accept_opt_in' | 'accept_opt_out' | 'defer' | 'escape' | 'skip_rendering';
 type Props = {
   showIfAlreadyViewed: boolean;

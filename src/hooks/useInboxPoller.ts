@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto'
 import { useCallback, useEffect, useRef } from 'react'
 import { useInterval } from 'usehooks-ts'
-import type { ToolUseConfirm } from '../components/permissions/PermissionRequest.ts'
+import type { ToolUseConfirm } from '../components/permissions/PermissionRequest.tsx'
 import { TEAMMATE_MESSAGE_TAG } from '../constants/xml.ts'
 import { useTerminalNotification } from '../ink/useTerminalNotification.ts'
 import { sendNotification } from '../services/notifier.ts'
@@ -10,7 +10,7 @@ import {
   useAppState,
   useAppStateStore,
   useSetAppState,
-} from '../state/AppState.ts'
+} from '../state/AppState.tsx'
 import { findToolByName } from '../Tool.ts'
 import { isInProcessTeammateTask } from '../tasks/InProcessTeammateTask/types.ts'
 import { getAllBaseTools } from '../tools.ts'

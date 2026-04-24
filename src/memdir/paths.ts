@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { homedir } from 'os'
 import { isAbsolute, join, normalize, sep } from 'path'
 import {

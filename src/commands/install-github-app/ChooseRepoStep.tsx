@@ -1,6 +1,6 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useCallback, useState } from 'react';
-import TextInput from '../../components/TextInput.ts';
+import TextInput from '../../components/TextInput.tsx';
 import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
 import { Box, Text } from '../../ink.ts';
 import { useKeybindings } from '../../keybindings/useKeybinding.ts';

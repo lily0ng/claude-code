@@ -1,9 +1,9 @@
 import { mkdir, writeFile } from 'fs/promises';
 import * as React from 'react';
 import type { CommandResultDisplay } from '../../commands.ts';
-import { Dialog } from '../../components/design-system/Dialog.ts';
-import { MemoryFileSelector } from '../../components/memory/MemoryFileSelector.ts';
-import { getRelativeMemoryPath } from '../../components/memory/MemoryUpdateNotification.ts';
+import { Dialog } from '../../components/design-system/Dialog.tsx';
+import { MemoryFileSelector } from '../../components/memory/MemoryFileSelector.tsx';
+import { getRelativeMemoryPath } from '../../components/memory/MemoryUpdateNotification.tsx';
 import { Box, Link, Text } from '../../ink.ts';
 import type { LocalJSXCommandCall } from '../../types/command.ts';
 import { clearMemoryFileCaches, getMemoryFiles } from '../../utils/claudemd.ts';

@@ -27,7 +27,7 @@ import {
   buildCodeEditToolAttributes,
   isCodeEditingTool,
 } from '../../hooks/toolPermission/permissionLogging.ts'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import {
   findToolByName,
   type Tool,
@@ -35,7 +35,7 @@ import {
   type ToolProgressData,
   type ToolUseContext,
 } from '../../Tool.ts'
-import type { BashToolInput } from '../../tools/BashTool/BashTool.ts'
+import type { BashToolInput } from '../../tools/BashTool/BashTool.tsx'
 import { startSpeculativeClassifierCheck } from '../../tools/BashTool/bashPermissions.ts'
 import { BASH_TOOL_NAME } from '../../tools/BashTool/toolName.ts'
 import { FILE_EDIT_TOOL_NAME } from '../../tools/FileEditTool/constants.ts'

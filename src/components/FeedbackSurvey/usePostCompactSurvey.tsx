@@ -8,7 +8,7 @@ import type { Message } from '../../types/message.ts';
 import { isEnvTruthy } from '../../utils/envUtils.ts';
 import { isCompactBoundaryMessage } from '../../utils/messages.ts';
 import { logOTelEvent } from '../../utils/telemetry/events.ts';
-import { useSurveyState } from './useSurveyState.ts';
+import { useSurveyState } from './useSurveyState.tsx';
 import type { FeedbackSurveyResponse } from './utils.ts';
 const HIDE_THANKS_AFTER_MS = 3000;
 const POST_COMPACT_SURVEY_GATE = 'tengu_post_compact_survey';

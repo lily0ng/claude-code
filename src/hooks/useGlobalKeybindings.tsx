@@ -8,10 +8,10 @@ import { feature } from 'bun:bundle';
 import { useCallback } from 'react';
 import instances from '../ink/instances.ts';
 import { useKeybinding } from '../keybindings/useKeybinding.ts';
-import type { Screen } from '../screens/REPL.ts';
+import type { Screen } from '../screens/REPL.tsx';
 import { getFeatureValue_CACHED_MAY_BE_STALE } from '../services/analytics/growthbook.ts';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../services/analytics/index.ts';
-import { useAppState, useSetAppState } from '../state/AppState.ts';
+import { useAppState, useSetAppState } from '../state/AppState.tsx';
 import { count } from '../utils/array.ts';
 import { getTerminalPanel } from '../utils/terminalPanel.ts';
 type Props = {
@@ -57,7 +57,7 @@ export function GlobalKeybindingHandlers({
         getAllInProcessTeammateTasks
       } =
       // eslint-disable-next-line @typescript-eslint/no-require-imports
-      require('../tasks/InProcessTeammateTask/InProcessTeammateTask.ts') as typeof import('../tasks/InProcessTeammateTask/InProcessTeammateTask.ts');
+      require('../tasks/InProcessTeammateTask/InProcessTeammateTask.ts') as typeof import('../tasks/InProcessTeammateTask/InProcessTeammateTask.tsx');
       const hasTeammates = count(getAllInProcessTeammateTasks(prev.tasks), t => t.status === 'running') > 0;
       if (hasTeammates) {
         // Both exist: none → tasks → teammates → none

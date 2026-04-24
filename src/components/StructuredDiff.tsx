@@ -7,7 +7,7 @@ import { Box, NoSelect, RawAnsi, useTheme } from '../ink.ts';
 import { isFullscreenEnvEnabled } from '../utils/fullscreen.ts';
 import sliceAnsi from '../utils/sliceAnsi.ts';
 import { expectColorDiff } from './StructuredDiff/colorDiff.ts';
-import { StructuredDiffFallback } from './StructuredDiff/Fallback.ts';
+import { StructuredDiffFallback } from './StructuredDiff/Fallback.tsx';
 type Props = {
   patch: StructuredPatchHunk;
   dim: boolean;

@@ -10,7 +10,7 @@ import { getMemoryScopeDisplay } from '../../tools/AgentTool/agentMemory.ts';
 import { resolveAgentTools } from '../../tools/AgentTool/agentToolUtils.ts';
 import { type AgentDefinition, isBuiltInAgent } from '../../tools/AgentTool/loadAgentsDir.ts';
 import { getAgentModelDisplay } from '../../utils/model/agent.ts';
-import { Markdown } from '../Markdown.ts';
+import { Markdown } from '../Markdown.tsx';
 import { getActualRelativeAgentFilePath } from './agentFileUtils.ts';
 type Props = {
   agent: AgentDefinition;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Box } from '../../ink.ts';
 import { getInitialSettings } from '../../utils/settings/settings.ts';
-import { Clawd, type ClawdPose } from './Clawd.ts';
+import { Clawd, type ClawdPose } from './Clawd.tsx';
 type Frame = {
   pose: ClawdPose;
   offset: number;

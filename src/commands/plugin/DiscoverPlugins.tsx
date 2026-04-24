@@ -2,9 +2,9 @@ import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import * as React from 'react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.ts';
-import { Byline } from '../../components/design-system/Byline.ts';
-import { SearchBox } from '../../components/SearchBox.ts';
+import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.tsx';
+import { Byline } from '../../components/design-system/Byline.tsx';
+import { SearchBox } from '../../components/SearchBox.tsx';
 import { useSearchInput } from '../../hooks/useSearchInput.ts';
 import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
 // eslint-disable-next-line custom-rules/prefer-use-keybindings -- useInput needed for raw search mode text input
@@ -25,9 +25,9 @@ import { installPluginFromMarketplace } from '../../utils/plugins/pluginInstalla
 import { isPluginBlockedByPolicy } from '../../utils/plugins/pluginPolicy.ts';
 import { plural } from '../../utils/stringUtils.ts';
 import { truncateToWidth } from '../../utils/truncate.ts';
-import { findPluginOptionsTarget, PluginOptionsFlow } from './PluginOptionsFlow.ts';
-import { PluginTrustWarning } from './PluginTrustWarning.ts';
-import { buildPluginDetailsMenuOptions, extractGitHubRepo, type InstallablePlugin } from './pluginDetailsHelpers.ts';
+import { findPluginOptionsTarget, PluginOptionsFlow } from './PluginOptionsFlow.tsx';
+import { PluginTrustWarning } from './PluginTrustWarning.tsx';
+import { buildPluginDetailsMenuOptions, extractGitHubRepo, type InstallablePlugin } from './pluginDetailsHelpers.tsx';
 import type { ViewState as ParentViewState } from './types.ts';
 import { usePagination } from './usePagination.ts';
 type Props = {

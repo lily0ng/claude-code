@@ -11,10 +11,10 @@ import { type ExtraUsage, fetchUtilization, type RateLimit, type Utilization } f
 import { formatResetText } from '../../utils/format.ts';
 import { logError } from '../../utils/log.ts';
 import { jsonStringify } from '../../utils/slowOperations.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { ProgressBar } from '../design-system/ProgressBar.ts';
-import { isEligibleForOverageCreditGrant, OverageCreditUpsell } from '../LogoV2/OverageCreditUpsell.ts';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
+import { Byline } from '../design-system/Byline.tsx';
+import { ProgressBar } from '../design-system/ProgressBar.tsx';
+import { isEligibleForOverageCreditGrant, OverageCreditUpsell } from '../LogoV2/OverageCreditUpsell.tsx';
 type LimitBarProps = {
   title: string;
   limit: RateLimit;

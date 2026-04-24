@@ -7,7 +7,7 @@ import { type CliHighlight, getCliHighlightPromise } from '../utils/cliHighlight
 import { hashContent } from '../utils/hash.ts';
 import { configureMarked, formatToken } from '../utils/markdown.ts';
 import { stripPromptXMLTags } from '../utils/messages.ts';
-import { MarkdownTable } from './MarkdownTable.ts';
+import { MarkdownTable } from './MarkdownTable.tsx';
 type Props = {
   children: string;
   /** When true, render all text content as dim */

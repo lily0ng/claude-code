@@ -1,9 +1,9 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { useState } from 'react';
-import { type OptionWithDescription, Select } from '../../components/CustomSelect/select.ts';
-import { Dialog } from '../../components/design-system/Dialog.ts';
+import { type OptionWithDescription, Select } from '../../components/CustomSelect/select.tsx';
+import { Dialog } from '../../components/design-system/Dialog.tsx';
 import { Box, Text } from '../../ink.ts';
-import { useAppState } from '../../state/AppState.ts';
+import { useAppState } from '../../state/AppState.tsx';
 import { isClaudeAISubscriber } from '../../utils/auth.ts';
 import { openBrowser } from '../../utils/browser.ts';
 import { CLAUDE_IN_CHROME_MCP_SERVER_NAME, openInChrome } from '../../utils/claudeInChrome/common.ts';

@@ -6,8 +6,8 @@ import { Box, Text } from '../../ink.ts';
 import { getGlobalConfig, saveGlobalConfig } from '../../utils/config.ts';
 import { getInitialSettings } from '../../utils/settings/settings.ts';
 import { isVoiceModeEnabled } from '../../voice/voiceModeEnabled.ts';
-import { AnimatedAsterisk } from './AnimatedAsterisk.ts';
-import { shouldShowOpus1mMergeNotice } from './Opus1mMergeNotice.ts';
+import { AnimatedAsterisk } from './AnimatedAsterisk.tsx';
+import { shouldShowOpus1mMergeNotice } from './Opus1mMergeNotice.tsx';
 const MAX_SHOW_COUNT = 3;
 export function VoiceModeNotice() {
   const $ = _c(1);

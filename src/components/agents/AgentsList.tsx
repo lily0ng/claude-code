@@ -8,8 +8,8 @@ import type { ResolvedAgent } from '../../tools/AgentTool/agentDisplay.ts';
 import { AGENT_SOURCE_GROUPS, compareAgentsByName, getOverrideSourceLabel, resolveAgentModelDisplay } from '../../tools/AgentTool/agentDisplay.ts';
 import type { AgentDefinition } from '../../tools/AgentTool/loadAgentsDir.ts';
 import { count } from '../../utils/array.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { Divider } from '../design-system/Divider.ts';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { Divider } from '../design-system/Divider.tsx';
 import { getAgentSourceDisplayName } from './utils.ts';
 type Props = {
   source: SettingSource | 'all' | 'built-in' | 'plugin';

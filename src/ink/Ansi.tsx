@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
-import Link from './components/Link.ts';
-import Text from './components/Text.ts';
+import Link from './components/Link.tsx';
+import Text from './components/Text.tsx';
 import type { Color } from './styles.ts';
 import { type NamedColor, Parser, type Color as TermioColor, type TextStyle } from './termio.ts';
 type Props = {

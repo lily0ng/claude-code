@@ -6,7 +6,7 @@ import { getRemoteSessionUrl } from '../constants/product.ts';
 import { getFeatureValue_CACHED_MAY_BE_STALE } from '../services/analytics/growthbook.ts';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../services/analytics/index.ts';
 import type { AppState } from '../state/AppStateStore.ts';
-import { checkRemoteAgentEligibility, formatPreconditionError, RemoteAgentTask, type RemoteAgentTaskState, registerRemoteAgentTask } from '../tasks/RemoteAgentTask/RemoteAgentTask.ts';
+import { checkRemoteAgentEligibility, formatPreconditionError, RemoteAgentTask, type RemoteAgentTaskState, registerRemoteAgentTask } from '../tasks/RemoteAgentTask/RemoteAgentTask.tsx';
 import type { LocalJSXCommandCall } from '../types/command.ts';
 import { logForDebugging } from '../utils/debug.ts';
 import { errorMessage } from '../utils/errors.ts';
@@ -14,7 +14,7 @@ import { logError } from '../utils/log.ts';
 import { enqueuePendingNotification } from '../utils/messageQueueManager.ts';
 import { ALL_MODEL_CONFIGS } from '../utils/model/configs.ts';
 import { updateTaskState } from '../utils/task/framework.ts';
-import { archiveRemoteSession, teleportToRemote } from '../utils/teleport.ts';
+import { archiveRemoteSession, teleportToRemote } from '../utils/teleport.tsx';
 import { pollForApprovedExitPlanMode, UltraplanPollError } from '../utils/ultraplan/ccrSession.ts';
 
 // TODO(prod-hardening): OAuth token may go stale over the 30min poll;

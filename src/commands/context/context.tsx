@@ -1,13 +1,13 @@
 import { feature } from 'bun:bundle';
 import * as React from 'react';
 import type { LocalJSXCommandContext } from '../../commands.ts';
-import { ContextVisualization } from '../../components/ContextVisualization.ts';
+import { ContextVisualization } from '../../components/ContextVisualization.tsx';
 import { microcompactMessages } from '../../services/compact/microCompact.ts';
 import type { LocalJSXCommandOnDone } from '../../types/command.ts';
 import type { Message } from '../../types/message.ts';
 import { analyzeContextUsage } from '../../utils/analyzeContext.ts';
 import { getMessagesAfterCompactBoundary } from '../../utils/messages.ts';
-import { renderToAnsiString } from '../../utils/staticRender.ts';
+import { renderToAnsiString } from '../../utils/staticRender.tsx';
 
 /**
  * Apply the same context transforms query.ts does before the API call, so

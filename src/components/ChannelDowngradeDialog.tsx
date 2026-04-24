@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { Text } from '../ink.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 export type ChannelDowngradeChoice = 'downgrade' | 'stay' | 'cancel';
 type Props = {
   currentVersion: string;

@@ -1,6 +1,6 @@
 import type { Tool } from '../../Tool.ts'
-import { AgentTool } from '../AgentTool/AgentTool.ts'
-import { BashTool } from '../BashTool/BashTool.ts'
+import { AgentTool } from '../AgentTool/AgentTool.tsx'
+import { BashTool } from '../BashTool/BashTool.tsx'
 import { FileEditTool } from '../FileEditTool/FileEditTool.ts'
 import { FileReadTool } from '../FileReadTool/FileReadTool.ts'
 import { FileWriteTool } from '../FileWriteTool/FileWriteTool.ts'

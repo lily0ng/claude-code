@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useAppState, useSetAppState } from '../state/AppState.ts'
+import { useAppState, useSetAppState } from '../state/AppState.tsx'
 import { exitTeammateView } from '../state/teammateViewHelpers.ts'
 import { isInProcessTeammateTask } from '../tasks/InProcessTeammateTask/types.ts'
 

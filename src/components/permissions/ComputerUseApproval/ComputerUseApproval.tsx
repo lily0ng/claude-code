@@ -8,9 +8,9 @@ import { useMemo, useState } from 'react';
 import { Box, Text } from '../../../ink.ts';
 import { execFileNoThrow } from '../../../utils/execFileNoThrow.ts';
 import { plural } from '../../../utils/stringUtils.ts';
-import type { OptionWithDescription } from '../../CustomSelect/select.ts';
-import { Select } from '../../CustomSelect/select.ts';
-import { Dialog } from '../../design-system/Dialog.ts';
+import type { OptionWithDescription } from '../../CustomSelect/select.tsx';
+import { Select } from '../../CustomSelect/select.tsx';
+import { Dialog } from '../../design-system/Dialog.tsx';
 type ComputerUseApprovalProps = {
   request: CuPermissionRequest;
   onDone: (response: CuPermissionResponse) => void;

@@ -1,4 +1,4 @@
-import reject from 'lodash-es/reject.ts'
+import reject from 'lodash-es/reject'
 import { z } from 'zod/v4'
 import { performMCPOAuthFlow } from '../../services/mcp/auth.ts'
 import {

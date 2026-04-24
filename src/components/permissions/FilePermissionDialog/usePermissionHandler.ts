@@ -16,11 +16,11 @@ import {
   type CompletionType,
   logUnaryEvent,
 } from '../../../utils/unaryLogging.ts'
-import type { ToolUseConfirm } from '../PermissionRequest.ts'
+import type { ToolUseConfirm } from '../PermissionRequest.tsx'
 import type {
   FileOperationType,
   PermissionOption,
-} from './permissionOptions.ts'
+} from './permissionOptions.tsx'
 
 function logPermissionEvent(
   event: 'accept' | 'reject',

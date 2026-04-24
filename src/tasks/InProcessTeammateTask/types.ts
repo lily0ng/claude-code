@@ -3,7 +3,7 @@ import type { AgentToolResult } from '../../tools/AgentTool/agentToolUtils.ts'
 import type { AgentDefinition } from '../../tools/AgentTool/loadAgentsDir.ts'
 import type { Message } from '../../types/message.ts'
 import type { PermissionMode } from '../../utils/permissions/PermissionMode.ts'
-import type { AgentProgress } from '../LocalAgentTask/LocalAgentTask.ts'
+import type { AgentProgress } from '../LocalAgentTask/LocalAgentTask.tsx'
 
 /**
  * Teammate identity stored in task state.

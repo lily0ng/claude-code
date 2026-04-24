@@ -5,12 +5,12 @@ import { useDoublePress } from '../hooks/useDoublePress.ts';
 import { Box, Text } from '../ink.ts';
 import { useKeybinding } from '../keybindings/useKeybinding.ts';
 import { useShortcutDisplay } from '../keybindings/useShortcutDisplay.ts';
-import { useAppState, useAppStateStore, useSetAppState } from '../state/AppState.ts';
-import { backgroundAll, hasForegroundTasks } from '../tasks/LocalShellTask/LocalShellTask.ts';
+import { useAppState, useAppStateStore, useSetAppState } from '../state/AppState.tsx';
+import { backgroundAll, hasForegroundTasks } from '../tasks/LocalShellTask/LocalShellTask.tsx';
 import { getGlobalConfig, saveGlobalConfig } from '../utils/config.ts';
 import { env } from '../utils/env.ts';
 import { isEnvTruthy } from '../utils/envUtils.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
 type Props = {
   onBackgroundSession: () => void;
   isLoading: boolean;

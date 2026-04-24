@@ -1,7 +1,7 @@
 // Shared logic for stopping a running task.
 // Used by TaskStopTool (LLM-invoked) and SDK stop_task control request.
 
-import type { AppState } from '../state/AppState.ts'
+import type { AppState } from '../state/AppState.tsx'
 import type { TaskStateBase } from '../Task.ts'
 import { getTaskByType } from '../tasks.ts'
 import { emitTaskTerminatedSdk } from '../utils/sdkEventQueue.ts'

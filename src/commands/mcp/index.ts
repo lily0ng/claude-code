@@ -6,7 +6,7 @@ const mcp = {
   description: 'Manage MCP servers',
   immediate: true,
   argumentHint: '[enable|disable [server-name]]',
-  load: () => import('./mcp.ts'),
+  load: () => import('./mcp.tsx'),
 } satisfies Command
 
 export default mcp

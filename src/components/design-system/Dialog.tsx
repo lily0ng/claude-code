@@ -4,10 +4,10 @@ import { type ExitState, useExitOnCtrlCDWithKeybindings } from '../../hooks/useE
 import { Box, Text } from '../../ink.ts';
 import { useKeybinding } from '../../keybindings/useKeybinding.ts';
 import type { Theme } from '../../utils/theme.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
-import { Byline } from './Byline.ts';
-import { KeyboardShortcutHint } from './KeyboardShortcutHint.ts';
-import { Pane } from './Pane.ts';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
+import { Byline } from './Byline.tsx';
+import { KeyboardShortcutHint } from './KeyboardShortcutHint.tsx';
+import { Pane } from './Pane.tsx';
 type DialogProps = {
   title: React.ReactNode;
   subtitle?: React.ReactNode;

@@ -7,7 +7,7 @@
  */
 
 import { extname } from 'path'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { env, getHostPlatformForAnalytics } from '../../utils/env.ts'
 import { envDynamic } from '../../utils/envDynamic.ts'
 import { getModelBetas } from '../../utils/betas.ts'

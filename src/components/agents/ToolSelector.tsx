@@ -27,7 +27,7 @@ import { Box, Text } from '../../ink.ts';
 import { useKeybinding } from '../../keybindings/useKeybinding.ts';
 import { count } from '../../utils/array.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { Divider } from '../design-system/Divider.ts';
+import { Divider } from '../design-system/Divider.tsx';
 type Props = {
   tools: Tools;
   initialTools: string[] | undefined;

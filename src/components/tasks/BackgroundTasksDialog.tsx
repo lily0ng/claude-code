@@ -22,24 +22,24 @@ import { type BackgroundTaskState, isBackgroundTask, type TaskState } from './ta
 import type { DeepImmutable } from './types/utils.ts';
 import { intersperse } from './utils/array.ts';
 import { TEAM_LEAD_NAME } from './utils/swarm/constants.ts';
-import { stopUltraplan } from '../../commands/ultraplan.ts';
+import { stopUltraplan } from '../../commands/ultraplan.tsx';
 import type { CommandResultDisplay } from '../../commands.ts';
-import { useRegisterOverlay } from '../../context/overlayContext.ts';
+import { useRegisterOverlay } from '../../context/overlayContext.tsx';
 import type { ExitState } from '../../hooks/useExitOnCtrlCDWithKeybindings.ts';
 import type { KeyboardEvent } from '../../ink/events/keyboard-event.ts';
 import { Box, Text } from '../../ink.ts';
 import { useKeybindings } from '../../keybindings/useKeybinding.ts';
 import { useShortcutDisplay } from '../../keybindings/useShortcutDisplay.ts';
 import { count } from '../../utils/array.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
-import { AsyncAgentDetailDialog } from './AsyncAgentDetailDialog.ts';
-import { BackgroundTask as BackgroundTaskComponent } from './BackgroundTask.ts';
-import { DreamDetailDialog } from './DreamDetailDialog.ts';
-import { InProcessTeammateDetailDialog } from './InProcessTeammateDetailDialog.ts';
-import { RemoteSessionDetailDialog } from './RemoteSessionDetailDialog.ts';
-import { ShellDetailDialog } from './ShellDetailDialog.ts';
+import { Byline } from '../design-system/Byline.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
+import { AsyncAgentDetailDialog } from './AsyncAgentDetailDialog.tsx';
+import { BackgroundTask as BackgroundTaskComponent } from './BackgroundTask.tsx';
+import { DreamDetailDialog } from './DreamDetailDialog.tsx';
+import { InProcessTeammateDetailDialog } from './InProcessTeammateDetailDialog.tsx';
+import { RemoteSessionDetailDialog } from './RemoteSessionDetailDialog.tsx';
+import { ShellDetailDialog } from './ShellDetailDialog.tsx';
 type ViewState = {
   mode: 'list';
 } | {

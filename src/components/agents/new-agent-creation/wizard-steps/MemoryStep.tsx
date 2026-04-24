@@ -4,12 +4,12 @@ import { Box } from '../../../../ink.ts';
 import { useKeybinding } from '../../../../keybindings/useKeybinding.ts';
 import { isAutoMemoryEnabled } from '../../../../memdir/paths.ts';
 import { type AgentMemoryScope, loadAgentMemoryPrompt } from '../../../../tools/AgentTool/agentMemory.ts';
-import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.ts';
-import { Select } from '../../../CustomSelect/select.ts';
-import { Byline } from '../../../design-system/Byline.ts';
-import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.ts';
+import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.tsx';
+import { Select } from '../../../CustomSelect/select.tsx';
+import { Byline } from '../../../design-system/Byline.tsx';
+import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.tsx';
 import { useWizard } from '../../../wizard/index.ts';
-import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.ts';
+import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.tsx';
 import type { AgentWizardData } from '../types.ts';
 type MemoryOption = {
   label: string;

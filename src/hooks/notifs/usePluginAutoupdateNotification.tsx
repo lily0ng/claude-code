@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { getIsRemoteMode } from '../../bootstrap/state.ts';
-import { useNotifications } from '../../context/notifications.ts';
+import { useNotifications } from '../../context/notifications.tsx';
 import { Text } from '../../ink.ts';
 import { logForDebugging } from '../../utils/debug.ts';
 import { onPluginsAutoUpdated } from '../../utils/plugins/pluginAutoupdate.ts';

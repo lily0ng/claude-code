@@ -91,7 +91,7 @@ import {
   renderToolUseMessage,
   renderToolUseTag,
   userFacingName,
-} from './UI.ts'
+} from './UI.tsx'
 
 // Device files that would hang the process: infinite output or blocking input.
 // Checked by path only (no I/O). Safe devices like /dev/null are intentionally omitted.

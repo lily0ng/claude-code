@@ -3,7 +3,7 @@ import React from 'react';
 import { Text } from '../ink.ts';
 import { saveGlobalConfig } from '../utils/config.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 type Props = {
   customApiKeyTruncated: string;
   onDone(approved: boolean): void;

@@ -1,5 +1,5 @@
 import { readdir, readFile } from 'fs/promises'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { release as osRelease } from 'os'
 import { getFsImplementation } from './fsOperations.ts'
 import { logError } from './log.ts'

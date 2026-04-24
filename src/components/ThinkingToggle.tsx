@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { useExitOnCtrlCDWithKeybindings } from './hooks/useExitOnCtrlCDWithKeybindings.ts';
 import { Box, Text } from '../ink.ts';
 import { useKeybinding } from '../keybindings/useKeybinding.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
 import { Select } from './CustomSelect/index.ts';
-import { Byline } from './design-system/Byline.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
-import { Pane } from './design-system/Pane.ts';
+import { Byline } from './design-system/Byline.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
+import { Pane } from './design-system/Pane.tsx';
 export type Props = {
   currentValue: boolean;
   onSelect: (enabled: boolean) => void;

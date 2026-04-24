@@ -3,7 +3,7 @@ import { getIsRemoteMode } from '../../bootstrap/state.ts'
 import {
   type Notification,
   useNotifications,
-} from '../../context/notifications.ts'
+} from '../../context/notifications.tsx'
 import { logError } from '../../utils/log.ts'
 
 type Result = Notification | Notification[] | null

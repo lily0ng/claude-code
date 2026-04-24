@@ -7,7 +7,7 @@ import {
   useRef,
   useSyncExternalStore,
 } from 'react'
-import type { ScrollBoxHandle } from '../ink/components/ScrollBox.ts'
+import type { ScrollBoxHandle } from '../ink/components/ScrollBox.tsx'
 import type { DOMElement } from '../ink/dom.ts'
 
 /**

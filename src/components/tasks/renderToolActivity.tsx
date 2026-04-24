@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from '../../ink.ts';
 import type { Tools } from '../../Tool.ts';
 import { findToolByName } from '../../Tool.ts';
-import type { ToolActivity } from '../../tasks/LocalAgentTask/LocalAgentTask.ts';
+import type { ToolActivity } from '../../tasks/LocalAgentTask/LocalAgentTask.tsx';
 import type { ThemeName } from '../../utils/theme.ts';
 export function renderToolActivity(activity: ToolActivity, tools: Tools, theme: ThemeName): React.ReactNode {
   const tool = findToolByName(tools, activity.toolName);

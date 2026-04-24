@@ -1,5 +1,5 @@
 import { c as _c } from "react/compiler-runtime";
-import capitalize from 'lodash-es/capitalize.ts';
+import capitalize from 'lodash-es/capitalize';
 import * as React from 'react';
 import { useMemo } from 'react';
 import { type Command, type CommandBase, type CommandResultDisplay, getCommandName, type PromptCommand } from '../../commands.ts';
@@ -9,8 +9,8 @@ import { getDisplayPath } from '../../utils/file.ts';
 import { formatTokens } from '../../utils/format.ts';
 import { getSettingSourceName, type SettingSource } from '../../utils/settings/constants.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
-import { Dialog } from '../design-system/Dialog.ts';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
 
 // Skills are always PromptCommands with CommandBase properties
 type SkillCommand = CommandBase & PromptCommand;

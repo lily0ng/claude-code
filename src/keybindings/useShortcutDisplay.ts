@@ -3,7 +3,7 @@ import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
 } from '../services/analytics/index.ts'
-import { useOptionalKeybindingContext } from './KeybindingContext.ts'
+import { useOptionalKeybindingContext } from './KeybindingContext.tsx'
 import type { KeybindingContextName } from './types.ts'
 
 // TODO(keybindings-migration): Remove fallback parameter after migration is complete

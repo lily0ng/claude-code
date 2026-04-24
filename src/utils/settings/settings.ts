@@ -1,5 +1,5 @@
 import { feature } from 'bun:bundle'
-import mergeWith from 'lodash-es/mergeWith.ts'
+import mergeWith from 'lodash-es/mergeWith'
 import { dirname, join, resolve } from 'path'
 import { z } from 'zod/v4'
 import {

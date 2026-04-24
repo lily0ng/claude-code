@@ -12,7 +12,7 @@ import {
   renderToolResultMessage,
   renderToolUseMessage,
   renderToolUseProgressMessage,
-} from './UI.ts'
+} from './UI.tsx'
 import {
   applyPromptToMarkdown,
   type FetchedContent,

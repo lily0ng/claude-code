@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { getAPIProvider } from './providers.ts'
 
 export type ModelCapabilityOverride =

@@ -13,12 +13,12 @@ import { BLACK_CIRCLE, PAUSE_ICON, PLAY_ICON } from '../constants/figures.ts';
 import { useTerminalSize } from '../hooks/useTerminalSize.ts';
 import { stringWidth } from '../ink/stringWidth.ts';
 import { Box, Text, wrapText } from '../ink.ts';
-import { type AppState, useAppState, useSetAppState } from '../state/AppState.ts';
+import { type AppState, useAppState, useSetAppState } from '../state/AppState.tsx';
 import { enterTeammateView, exitTeammateView } from '../state/teammateViewHelpers.ts';
-import { isPanelAgentTask, type LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask.ts';
+import { isPanelAgentTask, type LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask.tsx';
 import { formatDuration, formatNumber } from '../utils/format.ts';
 import { evictTerminalTask } from '../utils/task/framework.ts';
-import { isTerminalStatus } from './tasks/taskStatusUtils.ts';
+import { isTerminalStatus } from './tasks/taskStatusUtils.tsx';
 
 /**
  * Which panel-managed tasks currently have a visible row.

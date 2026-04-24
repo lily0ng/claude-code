@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import { feature } from 'bun:bundle';
 import React, { useContext, useEffect, useEffectEvent, useState, useSyncExternalStore } from 'react';
-import { MailboxProvider } from '../context/mailbox.ts';
+import { MailboxProvider } from '../context/mailbox.tsx';
 import { useSettingsChange } from '../hooks/useSettingsChange.ts';
 import { logForDebugging } from '../utils/debug.ts';
 import { createDisabledBypassPermissionsContext, isBypassPermissionsModeDisabled } from '../utils/permissions/permissionSetup.ts';

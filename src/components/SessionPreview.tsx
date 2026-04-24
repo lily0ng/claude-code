@@ -7,11 +7,11 @@ import { getAllBaseTools } from '../tools.ts';
 import type { LogOption } from '../types/logs.ts';
 import { formatRelativeTimeAgo } from '../utils/format.ts';
 import { getSessionIdFromLog, isLiteLog, loadFullLog } from '../utils/sessionStorage.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
-import { Byline } from './design-system/Byline.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
-import { LoadingState } from './design-system/LoadingState.ts';
-import { Messages } from './Messages.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
+import { Byline } from './design-system/Byline.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
+import { LoadingState } from './design-system/LoadingState.tsx';
+import { Messages } from './Messages.tsx';
 type Props = {
   log: LogOption;
   onExit: () => void;

@@ -3,11 +3,11 @@
 
 import type { DreamTaskState } from './DreamTask/DreamTask.ts'
 import type { InProcessTeammateTaskState } from './InProcessTeammateTask/types.ts'
-import type { LocalAgentTaskState } from './LocalAgentTask/LocalAgentTask.ts'
+import type { LocalAgentTaskState } from './LocalAgentTask/LocalAgentTask.tsx'
 import type { LocalShellTaskState } from './LocalShellTask/guards.ts'
 import type { LocalWorkflowTaskState } from './LocalWorkflowTask/LocalWorkflowTask.ts'
 import type { MonitorMcpTaskState } from './MonitorMcpTask/MonitorMcpTask.ts'
-import type { RemoteAgentTaskState } from './RemoteAgentTask/RemoteAgentTask.ts'
+import type { RemoteAgentTaskState } from './RemoteAgentTask/RemoteAgentTask.tsx'
 
 export type TaskState =
   | LocalShellTaskState

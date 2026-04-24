@@ -8,7 +8,7 @@ import { getDisplayPath } from '../utils/file.ts';
 import { formatTokens } from '../utils/format.ts';
 import { getSourceDisplayName, type SettingSource } from '../utils/settings/constants.ts';
 import { plural } from '../utils/stringUtils.ts';
-import { ContextSuggestions } from './ContextSuggestions.ts';
+import { ContextSuggestions } from './ContextSuggestions.tsx';
 const RESERVED_CATEGORY_NAME = 'Autocompact buffer';
 
 /**

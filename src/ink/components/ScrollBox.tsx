@@ -6,7 +6,7 @@ import { markDirty, scheduleRenderFrom } from '../dom.ts';
 import { markCommitStart } from '../reconciler.ts';
 import type { Styles } from '../styles.ts';
 import '../global.d.ts';
-import Box from './Box.ts';
+import Box from './Box.tsx';
 export type ScrollBoxHandle = {
   scrollTo: (y: number) => void;
   scrollBy: (dy: number) => void;

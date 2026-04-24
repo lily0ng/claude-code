@@ -5,7 +5,7 @@ import { Box, Text } from '../../ink.ts';
 import { useKeybinding } from '../../keybindings/useKeybinding.ts';
 import type { SettingsJson } from '../../utils/settings/types.ts';
 import { Select } from '../CustomSelect/index.ts';
-import { PermissionDialog } from '../permissions/PermissionDialog.ts';
+import { PermissionDialog } from '../permissions/PermissionDialog.tsx';
 import { extractDangerousSettings, formatDangerousSettingsList } from './utils.ts';
 type Props = {
   settings: SettingsJson;

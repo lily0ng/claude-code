@@ -1,5 +1,5 @@
 import { c as _c } from "react/compiler-runtime";
-import setWith from 'lodash-es/setWith.ts';
+import setWith from 'lodash-es/setWith';
 import * as React from 'react';
 import { Box, Text, useTheme } from '../ink.ts';
 import type { ValidationError } from '../utils/settings/validation.ts';

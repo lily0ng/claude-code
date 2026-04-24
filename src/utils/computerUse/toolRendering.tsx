@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { Text } from '../../ink.ts';
 import { truncateToWidth } from '../format.ts';
 import type { MCPToolResult } from '../mcpValidation.ts';

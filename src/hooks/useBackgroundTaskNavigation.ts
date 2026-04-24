@@ -6,7 +6,7 @@ import {
   type AppState,
   useAppState,
   useSetAppState,
-} from '../state/AppState.ts'
+} from '../state/AppState.tsx'
 import {
   enterTeammateView,
   exitTeammateView,
@@ -14,7 +14,7 @@ import {
 import {
   getRunningTeammatesSorted,
   InProcessTeammateTask,
-} from '../tasks/InProcessTeammateTask/InProcessTeammateTask.ts'
+} from '../tasks/InProcessTeammateTask/InProcessTeammateTask.tsx'
 import {
   type InProcessTeammateTaskState,
   isInProcessTeammateTask,

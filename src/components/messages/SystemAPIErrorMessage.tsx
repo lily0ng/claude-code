@@ -5,8 +5,8 @@ import { Box, Text } from './ink.ts';
 import { formatAPIError } from './services/api/errorUtils.ts';
 import type { SystemAPIErrorMessage } from './types/message.ts';
 import { useInterval } from 'usehooks-ts';
-import { CtrlOToExpand } from '../CtrlOToExpand.ts';
-import { MessageResponse } from '../MessageResponse.ts';
+import { CtrlOToExpand } from '../CtrlOToExpand.tsx';
+import { MessageResponse } from '../MessageResponse.tsx';
 const MAX_API_ERROR_CHARS = 1000;
 type Props = {
   message: SystemAPIErrorMessage;

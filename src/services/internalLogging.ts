@@ -1,5 +1,5 @@
 import { readFile } from 'fs/promises'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import type { ToolPermissionContext } from '../Tool.ts'
 import { jsonStringify } from '../utils/slowOperations.ts'
 import {

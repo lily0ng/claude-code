@@ -8,7 +8,7 @@ import {
 } from 'react'
 import { isDeepStrictEqual } from 'util'
 import OptionMap from './option-map.ts'
-import type { OptionWithDescription } from './select.ts'
+import type { OptionWithDescription } from './select.tsx'
 
 type State<T> = {
   /**

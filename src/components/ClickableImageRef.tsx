@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { pathToFileURL } from 'url';
-import Link from '../ink/components/Link.ts';
+import Link from '../ink/components/Link.tsx';
 import { supportsHyperlinks } from '../ink/supports-hyperlinks.ts';
 import { Text } from '../ink.ts';
 import { getStoredImagePath } from '../utils/imageStore.ts';

@@ -13,17 +13,17 @@ import { useInput } from '../ink.ts';
 import { useSearchInput } from '../hooks/useSearchInput.ts';
 import { useTerminalSize } from '../hooks/useTerminalSize.ts';
 import { useSearchHighlight } from '../ink/hooks/use-search-highlight.ts';
-import type { JumpHandle } from '../components/VirtualMessageList.ts';
-import { renderMessagesToPlainText } from '../utils/exportRenderer.ts';
+import type { JumpHandle } from '../components/VirtualMessageList.tsx';
+import { renderMessagesToPlainText } from '../utils/exportRenderer.tsx';
 import { openFileInExternalEditor } from '../utils/editor.ts';
 import { writeFile } from 'fs/promises';
 import { Box, Text, useStdin, useTheme, useTerminalFocus, useTerminalTitle, useTabStatus } from '../ink.ts';
 import type { TabStatusKind } from '../ink/hooks/use-tab-status.ts';
-import { CostThresholdDialog } from '../components/CostThresholdDialog.ts';
-import { IdleReturnDialog } from '../components/IdleReturnDialog.ts';
+import { CostThresholdDialog } from '../components/CostThresholdDialog.tsx';
+import { IdleReturnDialog } from '../components/IdleReturnDialog.tsx';
 import * as React from 'react';
 import { useEffect, useMemo, useRef, useState, useCallback, useDeferredValue, useLayoutEffect, type RefObject } from 'react';
-import { useNotifications } from '../context/notifications.ts';
+import { useNotifications } from '../context/notifications.tsx';
 import { sendNotification } from '../services/notifier.ts';
 import { startPreventSleep, stopPreventSleep } from '../services/preventSleep.ts';
 import { useTerminalNotification } from '../ink/useTerminalNotification.ts';
@@ -40,33 +40,33 @@ import { setMemberActive } from '../utils/swarm/teamHelpers.ts';
 import { isSwarmWorker, generateSandboxRequestId, sendSandboxPermissionRequestViaMailbox, sendSandboxPermissionResponseViaMailbox } from '../utils/swarm/permissionSync.ts';
 import { registerSandboxPermissionCallback } from '../hooks/useSwarmPermissionPoller.ts';
 import { getTeamName, getAgentName } from '../utils/teammate.ts';
-import { WorkerPendingPermission } from '../components/permissions/WorkerPendingPermission.ts';
-import { injectUserMessageToTeammate, getAllInProcessTeammateTasks } from '../tasks/InProcessTeammateTask/InProcessTeammateTask.ts';
-import { isLocalAgentTask, queuePendingMessage, appendMessageToLocalAgent, type LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask.ts';
+import { WorkerPendingPermission } from '../components/permissions/WorkerPendingPermission.tsx';
+import { injectUserMessageToTeammate, getAllInProcessTeammateTasks } from '../tasks/InProcessTeammateTask/InProcessTeammateTask.tsx';
+import { isLocalAgentTask, queuePendingMessage, appendMessageToLocalAgent, type LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask.tsx';
 import { registerLeaderToolUseConfirmQueue, unregisterLeaderToolUseConfirmQueue, registerLeaderSetToolPermissionContext, unregisterLeaderSetToolPermissionContext } from '../utils/swarm/leaderPermissionBridge.ts';
 import { endInteractionSpan } from '../utils/telemetry/sessionTracing.ts';
 import { useLogMessages } from '../hooks/useLogMessages.ts';
-import { useReplBridge } from '../hooks/useReplBridge.ts';
+import { useReplBridge } from '../hooks/useReplBridge.tsx';
 import { type Command, type CommandResultDisplay, type ResumeEntrypoint, getCommandName, isCommandEnabled } from '../commands.ts';
 import type { PromptInputMode, QueuedCommand, VimMode } from '../types/textInputTypes.ts';
-import { MessageSelector, selectableUserMessagesFilter, messagesAfterAreOnlySynthetic } from '../components/MessageSelector.ts';
+import { MessageSelector, selectableUserMessagesFilter, messagesAfterAreOnlySynthetic } from '../components/MessageSelector.tsx';
 import { useIdeLogging } from '../hooks/useIdeLogging.ts';
-import { PermissionRequest, type ToolUseConfirm } from '../components/permissions/PermissionRequest.ts';
-import { ElicitationDialog } from '../components/mcp/ElicitationDialog.ts';
-import { PromptDialog } from '../components/hooks/PromptDialog.ts';
+import { PermissionRequest, type ToolUseConfirm } from '../components/permissions/PermissionRequest.tsx';
+import { ElicitationDialog } from '../components/mcp/ElicitationDialog.tsx';
+import { PromptDialog } from '../components/hooks/PromptDialog.tsx';
 import type { PromptRequest, PromptResponse } from '../types/hooks.ts';
-import PromptInput from '../components/PromptInput/PromptInput.ts';
-import { PromptInputQueuedCommands } from '../components/PromptInput/PromptInputQueuedCommands.ts';
+import PromptInput from '../components/PromptInput/PromptInput.tsx';
+import { PromptInputQueuedCommands } from '../components/PromptInput/PromptInputQueuedCommands.tsx';
 import { useRemoteSession } from '../hooks/useRemoteSession.ts';
 import { useDirectConnect } from '../hooks/useDirectConnect.ts';
 import type { DirectConnectConfig } from '../server/directConnectManager.ts';
 import { useSSHSession } from '../hooks/useSSHSession.ts';
 import { useAssistantHistory } from '../hooks/useAssistantHistory.ts';
 import type { SSHSession } from '../ssh/createSSHSession.ts';
-import { SkillImprovementSurvey } from '../components/SkillImprovementSurvey.ts';
+import { SkillImprovementSurvey } from '../components/SkillImprovementSurvey.tsx';
 import { useSkillImprovementSurvey } from '../hooks/useSkillImprovementSurvey.ts';
-import { useMoreRight } from '../moreright/useMoreRight.ts';
-import { SpinnerWithVerb, BriefIdleStatus, type SpinnerMode } from '../components/Spinner.ts';
+import { useMoreRight } from '../moreright/useMoreRight.tsx';
+import { SpinnerWithVerb, BriefIdleStatus, type SpinnerMode } from '../components/Spinner.tsx';
 import { getSystemPrompt } from '../constants/prompts.ts';
 import { buildEffectiveSystemPrompt } from '../utils/systemPrompt.ts';
 import { getSystemContext, getUserContext } from '../context.ts';
@@ -74,16 +74,16 @@ import { getMemoryFiles } from '../utils/claudemd.ts';
 import { startBackgroundHousekeeping } from '../utils/backgroundHousekeeping.ts';
 import { getTotalCost, saveCurrentSessionCosts, resetCostState, getStoredSessionCosts } from '../cost-tracker.ts';
 import { useCostSummary } from '../costHook.ts';
-import { useFpsMetrics } from '../context/fpsMetrics.ts';
+import { useFpsMetrics } from '../context/fpsMetrics.tsx';
 import { useAfterFirstRender } from '../hooks/useAfterFirstRender.ts';
 import { useDeferredHookMessages } from '../hooks/useDeferredHookMessages.ts';
 import { addToHistory, removeLastFromHistory, expandPastedTextRefs, parseReferences } from '../history.ts';
 import { prependModeCharacterToInput } from '../components/PromptInput/inputModes.ts';
 import { prependToShellHistoryCache } from '../utils/suggestions/shellHistoryCompletion.ts';
 import { useApiKeyVerification } from '../hooks/useApiKeyVerification.ts';
-import { GlobalKeybindingHandlers } from '../hooks/useGlobalKeybindings.ts';
-import { CommandKeybindingHandlers } from '../hooks/useCommandKeybindings.ts';
-import { KeybindingSetup } from '../keybindings/KeybindingProviderSetup.ts';
+import { GlobalKeybindingHandlers } from '../hooks/useGlobalKeybindings.tsx';
+import { CommandKeybindingHandlers } from '../hooks/useCommandKeybindings.tsx';
+import { KeybindingSetup } from '../keybindings/KeybindingProviderSetup.tsx';
 import { useShortcutDisplay } from '../keybindings/useShortcutDisplay.ts';
 import { getShortcutDisplay } from '../keybindings/shortcutFormat.ts';
 import { CancelRequestHandler } from '../hooks/useCancelRequest.ts';
@@ -95,12 +95,12 @@ import { isHumanTurn } from '../utils/messagePredicates.ts';
 import { logError } from '../utils/log.ts';
 // Dead code elimination: conditional imports
 /* eslint-disable custom-rules/no-process-env-top-level, @typescript-eslint/no-require-imports */
-const useVoiceIntegration: typeof import('../hooks/useVoiceIntegration.ts').useVoiceIntegration = feature('VOICE_MODE') ? require('../hooks/useVoiceIntegration.ts').useVoiceIntegration : () => ({
+const useVoiceIntegration: typeof import('../hooks/useVoiceIntegration.tsx').useVoiceIntegration = feature('VOICE_MODE') ? require('../hooks/useVoiceIntegration.ts').useVoiceIntegration : () => ({
   stripTrailing: () => 0,
   handleKeyEvent: () => {},
   resetAnchor: () => {}
 });
-const VoiceKeybindingHandler: typeof import('../hooks/useVoiceIntegration.ts').VoiceKeybindingHandler = feature('VOICE_MODE') ? require('../hooks/useVoiceIntegration.ts').VoiceKeybindingHandler : () => null;
+const VoiceKeybindingHandler: typeof import('../hooks/useVoiceIntegration.tsx').VoiceKeybindingHandler = feature('VOICE_MODE') ? require('../hooks/useVoiceIntegration.ts').VoiceKeybindingHandler : () => null;
 // Frustration detection is ant-only (dogfooding). Conditional require so external
 // builds eliminate the module entirely (including its two O(n) useMemos that run
 // on every messages change, plus the GrowthBook fetch).
@@ -118,10 +118,10 @@ const getCoordinatorUserContext: (mcpClients: ReadonlyArray<{
   [k: string]: string;
 } = feature('COORDINATOR_MODE') ? require('../coordinator/coordinatorMode.ts').getCoordinatorUserContext : () => ({});
 /* eslint-enable custom-rules/no-process-env-top-level, @typescript-eslint/no-require-imports */
-import useCanUseTool from '../hooks/useCanUseTool.ts';
+import useCanUseTool from '../hooks/useCanUseTool.tsx';
 import type { ToolPermissionContext, Tool } from '../Tool.ts';
 import { applyPermissionUpdate, applyPermissionUpdates, persistPermissionUpdate } from '../utils/permissions/PermissionUpdate.ts';
-import { buildPermissionUpdates } from '../components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.ts';
+import { buildPermissionUpdates } from '../components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx';
 import { stripDangerousPermissionsForAutoMode } from '../utils/permissions/permissionSetup.ts';
 import { getScratchpadDir, isScratchpadEnabled } from '../utils/permissions/filesystem.ts';
 import { WEB_FETCH_TOOL_NAME } from '../tools/WebFetchTool/prompt.ts';
@@ -151,9 +151,9 @@ import { mergeAndFilterTools } from '../utils/toolPool.ts';
 import { useMergedCommands } from '../hooks/useMergedCommands.ts';
 import { useSkillsChange } from '../hooks/useSkillsChange.ts';
 import { useManagePlugins } from '../hooks/useManagePlugins.ts';
-import { Messages } from '../components/Messages.ts';
-import { TaskListV2 } from '../components/TaskListV2.ts';
-import { TeammateViewHeader } from '../components/TeammateViewHeader.ts';
+import { Messages } from '../components/Messages.tsx';
+import { TaskListV2 } from '../components/TaskListV2.tsx';
+import { TeammateViewHeader } from '../components/TeammateViewHeader.tsx';
 import { useTasksV2WithCollapseEffect } from '../hooks/useTasksV2.ts';
 import { maybeMarkProjectOnboardingComplete } from '../projectOnboardingState.ts';
 import type { MCPServerConnection } from '../services/mcp/types.ts';
@@ -167,7 +167,7 @@ import type { AgentDefinition } from '../tools/AgentTool/loadAgentsDir.ts';
 import { resolveAgentTools } from '../tools/AgentTool/agentToolUtils.ts';
 import { resumeAgentBackground } from '../tools/AgentTool/resumeAgent.ts';
 import { useMainLoopModel } from '../hooks/useMainLoopModel.ts';
-import { useAppState, useSetAppState, useAppStateStore } from '../state/AppState.ts';
+import { useAppState, useSetAppState, useAppStateStore } from '../state/AppState.tsx';
 import type { ContentBlockParam, ImageBlockParam } from '@anthropic-ai/sdk/resources/messages.mjs';
 import type { ProcessUserInputContext } from '../utils/processUserInput/processUserInput.ts';
 import type { PastedContent } from '../utils/config.ts';
@@ -187,7 +187,7 @@ import { recordAttributionSnapshot } from '../utils/sessionStorage.ts';
 import { computeStandaloneAgentContext, restoreAgentFromSession, restoreSessionStateFromLog, restoreWorktreeForResume, exitRestoredWorktree } from '../utils/sessionRestore.ts';
 import { isBgSession, updateSessionName, updateSessionActivity } from '../utils/concurrentSessions.ts';
 import { isInProcessTeammateTask, type InProcessTeammateTaskState } from '../tasks/InProcessTeammateTask/types.ts';
-import { restoreRemoteAgentTasks } from '../tasks/RemoteAgentTask/RemoteAgentTask.ts';
+import { restoreRemoteAgentTasks } from '../tasks/RemoteAgentTask/RemoteAgentTask.tsx';
 import { useInboxPoller } from '../hooks/useInboxPoller.ts';
 // Dead code elimination: conditional import for loop mode
 /* eslint-disable @typescript-eslint/no-require-imports */
@@ -202,21 +202,21 @@ import { isAgentSwarmsEnabled } from '../utils/agentSwarmsEnabled.ts';
 import { useTaskListWatcher } from '../hooks/useTaskListWatcher.ts';
 import type { SandboxAskCallback, NetworkHostPattern } from '../utils/sandbox/sandbox-adapter.ts';
 import { type IDEExtensionInstallationStatus, closeOpenDiffs, getConnectedIdeClient, type IdeType } from '../utils/ide.ts';
-import { useIDEIntegration } from '../hooks/useIDEIntegration.ts';
+import { useIDEIntegration } from '../hooks/useIDEIntegration.tsx';
 import exit from '../commands/exit/index.ts';
-import { ExitFlow } from '../components/ExitFlow.ts';
+import { ExitFlow } from '../components/ExitFlow.tsx';
 import { getCurrentWorktreeSession } from '../utils/worktree.ts';
 import { popAllEditable, enqueue, type SetAppState, getCommandQueue, getCommandQueueLength, removeByFilter } from '../utils/messageQueueManager.ts';
 import { useCommandQueue } from '../hooks/useCommandQueue.ts';
-import { SessionBackgroundHint } from '../components/SessionBackgroundHint.ts';
+import { SessionBackgroundHint } from '../components/SessionBackgroundHint.tsx';
 import { startBackgroundSession } from '../tasks/LocalMainSessionTask.ts';
 import { useSessionBackgrounding } from '../hooks/useSessionBackgrounding.ts';
 import { diagnosticTracker } from '../services/diagnosticTracking.ts';
 import { handleSpeculationAccept, type ActiveSpeculationState } from '../services/PromptSuggestion/speculation.ts';
-import { IdeOnboardingDialog } from '../components/IdeOnboardingDialog.ts';
-import { EffortCallout, shouldShowEffortCallout } from '../components/EffortCallout.ts';
+import { IdeOnboardingDialog } from '../components/IdeOnboardingDialog.tsx';
+import { EffortCallout, shouldShowEffortCallout } from '../components/EffortCallout.tsx';
 import type { EffortValue } from '../utils/effort.ts';
-import { RemoteCallout } from '../components/RemoteCallout.ts';
+import { RemoteCallout } from '../components/RemoteCallout.tsx';
 /* eslint-disable custom-rules/no-process-env-top-level, @typescript-eslint/no-require-imports */
 const AntModelSwitchCallout = "external" === 'ant' ? require('../components/AntModelSwitchCallout.ts').AntModelSwitchCallout : null;
 const shouldShowAntModelSwitch = "external" === 'ant' ? require('../components/AntModelSwitchCallout.ts').shouldShowModelSwitchCallout : (): boolean => false;
@@ -256,7 +256,7 @@ import { usePluginInstallationStatus } from './hooks/notifs/usePluginInstallatio
 import { usePluginAutoupdateNotification } from './hooks/notifs/usePluginAutoupdateNotification.ts';
 import { performStartupChecks } from './utils/plugins/performStartupChecks.ts';
 import { UserTextMessage } from './components/messages/UserTextMessage.ts';
-import { AwsAuthStatusBox } from '../components/AwsAuthStatusBox.ts';
+import { AwsAuthStatusBox } from '../components/AwsAuthStatusBox.tsx';
 import { useRateLimitWarningNotification } from './hooks/notifs/useRateLimitWarningNotification.ts';
 import { useDeprecationWarningNotification } from './hooks/notifs/useDeprecationWarningNotification.ts';
 import { useNpmDeprecationNotification } from './hooks/notifs/useNpmDeprecationNotification.ts';
@@ -265,27 +265,27 @@ import { useModelMigrationNotifications } from './hooks/notifs/useModelMigration
 import { useCanSwitchToExistingSubscription } from './hooks/notifs/useCanSwitchToExistingSubscription.ts';
 import { useTeammateLifecycleNotification } from './hooks/notifs/useTeammateShutdownNotification.ts';
 import { useFastModeNotification } from './hooks/notifs/useFastModeNotification.ts';
-import { AutoRunIssueNotification, shouldAutoRunIssue, getAutoRunIssueReasonText, getAutoRunCommand, type AutoRunIssueReason } from '../utils/autoRunIssue.ts';
+import { AutoRunIssueNotification, shouldAutoRunIssue, getAutoRunIssueReasonText, getAutoRunCommand, type AutoRunIssueReason } from '../utils/autoRunIssue.tsx';
 import type { HookProgress } from '../types/hooks.ts';
 import { TungstenLiveMonitor } from '../tools/TungstenTool/TungstenLiveMonitor.ts';
 /* eslint-disable @typescript-eslint/no-require-imports */
 const WebBrowserPanelModule = feature('WEB_BROWSER_TOOL') ? require('../tools/WebBrowserTool/WebBrowserPanel.ts') as typeof import('../tools/WebBrowserTool/WebBrowserPanel.ts') : null;
 /* eslint-enable @typescript-eslint/no-require-imports */
-import { IssueFlagBanner } from '../components/PromptInput/IssueFlagBanner.ts';
+import { IssueFlagBanner } from '../components/PromptInput/IssueFlagBanner.tsx';
 import { useIssueFlagBanner } from '../hooks/useIssueFlagBanner.ts';
-import { CompanionSprite, CompanionFloatingBubble, MIN_COLS_FOR_FULL_SPRITE } from '../buddy/CompanionSprite.ts';
-import { DevBar } from '../components/DevBar.ts';
+import { CompanionSprite, CompanionFloatingBubble, MIN_COLS_FOR_FULL_SPRITE } from '../buddy/CompanionSprite.tsx';
+import { DevBar } from '../components/DevBar.tsx';
 // Session manager removed - using AppState now
 import type { RemoteSessionConfig } from '../remote/RemoteSessionManager.ts';
 import { REMOTE_SAFE_COMMANDS } from '../commands.ts';
 import type { RemoteMessageContent } from '../utils/teleport/api.ts';
-import { FullscreenLayout, useUnseenDivider, computeUnseenDivider } from '../components/FullscreenLayout.ts';
+import { FullscreenLayout, useUnseenDivider, computeUnseenDivider } from '../components/FullscreenLayout.tsx';
 import { isFullscreenEnvEnabled, maybeGetTmuxMouseHint, isMouseTrackingEnabled } from '../utils/fullscreen.ts';
-import { AlternateScreen } from '../ink/components/AlternateScreen.ts';
-import { ScrollKeybindingHandler } from '../components/ScrollKeybindingHandler.ts';
-import { useMessageActions, MessageActionsKeybindings, MessageActionsBar, type MessageActionsState, type MessageActionsNav, type MessageActionCaps } from '../components/messageActions.ts';
+import { AlternateScreen } from '../ink/components/AlternateScreen.tsx';
+import { ScrollKeybindingHandler } from '../components/ScrollKeybindingHandler.tsx';
+import { useMessageActions, MessageActionsKeybindings, MessageActionsBar, type MessageActionsState, type MessageActionsNav, type MessageActionCaps } from '../components/messageActions.tsx';
 import { setClipboard } from '../ink/termio/osc.ts';
-import type { ScrollBoxHandle } from '../ink/components/ScrollBox.ts';
+import type { ScrollBoxHandle } from '../ink/components/ScrollBox.tsx';
 import { createAttachmentMessage, getQueuedCommandAttachments } from '../utils/attachments.ts';
 
 // Stable empty array for hooks that accept MCPServerConnection[] — avoids

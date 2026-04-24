@@ -14,7 +14,7 @@ import { loadMcpServerUserConfig, saveMcpServerUserConfig } from '../../utils/pl
 import { getUnconfiguredChannels, type UnconfiguredChannel } from '../../utils/plugins/mcpPluginIntegration.ts';
 import { loadAllPlugins } from '../../utils/plugins/pluginLoader.ts';
 import { getUnconfiguredOptions, loadPluginOptions, type PluginOptionSchema, type PluginOptionValues, savePluginOptions } from '../../utils/plugins/pluginOptionsStorage.ts';
-import { PluginOptionsDialog } from './PluginOptionsDialog.ts';
+import { PluginOptionsDialog } from './PluginOptionsDialog.tsx';
 
 /**
  * Post-install lookup: return the LoadedPlugin for the just-installed

@@ -5,8 +5,8 @@ import { useTerminalSize } from '../../../hooks/useTerminalSize.ts';
 import { Box, NoSelect, Text } from '../../../ink.ts';
 import { intersperse } from '../../../utils/array.ts';
 import { getPatchForDisplay } from '../../../utils/diff.ts';
-import { HighlightedCode } from '../../HighlightedCode.ts';
-import { StructuredDiff } from '../../StructuredDiff.ts';
+import { HighlightedCode } from '../../HighlightedCode.tsx';
+import { StructuredDiff } from '../../StructuredDiff.tsx';
 type Props = {
   file_path: string;
   content: string;

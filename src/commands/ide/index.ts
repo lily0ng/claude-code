@@ -5,7 +5,7 @@ const ide = {
   name: 'ide',
   description: 'Manage IDE integrations and show status',
   argumentHint: '[open]',
-  load: () => import('./ide.ts'),
+  load: () => import('./ide.tsx'),
 } satisfies Command
 
 export default ide

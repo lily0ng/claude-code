@@ -2,10 +2,10 @@ import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import React, { createContext, type ReactNode, type RefObject, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { fileURLToPath } from 'url';
-import { ModalContext } from '../context/modalContext.ts';
-import { PromptOverlayProvider, usePromptOverlay, usePromptOverlayDialog } from '../context/promptOverlayContext.ts';
+import { ModalContext } from '../context/modalContext.tsx';
+import { PromptOverlayProvider, usePromptOverlay, usePromptOverlayDialog } from '../context/promptOverlayContext.tsx';
 import { useTerminalSize } from '../hooks/useTerminalSize.ts';
-import ScrollBox, { type ScrollBoxHandle } from '../ink/components/ScrollBox.ts';
+import ScrollBox, { type ScrollBoxHandle } from '../ink/components/ScrollBox.tsx';
 import instances from '../ink/instances.ts';
 import { Box, Text } from '../ink.ts';
 import type { Message } from '../types/message.ts';
@@ -13,8 +13,8 @@ import { openBrowser, openPath } from '../utils/browser.ts';
 import { isFullscreenEnvEnabled } from '../utils/fullscreen.ts';
 import { plural } from '../utils/stringUtils.ts';
 import { isNullRenderingAttachment } from './messages/nullRenderingAttachments.ts';
-import PromptInputFooterSuggestions from './PromptInput/PromptInputFooterSuggestions.ts';
-import type { StickyPrompt } from './VirtualMessageList.ts';
+import PromptInputFooterSuggestions from './PromptInput/PromptInputFooterSuggestions.tsx';
+import type { StickyPrompt } from './VirtualMessageList.tsx';
 
 /** Rows of transcript context kept visible above the modal pane's ▔ divider. */
 const MODAL_TRANSCRIPT_PEEK = 2;

@@ -4,7 +4,7 @@ import { Text } from '../ink.ts';
 import { getGlobalConfig, saveGlobalConfig } from '../utils/config.ts';
 import { isSupportedTerminal } from '../utils/ide.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 type IdeAutoConnectDialogProps = {
   onComplete: () => void;
 };

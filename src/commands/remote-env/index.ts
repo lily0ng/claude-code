@@ -11,5 +11,5 @@ export default {
   get isHidden() {
     return !isClaudeAISubscriber() || !isPolicyAllowed('allow_remote_sessions')
   },
-  load: () => import('./remote-env.ts'),
+  load: () => import('./remote-env.tsx'),
 } satisfies Command

@@ -6,18 +6,18 @@ import { NO_CONTENT_MESSAGE } from '../../constants/messages.ts';
 import { COMMAND_MESSAGE_TAG, LOCAL_COMMAND_CAVEAT_TAG, TASK_NOTIFICATION_TAG, TEAMMATE_MESSAGE_TAG, TICK_TAG } from '../../constants/xml.ts';
 import { isAgentSwarmsEnabled } from '../../utils/agentSwarmsEnabled.ts';
 import { extractTag, INTERRUPT_MESSAGE, INTERRUPT_MESSAGE_FOR_TOOL_USE } from '../../utils/messages.ts';
-import { InterruptedByUser } from '../InterruptedByUser.ts';
-import { MessageResponse } from '../MessageResponse.ts';
-import { UserAgentNotificationMessage } from './UserAgentNotificationMessage.ts';
-import { UserBashInputMessage } from './UserBashInputMessage.ts';
-import { UserBashOutputMessage } from './UserBashOutputMessage.ts';
-import { UserCommandMessage } from './UserCommandMessage.ts';
-import { UserLocalCommandOutputMessage } from './UserLocalCommandOutputMessage.ts';
-import { UserMemoryInputMessage } from './UserMemoryInputMessage.ts';
-import { UserPlanMessage } from './UserPlanMessage.ts';
-import { UserPromptMessage } from './UserPromptMessage.ts';
-import { UserResourceUpdateMessage } from './UserResourceUpdateMessage.ts';
-import { UserTeammateMessage } from './UserTeammateMessage.ts';
+import { InterruptedByUser } from '../InterruptedByUser.tsx';
+import { MessageResponse } from '../MessageResponse.tsx';
+import { UserAgentNotificationMessage } from './UserAgentNotificationMessage.tsx';
+import { UserBashInputMessage } from './UserBashInputMessage.tsx';
+import { UserBashOutputMessage } from './UserBashOutputMessage.tsx';
+import { UserCommandMessage } from './UserCommandMessage.tsx';
+import { UserLocalCommandOutputMessage } from './UserLocalCommandOutputMessage.tsx';
+import { UserMemoryInputMessage } from './UserMemoryInputMessage.tsx';
+import { UserPlanMessage } from './UserPlanMessage.tsx';
+import { UserPromptMessage } from './UserPromptMessage.tsx';
+import { UserResourceUpdateMessage } from './UserResourceUpdateMessage.tsx';
+import { UserTeammateMessage } from './UserTeammateMessage.tsx';
 type Props = {
   addMargin: boolean;
   param: TextBlockParam;
@@ -246,7 +246,7 @@ export function UserTextMessage(t0) {
       }
       const {
         UserChannelMessage
-      } = t1 as typeof import('./UserChannelMessage.ts');
+      } = t1 as typeof import('./UserChannelMessage.tsx');
       let t2;
       if ($[41] !== addMargin || $[42] !== param) {
         t2 = <UserChannelMessage addMargin={addMargin} param={param} />;

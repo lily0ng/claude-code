@@ -6,8 +6,8 @@ import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
 import { Box, Text } from '../../ink.ts';
 import { getCwd } from '../../utils/cwd.ts';
 import { readFileSafe } from '../../utils/file.ts';
-import { Divider } from '../design-system/Divider.ts';
-import { StructuredDiff } from '../StructuredDiff.ts';
+import { Divider } from '../design-system/Divider.tsx';
+import { StructuredDiff } from '../StructuredDiff.tsx';
 type Props = {
   filePath: string;
   hunks: StructuredPatchHunk[];

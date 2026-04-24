@@ -13,7 +13,7 @@ import {
   type HistoryAuthCtx,
   type HistoryPage,
 } from '../assistant/sessionHistory.ts'
-import type { ScrollBoxHandle } from '../ink/components/ScrollBox.ts'
+import type { ScrollBoxHandle } from '../ink/components/ScrollBox.tsx'
 import type { RemoteSessionConfig } from '../remote/RemoteSessionManager.ts'
 import { convertSDKMessage } from '../remote/sdkMessageAdapter.ts'
 import type { Message, SystemInformationalMessage } from '../types/message.ts'

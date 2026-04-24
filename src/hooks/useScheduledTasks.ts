@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react'
-import { useAppStateStore, useSetAppState } from '../state/AppState.ts'
+import { useAppStateStore, useSetAppState } from '../state/AppState.tsx'
 import { isTerminalTaskStatus } from '../Task.ts'
 import {
   findTeammateTaskByAgentId,
   injectUserMessageToTeammate,
-} from '../tasks/InProcessTeammateTask/InProcessTeammateTask.ts'
+} from '../tasks/InProcessTeammateTask/InProcessTeammateTask.tsx'
 import { isKairosCronEnabled } from '../tools/ScheduleCronTool/prompt.ts'
 import type { Message } from '../types/message.ts'
 import { getCronJitterConfig } from '../utils/cronJitterConfig.ts'

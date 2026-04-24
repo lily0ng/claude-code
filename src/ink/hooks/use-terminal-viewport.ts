@@ -1,5 +1,5 @@
 import { useCallback, useContext, useLayoutEffect, useRef } from 'react'
-import { TerminalSizeContext } from '../components/TerminalSizeContext.ts'
+import { TerminalSizeContext } from '../components/TerminalSizeContext.tsx'
 import type { DOMElement } from '../dom.ts'
 
 type ViewportEntry = {

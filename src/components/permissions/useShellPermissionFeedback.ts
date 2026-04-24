@@ -4,8 +4,8 @@ import {
   logEvent,
 } from '../../services/analytics/index.ts'
 import { sanitizeToolNameForAnalytics } from '../../services/analytics/metadata.ts'
-import { useSetAppState } from '../../state/AppState.ts'
-import type { ToolUseConfirm } from './PermissionRequest.ts'
+import { useSetAppState } from '../../state/AppState.tsx'
+import type { ToolUseConfirm } from './PermissionRequest.tsx'
 import { logUnaryPermissionEvent } from './utils.ts'
 
 /**

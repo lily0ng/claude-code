@@ -4,7 +4,7 @@ import React, { useMemo } from 'react';
 import { useTerminalSize } from '../../../hooks/useTerminalSize.ts';
 import { stringWidth } from '../../../ink/stringWidth.ts';
 import { Box, Text } from '../../../ink.ts';
-import type { Question } from '../../../tools/AskUserQuestionTool/AskUserQuestionTool.ts';
+import type { Question } from '../../../tools/AskUserQuestionTool/AskUserQuestionTool.tsx';
 import { truncateToWidth } from '../../../utils/format.ts';
 type Props = {
   questions: Question[];

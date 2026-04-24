@@ -5,7 +5,7 @@ import { Box } from '../ink.ts';
 import type { AgentDefinitionsResult } from '../tools/AgentTool/loadAgentsDir.ts';
 import { getMemoryFiles } from '../utils/claudemd.ts';
 import { getGlobalConfig } from '../utils/config.ts';
-import { getActiveNotices, type StatusNoticeContext } from '../utils/statusNoticeDefinitions.ts';
+import { getActiveNotices, type StatusNoticeContext } from '../utils/statusNoticeDefinitions.tsx';
 type Props = {
   agentDefinitions?: AgentDefinitionsResult;
 };

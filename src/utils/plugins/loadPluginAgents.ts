@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { basename } from 'path'
 import { isAutoMemoryEnabled } from '../../memdir/paths.ts'
 import type { AgentColorName } from '../../tools/AgentTool/agentColorManager.ts'

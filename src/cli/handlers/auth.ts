@@ -3,7 +3,7 @@
 import {
   clearAuthRelatedCaches,
   performLogout,
-} from '../../commands/logout/logout.ts'
+} from '../../commands/logout/logout.tsx'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
@@ -41,7 +41,7 @@ import { jsonStringify } from '../../utils/slowOperations.ts'
 import {
   buildAccountProperties,
   buildAPIProviderProperties,
-} from '../../utils/status.ts'
+} from '../../utils/status.tsx'
 
 /**
  * Shared post-token-acquisition logic. Saves tokens, fetches profile/roles,

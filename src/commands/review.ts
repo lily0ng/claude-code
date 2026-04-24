@@ -1,4 +1,4 @@
-import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages.ts'
+import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages'
 import type { Command } from '../commands.ts'
 import { isUltrareviewEnabled } from './review/ultrareviewEnabled.ts'
 
@@ -50,7 +50,7 @@ const ultrareview: Command = {
   name: 'ultrareview',
   description: `~10–20 min · Finds and verifies bugs in your branch. Runs in Claude Code on the web. See ${CCR_TERMS_URL}`,
   isEnabled: () => isUltrareviewEnabled(),
-  load: () => import('./review/ultrareviewCommand.ts'),
+  load: () => import('./review/ultrareviewCommand.tsx'),
 }
 
 export default review

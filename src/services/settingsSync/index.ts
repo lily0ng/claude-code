@@ -12,7 +12,7 @@
 import { feature } from 'bun:bundle'
 import axios from 'axios'
 import { mkdir, readFile, stat, writeFile } from 'fs/promises'
-import pickBy from 'lodash-es/pickBy.ts'
+import pickBy from 'lodash-es/pickBy'
 import { dirname } from 'path'
 import { getIsInteractive } from '../../bootstrap/state.ts'
 import {

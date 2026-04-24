@@ -8,7 +8,7 @@ import { c as _c } from "react/compiler-runtime";
  * support when the file changes.
  */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useNotifications } from '../context/notifications.ts';
+import { useNotifications } from '../context/notifications.tsx';
 import type { InputEvent } from '../ink/events/input-event.ts';
 // ChordInterceptor intentionally uses useInput to intercept all keystrokes before
 // other handlers process them - this is required for chord sequence support
@@ -17,7 +17,7 @@ import { type Key, useInput } from '../ink.ts';
 import { count } from '../utils/array.ts';
 import { logForDebugging } from '../utils/debug.ts';
 import { plural } from '../utils/stringUtils.ts';
-import { KeybindingProvider } from './KeybindingContext.ts';
+import { KeybindingProvider } from './KeybindingContext.tsx';
 import { initializeKeybindingWatcher, type KeybindingsLoadResult, loadKeybindingsSyncWithWarnings, subscribeToKeybindingChanges } from './loadUserBindings.ts';
 import { resolveKeyWithChordState } from './resolver.ts';
 import type { KeybindingContextName, ParsedBinding, ParsedKeystroke } from './types.ts';

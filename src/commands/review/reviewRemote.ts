@@ -9,7 +9,7 @@
  * pushed branches on repos with the Claude GitHub app installed.
  */
 
-import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages.ts'
+import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages'
 import { getFeatureValue_CACHED_MAY_BE_STALE } from '../../services/analytics/growthbook.ts'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
@@ -23,12 +23,12 @@ import {
   formatPreconditionError,
   getRemoteTaskSessionUrl,
   registerRemoteAgentTask,
-} from '../../tasks/RemoteAgentTask/RemoteAgentTask.ts'
+} from '../../tasks/RemoteAgentTask/RemoteAgentTask.tsx'
 import { isEnterpriseSubscriber, isTeamSubscriber } from '../../utils/auth.ts'
 import { detectCurrentRepositoryWithHost } from '../../utils/detectRepository.ts'
 import { execFileNoThrow } from '../../utils/execFileNoThrow.ts'
 import { getDefaultBranch, gitExe } from '../../utils/git.ts'
-import { teleportToRemote } from '../../utils/teleport.ts'
+import { teleportToRemote } from '../../utils/teleport.tsx'
 
 // One-time session flag: once the user confirms overage billing via the
 // dialog, all subsequent /ultrareview invocations in this session proceed

@@ -5,12 +5,12 @@ import { Box, color, Link, Text, useTheme } from '../../ink.ts';
 import { useKeybinding } from '../../keybindings/useKeybinding.ts';
 import { AuthenticationCancelledError, performMCPOAuthFlow } from '../../services/mcp/auth.ts';
 import { capitalize } from '../../utils/stringUtils.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
 import { Select } from '../CustomSelect/index.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
-import { Spinner } from '../Spinner.ts';
+import { Byline } from '../design-system/Byline.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
+import { Spinner } from '../Spinner.tsx';
 import type { AgentMcpServerInfo } from './types.ts';
 type Props = {
   agentServer: AgentMcpServerInfo;

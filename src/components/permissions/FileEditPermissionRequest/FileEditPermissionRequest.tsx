@@ -6,9 +6,9 @@ import { getCwd } from './utils/cwd.ts';
 import type { z } from 'zod/v4';
 import { Text } from '../../../ink.ts';
 import { FileEditTool } from '../../../tools/FileEditTool/FileEditTool.ts';
-import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.ts';
+import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.tsx';
 import { createSingleEditDiffConfig, type FileEdit, type IDEDiffSupport } from '../FilePermissionDialog/ideDiffConfig.ts';
-import type { PermissionRequestProps } from '../PermissionRequest.ts';
+import type { PermissionRequestProps } from '../PermissionRequest.tsx';
 type FileEditInput = z.infer<typeof FileEditTool.inputSchema>;
 const ideDiffSupport: IDEDiffSupport<FileEditInput> = {
   getConfig: (input: FileEditInput) => createSingleEditDiffConfig(input.file_path, input.old_string, input.new_string, input.replace_all),

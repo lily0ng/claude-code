@@ -6,7 +6,7 @@ import { Ansi, Box, type DOMElement, measureElement, NoSelect, Text, useTheme } 
 import { isFullscreenEnvEnabled } from '../utils/fullscreen.ts';
 import sliceAnsi from '../utils/sliceAnsi.ts';
 import { countCharInString } from '../utils/stringUtils.ts';
-import { HighlightedCodeFallback } from './HighlightedCode/Fallback.ts';
+import { HighlightedCodeFallback } from './HighlightedCode/Fallback.tsx';
 import { expectColorFile } from './StructuredDiff/colorDiff.ts';
 type Props = {
   code: string;

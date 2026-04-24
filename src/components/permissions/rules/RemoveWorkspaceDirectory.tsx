@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useCallback } from 'react';
-import { Select } from '../../../components/CustomSelect/select.ts';
+import { Select } from '../../../components/CustomSelect/select.tsx';
 import { Box, Text } from '../../../ink.ts';
 import type { ToolPermissionContext } from '../../../Tool.ts';
 import { applyPermissionUpdate } from '../../../utils/permissions/PermissionUpdate.ts';
-import { Dialog } from '../../design-system/Dialog.ts';
+import { Dialog } from '../../design-system/Dialog.tsx';
 type Props = {
   directoryPath: string;
   onRemove: () => void;

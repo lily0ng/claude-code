@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useAppState } from '../state/AppState.ts'
+import { useAppState } from '../state/AppState.tsx'
 import {
   hasVoiceAuth,
   isVoiceGrowthBookEnabled,

@@ -2,9 +2,9 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useEffect, useMemo } from 'react';
 import { getIsRemoteMode } from '../../bootstrap/state.ts';
-import { useNotifications } from '../../context/notifications.ts';
+import { useNotifications } from '../../context/notifications.tsx';
 import { Text } from '../../ink.ts';
-import { useAppState } from '../../state/AppState.ts';
+import { useAppState } from '../../state/AppState.tsx';
 import { logForDebugging } from '../../utils/debug.ts';
 import { plural } from '../../utils/stringUtils.ts';
 export function usePluginInstallationStatus() {

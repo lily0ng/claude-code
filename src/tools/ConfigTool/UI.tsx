@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.ts';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
 import { Text } from '../../ink.ts';
 import { jsonStringify } from '../../utils/slowOperations.ts';
 import type { Input, Output } from './ConfigTool.ts';

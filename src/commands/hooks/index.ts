@@ -5,7 +5,7 @@ const hooks = {
   name: 'hooks',
   description: 'View hook configurations for tool events',
   immediate: true,
-  load: () => import('./hooks.ts'),
+  load: () => import('./hooks.tsx'),
 } satisfies Command
 
 export default hooks

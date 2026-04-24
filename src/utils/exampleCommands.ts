@@ -1,5 +1,5 @@
-import memoize from 'lodash-es/memoize.ts'
-import sample from 'lodash-es/sample.ts'
+import memoize from 'lodash-es/memoize'
+import sample from 'lodash-es/sample'
 import { getCwd } from '../utils/cwd.ts'
 import { getCurrentProjectConfig, saveCurrentProjectConfig } from './config.ts'
 import { env } from './env.ts'

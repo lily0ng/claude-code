@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { Box, Text } from '../../ink.ts';
 import { getAgentModelOptions } from '../../utils/model/agent.ts';
-import { Select } from '../CustomSelect/select.ts';
+import { Select } from '../CustomSelect/select.tsx';
 interface ModelSelectorProps {
   initialModel?: string;
   onComplete: (model?: string) => void;

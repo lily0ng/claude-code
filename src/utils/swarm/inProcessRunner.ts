@@ -13,7 +13,7 @@ import { feature } from 'bun:bundle'
 import type { ContentBlockParam } from '@anthropic-ai/sdk/resources/messages.mjs'
 import { getSystemPrompt } from '../../constants/prompts.ts'
 import { TEAMMATE_MESSAGE_TAG } from '../../constants/xml.ts'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import {
   processMailboxPermissionResponse,
   registerPermissionCallback,
@@ -30,9 +30,9 @@ import {
   ERROR_MESSAGE_USER_ABORT,
 } from '../../services/compact/compact.ts'
 import { resetMicrocompactState } from '../../services/compact/microCompact.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import type { Tool, ToolUseContext } from '../../Tool.ts'
-import { appendTeammateMessage } from '../../tasks/InProcessTeammateTask/InProcessTeammateTask.ts'
+import { appendTeammateMessage } from '../../tasks/InProcessTeammateTask/InProcessTeammateTask.tsx'
 import type {
   InProcessTeammateTaskState,
   TeammateIdentity,
@@ -43,7 +43,7 @@ import {
   createProgressTracker,
   getProgressUpdate,
   updateProgressFromMessage,
-} from '../../tasks/LocalAgentTask/LocalAgentTask.ts'
+} from '../../tasks/LocalAgentTask/LocalAgentTask.tsx'
 import type { CustomAgentDefinition } from '../../tools/AgentTool/loadAgentsDir.ts'
 import { runAgent } from '../../tools/AgentTool/runAgent.ts'
 import { awaitClassifierAutoApproval } from '../../tools/BashTool/bashPermissions.ts'

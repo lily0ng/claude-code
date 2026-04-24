@@ -10,11 +10,11 @@ import type { InProcessTeammateTaskState } from '../../tasks/InProcessTeammateTa
 import { getTools } from '../../tools.ts';
 import { formatNumber, truncateToWidth } from '../../utils/format.ts';
 import { toInkColor } from '../../utils/ink.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
-import { renderToolActivity } from './renderToolActivity.ts';
-import { describeTeammateActivity } from './taskStatusUtils.ts';
+import { Byline } from '../design-system/Byline.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
+import { renderToolActivity } from './renderToolActivity.tsx';
+import { describeTeammateActivity } from './taskStatusUtils.tsx';
 type Props = {
   teammate: DeepImmutable<InProcessTeammateTaskState>;
   onDone: () => void;

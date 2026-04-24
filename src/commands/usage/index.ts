@@ -5,5 +5,5 @@ export default {
   name: 'usage',
   description: 'Show plan usage limits',
   availability: ['claude-ai'],
-  load: () => import('./usage.ts'),
+  load: () => import('./usage.tsx'),
 } satisfies Command

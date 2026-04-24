@@ -19,17 +19,17 @@ import { getBranch } from '../utils/git.ts';
 import { getLogDisplayTitle } from '../utils/log.ts';
 import { getFirstMeaningfulUserMessageTextContent, getSessionIdFromLog, isCustomTitleEnabled, saveCustomTitle } from '../utils/sessionStorage.ts';
 import { getTheme } from '../utils/theme.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
-import { Select } from './CustomSelect/select.ts';
-import { Byline } from './design-system/Byline.ts';
-import { Divider } from './design-system/Divider.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
-import { SearchBox } from './SearchBox.ts';
-import { SessionPreview } from './SessionPreview.ts';
-import { Spinner } from './Spinner.ts';
-import { TagTabs } from './TagTabs.ts';
-import TextInput from './TextInput.ts';
-import { type TreeNode, TreeSelect } from './ui/TreeSelect.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
+import { Select } from './CustomSelect/select.tsx';
+import { Byline } from './design-system/Byline.tsx';
+import { Divider } from './design-system/Divider.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
+import { SearchBox } from './SearchBox.tsx';
+import { SessionPreview } from './SessionPreview.tsx';
+import { Spinner } from './Spinner.tsx';
+import { TagTabs } from './TagTabs.tsx';
+import TextInput from './TextInput.tsx';
+import { type TreeNode, TreeSelect } from './ui/TreeSelect.tsx';
 type AgenticSearchState = {
   status: 'idle';
 } | {

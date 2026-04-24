@@ -7,9 +7,9 @@ import { execFileNoThrow } from '../utils/execFileNoThrow.ts';
 import { getPlansDirectory } from '../utils/plans.ts';
 import { setCwd } from '../utils/Shell.ts';
 import { cleanupWorktree, getCurrentWorktreeSession, keepWorktree, killTmuxSession } from '../utils/worktree.ts';
-import { Select } from './CustomSelect/select.ts';
-import { Dialog } from './design-system/Dialog.ts';
-import { Spinner } from './Spinner.ts';
+import { Select } from './CustomSelect/select.tsx';
+import { Dialog } from './design-system/Dialog.tsx';
+import { Spinner } from './Spinner.tsx';
 
 // Inline require breaks the cycle this file would otherwise close:
 // sessionStorage → commands → exit → ExitFlow → here. All call sites

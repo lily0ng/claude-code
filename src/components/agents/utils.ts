@@ -1,4 +1,4 @@
-import capitalize from 'lodash-es/capitalize.ts'
+import capitalize from 'lodash-es/capitalize'
 import type { SettingSource } from './utils/settings/constants.ts'
 import { getSettingSourceName } from './utils/settings/constants.ts'
 

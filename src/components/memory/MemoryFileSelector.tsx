@@ -13,7 +13,7 @@ import { getAutoMemPath, isAutoMemoryEnabled } from '../../memdir/paths.ts';
 import { logEvent } from '../../services/analytics/index.ts';
 import { isAutoDreamEnabled } from '../../services/autoDream/config.ts';
 import { readLastConsolidatedAt } from '../../services/autoDream/consolidationLock.ts';
-import { useAppState } from '../../state/AppState.ts';
+import { useAppState } from '../../state/AppState.tsx';
 import { getAgentMemoryDir } from '../../tools/AgentTool/agentMemory.ts';
 import { openPath } from '../../utils/browser.ts';
 import { getMemoryFiles, type MemoryFileInfo } from '../../utils/claudemd.ts';
@@ -23,7 +23,7 @@ import { formatRelativeTimeAgo } from '../../utils/format.ts';
 import { projectIsInGitRepo } from '../../utils/memory/versions.ts';
 import { updateSettingsForSource } from '../../utils/settings/settings.ts';
 import { Select } from '../CustomSelect/index.ts';
-import { ListItem } from '../design-system/ListItem.ts';
+import { ListItem } from '../design-system/ListItem.tsx';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 const teamMemPaths = feature('TEAMMEM') ? require('../../memdir/teamMemPaths.ts') as typeof import('../../memdir/teamMemPaths.ts') : null;

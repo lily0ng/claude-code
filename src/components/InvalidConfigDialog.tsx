@@ -1,14 +1,14 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { Box, render, Text } from '../ink.ts';
-import { KeybindingSetup } from '../keybindings/KeybindingProviderSetup.ts';
-import { AppStateProvider } from '../state/AppState.ts';
+import { KeybindingSetup } from '../keybindings/KeybindingProviderSetup.tsx';
+import { AppStateProvider } from '../state/AppState.tsx';
 import type { ConfigParseError } from '../utils/errors.ts';
 import { getBaseRenderOptions } from '../utils/renderOptions.ts';
 import { jsonStringify, writeFileSync_DEPRECATED } from '../utils/slowOperations.ts';
 import type { ThemeName } from '../utils/theme.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 interface InvalidConfigHandlerProps {
   error: ConfigParseError;
 }

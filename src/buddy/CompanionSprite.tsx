@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTerminalSize } from '../hooks/useTerminalSize.ts';
 import { stringWidth } from '../ink/stringWidth.ts';
 import { Box, Text } from '../ink.ts';
-import { useAppState, useSetAppState } from '../state/AppState.ts';
+import { useAppState, useSetAppState } from '../state/AppState.tsx';
 import type { AppState } from '../state/AppStateStore.ts';
 import { getGlobalConfig } from '../utils/config.ts';
 import { isFullscreenActive } from '../utils/fullscreen.ts';

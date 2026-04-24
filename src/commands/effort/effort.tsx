@@ -2,7 +2,7 @@ import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import { useMainLoopModel } from '../../hooks/useMainLoopModel.ts';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../../services/analytics/index.ts';
-import { useAppState, useSetAppState } from '../../state/AppState.ts';
+import { useAppState, useSetAppState } from '../../state/AppState.tsx';
 import type { LocalJSXCommandOnDone } from '../../types/command.ts';
 import { type EffortValue, getDisplayedEffortLevel, getEffortEnvOverride, getEffortValueDescription, isEffortLevel, toPersistableEffort } from '../../utils/effort.ts';
 import { updateSettingsForSource } from '../../utils/settings/settings.ts';

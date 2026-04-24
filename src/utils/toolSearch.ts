@@ -6,7 +6,7 @@
  * loaded upfront.
  */
 
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { getFeatureValue_CACHED_MAY_BE_STALE } from '../services/analytics/growthbook.ts'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,

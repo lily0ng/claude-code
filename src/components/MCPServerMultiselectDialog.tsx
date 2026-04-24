@@ -1,15 +1,15 @@
 import { c as _c } from "react/compiler-runtime";
-import partition from 'lodash-es/partition.ts';
+import partition from 'lodash-es/partition';
 import React, { useCallback } from 'react';
 import { logEvent } from './services/analytics/index.ts';
 import { Box, Text } from '../ink.ts';
 import { getSettings_DEPRECATED, updateSettingsForSource } from '../utils/settings/settings.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
-import { SelectMulti } from './CustomSelect/SelectMulti.ts';
-import { Byline } from './design-system/Byline.ts';
-import { Dialog } from './design-system/Dialog.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
-import { MCPServerDialogCopy } from './MCPServerDialogCopy.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
+import { SelectMulti } from './CustomSelect/SelectMulti.tsx';
+import { Byline } from './design-system/Byline.tsx';
+import { Dialog } from './design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
+import { MCPServerDialogCopy } from './MCPServerDialogCopy.tsx';
 type Props = {
   serverNames: string[];
   onDone(): void;

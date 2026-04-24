@@ -1,4 +1,4 @@
-import { type AppState, useAppState } from '../state/AppState.ts'
+import { type AppState, useAppState } from '../state/AppState.tsx'
 
 /**
  * Settings type as stored in AppState (DeepImmutable wrapped).

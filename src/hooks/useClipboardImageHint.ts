@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useNotifications } from '../context/notifications.ts'
+import { useNotifications } from '../context/notifications.tsx'
 import { getShortcutDisplay } from '../keybindings/shortcutFormat.ts'
 import { hasImageInClipboard } from '../utils/imagePaste.ts'
 

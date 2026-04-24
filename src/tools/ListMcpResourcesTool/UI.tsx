@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MessageResponse } from '../../components/MessageResponse.ts';
-import { OutputLine } from '../../components/shell/OutputLine.ts';
+import { MessageResponse } from '../../components/MessageResponse.tsx';
+import { OutputLine } from '../../components/shell/OutputLine.tsx';
 import { Text } from '../../ink.ts';
 import type { ToolProgressData } from '../../Tool.ts';
 import type { ProgressMessage } from '../../types/message.ts';

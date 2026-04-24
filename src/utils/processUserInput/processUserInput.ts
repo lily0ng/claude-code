@@ -14,7 +14,7 @@ import {
   isBridgeSafeCommand,
   type LocalJSXCommandContext,
 } from '../../commands.ts'
-import type { CanUseToolFn } from '../../hooks/useCanUseTool.ts'
+import type { CanUseToolFn } from '../../hooks/useCanUseTool.tsx'
 import type { IDESelection } from '../../hooks/useIdeSelection.ts'
 import type { SetToolJSXFn, ToolUseContext } from '../../Tool.ts'
 import type {
@@ -477,7 +477,7 @@ async function processUserInputBase(
   ) {
     logEvent('tengu_ultraplan_keyword', {})
     const rewritten = replaceUltraplanKeyword(inputString).trim()
-    const { processSlashCommand } = await import('./processSlashCommand.ts')
+    const { processSlashCommand } = await import('./processSlashCommand.tsx')
     const slashResult = await processSlashCommand(
       `/ultraplan ${rewritten}`,
       precedingInputBlocks,
@@ -515,7 +515,7 @@ async function processUserInputBase(
 
   // Bash commands
   if (inputString !== null && mode === 'bash') {
-    const { processBashCommand } = await import('./processBashCommand.ts')
+    const { processBashCommand } = await import('./processBashCommand.tsx')
     return addImageMetadataMessage(
       await processBashCommand(
         inputString,
@@ -535,7 +535,7 @@ async function processUserInputBase(
     !effectiveSkipSlash &&
     inputString.startsWith('/')
   ) {
-    const { processSlashCommand } = await import('./processSlashCommand.ts')
+    const { processSlashCommand } = await import('./processSlashCommand.tsx')
     const slashResult = await processSlashCommand(
       inputString,
       precedingInputBlocks,

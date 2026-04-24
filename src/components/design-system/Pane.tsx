@@ -1,9 +1,9 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
-import { useIsInsideModal } from '../../context/modalContext.ts';
+import { useIsInsideModal } from '../../context/modalContext.tsx';
 import { Box } from '../../ink.ts';
 import type { Theme } from '../../utils/theme.ts';
-import { Divider } from './Divider.ts';
+import { Divider } from './Divider.tsx';
 type PaneProps = {
   children: React.ReactNode;
   /**

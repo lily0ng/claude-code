@@ -6,7 +6,7 @@ import { logEvent } from '../../services/analytics/index.ts';
 import { formatGrantAmount, getCachedOverageCreditGrant, refreshOverageCreditGrantCache } from '../../services/api/overageCreditGrant.ts';
 import { getGlobalConfig, saveGlobalConfig } from '../../utils/config.ts';
 import { truncate } from '../../utils/format.ts';
-import type { FeedConfig } from './Feed.ts';
+import type { FeedConfig } from './Feed.tsx';
 const MAX_IMPRESSIONS = 3;
 
 /**

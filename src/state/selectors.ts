@@ -5,7 +5,7 @@
 
 import type { InProcessTeammateTaskState } from '../tasks/InProcessTeammateTask/types.ts'
 import { isInProcessTeammateTask } from '../tasks/InProcessTeammateTask/types.ts'
-import type { LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask.ts'
+import type { LocalAgentTaskState } from '../tasks/LocalAgentTask/LocalAgentTask.tsx'
 import type { AppState } from './AppStateStore.ts'
 
 /**

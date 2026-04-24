@@ -6,7 +6,7 @@ import { useKeybindings } from '../keybindings/useKeybinding.ts';
 import { getGlobalConfig, saveGlobalConfig } from '../utils/config.ts';
 import { env } from '../utils/env.ts';
 import { getTerminalIdeType, type IDEExtensionInstallationStatus, isJetBrainsIde, toIDEDisplayName } from '../utils/ide.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 interface Props {
   onDone: () => void;
   installationStatus: IDEExtensionInstallationStatus | null;

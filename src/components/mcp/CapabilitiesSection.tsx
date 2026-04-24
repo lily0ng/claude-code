@@ -1,7 +1,7 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { Box, Text } from '../../ink.ts';
-import { Byline } from '../design-system/Byline.ts';
+import { Byline } from '../design-system/Byline.tsx';
 type Props = {
   serverToolsCount: number;
   serverPromptsCount: number;

@@ -10,7 +10,7 @@ import { applyPermissionUpdate } from '../../utils/permissions/PermissionUpdate.
 import { prepareContextForPlanMode } from '../../utils/permissions/permissionSetup.ts';
 import { getPlan, getPlanFilePath } from '../../utils/plans.ts';
 import { editFileInEditor } from '../../utils/promptEditor.ts';
-import { renderToString } from '../../utils/staticRender.ts';
+import { renderToString } from '../../utils/staticRender.tsx';
 function PlanDisplay(t0) {
   const $ = _c(11);
   const {

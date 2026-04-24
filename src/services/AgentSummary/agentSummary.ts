@@ -11,7 +11,7 @@
  */
 
 import type { TaskContext } from '../../Task.ts'
-import { updateAgentSummary } from '../../tasks/LocalAgentTask/LocalAgentTask.ts'
+import { updateAgentSummary } from '../../tasks/LocalAgentTask/LocalAgentTask.tsx'
 import { filterIncompleteToolCalls } from '../../tools/AgentTool/runAgent.ts'
 import type { AgentId } from '../../types/ids.ts'
 import { logForDebugging } from '../../utils/debug.ts'

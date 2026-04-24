@@ -5,7 +5,7 @@ const mobile = {
   name: 'mobile',
   aliases: ['ios', 'android'],
   description: 'Show QR code to download the Claude mobile app',
-  load: () => import('./mobile.ts'),
+  load: () => import('./mobile.tsx'),
 } satisfies Command
 
 export default mobile

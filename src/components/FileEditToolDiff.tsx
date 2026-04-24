@@ -10,7 +10,7 @@ import { adjustHunkLineNumbers, CONTEXT_LINES, getPatchForDisplay } from '../uti
 import { logError } from '../utils/log.ts';
 import { CHUNK_SIZE, openForScan, readCapped, scanForContext } from '../utils/readEditContext.ts';
 import { firstLineOf } from '../utils/stringUtils.ts';
-import { StructuredDiffList } from './StructuredDiffList.ts';
+import { StructuredDiffList } from './StructuredDiffList.tsx';
 type Props = {
   file_path: string;
   edits: FileEdit[];

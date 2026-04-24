@@ -14,13 +14,13 @@ import { formatDuration, formatSecondsShort } from '../../utils/format.ts';
 import { isFullscreenEnvEnabled } from '../../utils/fullscreen.ts';
 import type { buildMessageLookups } from '../../utils/messages.ts';
 import type { ThemeName } from '../../utils/theme.ts';
-import { CtrlOToExpand } from '../CtrlOToExpand.ts';
-import { useSelectedMessageBg } from '../messageActions.ts';
-import { PrBadge } from '../PrBadge.ts';
-import { ToolUseLoader } from '../ToolUseLoader.ts';
+import { CtrlOToExpand } from '../CtrlOToExpand.tsx';
+import { useSelectedMessageBg } from '../messageActions.tsx';
+import { PrBadge } from '../PrBadge.tsx';
+import { ToolUseLoader } from '../ToolUseLoader.tsx';
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const teamMemCollapsed = feature('TEAMMEM') ? require('./teamMemCollapsed.ts') as typeof import('./teamMemCollapsed.ts') : null;
+const teamMemCollapsed = feature('TEAMMEM') ? require('./teamMemCollapsed.ts') as typeof import('./teamMemCollapsed.tsx') : null;
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 // Hold each ⤿ hint for a minimum duration so fast-completing tool calls

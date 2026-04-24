@@ -5,7 +5,7 @@ import { Box, Link, Newline, Text } from '../ink.ts';
 import { gracefulShutdownSync } from '../utils/gracefulShutdown.ts';
 import { updateSettingsForSource } from '../utils/settings/settings.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 type Props = {
   onAccept(): void;
 };

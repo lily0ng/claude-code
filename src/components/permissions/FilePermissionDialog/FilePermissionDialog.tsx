@@ -9,13 +9,13 @@ import { getFsImplementation, safeResolvePath } from '../../../utils/fsOperation
 import { expandPath } from '../../../utils/path.ts';
 import type { CompletionType } from '../../../utils/unaryLogging.ts';
 import { Select } from '../../CustomSelect/index.ts';
-import { ShowInIDEPrompt } from '../../ShowInIDEPrompt.ts';
+import { ShowInIDEPrompt } from '../../ShowInIDEPrompt.tsx';
 import { usePermissionRequestLogging } from '../hooks.ts';
-import { PermissionDialog } from '../PermissionDialog.ts';
-import type { ToolUseConfirm } from '../PermissionRequest.ts';
-import type { WorkerBadgeProps } from '../WorkerBadge.ts';
+import { PermissionDialog } from '../PermissionDialog.tsx';
+import type { ToolUseConfirm } from '../PermissionRequest.tsx';
+import type { WorkerBadgeProps } from '../WorkerBadge.tsx';
 import type { IDEDiffSupport } from './ideDiffConfig.ts';
-import type { FileOperationType, PermissionOption } from './permissionOptions.ts';
+import type { FileOperationType, PermissionOption } from './permissionOptions.tsx';
 import { type ToolInput, useFilePermissionDialog } from './useFilePermissionDialog.ts';
 export type FilePermissionDialogProps<T extends ToolInput = ToolInput> = {
   // Required props from PermissionRequestProps

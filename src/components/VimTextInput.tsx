@@ -6,7 +6,7 @@ import { useVimInput } from '../hooks/useVimInput.ts';
 import { Box, color, useTerminalFocus, useTheme } from '../ink.ts';
 import type { VimTextInputProps } from '../types/textInputTypes.ts';
 import type { TextHighlight } from '../utils/textHighlighting.ts';
-import { BaseTextInput } from './BaseTextInput.ts';
+import { BaseTextInput } from './BaseTextInput.tsx';
 export type Props = VimTextInputProps & {
   highlights?: TextHighlight[];
 };

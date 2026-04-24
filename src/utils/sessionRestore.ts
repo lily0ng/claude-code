@@ -11,7 +11,7 @@ import {
 } from '../bootstrap/state.ts'
 import { clearSystemPromptSections } from '../constants/systemPromptSections.ts'
 import { restoreCostStateForSession } from '../cost-tracker.ts'
-import type { AppState } from '../state/AppState.ts'
+import type { AppState } from '../state/AppState.tsx'
 import type { AgentColorName } from '../tools/AgentTool/agentColorManager.ts'
 import {
   type AgentDefinition,

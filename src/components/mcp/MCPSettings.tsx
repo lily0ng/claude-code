@@ -4,14 +4,14 @@ import type { CommandResultDisplay } from '../../commands.ts';
 import { ClaudeAuthProvider } from '../../services/mcp/auth.ts';
 import type { McpClaudeAIProxyServerConfig, McpHTTPServerConfig, McpSSEServerConfig, McpStdioServerConfig } from '../../services/mcp/types.ts';
 import { extractAgentMcpServers, filterToolsByServer } from '../../services/mcp/utils.ts';
-import { useAppState } from '../../state/AppState.ts';
+import { useAppState } from '../../state/AppState.tsx';
 import { getSessionIngressAuthToken } from '../../utils/sessionIngressAuth.ts';
-import { MCPAgentServerMenu } from './MCPAgentServerMenu.ts';
-import { MCPListPanel } from './MCPListPanel.ts';
-import { MCPRemoteServerMenu } from './MCPRemoteServerMenu.ts';
-import { MCPStdioServerMenu } from './MCPStdioServerMenu.ts';
-import { MCPToolDetailView } from './MCPToolDetailView.ts';
-import { MCPToolListView } from './MCPToolListView.ts';
+import { MCPAgentServerMenu } from './MCPAgentServerMenu.tsx';
+import { MCPListPanel } from './MCPListPanel.tsx';
+import { MCPRemoteServerMenu } from './MCPRemoteServerMenu.tsx';
+import { MCPStdioServerMenu } from './MCPStdioServerMenu.tsx';
+import { MCPToolDetailView } from './MCPToolDetailView.tsx';
+import { MCPToolListView } from './MCPToolListView.tsx';
 import type { AgentMcpServerInfo, MCPViewState, ServerInfo } from './types.ts';
 type Props = {
   onComplete: (result?: string, options?: {

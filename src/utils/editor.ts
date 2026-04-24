@@ -4,7 +4,7 @@ import {
   spawn,
   spawnSync,
 } from 'child_process'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { basename } from 'path'
 import instances from '../ink/instances.ts'
 import { logForDebugging } from './debug.ts'

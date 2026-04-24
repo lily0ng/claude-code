@@ -1,9 +1,9 @@
 import { feature } from 'bun:bundle'
 import type { Task, TaskType } from './Task.ts'
 import { DreamTask } from './tasks/DreamTask/DreamTask.ts'
-import { LocalAgentTask } from './tasks/LocalAgentTask/LocalAgentTask.ts'
-import { LocalShellTask } from './tasks/LocalShellTask/LocalShellTask.ts'
-import { RemoteAgentTask } from './tasks/RemoteAgentTask/RemoteAgentTask.ts'
+import { LocalAgentTask } from './tasks/LocalAgentTask/LocalAgentTask.tsx'
+import { LocalShellTask } from './tasks/LocalShellTask/LocalShellTask.tsx'
+import { RemoteAgentTask } from './tasks/RemoteAgentTask/RemoteAgentTask.tsx'
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 const LocalWorkflowTask: Task | null = feature('WORKFLOW_SCRIPTS')

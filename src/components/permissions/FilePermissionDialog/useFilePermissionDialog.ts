@@ -8,13 +8,13 @@ import {
 import { sanitizeToolNameForAnalytics } from '../../../services/analytics/metadata.ts'
 import type { PermissionUpdate } from '../../../utils/permissions/PermissionUpdateSchema.ts'
 import type { CompletionType } from '../../../utils/unaryLogging.ts'
-import type { ToolUseConfirm } from '../PermissionRequest.ts'
+import type { ToolUseConfirm } from '../PermissionRequest.tsx'
 import {
   type FileOperationType,
   getFilePermissionOptions,
   type PermissionOption,
   type PermissionOptionWithLabel,
-} from './permissionOptions.ts'
+} from './permissionOptions.tsx'
 import {
   PERMISSION_HANDLERS,
   type PermissionHandlerParams,

@@ -17,12 +17,12 @@ import { TerminalQuerier, xtversion } from '../terminal-querier.ts';
 import { DISABLE_KITTY_KEYBOARD, DISABLE_MODIFY_OTHER_KEYS, ENABLE_KITTY_KEYBOARD, ENABLE_MODIFY_OTHER_KEYS, FOCUS_IN, FOCUS_OUT } from '../termio/csi.ts';
 import { DBP, DFE, DISABLE_MOUSE_TRACKING, EBP, EFE, HIDE_CURSOR, SHOW_CURSOR } from '../termio/dec.ts';
 import AppContext from './AppContext.ts';
-import { ClockProvider } from './ClockContext.ts';
+import { ClockProvider } from './ClockContext.tsx';
 import CursorDeclarationContext, { type CursorDeclarationSetter } from './CursorDeclarationContext.ts';
-import ErrorOverview from './ErrorOverview.ts';
+import ErrorOverview from './ErrorOverview.tsx';
 import StdinContext from './StdinContext.ts';
-import { TerminalFocusProvider } from './TerminalFocusContext.ts';
-import { TerminalSizeContext } from './TerminalSizeContext.ts';
+import { TerminalFocusProvider } from './TerminalFocusContext.tsx';
+import { TerminalSizeContext } from './TerminalSizeContext.tsx';
 
 // Platforms that support Unix-style process suspension (SIGSTOP/SIGCONT)
 const SUPPORTS_SUSPEND = process.platform !== 'win32';

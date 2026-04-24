@@ -5,7 +5,7 @@ import {
   CLAUDE_CONFIG_DIRECTORIES,
   loadMarkdownFilesForSubdir,
 } from './utils/markdownConfigLoader.ts'
-import type { SuggestionItem } from '../components/PromptInput/PromptInputFooterSuggestions.ts'
+import type { SuggestionItem } from '../components/PromptInput/PromptInputFooterSuggestions.tsx'
 import {
   CHUNK_MS,
   FileIndex,

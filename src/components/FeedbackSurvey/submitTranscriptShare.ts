@@ -13,7 +13,7 @@ import {
   MAX_TRANSCRIPT_READ_BYTES,
 } from '../../utils/sessionStorage.ts'
 import { jsonStringify } from '../../utils/slowOperations.ts'
-import { redactSensitiveInfo } from '../Feedback.ts'
+import { redactSensitiveInfo } from '../Feedback.tsx'
 
 type TranscriptShareResult = {
   success: boolean

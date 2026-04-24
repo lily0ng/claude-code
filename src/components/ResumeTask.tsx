@@ -8,12 +8,12 @@ import { useShortcutDisplay } from '../keybindings/useShortcutDisplay.ts';
 import { logForDebugging } from '../utils/debug.ts';
 import { detectCurrentRepository } from '../utils/detectRepository.ts';
 import { formatRelativeTime } from '../utils/format.ts';
-import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.ts';
+import { ConfigurableShortcutHint } from './ConfigurableShortcutHint.tsx';
 import { Select } from './CustomSelect/index.ts';
-import { Byline } from './design-system/Byline.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
-import { Spinner } from './Spinner.ts';
-import { TeleportError } from './TeleportError.ts';
+import { Byline } from './design-system/Byline.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
+import { Spinner } from './Spinner.tsx';
+import { TeleportError } from './TeleportError.tsx';
 type Props = {
   onSelect: (session: CodeSession) => void;
   onCancel: () => void;

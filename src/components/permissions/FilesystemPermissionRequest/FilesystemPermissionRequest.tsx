@@ -1,10 +1,10 @@
 import { c as _c } from "react/compiler-runtime";
 import React from 'react';
 import { Box, Text, useTheme } from '../../../ink.ts';
-import { FallbackPermissionRequest } from '../FallbackPermissionRequest.ts';
-import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.ts';
+import { FallbackPermissionRequest } from '../FallbackPermissionRequest.tsx';
+import { FilePermissionDialog } from '../FilePermissionDialog/FilePermissionDialog.tsx';
 import type { ToolInput } from '../FilePermissionDialog/useFilePermissionDialog.ts';
-import type { PermissionRequestProps, ToolUseConfirm } from '../PermissionRequest.ts';
+import type { PermissionRequestProps, ToolUseConfirm } from '../PermissionRequest.tsx';
 function pathFromToolUse(toolUseConfirm: ToolUseConfirm): string | null {
   const tool = toolUseConfirm.tool;
   if ('getPath' in tool && typeof tool.getPath === 'function') {

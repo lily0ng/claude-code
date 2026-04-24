@@ -14,12 +14,12 @@ import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
 } from '../../services/analytics/index.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import { isInProcessTeammateTask } from '../../tasks/InProcessTeammateTask/types.ts'
 import {
   isLocalAgentTask,
   type LocalAgentTaskState,
-} from '../../tasks/LocalAgentTask/LocalAgentTask.ts'
+} from '../../tasks/LocalAgentTask/LocalAgentTask.tsx'
 import { isLocalShellTask } from '../../tasks/LocalShellTask/guards.ts'
 import { asAgentId } from '../../types/ids.ts'
 import type { Message } from '../../types/message.ts'

@@ -5,12 +5,12 @@ import { Suspense, useState } from 'react';
 import { useKeybinding } from '../../keybindings/useKeybinding.ts';
 import { useExitOnCtrlCDWithKeybindings } from '../../hooks/useExitOnCtrlCDWithKeybindings.ts';
 import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
-import { useIsInsideModal, useModalOrTerminalSize } from '../../context/modalContext.ts';
-import { Pane } from '../design-system/Pane.ts';
-import { Tabs, Tab } from '../design-system/Tabs.ts';
-import { Status, buildDiagnostics } from './Status.ts';
-import { Config } from './Config.ts';
-import { Usage } from './Usage.ts';
+import { useIsInsideModal, useModalOrTerminalSize } from '../../context/modalContext.tsx';
+import { Pane } from '../design-system/Pane.tsx';
+import { Tabs, Tab } from '../design-system/Tabs.tsx';
+import { Status, buildDiagnostics } from './Status.tsx';
+import { Config } from './Config.tsx';
+import { Usage } from './Usage.tsx';
 import type { LocalJSXCommandContext, CommandResultDisplay } from '../../commands.ts';
 type Props = {
   onClose: (result?: string, options?: {

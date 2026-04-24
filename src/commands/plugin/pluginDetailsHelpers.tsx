@@ -6,8 +6,8 @@ import { c as _c } from "react/compiler-runtime";
  */
 
 import * as React from 'react';
-import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.ts';
-import { Byline } from '../../components/design-system/Byline.ts';
+import { ConfigurableShortcutHint } from '../../components/ConfigurableShortcutHint.tsx';
+import { Byline } from '../../components/design-system/Byline.tsx';
 import { Box, Text } from '../../ink.ts';
 import type { PluginMarketplaceEntry } from '../../utils/plugins/schemas.ts';
 

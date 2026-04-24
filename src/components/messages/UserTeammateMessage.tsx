@@ -7,10 +7,10 @@ import { Ansi, Box, Text, type TextProps } from '../../ink.ts';
 import { toInkColor } from '../../utils/ink.ts';
 import { jsonParse } from '../../utils/slowOperations.ts';
 import { isShutdownApproved } from '../../utils/teammateMailbox.ts';
-import { MessageResponse } from '../MessageResponse.ts';
-import { tryRenderPlanApprovalMessage } from './PlanApprovalMessage.ts';
-import { tryRenderShutdownMessage } from './ShutdownMessage.ts';
-import { tryRenderTaskAssignmentMessage } from './TaskAssignmentMessage.ts';
+import { MessageResponse } from '../MessageResponse.tsx';
+import { tryRenderPlanApprovalMessage } from './PlanApprovalMessage.tsx';
+import { tryRenderShutdownMessage } from './ShutdownMessage.tsx';
+import { tryRenderTaskAssignmentMessage } from './TaskAssignmentMessage.tsx';
 type Props = {
   addMargin: boolean;
   param: TextBlockParam;

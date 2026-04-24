@@ -1,7 +1,7 @@
 import autoBind from 'auto-bind';
 import { closeSync, constants as fsConstants, openSync, readSync, writeSync } from 'fs';
-import noop from 'lodash-es/noop.ts';
-import throttle from 'lodash-es/throttle.ts';
+import noop from 'lodash-es/noop';
+import throttle from 'lodash-es/throttle';
 import React, { type ReactNode } from 'react';
 import type { FiberRoot } from 'react-reconciler';
 import { ConcurrentRoot } from 'react-reconciler/constants.ts';
@@ -12,7 +12,7 @@ import { logForDebugging } from './utils/debug.ts';
 import { logError } from './utils/log.ts';
 import { format } from 'util';
 import { colorize } from './colorize.ts';
-import App from './components/App.ts';
+import App from './components/App.tsx';
 import type { CursorDeclaration, CursorDeclarationSetter } from './components/CursorDeclarationContext.ts';
 import { FRAME_INTERVAL_MS } from './constants.ts';
 import * as dom from './dom.ts';

@@ -1,4 +1,4 @@
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { basename } from 'path'
 import type { OutputStyleConfig } from '../../constants/outputStyles.ts'
 import { getPluginErrorMessage } from '../../types/plugin.ts'

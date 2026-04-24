@@ -20,8 +20,8 @@
 
 import axios from 'axios'
 import { writeFile } from 'fs/promises'
-import isEqual from 'lodash-es/isEqual.ts'
-import memoize from 'lodash-es/memoize.ts'
+import isEqual from 'lodash-es/isEqual'
+import memoize from 'lodash-es/memoize'
 import { basename, dirname, isAbsolute, join, resolve, sep } from 'path'
 import { getFeatureValue_CACHED_MAY_BE_STALE } from '../../services/analytics/growthbook.ts'
 import { logForDebugging } from '../debug.ts'

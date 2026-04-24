@@ -6,7 +6,7 @@ import type { ClickEvent } from '../events/click-event.ts';
 import type { FocusEvent } from '../events/focus-event.ts';
 import type { KeyboardEvent } from '../events/keyboard-event.ts';
 import type { Styles } from '../styles.ts';
-import Box from './Box.ts';
+import Box from './Box.tsx';
 type ButtonState = {
   focused: boolean;
   hovered: boolean;

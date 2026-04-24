@@ -6,7 +6,7 @@ const status = {
   description:
     'Show Claude Code status including version, model, account, API connectivity, and tool statuses',
   immediate: true,
-  load: () => import('./status.ts'),
+  load: () => import('./status.tsx'),
 } satisfies Command
 
 export default status

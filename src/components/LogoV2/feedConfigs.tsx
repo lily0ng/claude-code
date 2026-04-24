@@ -7,7 +7,7 @@ import { formatCreditAmount, getCachedReferrerReward } from '../../services/api/
 import type { LogOption } from '../../types/logs.ts';
 import { getCwd } from '../../utils/cwd.ts';
 import { formatRelativeTimeAgo } from '../../utils/format.ts';
-import type { FeedConfig, FeedLine } from './Feed.ts';
+import type { FeedConfig, FeedLine } from './Feed.tsx';
 export function createRecentActivityFeed(activities: LogOption[]): FeedConfig {
   const lines: FeedLine[] = activities.map(log => {
     const time = formatRelativeTimeAgo(log.modified);

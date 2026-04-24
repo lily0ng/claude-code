@@ -7,7 +7,7 @@
  * - reconcileMarketplaces(): bundled diff + install (I/O, idempotent, additive)
  */
 
-import isEqual from 'lodash-es/isEqual.ts'
+import isEqual from 'lodash-es/isEqual'
 import { isAbsolute, resolve } from 'path'
 import { getOriginalCwd } from '../../bootstrap/state.ts'
 import { logForDebugging } from '../debug.ts'

@@ -3,11 +3,11 @@ import React, { useMemo } from 'react';
 import { Box, Text, useTheme } from '../../../ink.ts';
 import { WebFetchTool } from '../../../tools/WebFetchTool/WebFetchTool.ts';
 import { shouldShowAlwaysAllowOptions } from '../../../utils/permissions/permissionsLoader.ts';
-import { type OptionWithDescription, Select } from '../../CustomSelect/select.ts';
+import { type OptionWithDescription, Select } from '../../CustomSelect/select.tsx';
 import { type UnaryEvent, usePermissionRequestLogging } from '../hooks.ts';
-import { PermissionDialog } from '../PermissionDialog.ts';
-import type { PermissionRequestProps } from '../PermissionRequest.ts';
-import { PermissionRuleExplanation } from '../PermissionRuleExplanation.ts';
+import { PermissionDialog } from '../PermissionDialog.tsx';
+import type { PermissionRequestProps } from '../PermissionRequest.tsx';
+import { PermissionRuleExplanation } from '../PermissionRuleExplanation.tsx';
 import { logUnaryPermissionEvent } from '../utils.ts';
 function inputToPermissionRuleContent(input: {
   [k: string]: unknown;

@@ -1,5 +1,5 @@
 import { performBackgroundPluginInstallations } from '../../services/plugins/PluginInstallationManager.ts';
-import type { AppState } from '../../state/AppState.ts';
+import type { AppState } from '../../state/AppState.tsx';
 import { checkHasTrustDialogAccepted } from '../config.ts';
 import { logForDebugging } from '../debug.ts';
 import { clearMarketplacesCache, registerSeedMarketplaces } from './marketplaceManager.ts';

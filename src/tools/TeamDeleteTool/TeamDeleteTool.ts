@@ -16,7 +16,7 @@ import { clearTeammateColors } from '../../utils/swarm/teammateLayoutManager.ts'
 import { clearLeaderTeamName } from '../../utils/tasks.ts'
 import { TEAM_DELETE_TOOL_NAME } from './constants.ts'
 import { getPrompt } from './prompt.ts'
-import { renderToolResultMessage, renderToolUseMessage } from './UI.ts'
+import { renderToolResultMessage, renderToolUseMessage } from './UI.tsx'
 
 const inputSchema = lazySchema(() => z.strictObject({}))
 type InputSchema = ReturnType<typeof inputSchema>

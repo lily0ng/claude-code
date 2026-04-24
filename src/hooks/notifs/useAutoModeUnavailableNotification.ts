@@ -2,7 +2,7 @@ import { feature } from 'bun:bundle'
 import { useEffect, useRef } from 'react'
 import { useNotifications } from './context/notifications.ts'
 import { getIsRemoteMode } from '../../bootstrap/state.ts'
-import { useAppState } from '../../state/AppState.ts'
+import { useAppState } from '../../state/AppState.tsx'
 import type { PermissionMode } from '../../utils/permissions/PermissionMode.ts'
 import {
   getAutoModeUnavailableNotification,

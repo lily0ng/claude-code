@@ -16,7 +16,7 @@ import { jsonStringify } from '../../utils/slowOperations.ts';
 import { appendTaskOutput, evictTaskOutput, getTaskOutputPath, initTaskOutput } from '../../utils/task/diskOutput.ts';
 import { registerTask, updateTaskState } from '../../utils/task/framework.ts';
 import { fetchSession } from '../../utils/teleport/api.ts';
-import { archiveRemoteSession, pollRemoteSessionEvents } from '../../utils/teleport.ts';
+import { archiveRemoteSession, pollRemoteSessionEvents } from '../../utils/teleport.tsx';
 import type { TodoList } from '../../utils/todo/types.ts';
 import type { UltraplanPhase } from '../../utils/ultraplan/ccrSession.ts';
 export type RemoteAgentTaskState = TaskStateBase & {

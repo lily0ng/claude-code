@@ -4,9 +4,9 @@ import React from 'react';
 import { Box, Text } from '../../ink.ts';
 import type { PastedContent } from '../../utils/config.ts';
 import type { ImageDimensions } from '../../utils/imageResizer.ts';
-import type { OptionWithDescription } from './select.ts';
-import { SelectInputOption } from './select-input-option.ts';
-import { SelectOption } from './select-option.ts';
+import type { OptionWithDescription } from './select.tsx';
+import { SelectInputOption } from './select-input-option.tsx';
+import { SelectOption } from './select-option.tsx';
 import { useMultiSelectState } from './use-multi-select-state.ts';
 export type SelectMultiProps<T> = {
   readonly isDisabled?: boolean;

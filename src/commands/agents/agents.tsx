@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AgentsMenu } from '../../components/agents/AgentsMenu.ts';
+import { AgentsMenu } from '../../components/agents/AgentsMenu.tsx';
 import type { ToolUseContext } from '../../Tool.ts';
 import { getTools } from '../../tools.ts';
 import type { LocalJSXCommandOnDone } from '../../types/command.ts';

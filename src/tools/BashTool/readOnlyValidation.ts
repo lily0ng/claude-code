@@ -21,7 +21,7 @@ import {
   RIPGREP_READ_ONLY_COMMANDS,
   validateFlags,
 } from '../../utils/shell/readOnlyCommandValidation.ts'
-import type { BashTool } from './BashTool.ts'
+import type { BashTool } from './BashTool.tsx'
 import { isNormalizedGitCommand } from './bashPermissions.ts'
 import { bashCommandIsSafe_DEPRECATED } from './bashSecurity.ts'
 import {

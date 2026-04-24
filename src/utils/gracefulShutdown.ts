@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 import { writeSync } from 'fs'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { onExit } from 'signal-exit'
 import type { ExitReason } from './entrypoints/agentSdkTypes.ts'
 import {
@@ -35,7 +35,7 @@ import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
 } from '../services/analytics/index.ts'
-import type { AppState } from '../state/AppState.ts'
+import type { AppState } from '../state/AppState.tsx'
 import { runCleanupFunctions } from './cleanupRegistry.ts'
 import { logForDebugging } from './debug.ts'
 import { logForDiagnosticsNoPII } from './diagLogs.ts'

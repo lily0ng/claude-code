@@ -1,6 +1,6 @@
 import { feature } from 'bun:bundle'
-import partition from 'lodash-es/partition.ts'
-import uniqBy from 'lodash-es/uniqBy.ts'
+import partition from 'lodash-es/partition'
+import uniqBy from 'lodash-es/uniqBy'
 import { COORDINATOR_MODE_ALLOWED_TOOLS } from '../constants/tools.ts'
 import { isMcpTool } from '../services/mcp/utils.ts'
 import type { Tool, ToolPermissionContext, Tools } from '../Tool.ts'

@@ -5,9 +5,9 @@ import { Box, Text } from '../../ink.ts';
 import type { AdvisorBlock } from '../../utils/advisor.ts';
 import { renderModelName } from '../../utils/model/model.ts';
 import { jsonStringify } from '../../utils/slowOperations.ts';
-import { CtrlOToExpand } from '../CtrlOToExpand.ts';
-import { MessageResponse } from '../MessageResponse.ts';
-import { ToolUseLoader } from '../ToolUseLoader.ts';
+import { CtrlOToExpand } from '../CtrlOToExpand.tsx';
+import { MessageResponse } from '../MessageResponse.tsx';
+import { ToolUseLoader } from '../ToolUseLoader.tsx';
 type Props = {
   block: AdvisorBlock;
   addMargin: boolean;

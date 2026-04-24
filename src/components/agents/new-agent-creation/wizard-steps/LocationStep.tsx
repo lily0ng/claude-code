@@ -2,12 +2,12 @@ import { c as _c } from "react/compiler-runtime";
 import React, { type ReactNode } from 'react';
 import { Box } from '../../../../ink.ts';
 import type { SettingSource } from '../../../../utils/settings/constants.ts';
-import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.ts';
-import { Select } from '../../../CustomSelect/select.ts';
-import { Byline } from '../../../design-system/Byline.ts';
-import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.ts';
+import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.tsx';
+import { Select } from '../../../CustomSelect/select.tsx';
+import { Byline } from '../../../design-system/Byline.tsx';
+import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.tsx';
 import { useWizard } from '../../../wizard/index.ts';
-import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.ts';
+import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.tsx';
 import type { AgentWizardData } from '../types.ts';
 export function LocationStep() {
   const $ = _c(11);

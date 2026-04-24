@@ -6,11 +6,11 @@ import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
 import type { KeyboardEvent } from '../../ink/events/keyboard-event.ts';
 import { clamp } from '../../ink/layout/geometry.ts';
 import { Box, Text, useTerminalFocus } from '../../ink.ts';
-import { SearchBox } from '../SearchBox.ts';
-import { Byline } from './Byline.ts';
-import { KeyboardShortcutHint } from './KeyboardShortcutHint.ts';
-import { ListItem } from './ListItem.ts';
-import { Pane } from './Pane.ts';
+import { SearchBox } from '../SearchBox.tsx';
+import { Byline } from './Byline.tsx';
+import { KeyboardShortcutHint } from './KeyboardShortcutHint.tsx';
+import { ListItem } from './ListItem.tsx';
+import { Pane } from './Pane.tsx';
 type PickerAction<T> = {
   /** Hint label shown in the byline, e.g. "mention" → "Tab to mention". */
   action: string;

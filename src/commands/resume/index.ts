@@ -6,7 +6,7 @@ const resume: Command = {
   description: 'Resume a previous conversation',
   aliases: ['continue'],
   argumentHint: '[conversation id or search term]',
-  load: () => import('./resume.ts'),
+  load: () => import('./resume.tsx'),
 }
 
 export default resume

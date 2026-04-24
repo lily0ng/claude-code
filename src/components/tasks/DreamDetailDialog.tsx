@@ -7,9 +7,9 @@ import { Box, Text } from '../../ink.ts';
 import { useKeybindings } from '../../keybindings/useKeybinding.ts';
 import type { DreamTaskState } from '../../tasks/DreamTask/DreamTask.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
+import { Byline } from '../design-system/Byline.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
 type Props = {
   task: DeepImmutable<DreamTaskState>;
   onDone: () => void;

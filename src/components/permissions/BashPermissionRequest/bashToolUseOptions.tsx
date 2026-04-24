@@ -4,8 +4,8 @@ import { isClassifierPermissionsEnabled } from '../../../utils/permissions/bashC
 import type { PermissionDecisionReason } from '../../../utils/permissions/PermissionResult.ts';
 import type { PermissionUpdate } from '../../../utils/permissions/PermissionUpdateSchema.ts';
 import { shouldShowAlwaysAllowOptions } from '../../../utils/permissions/permissionsLoader.ts';
-import type { OptionWithDescription } from '../../CustomSelect/select.ts';
-import { generateShellSuggestionsLabel } from '../shellPermissionHelpers.ts';
+import type { OptionWithDescription } from '../../CustomSelect/select.tsx';
+import { generateShellSuggestionsLabel } from '../shellPermissionHelpers.tsx';
 export type BashToolUseOption = 'yes' | 'yes-apply-suggestions' | 'yes-prefix-edited' | 'yes-classifier-reviewed' | 'no';
 
 /**

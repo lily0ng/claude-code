@@ -21,7 +21,7 @@ import {
   renderToolUseErrorMessage,
   renderToolUseMessage,
   userFacingName,
-} from './UI.ts'
+} from './UI.tsx'
 
 const inputSchema = lazySchema(() =>
   z.strictObject({

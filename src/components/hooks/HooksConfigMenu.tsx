@@ -23,11 +23,11 @@ import { getHookEventMetadata, getHooksForMatcher, getMatcherMetadata, getSorted
 import type { IndividualHookConfig } from '../../utils/hooks/hooksSettings.ts';
 import { getSettings_DEPRECATED, getSettingsForSource } from '../../utils/settings/settings.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { SelectEventMode } from './SelectEventMode.ts';
-import { SelectHookMode } from './SelectHookMode.ts';
-import { SelectMatcherMode } from './SelectMatcherMode.ts';
-import { ViewHookMode } from './ViewHookMode.ts';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { SelectEventMode } from './SelectEventMode.tsx';
+import { SelectHookMode } from './SelectHookMode.tsx';
+import { SelectMatcherMode } from './SelectMatcherMode.tsx';
+import { ViewHookMode } from './ViewHookMode.tsx';
 type Props = {
   toolNames: string[];
   onExit: (result?: string, options?: {

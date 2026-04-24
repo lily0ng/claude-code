@@ -5,7 +5,7 @@ import { Box, Link, Text } from '../ink.ts';
 import type { ExternalClaudeMdInclude } from '../utils/claudemd.ts';
 import { saveCurrentProjectConfig } from '../utils/config.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Dialog } from './design-system/Dialog.ts';
+import { Dialog } from './design-system/Dialog.tsx';
 type Props = {
   onDone(): void;
   isStandaloneDialog?: boolean;

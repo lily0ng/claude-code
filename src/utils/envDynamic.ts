@@ -1,6 +1,6 @@
 import { feature } from 'bun:bundle'
 import { stat } from 'fs/promises'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import { env, JETBRAINS_IDES } from './env.ts'
 import { isEnvTruthy } from './envUtils.ts'
 import { execFileNoThrow } from './execFileNoThrow.ts'

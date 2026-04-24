@@ -7,7 +7,7 @@ import {
   TASK_TYPE_TAG,
   TOOL_USE_ID_TAG,
 } from '../../constants/xml.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import {
   isTerminalTaskStatus,
   type TaskStatus,

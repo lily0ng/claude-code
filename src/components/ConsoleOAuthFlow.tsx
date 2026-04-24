@@ -13,10 +13,10 @@ import { OAuthService } from '../services/oauth/index.ts';
 import { getOauthAccountInfo, validateForceLoginOrg } from '../utils/auth.ts';
 import { logError } from '../utils/log.ts';
 import { getSettings_DEPRECATED } from '../utils/settings/settings.ts';
-import { Select } from './CustomSelect/select.ts';
-import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.ts';
-import { Spinner } from './Spinner.ts';
-import TextInput from './TextInput.ts';
+import { Select } from './CustomSelect/select.tsx';
+import { KeyboardShortcutHint } from './design-system/KeyboardShortcutHint.tsx';
+import { Spinner } from './Spinner.tsx';
+import TextInput from './TextInput.tsx';
 type Props = {
   onDone(): void;
   startingMessage?: string;

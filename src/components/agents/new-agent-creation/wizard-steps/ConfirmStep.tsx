@@ -9,11 +9,11 @@ import { getMemoryScopeDisplay } from '../../../../tools/AgentTool/agentMemory.t
 import type { AgentDefinition } from '../../../../tools/AgentTool/loadAgentsDir.ts';
 import { truncateToWidth } from '../../../../utils/format.ts';
 import { getAgentModelDisplay } from '../../../../utils/model/agent.ts';
-import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.ts';
-import { Byline } from '../../../design-system/Byline.ts';
-import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.ts';
+import { ConfigurableShortcutHint } from '../../../ConfigurableShortcutHint.tsx';
+import { Byline } from '../../../design-system/Byline.tsx';
+import { KeyboardShortcutHint } from '../../../design-system/KeyboardShortcutHint.tsx';
 import { useWizard } from '../../../wizard/index.ts';
-import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.ts';
+import { WizardDialogLayout } from '../../../wizard/WizardDialogLayout.tsx';
 import { getNewRelativeAgentFilePath } from '../../agentFileUtils.ts';
 import { validateAgent } from '../../validateAgent.ts';
 import type { AgentWizardData } from '../types.ts';

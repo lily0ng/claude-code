@@ -1,4 +1,4 @@
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import { logForDebugging } from '../debug.ts'
 import { updateHooksConfigSnapshot } from '../hooks/hooksConfigSnapshot.ts'
 import {

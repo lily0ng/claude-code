@@ -1,12 +1,12 @@
 import { useCallback, useEffect } from 'react'
 import type { Command } from '../commands.ts'
-import { useNotifications } from '../context/notifications.ts'
+import { useNotifications } from '../context/notifications.tsx'
 import {
   type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS,
   logEvent,
 } from '../services/analytics/index.ts'
 import { reinitializeLspServerManager } from '../services/lsp/manager.ts'
-import { useAppState, useSetAppState } from '../state/AppState.ts'
+import { useAppState, useSetAppState } from '../state/AppState.tsx'
 import type { AgentDefinition } from '../tools/AgentTool/loadAgentsDir.ts'
 import { count } from '../utils/array.ts'
 import { logForDebugging } from '../utils/debug.ts'

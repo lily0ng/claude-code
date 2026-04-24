@@ -9,7 +9,7 @@
  * - Detect permission-related messages
  */
 
-import type { AppState } from '../state/AppState.ts'
+import type { AppState } from '../state/AppState.tsx'
 import {
   type InProcessTeammateTaskState,
   isInProcessTeammateTask,

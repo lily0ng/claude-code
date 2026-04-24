@@ -1,6 +1,6 @@
 import { realpath } from 'fs/promises'
 import ignore from 'ignore'
-import memoize from 'lodash-es/memoize.ts'
+import memoize from 'lodash-es/memoize'
 import {
   basename,
   dirname,

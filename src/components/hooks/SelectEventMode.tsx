@@ -14,8 +14,8 @@ import type { HookEvent } from './entrypoints/agentSdkTypes.ts';
 import type { HookEventMetadata } from './utils/hooks/hooksConfigManager.ts';
 import { Box, Link, Text } from '../../ink.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { Select } from '../CustomSelect/select.ts';
-import { Dialog } from '../design-system/Dialog.ts';
+import { Select } from '../CustomSelect/select.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
 type Props = {
   hookEventMetadata: Record<HookEvent, HookEventMetadata>;
   hooksByEvent: Partial<Record<HookEvent, number>>;

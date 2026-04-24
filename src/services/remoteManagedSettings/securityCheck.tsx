@@ -1,10 +1,10 @@
 import React from 'react';
 import { getIsInteractive } from '../../bootstrap/state.ts';
-import { ManagedSettingsSecurityDialog } from '../../components/ManagedSettingsSecurityDialog/ManagedSettingsSecurityDialog.ts';
+import { ManagedSettingsSecurityDialog } from '../../components/ManagedSettingsSecurityDialog/ManagedSettingsSecurityDialog.tsx';
 import { extractDangerousSettings, hasDangerousSettings, hasDangerousSettingsChanged } from '../../components/ManagedSettingsSecurityDialog/utils.ts';
 import { render } from '../../ink.ts';
-import { KeybindingSetup } from '../../keybindings/KeybindingProviderSetup.ts';
-import { AppStateProvider } from '../../state/AppState.ts';
+import { KeybindingSetup } from '../../keybindings/KeybindingProviderSetup.tsx';
+import { AppStateProvider } from '../../state/AppState.tsx';
 import { gracefulShutdownSync } from '../../utils/gracefulShutdown.ts';
 import { getBaseRenderOptions } from '../../utils/renderOptions.ts';
 import type { SettingsJson } from '../../utils/settings/types.ts';

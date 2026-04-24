@@ -16,7 +16,7 @@ import type { Message } from './types/message.ts'
 import type { PermissionResult } from './utils/permissions/PermissionResult.ts'
 import { permissionBehaviorSchema } from './utils/permissions/PermissionRule.ts'
 import { permissionUpdateSchema } from './utils/permissions/PermissionUpdateSchema.ts'
-import type { AppState } from '../state/AppState.ts'
+import type { AppState } from '../state/AppState.tsx'
 import type { AttributionState } from '../utils/commitAttribution.ts'
 
 export function isHookEvent(value: string): value is HookEvent {

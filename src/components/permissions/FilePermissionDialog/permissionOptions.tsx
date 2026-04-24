@@ -7,7 +7,7 @@ import { getShortcutDisplay } from '../../../keybindings/shortcutFormat.ts';
 import type { ToolPermissionContext } from '../../../Tool.ts';
 import { expandPath, getDirectoryForPath } from '../../../utils/path.ts';
 import { normalizeCaseForComparison, pathInAllowedWorkingPath } from '../../../utils/permissions/filesystem.ts';
-import type { OptionWithDescription } from '../../CustomSelect/select.ts';
+import type { OptionWithDescription } from '../../CustomSelect/select.tsx';
 /**
  * Check if a path is within the project's .claude/ folder.
  * This is used to determine whether to show the special ".claude folder" permission option.

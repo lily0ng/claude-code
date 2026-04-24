@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Notification } from '../context/notifications.ts';
+import type { Notification } from '../context/notifications.tsx';
 import { Text } from '../ink.ts';
 import { logForDebugging } from '../utils/debug.ts';
 import { checkAndInstallOfficialMarketplace } from '../utils/plugins/officialMarketplaceStartupCheck.ts';

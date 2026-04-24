@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { useIsInsideModal, useModalScrollRef } from '../../context/modalContext.ts';
+import { useIsInsideModal, useModalScrollRef } from '../../context/modalContext.tsx';
 import { useTerminalSize } from '../../hooks/useTerminalSize.ts';
-import ScrollBox from '../../ink/components/ScrollBox.ts';
+import ScrollBox from '../../ink/components/ScrollBox.tsx';
 import type { KeyboardEvent } from '../../ink/events/keyboard-event.ts';
 import { stringWidth } from '../../ink/stringWidth.ts';
 import { Box, Text } from '../../ink.ts';

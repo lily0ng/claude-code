@@ -1,11 +1,11 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
-import { Markdown } from '../../components/Markdown.ts';
+import { Markdown } from '../../components/Markdown.tsx';
 import { Box, Text } from '../../ink.ts';
 import { jsonParse } from '../../utils/slowOperations.ts';
 import { type IdleNotificationMessage, isIdleNotification, isPlanApprovalRequest, isPlanApprovalResponse, type PlanApprovalRequestMessage, type PlanApprovalResponseMessage } from '../../utils/teammateMailbox.ts';
-import { getShutdownMessageSummary } from './ShutdownMessage.ts';
-import { getTaskAssignmentSummary } from './TaskAssignmentMessage.ts';
+import { getShutdownMessageSummary } from './ShutdownMessage.tsx';
+import { getTaskAssignmentSummary } from './TaskAssignmentMessage.tsx';
 type PlanApprovalRequestProps = {
   request: PlanApprovalRequestMessage;
 };

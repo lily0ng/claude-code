@@ -15,7 +15,7 @@ import { c as _c } from "react/compiler-runtime";
  */
 import { useContext, useEffect, useLayoutEffect } from 'react';
 import instances from '../ink/instances.ts';
-import { AppStoreContext, useAppState } from '../state/AppState.ts';
+import { AppStoreContext, useAppState } from '../state/AppState.tsx';
 
 // Non-modal overlays that shouldn't disable TextInput focus
 const NON_MODAL_OVERLAYS = new Set(['autocomplete']);

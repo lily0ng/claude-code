@@ -8,11 +8,11 @@ import type { ConfigScope } from '../../services/mcp/types.ts';
 import { describeMcpConfigFilePath } from '../../services/mcp/utils.ts';
 import { isDebugMode } from '../../utils/debug.ts';
 import { plural } from '../../utils/stringUtils.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { Dialog } from '../design-system/Dialog.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
-import { McpParsingWarnings } from './McpParsingWarnings.ts';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
+import { Byline } from '../design-system/Byline.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
+import { McpParsingWarnings } from './McpParsingWarnings.tsx';
 import type { AgentMcpServerInfo, ServerInfo } from './types.ts';
 type Props = {
   servers: ServerInfo[];

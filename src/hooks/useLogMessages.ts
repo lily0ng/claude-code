@@ -1,6 +1,6 @@
 import type { UUID } from 'crypto'
 import { useEffect, useRef } from 'react'
-import { useAppState } from '../state/AppState.ts'
+import { useAppState } from '../state/AppState.tsx'
 import type { Message } from '../types/message.ts'
 import { isAgentSwarmsEnabled } from '../utils/agentSwarmsEnabled.ts'
 import {

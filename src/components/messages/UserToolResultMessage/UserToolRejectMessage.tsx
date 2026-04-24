@@ -5,7 +5,7 @@ import { useTheme } from '../../../ink.ts';
 import { filterToolProgressMessages, type Tool, type Tools } from '../../../Tool.ts';
 import type { ProgressMessage } from '../../../types/message.ts';
 import type { buildMessageLookups } from '../../../utils/messages.ts';
-import { FallbackToolUseRejectedMessage } from '../../FallbackToolUseRejectedMessage.ts';
+import { FallbackToolUseRejectedMessage } from '../../FallbackToolUseRejectedMessage.tsx';
 type Props = {
   input: {
     [key: string]: unknown;

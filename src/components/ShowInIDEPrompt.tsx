@@ -5,8 +5,8 @@ import { Box, Text } from '../ink.ts';
 import { getCwd } from '../utils/cwd.ts';
 import { isSupportedVSCodeTerminal } from '../utils/ide.ts';
 import { Select } from './CustomSelect/index.ts';
-import { Pane } from './design-system/Pane.ts';
-import type { PermissionOption, PermissionOptionWithLabel } from './permissions/FilePermissionDialog/permissionOptions.ts';
+import { Pane } from './design-system/Pane.tsx';
+import type { PermissionOption, PermissionOptionWithLabel } from './permissions/FilePermissionDialog/permissionOptions.tsx';
 type Props<A> = {
   filePath: string;
   input: A;

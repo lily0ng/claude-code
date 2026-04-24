@@ -1,8 +1,8 @@
 import { c as _c } from "react/compiler-runtime";
 import * as React from 'react';
 import type { CommandResultDisplay } from '../../commands.ts';
-import { Pane } from '../../components/design-system/Pane.ts';
-import { ThemePicker } from '../../components/ThemePicker.ts';
+import { Pane } from '../../components/design-system/Pane.tsx';
+import { ThemePicker } from '../../components/ThemePicker.tsx';
 import { useTheme } from '../../ink.ts';
 import type { LocalJSXCommandCall } from '../../types/command.ts';
 type Props = {

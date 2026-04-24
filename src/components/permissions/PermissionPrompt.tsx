@@ -4,8 +4,8 @@ import { Box, Text } from '../../ink.ts';
 import type { KeybindingAction } from '../../keybindings/types.ts';
 import { useKeybindings } from '../../keybindings/useKeybinding.ts';
 import { type AnalyticsMetadata_I_VERIFIED_THIS_IS_NOT_CODE_OR_FILEPATHS, logEvent } from '../../services/analytics/index.ts';
-import { useSetAppState } from '../../state/AppState.ts';
-import { type OptionWithDescription, Select } from '../CustomSelect/select.ts';
+import { useSetAppState } from '../../state/AppState.tsx';
+import { type OptionWithDescription, Select } from '../CustomSelect/select.tsx';
 export type FeedbackType = 'accept' | 'reject';
 export type PermissionPromptOption<T extends string> = {
   value: T;

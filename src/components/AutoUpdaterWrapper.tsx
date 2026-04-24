@@ -5,9 +5,9 @@ import type { AutoUpdaterResult } from '../utils/autoUpdater.ts';
 import { isAutoUpdaterDisabled } from '../utils/config.ts';
 import { logForDebugging } from '../utils/debug.ts';
 import { getCurrentInstallationType } from '../utils/doctorDiagnostic.ts';
-import { AutoUpdater } from './AutoUpdater.ts';
-import { NativeAutoUpdater } from './NativeAutoUpdater.ts';
-import { PackageManagerAutoUpdater } from './PackageManagerAutoUpdater.ts';
+import { AutoUpdater } from './AutoUpdater.tsx';
+import { NativeAutoUpdater } from './NativeAutoUpdater.tsx';
+import { PackageManagerAutoUpdater } from './PackageManagerAutoUpdater.tsx';
 type Props = {
   isUpdating: boolean;
   onChangeIsUpdating: (isUpdating: boolean) => void;

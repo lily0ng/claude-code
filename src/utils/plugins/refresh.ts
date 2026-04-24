@@ -20,7 +20,7 @@
 import { getOriginalCwd } from '../../bootstrap/state.ts'
 import type { Command } from '../../commands.ts'
 import { reinitializeLspServerManager } from '../../services/lsp/manager.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import type { AgentDefinitionsResult } from '../../tools/AgentTool/loadAgentsDir.ts'
 import { getAgentDefinitionsWithOverrides } from '../../tools/AgentTool/loadAgentsDir.ts'
 import type { PluginError } from '../../types/plugin.ts'

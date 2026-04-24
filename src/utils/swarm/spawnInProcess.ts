@@ -13,11 +13,11 @@
  * 4. Returning spawn result for backend
  */
 
-import sample from 'lodash-es/sample.ts'
+import sample from 'lodash-es/sample'
 import { getSessionId } from '../../bootstrap/state.ts'
 import { getSpinnerVerbs } from '../../constants/spinnerVerbs.ts'
 import { TURN_COMPLETION_VERBS } from '../../constants/turnCompletionVerbs.ts'
-import type { AppState } from '../../state/AppState.ts'
+import type { AppState } from '../../state/AppState.tsx'
 import { createTaskStateBase, generateTaskId } from '../../Task.ts'
 import type {
   InProcessTeammateTaskState,

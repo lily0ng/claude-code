@@ -1,9 +1,9 @@
 import React, { type ReactNode } from 'react';
 import { useExitOnCtrlCDWithKeybindings } from '../../hooks/useExitOnCtrlCDWithKeybindings.ts';
 import { Box, Text } from '../../ink.ts';
-import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.ts';
-import { Byline } from '../design-system/Byline.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
+import { ConfigurableShortcutHint } from '../ConfigurableShortcutHint.tsx';
+import { Byline } from '../design-system/Byline.tsx';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
 type Props = {
   instructions?: ReactNode;
 };

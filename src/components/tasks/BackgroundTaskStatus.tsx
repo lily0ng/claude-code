@@ -13,8 +13,8 @@ import { calculateHorizontalScrollWindow } from './utils/horizontalScroll.ts';
 import { Box, Text } from '../../ink.ts';
 import { AGENT_COLOR_TO_THEME_COLOR, AGENT_COLORS, type AgentColorName } from '../../tools/AgentTool/agentColorManager.ts';
 import type { Theme } from '../../utils/theme.ts';
-import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.ts';
-import { shouldHideTasksFooter } from './taskStatusUtils.ts';
+import { KeyboardShortcutHint } from '../design-system/KeyboardShortcutHint.tsx';
+import { shouldHideTasksFooter } from './taskStatusUtils.tsx';
 type Props = {
   tasksSelected: boolean;
   isViewingTeammate?: boolean;

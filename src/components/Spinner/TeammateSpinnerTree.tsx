@@ -2,10 +2,10 @@ import { c as _c } from "react/compiler-runtime";
 import figures from 'figures';
 import * as React from 'react';
 import { Box, Text, type TextProps } from '../../ink.ts';
-import { useAppState } from '../../state/AppState.ts';
-import { getRunningTeammatesSorted } from '../../tasks/InProcessTeammateTask/InProcessTeammateTask.ts';
+import { useAppState } from '../../state/AppState.tsx';
+import { getRunningTeammatesSorted } from '../../tasks/InProcessTeammateTask/InProcessTeammateTask.tsx';
 import { formatNumber } from '../../utils/format.ts';
-import { TeammateSpinnerLine } from './TeammateSpinnerLine.ts';
+import { TeammateSpinnerLine } from './TeammateSpinnerLine.tsx';
 import { TEAMMATE_SELECT_HINT } from './teammateSelectHint.ts';
 type Props = {
   selectedIndex?: number;

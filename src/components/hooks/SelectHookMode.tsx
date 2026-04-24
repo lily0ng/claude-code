@@ -11,8 +11,8 @@ import type { HookEvent } from './entrypoints/agentSdkTypes.ts';
 import type { HookEventMetadata } from './utils/hooks/hooksConfigManager.ts';
 import { Box, Text } from '../../ink.ts';
 import { getHookDisplayText, hookSourceHeaderDisplayString, type IndividualHookConfig } from '../../utils/hooks/hooksSettings.ts';
-import { Select } from '../CustomSelect/select.ts';
-import { Dialog } from '../design-system/Dialog.ts';
+import { Select } from '../CustomSelect/select.tsx';
+import { Dialog } from '../design-system/Dialog.tsx';
 type Props = {
   selectedEvent: HookEvent;
   selectedMatcher: string | null;

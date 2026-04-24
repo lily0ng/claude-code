@@ -11,8 +11,8 @@ import { getMainLoopModel } from '../../utils/model/model.ts';
 import { getInitialSettings } from '../../utils/settings/settings.ts';
 import { logOTelEvent } from '../../utils/telemetry/events.ts';
 import { submitTranscriptShare, type TranscriptShareTrigger } from './submitTranscriptShare.ts';
-import type { TranscriptShareResponse } from './TranscriptSharePrompt.ts';
-import { useSurveyState } from './useSurveyState.ts';
+import type { TranscriptShareResponse } from './TranscriptSharePrompt.tsx';
+import { useSurveyState } from './useSurveyState.tsx';
 import type { FeedbackSurveyResponse, FeedbackSurveyType } from './utils.ts';
 type FeedbackSurveyConfig = {
   minTimeBeforeFeedbackMs: number;

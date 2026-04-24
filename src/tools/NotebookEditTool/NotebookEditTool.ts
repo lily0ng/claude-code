@@ -25,7 +25,7 @@ import {
   renderToolUseErrorMessage,
   renderToolUseMessage,
   renderToolUseRejectedMessage,
-} from './UI.ts'
+} from './UI.tsx'
 
 export const inputSchema = lazySchema(() =>
   z.strictObject({
