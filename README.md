@@ -1,23 +1,28 @@
 <div align="center">
-  <img src="./logo.svg" width="120" height="120" alt="vxrt code logo" />
+  <img src="./logo.svg" width="140" height="140" alt="vxrt code logo" />
   <h1>Claude Code</h1>
   <p><em>Fork · Local Models · No API Billing</em></p>
 
-  ![](https://img.shields.io/badge/Node.js-18%2B-brightgreen?style=for-the-badge&logo=node.js&logoColor=white)
-  [![npm](https://img.shields.io/npm/v/@anthropic-ai/claude-code.svg?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/@anthropic-ai/claude-code)
-  ![](https://img.shields.io/badge/fork-anthropics%2Fclaude--code-orange?style=for-the-badge&logo=github&logoColor=white)
-  ![](https://img.shields.io/badge/Ollama-local%20free-black?style=for-the-badge&logoColor=white)
-  ![](https://img.shields.io/badge/OpenRouter-cloud-7c3aed?style=for-the-badge)
-  ![](https://img.shields.io/badge/security-offensive-cc2222?style=for-the-badge&logo=hackthebox&logoColor=white)
+  <!-- Row 1 -->
+  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js"/></a>
+  <a href="https://www.npmjs.com/package/@anthropic-ai/claude-code"><img src="https://img.shields.io/npm/v/@anthropic-ai/claude-code?style=for-the-badge&logo=npm&logoColor=white&label=npm&color=CB3837" alt="npm"/></a>
+  <a href="https://github.com/lily0ng/claude-code"><img src="https://img.shields.io/badge/v2.1.109-release-2563eb?style=for-the-badge&logo=github&logoColor=white" alt="version"/></a>
+  <a href="https://github.com/anthropics/claude-code"><img src="https://img.shields.io/badge/fork-anthropics%2Fclaude--code-ea580c?style=for-the-badge&logo=github&logoColor=white" alt="fork"/></a>
+  <br/>
+  <!-- Row 2 -->
+  <a href="https://ollama.com"><img src="https://img.shields.io/badge/Ollama-local%20free-111827?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama"/></a>
+  <a href="https://openrouter.ai"><img src="https://img.shields.io/badge/OpenRouter-cloud-7c3aed?style=for-the-badge&logo=openai&logoColor=white" alt="OpenRouter"/></a>
+  <a href="https://github.com/0xff0ay"><img src="https://img.shields.io/badge/security-offensive-cc2222?style=for-the-badge&logo=hackthebox&logoColor=white" alt="Offensive Security"/></a>
+  <a href="https://github.com/lily0ng/claude-code/blob/main/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-6b7280?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="License"/></a>
 </div>
 
 ---
 
 > **This is a personal fork** of [Anthropic's Claude Code](https://github.com/anthropics/claude-code) by [@lily0ng](https://github.com/lily0ng), extended to support local models via **Ollama** and cloud models via **OpenRouter** — no Anthropic API billing required. All core functionality and IP belongs to [Anthropic](https://anthropic.com). This fork is not affiliated with or endorsed by Anthropic.
 
-Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster through natural language commands.
+Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster through natural language commands — file editing, shell execution, git workflows, and multi-agent tasks.
 
-**[Official Docs](https://code.claude.com/docs/en/overview)** · **[Upstream Repo](https://github.com/anthropics/claude-code)** · **[npm](https://www.npmjs.com/package/@anthropic-ai/claude-code)**
+**[Official Docs](https://code.claude.com/docs/en/overview)** · **[Upstream Repo](https://github.com/anthropics/claude-code)** · **[npm](https://www.npmjs.com/package/@anthropic-ai/claude-code)** · **[OpenRouter Models](https://openrouter.ai/models)**
 
 <img src="./demo.gif" width="100%" />
 
@@ -25,45 +30,45 @@ Claude Code is an agentic coding tool that lives in your terminal, understands y
 
 ## Features
 
-### ✅ Supported in this fork
+### Supported
 
-| Feature | Description |
-|---|---|
-| 🧠 Natural language coding | Ask in plain English — claude reads and edits your code |
-| 📁 File read / write / edit | Full file system access via `FileReadTool`, `FileWriteTool`, `FileEditTool` |
-| 🔍 Code search | `GlobTool` + `GrepTool` — find files and patterns across the repo |
-| 💻 Shell execution | Run any bash/shell command via `BashTool` |
-| 🔀 Git workflow | Commit, diff, branch, PR — git operations via shell |
-| 🤖 Agentic sub-agents | `AgentTool` spawns parallel sub-agents for complex tasks |
-| 📋 Task management | Create, list, stop tasks — full `TaskTool` suite |
-| 📝 Todo tracking | `TodoWriteTool` — persistent task lists per session |
-| 🗂 Plan mode | Enter plan-first mode before executing (`EnterPlanModeTool`) |
-| 🌿 Worktree support | Git worktree isolation (`EnterWorktreeTool`) |
-| 🔌 MCP servers | Connect external tools via Model Context Protocol |
-| 🧩 Plugins | Slash-command plugins: code-review, feature-dev, security-guidance |
-| ⚡ Skills | Custom skill files loaded at session start |
-| 🕵️ Custom agents | `.claude/agents/` — domain-specific agent definitions |
-| 🌐 Web fetch | `WebFetchTool` — fetch URLs (model-dependent) |
-| 🔎 Web search | `WebSearchTool` — search the web (model-dependent) |
-| 🎨 Custom theme | vxrt red/black theme (`/theme → vxrt`) |
-| 📓 Notebook editing | Jupyter notebook cell editing via `NotebookEditTool` |
-| 🖥 Offline mode | Full local operation — no internet needed (Ollama) |
-| 🔒 No billing | Free with Ollama / OpenRouter pay-as-you-go |
+| Feature | Description | Status |
+|---|---|:---:|
+| Natural language coding | Ask in plain English — claude reads, writes and edits code | ✅ |
+| File read / write / edit | Full filesystem access via FileReadTool, FileWriteTool, FileEditTool | ✅ |
+| Code search | GlobTool and GrepTool — find files and patterns across the repo | ✅ |
+| Shell execution | Run any bash/shell command via BashTool | ✅ |
+| Git workflow | Commit, diff, branch, PR — all git operations via shell | ✅ |
+| Agentic sub-agents | AgentTool spawns parallel sub-agents for complex multi-step tasks | ✅ |
+| Task management | Create, list, stop and get output from async tasks | ✅ |
+| Todo tracking | TodoWriteTool — persistent task lists per session | ✅ |
+| Plan mode | Enter plan-first mode before executing changes | ✅ |
+| Worktree isolation | Git worktree support — EnterWorktreeTool / ExitWorktreeTool | ✅ |
+| MCP servers | Connect external tools via Model Context Protocol | ✅ |
+| Plugins | Slash-command plugins: code-review, feature-dev, security-guidance | ✅ |
+| Skills | Custom skill files loaded at session start | ✅ |
+| Custom agents | `.claude/agents/` — domain-specific agent definitions | ✅ |
+| Web fetch | Fetch and read URLs via WebFetchTool | ✅ |
+| Web search | Search the web via WebSearchTool | ✅ |
+| Notebook editing | Jupyter notebook cell editing via NotebookEditTool | ✅ |
+| Custom theme | vxrt red/black theme — `/theme → vxrt` | ✅ |
+| Offline mode | Full local operation with no internet needed (Ollama) | ✅ |
+| No billing | Free with Ollama / pay-as-you-go with OpenRouter | ✅ |
 
-### ❌ Not supported / limited in this fork
+### Not Supported / Limited
 
-| Feature | Reason |
-|---|---|
-| 🔑 Anthropic OAuth login | Requires Anthropic account — not needed for Ollama/OpenRouter |
-| 💳 Usage billing dashboard | Anthropic-only; use OpenRouter dashboard instead |
-| 🧠 Extended thinking | Claude-specific feature — not available on local models |
-| 👁 Vision / image input | Depends on model — llama3.2 does not support images |
-| 🔄 Auto model updates | Upstream Anthropic release channel — manual pull needed |
-| ☁️ Remote teleport sessions | Requires Anthropic infrastructure |
-| 🔗 Claude.ai account sync | Tied to Anthropic account |
-| ⚡ Prompt caching | Anthropic API optimization — not applicable to Ollama |
-| 📊 Deep research mode | Claude-specific capability |
-| 🤝 GitHub app integration | Requires Anthropic-signed GitHub app |
+| Feature | Reason | Status |
+|---|---|:---:|
+| Anthropic OAuth login | Requires Anthropic account — not needed with Ollama or OpenRouter | ❌ |
+| Usage billing dashboard | Anthropic-only — use OpenRouter dashboard for cloud spend tracking | ❌ |
+| Extended thinking | Claude-specific capability — unavailable on local models | ❌ |
+| Vision / image input | Model-dependent — llama3.2 does not support image input | ⚠️ |
+| Auto model updates | Tied to Anthropic release channel — manual `ollama pull` required | ⚠️ |
+| Remote teleport sessions | Requires Anthropic infrastructure | ❌ |
+| Claude.ai account sync | Tied to Anthropic account system | ❌ |
+| Prompt caching | Anthropic API optimization — not applicable to Ollama | ❌ |
+| Deep research mode | Claude-specific capability | ❌ |
+| GitHub app integration | Requires Anthropic-signed GitHub app | ❌ |
 
 ---
 
@@ -71,11 +76,11 @@ Claude Code is an agentic coding tool that lives in your terminal, understands y
 
 ### Ollama — Local Free Models
 
-| Model | Size | Best For | Install |
+| Model | Size | Best For | Command |
 |---|---|---|---|
-| `llama3.2` ⭐ | 2 GB | General coding, chat | `ollama pull llama3.2` |
-| `qwen2.5-coder:7b` 🏆 | 4.7 GB | **Recommended: coding** | `ollama pull qwen2.5-coder:7b` |
-| `qwen2.5-coder:14b` 🔥 | 9 GB | **Best local coding** | `ollama pull qwen2.5-coder:14b` |
+| `llama3.2` ⭐ | 2.0 GB | General coding, quick tasks | `ollama pull llama3.2` |
+| `qwen2.5-coder:7b` 🏆 | 4.7 GB | **Recommended — coding** | `ollama pull qwen2.5-coder:7b` |
+| `qwen2.5-coder:14b` 🔥 | 9.0 GB | **Best mid-range coding** | `ollama pull qwen2.5-coder:14b` |
 | `qwen2.5-coder:32b` 💪 | 19 GB | Maximum local quality | `ollama pull qwen2.5-coder:32b` |
 | `deepseek-coder-v2` | 8.9 GB | Code completion | `ollama pull deepseek-coder-v2` |
 | `deepseek-r1:7b` | 4.7 GB | Reasoning + code | `ollama pull deepseek-r1:7b` |
@@ -90,23 +95,23 @@ Claude Code is an agentic coding tool that lives in your terminal, understands y
 
 | Model | Best For | Speed | Cost |
 |---|---|---|---|
-| `anthropic/claude-sonnet-4-5` 🏆 | **Best overall coding** | Medium | $$$ |
-| `anthropic/claude-3.5-haiku` ⚡ | Fast coding tasks | Fast | $$ |
-| `deepseek/deepseek-coder` 🔥 | **Best free coding** | Fast | Free tier |
+| `anthropic/claude-sonnet-4-5` 🏆 | Best overall coding | Medium | $$$ |
+| `anthropic/claude-3.5-haiku` | Fast coding tasks | Fast | $$ |
+| `deepseek/deepseek-coder` 🔥 | Best free coding tier | Fast | Free |
 | `qwen/qwen-2.5-coder-32b-instruct` | Large code tasks | Medium | $ |
 | `openai/gpt-4o` | General purpose | Fast | $$$ |
-| `google/gemini-pro-1.5` | Long context | Medium | $$ |
-| `meta-llama/llama-3.1-405b-instruct` | Large tasks | Slow | $$ |
+| `google/gemini-pro-1.5` | Long context tasks | Medium | $$ |
+| `meta-llama/llama-3.1-405b-instruct` | Large reasoning | Slow | $$ |
 | `mistralai/mistral-large` | Code + reasoning | Medium | $$ |
 
-### Recommended for Coding Tasks
+### Model Recommendations
 
 ```
-🏆 Best quality (cloud):  anthropic/claude-sonnet-4-5
-🔥 Best free (cloud):     deepseek/deepseek-coder
-⚡ Best local fast:        qwen2.5-coder:7b
-💪 Best local quality:    qwen2.5-coder:32b  (needs 20GB RAM)
-🖥 Currently running:     llama3.2  (installed, ready)
+Best quality (cloud)   →  anthropic/claude-sonnet-4-5
+Best free (cloud)      →  deepseek/deepseek-coder
+Best local fast        →  qwen2.5-coder:7b     (needs ~6GB RAM)
+Best local quality     →  qwen2.5-coder:32b    (needs ~22GB RAM)
+Currently installed    →  llama3.2             (ready, 2GB)
 ```
 
 ---
@@ -115,12 +120,11 @@ Claude Code is an agentic coding tool that lives in your terminal, understands y
 
 ### Requirements
 
-| Tool | Version | Check |
+| Tool | Min Version | Check |
 |---|---|---|
-| Claude Code CLI | ≥ 2.1.12 | `claude --version` |
-| Ollama | ≥ 0.14.0 | `ollama --version` |
-| Node.js | ≥ 18.0.0 | `node --version` |
-| Bun (optional) | ≥ 1.0 | `bun --version` |
+| Claude Code CLI | 2.1.12 | `claude --version` |
+| Ollama | 0.14.0 | `ollama --version` |
+| Node.js | 18.0.0 | `node --version` |
 
 ---
 
@@ -130,76 +134,76 @@ Claude Code is an agentic coding tool that lives in your terminal, understands y
 # macOS / Linux
 curl -fsSL https://claude.ai/install.sh | bash
 
-# macOS (Homebrew)
+# macOS via Homebrew
 brew install --cask claude-code
 
-# Windows
+# Windows (PowerShell)
 irm https://claude.ai/install.ps1 | iex
 
 # Verify
-claude --version   # should show ≥ 2.1.12
+claude --version   # expect ≥ 2.1.12
 ```
 
 ---
 
-### Step 2A — Run with Ollama (Local, Free)
+### Step 2A — Ollama (Local, Free, Offline)
 
 ```bash
 # Install Ollama
-brew install ollama          # macOS
-# Linux: curl -fsSL https://ollama.com/install.sh | sh
+brew install ollama                      # macOS
+curl -fsSL https://ollama.com/install.sh | sh  # Linux
 
-# Pull a model (pick one)
-ollama pull llama3.2                 # 2GB  — quick start
-ollama pull qwen2.5-coder:7b         # 4.7GB — recommended for code
-ollama pull deepseek-r1:7b           # 4.7GB — reasoning
+# Pull a model
+ollama pull llama3.2                     # 2 GB  — quick start
+ollama pull qwen2.5-coder:7b             # 4.7 GB — recommended for code
 
-# Start Ollama server (keep this terminal open)
+# Start server (keep this running)
 ollama serve
 
-# In a new terminal — launch vxrt code
+# Launch in a new terminal
 ANTHROPIC_AUTH_TOKEN=ollama \
 ANTHROPIC_BASE_URL=http://localhost:11434 \
 claude --model llama3.2
 ```
 
 **Make it permanent** — add to `~/.zshrc` or `~/.bashrc`:
+
 ```bash
 export ANTHROPIC_AUTH_TOKEN="ollama"
 export ANTHROPIC_BASE_URL="http://localhost:11434"
 ```
+
 Then just:
 ```bash
-ollama serve &          # start server in background
-claude --model llama3.2 # or: npm run dev
+ollama serve &
+claude --model llama3.2
 ```
 
 ---
 
-### Step 2B — Run with OpenRouter (Cloud)
+### Step 2B — OpenRouter (Cloud, 200+ Models)
 
 ```bash
-# 1. Get API key at: https://openrouter.ai/keys
+# Get your key at: https://openrouter.ai/keys
 
-# 2. Launch
 ANTHROPIC_AUTH_TOKEN=your-openrouter-key \
 ANTHROPIC_BASE_URL=https://openrouter.ai/api/v1 \
 claude --model anthropic/claude-3.5-sonnet
 ```
 
-**Make it permanent:**
+**Persistent setup:**
 ```bash
-export ANTHROPIC_AUTH_TOKEN="sk-or-your-key-here"
+export ANTHROPIC_AUTH_TOKEN="sk-or-your-key"
 export ANTHROPIC_BASE_URL="https://openrouter.ai/api/v1"
 ```
 
 ---
 
-### Step 2C — Run with Anthropic API (Official)
+### Step 2C — Anthropic API (Official)
 
 ```bash
-export ANTHROPIC_API_KEY="sk-ant-your-key-here"
-claude   # uses claude-sonnet by default
+export ANTHROPIC_API_KEY="sk-ant-your-key"
+claude
 ```
 
 ---
@@ -207,30 +211,33 @@ claude   # uses claude-sonnet by default
 ### npm Shortcuts
 
 ```bash
-npm run setup         # pull llama3.2 model
-npm run dev           # launch with Ollama + llama3.2
-npm run start         # launch with Ollama (default model)
-npm run ollama:serve  # start Ollama server
-npm run ollama:list   # list downloaded models
-npm run openrouter    # launch with OpenRouter (reads ANTHROPIC_* env)
+npm run setup          # pull llama3.2 model
+npm run dev            # launch with Ollama + llama3.2
+npm run start          # launch with Ollama (default model)
+npm run ollama:serve   # start Ollama server
+npm run ollama:list    # list downloaded models
+npm run openrouter     # launch with OpenRouter (reads env vars)
 ```
 
 ---
 
-### Verify connection
+### Verify Connection
 
-Once running, inside claude:
+Inside claude, run:
 ```
-/status    → check model, base URL, auth token
-/model     → switch model
-/theme     → select vxrt (red/black theme)
+/status
 ```
 
-Expected `/status` output for Ollama:
+Expected output for Ollama:
 ```
 Auth token:         ollama
 Anthropic base URL: http://localhost:11434
 Model:              llama3.2
+```
+
+Then apply the vxrt theme:
+```
+/theme → select vxrt
 ```
 
 ---
@@ -504,30 +511,29 @@ graph LR
 flowchart TD
     START(["`**claude** command`"]):::entry
     ENV{"`Read env vars
-    **ANTHROPIC_AUTH_TOKEN**
-    **ANTHROPIC_BASE_URL**`"}:::decision
+    ANTHROPIC_AUTH_TOKEN
+    ANTHROPIC_BASE_URL`"}:::decision
 
     START --> ENV
-
     ENV -->|"localhost:11434"| OLLAMA
     ENV -->|"openrouter.ai/api/v1"| OPENROUTER
     ENV -->|"api.anthropic.com"| ANTHROPIC
 
-    subgraph OLLAMA["🖥  Ollama — Local · Free · Offline"]
+    subgraph OLLAMA["Ollama — Local · Free · Offline"]
         OA["AUTH_TOKEN = ollama"]:::localnode
         OS["ollama serve · localhost:11434"]:::localnode
         OM["llama3.2 · qwen2.5-coder:7b\ndeepseek-r1 · mistral · gemma3"]:::localnode
         OA --> OS --> OM
     end
 
-    subgraph OPENROUTER["☁️  OpenRouter — Cloud · 200+ Models"]
+    subgraph OPENROUTER["OpenRouter — Cloud · 200+ Models"]
         RA["AUTH_TOKEN = sk-or-…"]:::cloudnode
         RP["openrouter.ai/api/v1"]:::cloudnode
         RM["claude-sonnet · gpt-4o\ngemini-pro · deepseek-coder"]:::cloudnode
         RA --> RP --> RM
     end
 
-    subgraph ANTHROPIC["🔑  Anthropic — Official Claude Models"]
+    subgraph ANTHROPIC["Anthropic — Official Claude Models"]
         AA["AUTH_TOKEN = sk-ant-…"]:::anthropicnode
         AP["api.anthropic.com/v1"]:::anthropicnode
         AM["claude-opus-4 · claude-sonnet-4\nclaude-haiku-3.5"]:::anthropicnode
@@ -563,34 +569,34 @@ flowchart TD
   }
 }}%%
 graph TD
-    subgraph REG["📦 Plugin Registry"]
+    subgraph REG["Plugin Registry"]
         MPL["Official Marketplace"]:::regnode
-        LPL["Local  plugins/  dir"]:::regnode
+        LPL["Local plugins/ dir"]:::regnode
     end
 
-    subgraph PLUGINS["🧩 Bundled Plugins"]
+    subgraph PLUGINS["Bundled Plugins"]
         CR["code-review\nPR analysis · diff review"]:::plugin
         FD["feature-dev\nFeature planning"]:::plugin
         FE["frontend-design\nUI/UX guidance"]:::plugin
-        SG["security-guidance\n⚔️ Security review"]:::plugin
+        SG["security-guidance\nSecurity review"]:::plugin
         PR["pr-review-toolkit\nPR workflow"]:::plugin
         HK["hookify\nHook management"]:::plugin
         PD["plugin-dev · agent-sdk-dev"]:::plugin
         CC["commit-commands\nGit helpers"]:::plugin
     end
 
-    subgraph SKILLS["⚡ Skills"]
+    subgraph SKILLS["Skills"]
         BSK["src/skills/bundled/\nBuilt-in skill index"]:::skill
         CSK[".claude/skills/\nCustom skills"]:::skill
         SKLT["SkillTool\nsrc/tools/SkillTool/"]:::skill
     end
 
-    subgraph AGENTS["🕵️ Custom Agents"]
+    subgraph AGENTS["Custom Agents"]
         AGDIR[".claude/agents/"]:::agent
-        PEN["pentesting-web-security-automation\n• Web recon · Exploit chains\n• Vuln scanning · Report gen\n• OWASP Top 10 coverage"]:::agent
+        PEN["pentesting-web-security-automation\nWeb recon · Exploit chains\nVuln scanning · Report gen\nOWASP Top 10 coverage"]:::agent
     end
 
-    subgraph HOOKS["🪝 Hooks  ·  settings.json"]
+    subgraph HOOKS["Hooks · settings.json"]
         HK1["PreToolUse"]:::hook
         HK2["PostToolUse"]:::hook
         HK3["PreCompact"]:::hook
@@ -620,9 +626,10 @@ graph TD
 |---|---|---|
 | Backend | Anthropic API only | Ollama · OpenRouter · Anthropic API |
 | Billing | Pay-per-token | Free (local) / OpenRouter pricing |
-| Offline | ✗ | ✓ via Ollama |
-| Theme | Default blue | vxrt red/black (`/theme → vxrt`) |
-| Agents | — | pentesting-web-security-automation |
+| Offline | No | Yes — via Ollama |
+| Theme | Default blue | vxrt red/black |
+| Custom agents | None | pentesting-web-security-automation |
+| Branding | Claude Code | vxrt code |
 
 ---
 
@@ -630,14 +637,14 @@ graph TD
 
 | Plugin | Purpose |
 |---|---|
-| `code-review` | PR diff analysis |
-| `feature-dev` | Feature planning workflow |
-| `frontend-design` | UI/UX guidance |
-| `security-guidance` | Security review & hardening |
-| `pr-review-toolkit` | Full PR review workflow |
-| `hookify` | Hook configuration |
-| `commit-commands` | Git commit helpers |
-| `agent-sdk-dev` | Agent SDK development |
+| `code-review` | PR diff analysis and inline review |
+| `feature-dev` | Feature planning and development workflow |
+| `frontend-design` | UI/UX guidance and component generation |
+| `security-guidance` | Security review and vulnerability hardening |
+| `pr-review-toolkit` | Full pull request review workflow |
+| `hookify` | Hook configuration and management |
+| `commit-commands` | Git commit message helpers |
+| `agent-sdk-dev` | Agent SDK development assistance |
 
 ---
 
@@ -658,19 +665,32 @@ graph TD
 
 <table>
   <tr>
-    <td align="center">
+    <td align="center" width="200">
       <a href="https://github.com/lily0ng">
-        <img src="https://github.com/lily0ng.png" width="80" height="80" style="border-radius:50%;border:2px solid #cc2222" alt="lily0ng" /><br/>
-        <sub><b>lily0ng</b></sub>
-      </a><br/>
-      <sub>Fork Maintainer<br/>Config &amp; Integration</sub>
+        <img src="https://github.com/lily0ng.png" width="90" height="90" style="border-radius:50%;border:3px solid #cc2222" alt="lily0ng" />
+        <br/><b>lily0ng</b>
+      </a>
+      <br/>
+      <sub>Fork Maintainer</sub><br/>
+      <sub>Config · Integration · Theming</sub><br/>
+      <sub>
+        <a href="https://github.com/lily0ng">GitHub</a> ·
+        <a href="https://github.com/lily0ng/claude-code">claude-code</a>
+      </sub>
     </td>
-    <td align="center">
+    <td align="center" width="200">
       <a href="https://github.com/0xff0ay">
-        <img src="https://github.com/0xff0ay.png" width="80" height="80" style="border-radius:50%;border:2px solid #cc2222" alt="0xff0ay" /><br/>
-        <sub><b>0xff0ay</b></sub>
-      </a><br/>
-      <sub>Senior Offensive Security Engineer ( Hacker )<br/>Zero Day Researcher · VXRT, USA</sub>
+        <img src="https://github.com/0xff0ay.png" width="90" height="90" style="border-radius:50%;border:3px solid #cc2222" alt="0xff0ay" />
+        <br/><b>0xff0ay</b>
+      </a>
+      <br/>
+      <sub>Senior Offensive Security Engineer ( Hacker )</sub><br/>
+      <sub>Zero Day Researcher · VXRT, USA</sub><br/>
+      <sub>
+        <a href="https://github.com/0xff0ay">GitHub</a> ·
+        <a href="https://github.com/0xff0ay/Offensive-Security">Offensive-Security</a> ·
+        <a href="https://github.com/0xff0ay/HTB">HTB</a>
+      </sub>
     </td>
   </tr>
 </table>
@@ -679,30 +699,31 @@ graph TD
 
 ## Collaborators
 
-| Handle | Role | Links |
+| Handle | Role | Repos |
 |---|---|---|
-| [@lily0ng](https://github.com/lily0ng) | Fork Maintainer · Integration | [GitHub](https://github.com/lily0ng) |
-| [@0xff0ay](https://github.com/0xff0ay) | Senior Offensive Security Engineer ( Hacker ) · Zero Day Researcher · VXRT, USA | [GitHub](https://github.com/0xff0ay) · [Offensive-Security](https://github.com/0xff0ay/Offensive-Security) · [HTB](https://github.com/0xff0ay/HTB) |
+| [@lily0ng](https://github.com/lily0ng) | Fork Maintainer · Config & Integration | [claude-code](https://github.com/lily0ng/claude-code) |
+| [@0xff0ay](https://github.com/0xff0ay) | Senior Offensive Security Engineer ( Hacker ) · Zero Day Researcher · VXRT, USA | [Offensive-Security](https://github.com/0xff0ay/Offensive-Security) · [HTB](https://github.com/0xff0ay/HTB) · [0xff](https://github.com/0xff0ay/0xff) |
 
 ---
 
-## Community & support
+## About This Fork
 
-- 📖 [Official docs](https://code.claude.com/docs/en/overview)
-- 💬 [Claude Developers Discord](https://anthropic.com/discord)
-- 🐛 [Report upstream bugs](https://github.com/anthropics/claude-code/issues)
-- 📦 [npm package](https://www.npmjs.com/package/@anthropic-ai/claude-code)
+This fork was created to make Claude Code usable without an Anthropic account or API billing. The primary goal is to route all AI inference through local Ollama models (free, offline, private) or OpenRouter (cloud, flexible pricing) instead of the Anthropic API.
+
+The codebase is Anthropic's proprietary source — the `src/` directory contains the full TypeScript/TSX source that compiles into the `claude` binary. This fork does not redistribute the compiled binary; it configures the existing installed CLI to route to alternative backends.
+
+**Why this matters:**
+- Run a full agentic coding assistant with zero ongoing cost
+- Keep code and prompts private — nothing leaves your machine with Ollama
+- Access 200+ models via OpenRouter with a single API key
+- Use specialized coding models like `qwen2.5-coder` for better code quality
 
 ---
 
-## Credits & attribution
+## License
 
-- **Original project**: [Claude Code](https://github.com/anthropics/claude-code) by [Anthropic](https://anthropic.com)
-- **Original authors**: The Claude Code team at Anthropic — see [CHANGELOG.md](./CHANGELOG.md)
-- **License**: [LICENSE.md](./LICENSE.md) — this fork inherits the upstream license
-- **Local runtime**: [Ollama](https://ollama.com)
-- **Cloud routing**: [OpenRouter](https://openrouter.ai)
-- **Fork maintainer**: [@lily0ng](https://github.com/lily0ng)
-- **Security contributor**: [@0xff0ay](https://github.com/0xff0ay) — Senior Offensive Security Engineer ( Hacker ) · Zero Day Researcher · VXRT, USA
+This fork inherits the upstream license. See [LICENSE.md](./LICENSE.md).
 
-> Claude Code and the Claude name are trademarks of Anthropic, PBC. This fork is an independent, unofficial project.
+Original work © Anthropic, PBC. Fork modifications by [@lily0ng](https://github.com/lily0ng).
+
+> Claude Code and the Claude name are trademarks of Anthropic, PBC. This fork is an independent, unofficial project not affiliated with or endorsed by Anthropic.
