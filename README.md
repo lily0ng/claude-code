@@ -1,56 +1,64 @@
-# vxrt code
+# Claude Code
 
-![Node.js](https://img.shields.io/badge/Node.js-18%2B-brightgreen?style=flat-square)
-![Bun](https://img.shields.io/badge/Bun-1.0%2B-black?style=flat-square)
-![License](https://img.shields.io/badge/license-MIT-red?style=flat-square)
-![Fork](https://img.shields.io/badge/fork-claude--code-orange?style=flat-square)
+![](https://img.shields.io/badge/Node.js-18%2B-brightgreen?style=flat-square) [![npm]](https://www.npmjs.com/package/@anthropic-ai/claude-code) ![](https://img.shields.io/badge/fork-anthropics%2Fclaude--code-orange?style=flat-square)
 
-> **vxrt code** is a custom fork of [Anthropic's Claude Code](https://github.com/anthropics/claude-code), rebuilt to run fully local and cloud models — no Anthropic API billing required.
+[npm]: https://img.shields.io/npm/v/@anthropic-ai/claude-code.svg?style=flat-square
 
-Supports **Ollama** (local, offline, free) and **OpenRouter** (cloud, multi-model) as drop-in backends via the Anthropic-compatible API layer.
+> **This is a personal fork** of [Anthropic's Claude Code](https://github.com/anthropics/claude-code) by [@lily0ng](https://github.com/lily0ng), extended to support local models via **Ollama** and cloud models via **OpenRouter** — with no Anthropic API billing required. All core functionality, architecture, and intellectual property belongs to [Anthropic](https://anthropic.com). This fork is not affiliated with or endorsed by Anthropic.
 
----
+Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows — all through natural language commands. Use it in your terminal, IDE, or tag @claude on GitHub.
 
-## What's Different from Upstream
+**Learn more in the [official documentation](https://code.claude.com/docs/en/overview)** · **Original repo: [anthropics/claude-code](https://github.com/anthropics/claude-code)**
 
-| Feature | claude-code (upstream) | vxrt code (this fork) |
-|---|---|---|
-| Model backend | Anthropic API only | Ollama + OpenRouter |
-| Billing | Pay-per-token | Free (local) / OpenRouter pricing |
-| Branding | Claude Code | vxrt code |
-| Theme | Default blue | vxrt red/black |
-| Offline support | ✗ | ✓ (via Ollama) |
+<img src="./demo.gif" />
 
 ---
 
-## Requirements
+## Get started
 
-- **Node.js** >= 18.0.0
-- **Bun** >= 1.0 (used as runtime & bundler)
-- **Ollama** >= 0.14.0 (for local models)
-- **Claude Code CLI** >= 2.1.12
+> [!NOTE]
+> This fork runs against **Ollama** (local, free) or **OpenRouter** (cloud). The standard Anthropic API setup still works — see [official setup docs](https://code.claude.com/docs/en/setup).
 
----
+### Install Claude Code (upstream CLI)
 
-## Installation
-
-### 1. Clone this repo
-
+**macOS / Linux (Recommended):**
 ```bash
-git clone https://github.com/lily0ng/vxrt-code.git
-cd vxrt-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-### 2. Install dependencies
-
+**Homebrew (macOS / Linux):**
 ```bash
-npm install
-# or with bun (recommended)
-bun install
+brew install --cask claude-code
 ```
 
-### 3. Install Ollama
+**Windows (Recommended):**
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
 
+**WinGet (Windows):**
+```powershell
+winget install Anthropic.ClaudeCode
+```
+
+**NPM (Deprecated):**
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+Navigate to your project and run `claude`.
+
+---
+
+## Running with local models (this fork)
+
+This fork routes Claude Code through Ollama or OpenRouter instead of the Anthropic API. The CLI itself is unchanged — only the backend endpoint and auth token differ.
+
+### Ollama (local, free, offline)
+
+> Requires **Ollama v0.14.0+** and **Claude Code v2.1.12+**
+
+**1. Install Ollama:**
 ```bash
 # macOS
 brew install ollama
@@ -59,47 +67,37 @@ brew install ollama
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-Pull a local coding model:
-
+**2. Pull a model:**
 ```bash
 ollama pull llama3.2
-# or for better code tasks:
+# recommended for coding tasks:
 ollama pull qwen2.5-coder:7b
 ```
 
----
-
-## Running Locally
-
-### Quick start (Ollama)
-
+**3. Start the server:**
 ```bash
-# 1. Start Ollama server (keep this terminal open)
 ollama serve
+```
 
-# 2. In a new terminal — run vxrt code
+**4. Launch Claude Code against Ollama:**
+```bash
 ANTHROPIC_AUTH_TOKEN=ollama \
 ANTHROPIC_BASE_URL=http://localhost:11434 \
 claude --model llama3.2
 ```
 
-### Persistent setup (recommended)
-
-Add to your `~/.zshrc` or `~/.bashrc`:
-
+**Persistent setup** — add to `~/.zshrc` or `~/.bashrc`:
 ```bash
 export ANTHROPIC_AUTH_TOKEN="ollama"
 export ANTHROPIC_BASE_URL="http://localhost:11434"
 ```
+Then just run `claude` after `ollama serve`.
 
-Then just run:
+---
 
-```bash
-ollama serve        # start local model server
-claude              # launch vxrt code
-```
+### OpenRouter (cloud, multi-model)
 
-### Using OpenRouter (cloud)
+> Get your API key at [openrouter.ai/keys](https://openrouter.ai/keys)
 
 ```bash
 ANTHROPIC_AUTH_TOKEN=your-openrouter-api-key \
@@ -107,74 +105,53 @@ ANTHROPIC_BASE_URL=https://openrouter.ai/api/v1 \
 claude --model anthropic/claude-3.5-sonnet
 ```
 
-Get your API key at [openrouter.ai/keys](https://openrouter.ai/keys).
+Browse all supported models at [openrouter.ai/models](https://openrouter.ai/models).
 
 ---
 
-## Project Structure
+## Fork changes vs upstream
 
-```
-vxrt-code/
-├── src/                    # Source code (TypeScript/TSX)
-│   ├── main.tsx            # Entry point
-│   ├── cli/                # CLI argument parsing
-│   ├── commands/           # Slash commands (/status, /model, etc.)
-│   ├── components/         # React TUI components
-│   ├── assistant/          # AI response handling
-│   ├── bridge/             # API bridge layer
-│   ├── context/            # Session context management
-│   ├── entrypoints/        # App entrypoints
-│   └── coordinator/        # Task coordinator
-├── plugins/                # Claude Code plugins
-├── scripts/                # Build & utility scripts
-├── .claude/
-│   ├── settings.json       # Default model config
-│   └── themes/vxrt.json    # vxrt red/black theme
-├── package.json
-├── bunfig.toml
-└── tsconfig.json
-```
+| | [anthropics/claude-code](https://github.com/anthropics/claude-code) | [lily0ng/claude-code](https://github.com/lily0ng/claude-code) |
+|---|---|---|
+| Backend | Anthropic API | Ollama · OpenRouter · Anthropic API |
+| Billing | Pay-per-token | Free (local) / OpenRouter pricing |
+| Offline | ✗ | ✓ via Ollama |
+| Theme | Default | vxrt red/black (`/theme → vxrt`) |
 
 ---
 
-## Development
-
-### Run from source
+## Development (from source)
 
 ```bash
+# Clone this fork
+git clone https://github.com/lily0ng/claude-code.git
+cd claude-code
+
+# Install dependencies
+npm install
+# or (recommended)
+bun install
+
+# Run from source
 bun run dev
-# or
-bun run src/main.tsx
-```
 
-### Build
-
-```bash
-bun run build
-# output → dist/
+# Build
+bun run build   # → dist/
 ```
 
 ### npm scripts
 
 | Command | Description |
 |---|---|
-| `npm run start` | Run the app via Bun |
-| `npm run dev` | Dev mode (same as start) |
+| `npm run start` | Run via Bun |
+| `npm run dev` | Development mode |
 | `npm run build` | Bundle to `dist/` |
 
 ---
 
-## Theme
+## Plugins
 
-The **vxrt** theme uses a red/black color scheme matching the project logo.
-
-Apply inside claude:
-
-```
-/theme → select vxrt
-```
-
-Theme file: `.claude/themes/vxrt.json`
+This repository includes Claude Code plugins that extend functionality with custom commands and agents. See the [plugins directory](./plugins/) for available plugins.
 
 ---
 
@@ -182,17 +159,33 @@ Theme file: `.claude/themes/vxrt.json`
 
 | Branch | Purpose |
 |---|---|
-| `main` | Stable release |
-| `dev` | Integration / development |
-| `feat/ollama-integration` | Local model backend |
-| `feat/openrouter-integration` | Cloud model backend |
-| `feat/themes` | vxrt theme |
-| `feat/ui-branding` | Name & UI patches |
+| `main` | Stable |
+| `dev` | Development / integration |
+| `feat/ollama-integration` | Local Ollama backend |
+| `feat/openrouter-integration` | OpenRouter cloud backend |
+| `feat/themes` | Custom vxrt theme |
+| `feat/ui-branding` | UI patches |
 
 ---
 
-## Credits
+## Community & support (upstream)
 
-- Forked from [anthropics/claude-code](https://github.com/anthropics/claude-code)
-- Local model support via [Ollama](https://ollama.com)
-- Cloud model routing via [OpenRouter](https://openrouter.ai)
+- 📖 [Official docs](https://code.claude.com/docs/en/overview)
+- 💬 [Claude Developers Discord](https://anthropic.com/discord)
+- 🐛 [Report bugs](https://github.com/anthropics/claude-code/issues) — use `/bug` inside Claude Code
+- 📦 [npm package](https://www.npmjs.com/package/@anthropic-ai/claude-code)
+
+---
+
+## Credits & attribution
+
+This fork exists thanks to the exceptional work of the Anthropic team. Full credit for the core product, architecture, and design belongs to them.
+
+- **Original project**: [Claude Code](https://github.com/anthropics/claude-code) by [Anthropic](https://anthropic.com)
+- **Original authors**: The Claude Code team at Anthropic — see [CHANGELOG.md](./CHANGELOG.md) for full history
+- **License**: [See LICENSE.md](./LICENSE.md) — this fork inherits the upstream license
+- **Local model runtime**: [Ollama](https://ollama.com)
+- **Cloud model routing**: [OpenRouter](https://openrouter.ai)
+- **Fork maintainer**: [@lily0ng](https://github.com/lily0ng)
+
+> Claude Code and the Claude name are trademarks of Anthropic, PBC. This fork is an independent, unofficial project.
