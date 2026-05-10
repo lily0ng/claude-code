@@ -1372,7 +1372,7 @@ async function checkPermissionsAndCallTool(
         toolParameters.git_commit_id = gitCommitId
       }
     }
-
+  
     // Log tool result event for OTLP with tool parameters and decision context
     const mcpServerScope = isMcpTool(tool)
       ? getMcpServerScopeFromToolName(tool.name)
