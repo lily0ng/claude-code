@@ -25,17 +25,24 @@ export const CONFIG = {
       name: 'Local / Ollama',
       models: ['llama3:70b', 'llama3:8b', 'mistral-large', 'mixtral:8x7b', 'codellama:34b'],
       defaultModel: 'llama3:70b',
-      endpoints: {
-        ollama: 'http://localhost:11434',
-        lmStudio: 'http://localhost:1234',
-      },
+      endpoints: { ollama: 'http://localhost:11434', lmStudio: 'http://localhost:1234' },
     },
   },
   mcp: {
-    promptInjection: { enabled: true, threshold: 0.7 },
-    piiDetection: { enabled: true, severity: 'high' },
-    contentModeration: { enabled: true, categories: ['hate', 'harassment', 'self-harm', 'sexual', 'violence'] },
-    auditLog: { enabled: true, logLevel: 'info' },
+    promptInjection: { enabled: true, threshold: 0.7, category: 'security' },
+    piiDetection: { enabled: true, severity: 'high', category: 'privacy' },
+    contentModeration: { enabled: true, categories: ['hate', 'harassment', 'self-harm', 'sexual', 'violence'], category: 'moderation' },
+    auditLog: { enabled: true, logLevel: 'info', category: 'observability' },
+    rateLimit: { enabled: true, maxRequests: 30, windowMs: 60000, category: 'security' },
+    tokenBudget: { enabled: true, maxTokensPerSession: 100000, warningThreshold: 0.8, category: 'cost' },
+    inputValidation: { enabled: true, maxMessageLength: 32000, maxMessagesPerConversation: 500, category: 'security' },
+    modelGating: { enabled: true, restrictedCategories: ['self-harm', 'violence'], category: 'compliance' },
+    cache: { enabled: true, ttlMs: 300000, maxEntries: 200, category: 'performance' },
+  },
+  mcpAutomation: {
+    healthCheckInterval: 30000,
+    autoEnableByContext: true,
+    reportOnEachRequest: true,
   },
   themes: {
     default: 'dark',
@@ -51,7 +58,6 @@ export const CONFIG = {
 export function getApiKey(provider) {
   const key = CONFIG.providers[provider]?.envKey;
   if (!key) return null;
-  const envPattern = new RegExp(`^\\$\\{${key}\\}$`);
   const stored = localStorage.getItem(`api_key_${provider}`);
   if (stored) return stored;
   const fromEnv = process?.env?.[key];

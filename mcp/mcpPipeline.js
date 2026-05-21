@@ -1,114 +1,184 @@
+import { MCPRegistry } from './mcpRegistry.js';
 import { PromptInjectionMCP } from './promptInjectionMCP.js';
 import { PIIDetectionMCP } from './piDetectionMCP.js';
 import { ContentModerationMCP } from './contentModerationMCP.js';
 import { AuditLogMCP } from './auditLogMCP.js';
+import { RateLimitMCP } from './rateLimitMCP.js';
+import { TokenBudgetMCP } from './tokenBudgetMCP.js';
+import { InputValidationMCP } from './inputValidationMCP.js';
+import { ModelGatingMCP } from './modelGatingMCP.js';
+import { CacheMCP } from './cacheMCP.js';
+import { CONFIG } from '../config.js';
 
 export class MCPPipeline {
   constructor() {
-    this.inputPlugins = [];
-    this.outputPlugins = [];
+    this.registry = new MCPRegistry();
     this.auditLog = new AuditLogMCP();
-    this.results = {};
-    this.lastInputResult = null;
-    this.lastOutputResult = null;
+    this.lastInputResults = null;
+    this.lastOutputResults = null;
     this.listeners = [];
+    this.healthInterval = null;
 
-    this.register(new PromptInjectionMCP());
-    this.register(new PIIDetectionMCP());
-    this.register(new ContentModerationMCP());
+    this._registerDefaults();
+    this._startHealthChecks();
+    this._setupAutoConfig();
   }
 
-  register(plugin) {
-    this.inputPlugins.push(plugin);
-    this.outputPlugins.push(plugin);
+  _registerDefaults() {
+    const builtins = [
+      { instance: new PromptInjectionMCP(), priority: 10, category: 'security' },
+      { instance: new PIIDetectionMCP(), priority: 20, category: 'privacy' },
+      { instance: new ContentModerationMCP(), priority: 30, category: 'moderation' },
+      { instance: new RateLimitMCP(), priority: 5, category: 'security' },
+      { instance: new InputValidationMCP(), priority: 1, category: 'security' },
+      { instance: new TokenBudgetMCP(), priority: 40, category: 'cost' },
+      { instance: new ModelGatingMCP(), priority: 15, category: 'compliance' },
+      { instance: new CacheMCP(), priority: 50, category: 'performance' },
+    ];
+
+    for (const { instance, priority, category } of builtins) {
+      if (instance.enabled !== false) {
+        this.registry.register(instance, { priority, category });
+      }
+    }
+  }
+
+  _startHealthChecks() {
+    const interval = CONFIG.mcpAutomation?.healthCheckInterval || 30000;
+    this.healthInterval = setInterval(() => {
+      this.registry.checkHealth().then(results => {
+        this.notify({ type: 'health', results });
+      });
+    }, interval);
+  }
+
+  _setupAutoConfig() {
+    this.registry.on('afterRegister', ({ entry }) => {
+      this.notify({ type: 'pluginRegistered', plugin: entry.name, category: entry.category });
+    });
+  }
+
+  registerPlugin(plugin, options = {}) {
+    this.registry.register(plugin, options);
+    this.notify({ type: 'pluginRegistered', plugin: plugin.name, options });
     return this;
   }
 
-  async processInput(message, context = {}) {
-    this.results = {};
-    const mcpResults = {};
+  unregisterPlugin(name) {
+    const removed = this.registry.unregister(name);
+    if (removed) this.notify({ type: 'pluginUnregistered', plugin: name });
+    return removed;
+  }
 
-    for (const plugin of this.inputPlugins) {
+  getPlugin(name) {
+    return this.registry.get(name);
+  }
+
+  getAllPlugins() {
+    return this.registry.getAll();
+  }
+
+  getPluginsByCategory(category) {
+    return this.registry.getByCategory(category);
+  }
+
+  setPluginEnabled(name, enabled) {
+    this.registry.setEnabled(name, enabled);
+    this.notify({ type: 'pluginToggled', plugin: name, enabled });
+  }
+
+  async processInput(message, context = {}) {
+    const mcpResults = {};
+    const plugins = this.registry.getInputPlugins();
+    let processedMessage = message;
+
+    this.registry.runHook('beforeProcess', { message, context });
+
+    for (const entry of plugins) {
       try {
-        const result = await plugin.processInput(message, context);
-        mcpResults[plugin.name] = result;
-        this.results[plugin.name] = result;
+        const result = await entry.plugin.processInput(processedMessage, {
+          ...context,
+          sessionId: this.auditLog.sessionId,
+        });
+
+        mcpResults[entry.name] = result;
+
+        if (result.cached && result.response) {
+          this.registry.runHook('afterProcess', { result, cached: true });
+          this.lastInputResults = mcpResults;
+          this.notify({ type: 'allowed', results: mcpResults });
+          return { passed: true, cached: true, response: result.response, results: mcpResults };
+        }
 
         if (result.action === 'block') {
-          this.lastInputResult = mcpResults;
-          this.notify({ type: 'block', plugin: plugin.name, result });
-          await this.auditLog.processInput(message, {
-            ...context, action: 'blocked', mcpResults,
+          await this.auditLog.processInput(processedMessage, {
+            ...context, action: 'blocked', blockedBy: entry.name, mcpResults,
           });
-          return {
-            passed: false,
-            blockedBy: plugin.name,
-            message: result.message,
-            results: mcpResults,
-          };
+          this.lastInputResults = mcpResults;
+          this.notify({ type: 'block', plugin: entry.name, result });
+          this.registry.runHook('afterProcess', { result, blocked: true });
+          return { passed: false, blockedBy: entry.name, message: result.message, results: mcpResults };
         }
 
         if (result.redacted && result.redactedText) {
-          message = result.redactedText;
+          processedMessage = result.redactedText;
         }
       } catch (err) {
-        console.error(`MCP plugin ${plugin.name} error:`, err);
-        mcpResults[plugin.name] = { passed: true, error: err.message };
+        console.error(`MCP plugin "${entry.name}" error:`, err);
+        mcpResults[entry.name] = { passed: true, error: err.message };
       }
     }
 
-    this.lastInputResult = mcpResults;
-    await this.auditLog.processInput(message, {
+    this.lastInputResults = mcpResults;
+    await this.auditLog.processInput(processedMessage, {
       ...context, action: 'allowed', mcpResults,
     });
 
     this.notify({ type: 'allowed', results: mcpResults });
+    this.registry.runHook('afterProcess', { message: processedMessage, results: mcpResults });
 
-    return {
-      passed: true,
-      message,
-      results: mcpResults,
-    };
+    return { passed: true, message: processedMessage, results: mcpResults };
   }
 
   async processOutput(response, context = {}) {
     const mcpResults = {};
+    const plugins = this.registry.getOutputPlugins();
+    let processedResponse = response;
 
-    for (const plugin of this.outputPlugins) {
+    for (const entry of plugins) {
       try {
-        const result = await plugin.processOutput(response, context);
-        mcpResults[plugin.name] = result;
-        this.results[`${plugin.name}_output`] = result;
+        const cacheResult = await entry.plugin.processOutput(processedResponse, {
+          ...context,
+          sessionId: this.auditLog.sessionId,
+        });
+
+        mcpResults[entry.name] = cacheResult;
+
+        if (cacheResult.cached && cacheResult.response) {
+          processedResponse = cacheResult.response;
+        }
       } catch (err) {
-        console.error(`MCP output plugin ${plugin.name} error:`, err);
-        mcpResults[plugin.name] = { passed: true, error: err.message };
+        console.error(`MCP output plugin "${entry.name}" error:`, err);
+        mcpResults[entry.name] = { passed: true, error: err.message };
       }
     }
 
-    this.lastOutputResult = mcpResults;
-    await this.auditLog.processOutput(response, {
+    this.lastOutputResults = mcpResults;
+    await this.auditLog.processOutput(processedResponse, {
       ...context, mcpResults,
     });
 
     this.notify({ type: 'output', results: mcpResults });
 
-    return {
-      passed: true,
-      response,
-      results: mcpResults,
-    };
+    return { passed: true, response: processedResponse, results: mcpResults };
   }
 
   getLastResults() {
-    return { input: this.lastInputResult, output: this.lastOutputResult };
+    return { input: this.lastInputResults, output: this.lastOutputResults };
   }
 
-  getPlugin(name) {
-    return this.inputPlugins.find(p => p.name === name);
-  }
-
-  getResults() {
-    return this.results;
+  getRegistry() {
+    return this.registry;
   }
 
   getAuditLogs(options = {}) {
@@ -123,14 +193,36 @@ export class MCPPipeline {
   }
 
   notify(event) {
-    for (const listener of this.listeners) {
-      try { listener(event); } catch (err) { console.error('MCP listener error:', err); }
+    for (const fn of this.listeners) {
+      try { fn(event); } catch (err) { console.error('MCP listener error:', err); }
     }
+  }
+
+  async autoConfigure(context = {}) {
+    this.registry.autoConfigure(context);
+
+    for (const entry of this.registry.getAll()) {
+      const configKey = entry.name.replace('MCP', '').toLowerCase();
+      const config = CONFIG.mcp[configKey];
+      if (config && config.enabled !== undefined) {
+        this.registry.setEnabled(entry.name, config.enabled);
+      }
+    }
+
+    this.notify({ type: 'autoConfigured', context });
+  }
+
+  destroy() {
+    if (this.healthInterval) {
+      clearInterval(this.healthInterval);
+      this.healthInterval = null;
+    }
+    this.listeners = [];
   }
 
   getMetadata() {
     return {
-      inputPlugins: this.inputPlugins.map(p => p.getMetadata()),
+      registry: this.registry.toJSON(),
       auditLog: this.auditLog.getMetadata(),
     };
   }

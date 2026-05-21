@@ -26,6 +26,7 @@ class AIApp {
     this.abortController = null;
     this.isGenerating = false;
     this.editingMessageIndex = -1;
+    this.lastMCPResults = null;
 
     this.init();
   }
@@ -42,6 +43,7 @@ class AIApp {
     this.registerLocalScanListener();
     this.scanLocalModels();
     this.loadConversation(this.activeConversationId);
+    this.autoConfigureMCP();
   }
 
   cacheDom() {
@@ -75,9 +77,15 @@ class AIApp {
       importBtn: document.getElementById('import-btn'),
       importInput: document.getElementById('import-input'),
       searchInput: document.getElementById('search-input'),
-      shortcutHint: document.getElementById('shortcut-hint'),
       editToolbar: document.getElementById('edit-toolbar'),
       editCancelBtn: document.getElementById('edit-cancel-btn'),
+      mcpDashboardBtn: document.getElementById('mcp-dashboard-btn'),
+      mcpDashboardModal: document.getElementById('mcp-dashboard-modal'),
+      mcpDashboardPanel: document.getElementById('mcp-dashboard-panel'),
+      mcpDashboardClose: document.getElementById('close-mcp-dashboard'),
+      mcpPluginList: document.getElementById('mcp-plugin-list'),
+      mcpRequestLog: document.getElementById('mcp-request-log'),
+      mcpLastResult: document.getElementById('mcp-last-result'),
     };
   }
 
@@ -103,17 +111,36 @@ class AIApp {
     this.elements.importInput.addEventListener('change', e => this.importConversations(e));
     this.elements.searchInput.addEventListener('input', e => this.filterConversations(e.target.value));
     this.elements.editCancelBtn.addEventListener('click', () => this.cancelEdit());
+    this.elements.mcpDashboardBtn.addEventListener('click', () => this.showMCPDashboard());
+    this.elements.mcpDashboardClose.addEventListener('click', () => this.hideMCPDashboard());
 
     document.addEventListener('keydown', e => this.handleKeyboardShortcuts(e));
 
     document.addEventListener('click', e => {
       if (e.target === this.elements.settingsModal) this.hideSettings();
       if (e.target === this.elements.localModelsPanel) this.hideLocalModels();
+      if (e.target === this.elements.mcpDashboardModal) this.hideMCPDashboard();
     });
 
     this.elements.chatMessages.addEventListener('click', e => {
       const messageEl = e.target.closest('.message.editable');
       if (messageEl) this.startEditMessage(messageEl);
+    });
+
+    this.elements.mcpPluginList.addEventListener('click', e => {
+      const toggle = e.target.closest('.mcp-plugin-toggle');
+      if (toggle) {
+        const name = toggle.dataset.plugin;
+        const enabled = toggle.classList.contains('active');
+        this.mcpPipeline.setPluginEnabled(name, !enabled);
+        toggle.classList.toggle('active');
+        this.renderMCPDashboard();
+      }
+    });
+
+    this.elements.mcpDashboardPanel.addEventListener('click', e => {
+      const tab = e.target.closest('.dashboard-tab');
+      if (tab) this.switchMCPTab(tab.dataset.tab);
     });
   }
 
@@ -124,11 +151,32 @@ class AIApp {
 
   registerMCPListener() {
     this.mcpPipeline.onChange(event => {
-      if (event.type === 'block') {
-        this.updateMCPStatus('blocked', event.plugin);
-      } else if (event.type === 'allowed') {
-        const allPassed = Object.values(event.results).every(r => r.passed !== false || r.action === 'redact');
-        this.updateMCPStatus(allPassed ? 'active' : 'warning');
+      switch (event.type) {
+        case 'block':
+          this.updateMCPStatus('blocked', event.plugin);
+          break;
+        case 'allowed':
+          const allPassed = Object.values(event.results || {}).every(
+            r => r.passed !== false || r.action === 'redact'
+          );
+          this.updateMCPStatus(allPassed ? 'active' : 'warning');
+          break;
+        case 'output':
+          break;
+        case 'pluginRegistered':
+          if (!this.elements.mcpDashboardModal.classList.contains('hidden')) {
+            this.renderMCPDashboard();
+          }
+          break;
+        case 'pluginToggled':
+          break;
+        case 'autoConfigured':
+          break;
+        case 'health':
+          if (!this.elements.mcpDashboardModal.classList.contains('hidden')) {
+            this.renderMCPDashboard();
+          }
+          break;
       }
     });
   }
@@ -139,14 +187,14 @@ class AIApp {
     if (state === 'blocked') {
       el.classList.add('blocked');
       el.textContent = `BLOCKED: ${detail || 'MCP'}`;
-      el.title = `Request blocked by ${detail}`;
+      el.title = `Blocked by ${detail}`;
     } else if (state === 'warning') {
       el.classList.add('warning');
       el.textContent = 'MCP: Flagged';
       el.title = 'Some MCP checks flagged content';
     } else {
       el.classList.add('active');
-      el.textContent = 'MCP';
+      el.textContent = `MCP (${this.mcpPipeline.getRegistry().getEnabled().length})`;
       el.title = 'All MCP security checks passed';
     }
   }
@@ -154,6 +202,14 @@ class AIApp {
   registerLocalScanListener() {
     this.localScanner.onModelsChange(() => {
       if (this.currentProvider === 'local') this.populateModelSelector();
+    });
+  }
+
+  autoConfigureMCP() {
+    this.mcpPipeline.autoConfigure({
+      provider: this.currentProvider,
+      model: this.currentModel,
+      sessionId: this.mcpPipeline.auditLog.sessionId,
     });
   }
 
@@ -194,12 +250,14 @@ class AIApp {
     this.currentModel = null;
     this.populateModelSelector();
     this.checkApiKey();
+    this.autoConfigureMCP();
     this.addSystemMessage(`Switched to ${CONFIG.providers[this.currentProvider].name}`);
   }
 
   onModelChange() {
     this.currentModel = this.elements.modelSelect.value;
     this.updateModelInfo();
+    this.autoConfigureMCP();
   }
 
   async sendMessage(textOverride, editIndex) {
@@ -231,20 +289,40 @@ class AIApp {
     this.showTyping();
     this.elements.stopBtn.classList.remove('hidden');
 
-    const mcpResult = await this.mcpPipeline.processInput(text, {
+    const mcpInputResult = await this.mcpPipeline.processInput(text, {
       provider: this.currentProvider,
       model: this.currentModel,
+      conversationId: this.activeConversationId,
       requestId: crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`,
     });
 
-    if (!mcpResult.passed) {
+    if (!mcpInputResult.passed) {
       this.hideTyping();
       this.elements.stopBtn.classList.add('hidden');
-      this.addSystemMessage(`Blocked by ${mcpResult.blockedBy}: ${mcpResult.message}`, 'error');
+      this.addSystemMessage(`Blocked by ${mcpInputResult.blockedBy}: ${mcpInputResult.message}`, 'error');
       return;
     }
 
-    const processedText = mcpResult.message || text;
+    if (mcpInputResult.cached && mcpInputResult.response) {
+      this.hideTyping();
+      this.elements.stopBtn.classList.add('hidden');
+      const cachedMsg = {
+        role: 'assistant',
+        content: mcpInputResult.response,
+        model: this.currentModel,
+        provider: this.currentProvider,
+        cached: true,
+        timestamp: new Date().toISOString(),
+      };
+      this.addMessage(cachedMsg);
+      this.messageHistory.push(cachedMsg);
+      this.addSystemMessage('Response served from cache', 'info');
+      this.saveCurrentConversation();
+      this.lastMCPResults = mcpInputResult.results;
+      return;
+    }
+
+    const processedText = mcpInputResult.message || text;
     this.currentModel = this.elements.modelSelect.value || this.currentModel;
     this.isGenerating = true;
 
@@ -281,10 +359,8 @@ class AIApp {
 
           if (!streamedMessage) {
             streamedMessage = {
-              role: 'assistant',
-              content: '',
-              model: this.currentModel,
-              provider: this.currentProvider,
+              role: 'assistant', content: '',
+              model: this.currentModel, provider: this.currentProvider,
               timestamp: new Date().toISOString(),
             };
             this.addStreamingMessage(streamedMessage);
@@ -318,19 +394,26 @@ class AIApp {
       this.elements.stopBtn.classList.add('hidden');
       this.abortController = null;
 
-      const outputResult = await this.mcpPipeline.processOutput(fullContent, {
+      const mcpOutputResult = await this.mcpPipeline.processOutput(fullContent, {
         provider: this.currentProvider,
         model: this.currentModel,
         latency,
+        messages: conversationMessages,
         finishReason: 'stop',
       });
 
       if (streamedMessage) {
-        streamedMessage.content = outputResult.response || fullContent;
+        streamedMessage.content = mcpOutputResult.response || fullContent;
         this.finalizeStreamingMessage(streamedMessage);
         this.messageHistory.push(streamedMessage);
+
+        const resultBadge = this.elements.chatMessages.lastElementChild?.querySelector('.message-mcp-badge');
+        if (resultBadge) {
+          this.renderMCPResultBadge(resultBadge, mcpInputResult.results);
+        }
       }
 
+      this.lastMCPResults = mcpInputResult.results;
       this.saveCurrentConversation();
 
     } catch (err) {
@@ -362,10 +445,13 @@ class AIApp {
 
     const content = document.createElement('div');
     content.className = 'message-content';
-    content.textContent = '';
+
+    const badge = document.createElement('div');
+    badge.className = 'message-mcp-badge';
 
     div.appendChild(header);
     div.appendChild(content);
+    div.appendChild(badge);
 
     const cursor = document.createElement('span');
     cursor.className = 'streaming-cursor';
@@ -381,14 +467,9 @@ class AIApp {
     if (!el) return;
     const content = el.querySelector('.message-content');
     if (!content) return;
-
     const cursor = content.querySelector('.streaming-cursor');
-    if (cursor) {
-      content.textContent = text;
-      content.appendChild(cursor);
-    } else {
-      content.textContent = text + '\u2588';
-    }
+    if (cursor) { content.textContent = text; content.appendChild(cursor); }
+    else { content.textContent = text + '\u2588'; }
     this.scrollToBottom();
   }
 
@@ -411,6 +492,20 @@ class AIApp {
     }
   }
 
+  renderMCPResultBadge(container, results) {
+    if (!results) return;
+    const plugins = Object.entries(results);
+    if (plugins.length === 0) return;
+
+    const passed = plugins.filter(([, r]) => r.passed !== false).length;
+    const total = plugins.length;
+
+    container.innerHTML = `<span class="mcp-msg-badge ${total === passed ? 'pass' : 'warn'}">MCP ${passed}/${total}</span>`;
+    container.title = plugins.map(([name, r]) =>
+      `${name}: ${r.passed !== false ? 'passed' : r.action === 'redact' ? 'redacted' : 'flagged'}${r.message ? ' - ' + r.message.substring(0, 60) : ''}`
+    ).join('\n');
+  }
+
   addMessage(message, type = 'message') {
     const div = document.createElement('div');
     const role = message.role || type;
@@ -428,20 +523,32 @@ class AIApp {
     div.appendChild(header);
     div.appendChild(content);
 
+    if (message.cached) {
+      const badge = document.createElement('span');
+      badge.className = 'cache-badge';
+      badge.textContent = 'Cached';
+      header.appendChild(badge);
+    }
+
     const footerParts = [];
     if (message.latency) footerParts.push(`${(message.latency / 1000).toFixed(1)}s`);
     if (message.usage) {
-      if (message.usage.inputTokens || message.usage.outputTokens) {
-        footerParts.push(`${message.usage.inputTokens || '?'} in / ${message.usage.outputTokens || '?'} out`);
-      } else if (message.usage.promptTokens || message.usage.candidatesTokens) {
-        footerParts.push(`${message.usage.promptTokens || '?'} in / ${message.usage.candidatesTokens || '?'} out`);
-      }
+      const input = message.usage.inputTokens || message.usage.promptTokens || '';
+      const output = message.usage.outputTokens || message.usage.candidatesTokens || '';
+      if (input || output) footerParts.push(`${input || '?'} in / ${output || '?'} out`);
     }
     if (footerParts.length > 0) {
       const footer = document.createElement('div');
       footer.className = 'message-footer';
-      footer.textContent = footerParts.join(' · ');
+      footer.textContent = footerParts.join(' \u00b7 ');
       div.appendChild(footer);
+    }
+
+    if (role === 'assistant' && this.lastMCPResults && !message.cached) {
+      const badge = document.createElement('div');
+      badge.className = 'message-mcp-badge';
+      this.renderMCPResultBadge(badge, this.lastMCPResults);
+      div.appendChild(badge);
     }
 
     this.elements.chatMessages.appendChild(div);
@@ -458,7 +565,8 @@ class AIApp {
 
   startEditMessage(messageEl) {
     if (this.isGenerating) return;
-    const index = Array.from(this.elements.chatMessages.querySelectorAll('.message.user')).indexOf(messageEl);
+    const userMessages = this.elements.chatMessages.querySelectorAll('.message.user');
+    const index = Array.from(userMessages).indexOf(messageEl);
     if (index < 0) return;
 
     this.editingMessageIndex = index;
@@ -467,7 +575,6 @@ class AIApp {
     this.elements.chatInput.focus();
     this.showEditToolbar(index);
     this.updateSendButton();
-
     this.elements.chatInput.setSelectionRange(
       this.elements.chatInput.value.length,
       this.elements.chatInput.value.length
@@ -476,8 +583,7 @@ class AIApp {
 
   showEditToolbar(index) {
     this.elements.editToolbar.classList.remove('hidden');
-    this.elements.editToolbar.querySelector('.edit-context').textContent =
-      `Editing message ${index + 1}`;
+    this.elements.editToolbar.querySelector('.edit-context').textContent = `Editing message ${index + 1}`;
   }
 
   hideEditToolbar() {
@@ -490,18 +596,6 @@ class AIApp {
     this.elements.chatInput.value = '';
     this.hideEditToolbar();
     this.updateSendButton();
-  }
-
-  clearMessagesAfter(index) {
-    const userMessages = this.elements.chatMessages.querySelectorAll('.message.user');
-    const startRemove = userMessages[index];
-    if (!startRemove) return;
-    let el = startRemove.nextElementSibling;
-    while (el) {
-      const next = el.nextElementSibling;
-      el.remove();
-      el = next;
-    }
   }
 
   showTyping() {
@@ -527,7 +621,7 @@ class AIApp {
 
   updateModelInfo() {
     if (this.elements.modelInfo) {
-      this.elements.modelInfo.textContent = `Model: ${this.currentModel || 'None'} · ${CONFIG.providers[this.currentProvider]?.name || ''}`;
+      this.elements.modelInfo.textContent = `Model: ${this.currentModel || 'None'} \u00b7 ${CONFIG.providers[this.currentProvider]?.name || ''}`;
     }
   }
 
@@ -546,7 +640,7 @@ class AIApp {
 
     if (missing.length > 0) {
       setTimeout(() => {
-        this.addSystemMessage(`Welcome! Configure API keys in Settings (gear icon) for: ${missing.map(([_, p]) => p.name).join(', ')}`, 'info');
+        this.addSystemMessage(`Welcome! Configure API keys in Settings for: ${missing.map(([_, p]) => p.name).join(', ')}`, 'info');
       }, 500);
     }
   }
@@ -606,7 +700,6 @@ class AIApp {
   async scanLocalModels() {
     this.elements.rescanBtn.disabled = true;
     this.elements.rescanBtn.textContent = 'Scanning...';
-
     try {
       const result = await this.localScanner.scan();
       this.renderLocalModels(result);
@@ -622,15 +715,15 @@ class AIApp {
     const { models, status, lastScan } = result;
     this.elements.scanStatus.textContent = `Last scan: ${lastScan?.toLocaleTimeString() || 'Never'}`;
 
-    const connHtml = Object.entries(status).map(([name, s]) =>
-      `<span class="conn-status ${s.online ? 'online' : 'offline'}">${name}: ${s.online ? 'Online' : 'Offline'}</span>`
-    ).join(' | ');
+    const connHtml = Object.entries(status)
+      .map(([name, s]) =>
+        `<span class="conn-status ${s.online ? 'online' : 'offline'}">${name}: ${s.online ? 'Online' : 'Offline'}</span>`
+      ).join(' | ');
 
     if (models.length === 0) {
       this.elements.localModelsList.innerHTML = `
         <div class="conn-info">${connHtml}</div>
-        <div class="no-models">No local models detected. Start Ollama or LM Studio.</div>
-      `;
+        <div class="no-models">No local models detected. Start Ollama or LM Studio.</div>`;
       return;
     }
 
@@ -666,9 +759,142 @@ class AIApp {
     });
   }
 
+  showMCPDashboard() {
+    this.elements.mcpDashboardModal.classList.remove('hidden');
+    this.elements.mcpDashboardPanel.classList.remove('hidden');
+    this.switchMCPTab('plugins');
+    this.renderMCPDashboard();
+    this.renderMCPRequestLog();
+  }
+
+  hideMCPDashboard() {
+    this.elements.mcpDashboardModal.classList.add('hidden');
+    this.elements.mcpDashboardPanel.classList.add('hidden');
+  }
+
+  switchMCPTab(tab) {
+    this.elements.mcpDashboardPanel.querySelectorAll('.dashboard-tab').forEach(t => t.classList.remove('active'));
+    const tabEl = this.elements.mcpDashboardPanel.querySelector(`.dashboard-tab[data-tab="${tab}"]`);
+    if (tabEl) tabEl.classList.add('active');
+
+    this.elements.mcpPluginList.style.display = tab === 'plugins' ? '' : 'none';
+    this.elements.mcpLastResult.style.display = tab === 'results' ? '' : 'none';
+    this.elements.mcpRequestLog.style.display = tab === 'audit' ? '' : 'none';
+
+    if (tab === 'results') this.renderMCPResults();
+    if (tab === 'audit') this.renderMCPAuditLog();
+  }
+
+  renderMCPDashboard() {
+    const plugins = this.mcpPipeline.getAllPlugins();
+    const registry = this.mcpPipeline.getRegistry();
+    const categories = registry.getCategories();
+
+    if (plugins.length === 0) {
+      this.elements.mcpPluginList.innerHTML = '<div class="no-models">No MCP plugins registered</div>';
+      return;
+    }
+
+    const html = categories.map(cat => {
+      const catPlugins = plugins.filter(p => p.category === cat);
+      if (catPlugins.length === 0) return '';
+
+      return `
+        <div class="mcp-category-section">
+          <div class="mcp-category-header">${cat.charAt(0).toUpperCase() + cat.slice(1)}</div>
+          ${catPlugins.map(entry => {
+            const meta = entry.metadata || {};
+            const health = entry.health || { ok: true };
+            return `
+              <div class="mcp-plugin-item ${!entry.enabled ? 'disabled' : ''}">
+                <div class="mcp-plugin-header">
+                  <span class="mcp-plugin-name">${entry.name}</span>
+                  <label class="mcp-toggle-label">
+                    <input type="checkbox" class="mcp-plugin-toggle" data-plugin="${entry.name}" ${entry.enabled ? 'checked' : ''} />
+                    <span class="mcp-toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="mcp-plugin-meta">
+                  <span class="mcp-health ${health.ok ? 'ok' : 'error'}">${health.ok ? 'Healthy' : 'Unhealthy'}</span>
+                  <span>Priority: ${entry.priority}</span>
+                  ${meta.patternCount ? `<span>${meta.patternCount} patterns</span>` : ''}
+                  ${meta.activeClients !== undefined ? `<span>${meta.activeClients} clients</span>` : ''}
+                  ${meta.activeSessions !== undefined ? `<span>${meta.activeSessions} sessions</span>` : ''}
+                  ${meta.hitRate !== undefined ? `<span>Hit rate: ${meta.hitRate}%</span>` : ''}
+                  ${meta.size !== undefined ? `<span>${meta.size} entries</span>` : ''}
+                </div>
+                ${meta.activeConversations !== undefined ? `<div class="mcp-plugin-detail">Active conversations: ${meta.activeConversations}</div>` : ''}
+                ${meta.totalUsage !== undefined ? `<div class="mcp-plugin-detail">Total tokens: ${meta.totalUsage}</div>` : ''}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }).join('');
+
+    this.elements.mcpPluginList.innerHTML = html;
+
+    this.elements.mcpPluginList.querySelectorAll('.mcp-plugin-toggle').forEach(cb => {
+      cb.addEventListener('change', e => {
+        const name = e.target.dataset.plugin;
+        this.mcpPipeline.setPluginEnabled(name, e.target.checked);
+        const item = e.target.closest('.mcp-plugin-item');
+        if (item) item.classList.toggle('disabled', !e.target.checked);
+        this.updateMCPStatus('active');
+      });
+    });
+  }
+
+  renderMCPRequestLog() {
+    this.renderMCPResults();
+    this.renderMCPAuditLog();
+  }
+
+  renderMCPResults() {
+    const lastResult = this.lastMCPResults;
+    if (!lastResult) {
+      this.elements.mcpLastResult.innerHTML = '<div class="mcp-result-header">No request results yet. Send a message to see MCP results.</div>';
+      return;
+    }
+    const entries = Object.entries(lastResult);
+    this.elements.mcpLastResult.innerHTML = `
+      <div class="mcp-result-header">Last Request Results</div>
+      <div class="mcp-result-grid">
+        ${entries.map(([name, r]) => `
+          <div class="mcp-result-item ${r.passed !== false ? 'pass' : 'fail'}">
+            <span class="mcp-result-name">${name}</span>
+            <span class="mcp-result-status">${r.passed !== false ? 'passed' : r.action === 'redact' ? 'redacted' : 'blocked'}</span>
+            ${r.message ? `<span class="mcp-result-msg">${r.message.substring(0, 100)}</span>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  renderMCPAuditLog() {
+    const logs = this.mcpPipeline.getAuditLogs({ limit: 40 });
+    if (logs.length === 0) {
+      this.elements.mcpRequestLog.innerHTML = '<div class="no-models">No audit log entries yet</div>';
+      return;
+    }
+    this.elements.mcpRequestLog.innerHTML = `<div class="mcp-request-log">${
+      logs.slice(-40).reverse().map(entry => {
+        const time = new Date(entry.timestamp).toLocaleTimeString();
+        const icon = entry.type === 'input' ? '\u2192' : '\u2190';
+        return `<div class="audit-entry">
+          <span class="audit-time">${time}</span>
+          <span class="audit-icon">${icon}</span>
+          <span class="audit-action">${entry.action || entry.type}</span>
+          <span class="audit-provider">${entry.provider || ''}</span>
+        </div>`;
+      }).join('')
+    }</div>`;
+  }
+
   newConversation() {
     this.stopGeneration();
     this.cancelEdit();
+    this.lastMCPResults = null;
     this.activeConversationId = `conv_${Date.now()}`;
     this.messageHistory = [];
     this.elements.chatMessages.innerHTML = `
@@ -739,8 +965,8 @@ class AIApp {
     this.elements.conversationList.innerHTML = sorted.map(conv => `
       <div class="conversation-item ${conv.id === this.activeConversationId ? 'active' : ''}" data-id="${conv.id}">
         <div class="conv-title">${conv.title || 'New conversation'}</div>
-        <div class="conv-meta">${conv.provider} · ${conv.model || ''}</div>
-        <button class="conv-delete" data-id="${conv.id}" title="Delete conversation">&times;</button>
+        <div class="conv-meta">${conv.provider} \u00b7 ${conv.model || ''}</div>
+        <button class="conv-delete" data-id="${conv.id}" title="Delete">&times;</button>
       </div>
     `).join('');
 
@@ -763,11 +989,8 @@ class AIApp {
     const conversations = this.loadConversations();
     delete conversations[id];
     localStorage.setItem('conversations', JSON.stringify(conversations));
-    if (id === this.activeConversationId) {
-      this.newConversation();
-    } else {
-      this.loadConversationList();
-    }
+    if (id === this.activeConversationId) this.newConversation();
+    else this.loadConversationList();
   }
 
   filterConversations(query) {
@@ -810,12 +1033,10 @@ class AIApp {
     reader.onload = e => {
       try {
         const data = JSON.parse(e.target.result);
-        if (!data.conversations || typeof data.conversations !== 'object') {
-          throw new Error('Invalid format');
-        }
+        if (!data.conversations || typeof data.conversations !== 'object') throw new Error('Invalid format');
         const existing = this.loadConversations();
-        const merged = { ...existing, ...data.conversations };
-        localStorage.setItem('conversations', JSON.stringify(merged));
+        Object.assign(existing, data.conversations);
+        localStorage.setItem('conversations', JSON.stringify(existing));
         this.loadConversationList();
         this.addSystemMessage(`Imported ${Object.keys(data.conversations).length} conversations`);
       } catch (err) {
@@ -830,36 +1051,20 @@ class AIApp {
     if (e.key === 'Escape') {
       if (!this.elements.settingsModal.classList.contains('hidden')) { this.hideSettings(); return; }
       if (!this.elements.localModelsPanel.classList.contains('hidden')) { this.hideLocalModels(); return; }
+      if (!this.elements.mcpDashboardModal.classList.contains('hidden')) { this.hideMCPDashboard(); return; }
       if (this.editingMessageIndex >= 0) { this.cancelEdit(); return; }
     }
 
     if ((e.ctrlKey || e.metaKey) && e.shiftKey) {
       switch (e.key.toLowerCase()) {
-        case 'n':
-          e.preventDefault();
-          this.newConversation();
-          break;
-        case 'e':
-          e.preventDefault();
-          this.exportConversations();
-          break;
-        case 'i':
-          e.preventDefault();
-          this.elements.importInput.click();
-          break;
-        case ',':
-          e.preventDefault();
-          this.showSettings();
-          break;
-        case 'l':
-          e.preventDefault();
-          this.showLocalModels();
-          break;
+        case 'n': e.preventDefault(); this.newConversation(); break;
+        case 'e': e.preventDefault(); this.exportConversations(); break;
+        case 'i': e.preventDefault(); this.elements.importInput.click(); break;
+        case ',': e.preventDefault(); this.showSettings(); break;
+        case 'l': e.preventDefault(); this.showLocalModels(); break;
+        case 'm': e.preventDefault(); this.showMCPDashboard(); break;
         case 'delete':
-        case 'd':
-          e.preventDefault();
-          if (this.activeConversationId) this.deleteConversation(this.activeConversationId);
-          break;
+        case 'd': e.preventDefault(); if (this.activeConversationId) this.deleteConversation(this.activeConversationId); break;
       }
     }
 

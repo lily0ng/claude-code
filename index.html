@@ -562,6 +562,123 @@
     }
     .use-model-btn:hover { background: var(--accent-primary); color: #fff; }
 
+    .mcp-category-section { margin-bottom: var(--space-lg); }
+    .mcp-category-header {
+      font-size: 12px; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: var(--space-sm); padding-bottom: 4px;
+      border-bottom: 1px solid var(--border-primary);
+    }
+
+    .mcp-plugin-item {
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--border-primary);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-xs);
+      transition: border-color var(--transition-fast), opacity var(--transition-fast);
+    }
+    .mcp-plugin-item.disabled { opacity: 0.5; }
+    .mcp-plugin-item:hover { border-color: var(--border-secondary); }
+
+    .mcp-plugin-header {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .mcp-plugin-name { font-size: 13px; font-weight: 600; }
+
+    .mcp-toggle-label {
+      position: relative; display: inline-block; width: 36px; height: 20px;
+      cursor: pointer;
+    }
+    .mcp-toggle-label input { display: none; }
+    .mcp-toggle-slider {
+      position: absolute; inset: 0;
+      background: var(--bg-tertiary); border-radius: 20px;
+      transition: background var(--transition-fast);
+    }
+    .mcp-toggle-slider::before {
+      content: ''; position: absolute; left: 2px; top: 2px;
+      width: 16px; height: 16px; background: var(--text-muted);
+      border-radius: 50%; transition: all var(--transition-fast);
+    }
+    .mcp-toggle-label input:checked + .mcp-toggle-slider { background: var(--accent-primary); }
+    .mcp-toggle-label input:checked + .mcp-toggle-slider::before {
+      background: #fff; transform: translateX(16px);
+    }
+
+    .mcp-plugin-meta {
+      display: flex; gap: var(--space-md); flex-wrap: wrap;
+      font-size: 11px; color: var(--text-muted); margin-top: 4px;
+    }
+    .mcp-plugin-detail { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    .mcp-health { padding: 1px 6px; border-radius: 3px; font-weight: 500; }
+    .mcp-health.ok { background: rgba(0, 206, 201, 0.12); color: var(--accent-success); }
+    .mcp-health.error { background: rgba(225, 112, 85, 0.12); color: var(--accent-danger); }
+
+    .mcp-result-header {
+      font-size: 12px; font-weight: 600; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: var(--space-sm);
+    }
+    .mcp-result-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xs);
+      margin-bottom: var(--space-lg);
+    }
+    .mcp-result-item {
+      display: flex; flex-direction: column; gap: 2px;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      border-left: 3px solid var(--accent-success);
+    }
+    .mcp-result-item.fail { border-left-color: var(--accent-danger); }
+    .mcp-result-name { font-weight: 600; }
+    .mcp-result-status { font-size: 11px; color: var(--text-muted); }
+    .mcp-result-msg { font-size: 11px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .message-mcp-badge { margin-top: 4px; }
+    .mcp-msg-badge {
+      display: inline-block; font-size: 10px; padding: 1px 6px;
+      border-radius: 3px; font-weight: 600; letter-spacing: 0.3px;
+    }
+    .mcp-msg-badge.pass { background: rgba(0, 206, 201, 0.12); color: var(--accent-success); }
+    .mcp-msg-badge.warn { background: rgba(253, 203, 110, 0.15); color: var(--accent-warning); }
+
+    .cache-badge {
+      display: inline-block; font-size: 10px; padding: 1px 6px; margin-left: 6px;
+      border-radius: 3px; font-weight: 600;
+      background: rgba(0, 206, 201, 0.12); color: var(--accent-success);
+      vertical-align: middle;
+    }
+
+    .audit-entry {
+      display: flex; gap: var(--space-sm); align-items: center;
+      padding: 3px 0; font-size: 12px; font-family: var(--font-mono);
+      border-bottom: 1px solid var(--border-primary);
+    }
+    .audit-entry:last-child { border-bottom: none; }
+    .audit-time { color: var(--text-muted); min-width: 70px; }
+    .audit-icon { font-weight: 700; min-width: 16px; }
+    .audit-action { color: var(--text-primary); min-width: 80px; }
+    .audit-provider { color: var(--text-muted); }
+
+    .dashboard-tabs {
+      display: flex; gap: 4px; margin-bottom: var(--space-md);
+      border-bottom: 1px solid var(--border-primary); padding-bottom: 0;
+    }
+    .dashboard-tab {
+      padding: 6px 14px; border: 1px solid transparent;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      background: transparent; color: var(--text-muted); cursor: pointer;
+      font-size: 13px; margin-bottom: -1px; transition: all var(--transition-fast);
+    }
+    .dashboard-tab:hover { background: var(--bg-hover); }
+    .dashboard-tab.active {
+      border-color: var(--border-primary) var(--border-primary) var(--bg-card);
+      background: var(--bg-card); color: var(--text-primary);
+    }
+
+    .mcp-request-log { max-height: 200px; overflow-y: auto; }
+
     @media (max-width: 768px) {
       #app { grid-template-columns: 1fr; }
       .sidebar { display: none; }
@@ -588,6 +705,9 @@
         <button class="btn-primary" id="new-chat-btn">+ New Chat</button>
         <div class="sidebar-actions">
           <button id="local-models-btn">Local Models</button>
+          <button id="mcp-dashboard-btn">MCP Dashboard</button>
+        </div>
+        <div class="sidebar-actions">
           <button id="settings-btn">Settings</button>
         </div>
         <div class="sidebar-actions">
@@ -680,6 +800,7 @@
           <kbd>Ctrl+Shift+I</kbd><span class="shortcut-action">Import conversations</span>
           <kbd>Ctrl+Shift+,</kbd><span class="shortcut-action">Open settings</span>
           <kbd>Ctrl+Shift+L</kbd><span class="shortcut-action">Open local models</span>
+          <kbd>Ctrl+Shift+M</kbd><span class="shortcut-action">Open MCP Dashboard</span>
           <kbd>Ctrl+Shift+Del</kbd><span class="shortcut-action">Delete current conversation</span>
         </div>
       </div>
@@ -697,6 +818,23 @@
         <button id="rescan-btn">Rescan</button>
       </div>
       <div id="local-models-list"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="mcp-dashboard-modal">
+    <div class="modal-panel" id="mcp-dashboard-panel">
+      <div class="modal-header">
+        <h2>MCP Dashboard</h2>
+        <button class="close-btn" id="close-mcp-dashboard">&times;</button>
+      </div>
+      <div class="dashboard-tabs">
+        <span class="dashboard-tab active" data-tab="plugins">Plugins</span>
+        <span class="dashboard-tab" data-tab="results">Results</span>
+        <span class="dashboard-tab" data-tab="audit">Audit Log</span>
+      </div>
+      <div id="mcp-plugin-list"></div>
+      <div id="mcp-last-result" style="display:none"></div>
+      <div id="mcp-request-log" style="display:none"></div>
     </div>
   </div>
 </body>
