@@ -6,11 +6,13 @@ import { OpenAIProvider } from './providers/openaiProvider.js';
 import { AnthropicProvider } from './providers/anthropicProvider.js';
 import { GoogleProvider } from './providers/googleProvider.js';
 import { LocalProvider } from './providers/localProvider.js';
+import { ServerManager } from './src/mcp-servers/serverManager.js';
 
 class AIApp {
   constructor() {
     this.themeManager = new ThemeManager();
     this.mcpPipeline = new MCPPipeline();
+    this.serverManager = new ServerManager();
     this.localScanner = new LocalModelScanner();
     this.providers = {
       openai: new OpenAIProvider(),
@@ -40,10 +42,12 @@ class AIApp {
     this.loadConversationList();
     this.promptForApiKeys();
     this.registerMCPListener();
+    this.registerServerListener();
     this.registerLocalScanListener();
     this.scanLocalModels();
     this.loadConversation(this.activeConversationId);
     this.autoConfigureMCP();
+    this.initServers();
   }
 
   cacheDom() {
@@ -86,6 +90,13 @@ class AIApp {
       mcpPluginList: document.getElementById('mcp-plugin-list'),
       mcpRequestLog: document.getElementById('mcp-request-log'),
       mcpLastResult: document.getElementById('mcp-last-result'),
+      serversBtn: document.getElementById('servers-btn'),
+      serversModal: document.getElementById('servers-modal'),
+      serversPanel: document.getElementById('servers-panel'),
+      serversClose: document.getElementById('close-servers'),
+      serversList: document.getElementById('servers-list'),
+      serverToolList: document.getElementById('server-tool-list'),
+      serverToolResult: document.getElementById('server-tool-result'),
     };
   }
 
@@ -113,6 +124,26 @@ class AIApp {
     this.elements.editCancelBtn.addEventListener('click', () => this.cancelEdit());
     this.elements.mcpDashboardBtn.addEventListener('click', () => this.showMCPDashboard());
     this.elements.mcpDashboardClose.addEventListener('click', () => this.hideMCPDashboard());
+    this.elements.serversBtn.addEventListener('click', () => this.showServers());
+    this.elements.serversClose.addEventListener('click', () => this.hideServers());
+
+    this.elements.serversList.addEventListener('click', e => {
+      const startBtn = e.target.closest('.server-start-btn');
+      if (startBtn) { this.startServer(startBtn.dataset.server); return; }
+      const stopBtn = e.target.closest('.server-stop-btn');
+      if (stopBtn) { this.stopServer(stopBtn.dataset.server); return; }
+      const toolBtn = e.target.closest('.server-tool-btn');
+      if (toolBtn) {
+        this.callTool(toolBtn.dataset.server, toolBtn.dataset.tool);
+      }
+    });
+
+    this.elements.serverToolList.addEventListener('click', e => {
+      const toolBtn = e.target.closest('.tool-call-btn');
+      if (toolBtn) {
+        this.callTool(toolBtn.dataset.server, toolBtn.dataset.tool);
+      }
+    });
 
     document.addEventListener('keydown', e => this.handleKeyboardShortcuts(e));
 
@@ -120,6 +151,7 @@ class AIApp {
       if (e.target === this.elements.settingsModal) this.hideSettings();
       if (e.target === this.elements.localModelsPanel) this.hideLocalModels();
       if (e.target === this.elements.mcpDashboardModal) this.hideMCPDashboard();
+      if (e.target === this.elements.serversModal) this.hideServers();
     });
 
     this.elements.chatMessages.addEventListener('click', e => {
@@ -203,6 +235,171 @@ class AIApp {
     this.localScanner.onModelsChange(() => {
       if (this.currentProvider === 'local') this.populateModelSelector();
     });
+  }
+
+  registerServerListener() {
+    this.serverManager.onChange(event => {
+      if (!this.elements.serversModal.classList.contains('hidden')) {
+        this.renderServers();
+      }
+      if (event.type === 'serverStarted' || event.type === 'serverStopped') {
+        this.addSystemMessage(`MCP Server "${event.name}" ${event.type === 'serverStarted' ? 'started' : 'stopped'}`, 'info');
+      }
+      if (event.type === 'toolCalled') {
+        this.renderServers();
+      }
+    });
+  }
+
+  initServers() {
+    if (CONFIG.mcpServers?.autoStart) {
+      setTimeout(() => {
+        this.serverManager.startAll();
+        this.addSystemMessage(`MCP Servers initialized`, 'info');
+      }, 1000);
+    }
+  }
+
+  showServers() {
+    this.elements.serversModal.classList.remove('hidden');
+    this.elements.serversPanel.classList.remove('hidden');
+    this.renderServers();
+    this.renderServerTools();
+  }
+
+  hideServers() {
+    this.elements.serversModal.classList.add('hidden');
+    this.elements.serversPanel.classList.add('hidden');
+  }
+
+  renderServers() {
+    const servers = this.serverManager.getAll();
+    if (servers.length === 0) {
+      this.elements.serversList.innerHTML = '<div class="no-models">No MCP servers available</div>';
+      return;
+    }
+    this.elements.serversList.innerHTML = servers.map(s => `
+      <div class="server-item ${s.status}">
+        <div class="server-header">
+          <span class="server-name">${s.name}</span>
+          <span class="server-status ${s.status}">${s.status}</span>
+        </div>
+        <div class="server-desc">${s.description || ''}</div>
+        <div class="server-meta">
+          <span>${s.toolCount} tools</span>
+          <span>${s.resourceCount} resources</span>
+          <span>${s.promptCount} prompts</span>
+          ${s.startedAt ? `<span>Started: ${new Date(s.startedAt).toLocaleTimeString()}</span>` : ''}
+        </div>
+        <div class="server-actions">
+          ${s.status === 'running'
+            ? `<button class="server-stop-btn" data-server="${s.name}">Stop</button>`
+            : `<button class="server-start-btn" data-server="${s.name}">Start</button>`
+          }
+          <button class="server-tool-btn" data-server="${s.name}">Show Tools</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  renderServerTools(serverName) {
+    const servers = serverName
+      ? [this.serverManager.getEntry(serverName)].filter(Boolean)
+      : this.serverManager.getAll().filter(s => s.status === 'running');
+
+    if (servers.length === 0) {
+      this.elements.serverToolList.innerHTML = '<div class="no-models">Start a server to see its tools</div>';
+      this.elements.serverToolResult.innerHTML = '';
+      return;
+    }
+
+    this.elements.serverToolList.innerHTML = servers.map(s => {
+      const tools = this.serverManager.getTools(s.name);
+      if (tools.length === 0) return '';
+      return `
+        <div class="server-tool-group">
+          <div class="mcp-category-header">${s.name}</div>
+          ${tools.map(t => `
+            <div class="tool-item">
+              <div class="tool-header">
+                <span class="tool-name">${t.name}</span>
+                <button class="tool-call-btn" data-server="${s.name}" data-tool="${t.name}">Run</button>
+              </div>
+              <div class="tool-desc">${t.description || ''}</div>
+              ${t.inputSchema?.properties ? `
+                <div class="tool-params">
+                  ${Object.entries(t.inputSchema.properties).map(([k, v]) =>
+                    `<span class="tool-param">${k}: ${v.type}${t.inputSchema.required?.includes(k) ? ' *' : ''}</span>`
+                  ).join('')}
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }).join('') || '<div class="no-models">No tools available</div>';
+  }
+
+  async startServer(name) {
+    try {
+      this.addSystemMessage(`Starting MCP Server "${name}"...`, 'info');
+      await this.serverManager.start(name);
+      this.renderServers();
+      this.renderServerTools();
+    } catch (err) {
+      this.addSystemMessage(`Failed to start "${name}": ${err.message}`, 'error');
+    }
+  }
+
+  stopServer(name) {
+    this.serverManager.stop(name);
+    this.renderServers();
+    this.renderServerTools();
+    this.addSystemMessage(`MCP Server "${name}" stopped`, 'info');
+  }
+
+  async callTool(serverName, toolName) {
+    try {
+      const entry = this.serverManager.getEntry(serverName);
+      if (!entry || entry.status !== 'running') {
+        this.addSystemMessage(`Server "${serverName}" is not running. Start it first.`, 'warning');
+        return;
+      }
+
+      this.addSystemMessage(`Calling ${serverName}.${toolName}...`, 'info');
+      const toolbox = document.querySelector('.server-tool-panel');
+      const inputArea = toolbox?.querySelector('.tool-input-area');
+
+      let args = {};
+      if (inputArea) {
+        const jsonInput = inputArea.querySelector('.tool-json-input');
+        if (jsonInput?.value) {
+          try { args = JSON.parse(jsonInput.value); }
+          catch { args = { input: jsonInput.value }; }
+        }
+      }
+
+      const result = await this.serverManager.callToolFromChat(serverName, toolName, args);
+
+      this.elements.serverToolResult.innerHTML = `
+        <div class="mcp-result-header">${serverName}.${toolName} Result</div>
+        <pre class="tool-result-content">${this.escapeHtml(result)}</pre>
+      `;
+
+      this.addSystemMessage(`Tool result: ${result.substring(0, 100)}${result.length > 100 ? '...' : ''}`, 'info');
+    } catch (err) {
+      this.addSystemMessage(`Tool call failed: ${err.message}`, 'error');
+      this.elements.serverToolResult.innerHTML = `
+        <div class="mcp-result-header" style="color:var(--accent-danger)">Error</div>
+        <pre class="tool-result-content" style="color:var(--accent-danger)">${this.escapeHtml(err.message)}</pre>
+      `;
+    }
+  }
+
+  escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
   }
 
   autoConfigureMCP() {
@@ -1063,6 +1260,7 @@ class AIApp {
         case ',': e.preventDefault(); this.showSettings(); break;
         case 'l': e.preventDefault(); this.showLocalModels(); break;
         case 'm': e.preventDefault(); this.showMCPDashboard(); break;
+        case 's': e.preventDefault(); this.showServers(); break;
         case 'delete':
         case 'd': e.preventDefault(); if (this.activeConversationId) this.deleteConversation(this.activeConversationId); break;
       }

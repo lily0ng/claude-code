@@ -44,6 +44,17 @@ export const CONFIG = {
     autoEnableByContext: true,
     reportOnEachRequest: true,
   },
+  mcpServers: {
+    autoStart: true,
+    defaultServers: ['FileSystem', 'WebSearch', 'Database', 'System', 'CodeTools'],
+    serverSettings: {
+      FileSystem: { enabled: true, maxFileSize: 1048576 },
+      WebSearch: { enabled: true, timeout: 10000 },
+      Database: { enabled: true, maxTableRows: 10000 },
+      System: { enabled: true },
+      CodeTools: { enabled: true, maxInputSize: 50000 },
+    },
+  },
   themes: {
     default: 'dark',
     list: ['dark', 'light', 'solarized', 'nord', 'dracula', 'cyberpunk'],

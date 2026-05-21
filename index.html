@@ -562,6 +562,69 @@
     }
     .use-model-btn:hover { background: var(--accent-primary); color: #fff; }
 
+    .server-item {
+      padding: var(--space-md);
+      border: 1px solid var(--border-primary);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-sm);
+      transition: border-color var(--transition-fast);
+    }
+    .server-item:hover { border-color: var(--border-secondary); }
+    .server-item.stopped { opacity: 0.65; }
+    .server-item.error { border-color: var(--accent-danger); }
+
+    .server-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+    .server-name { font-size: 14px; font-weight: 600; }
+
+    .server-status { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; text-transform: uppercase; }
+    .server-status.running { background: rgba(0,206,201,0.12); color: var(--accent-success); }
+    .server-status.stopped { background: rgba(142,142,147,0.12); color: var(--text-muted); }
+    .server-status.error { background: rgba(225,112,85,0.12); color: var(--accent-danger); }
+
+    .server-desc { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+    .server-meta { display: flex; gap: var(--space-md); font-size: 11px; color: var(--text-muted); margin-bottom: var(--space-sm); }
+    .server-actions { display: flex; gap: var(--space-xs); }
+
+    .server-actions button {
+      padding: 4px 12px; border: 1px solid var(--border-primary); border-radius: var(--radius-sm);
+      background: var(--bg-tertiary); color: var(--text-primary); font-size: 12px; cursor: pointer;
+    }
+    .server-actions button:hover { background: var(--bg-hover); }
+    .server-start-btn { border-color: var(--accent-success) !important; color: var(--accent-success) !important; }
+    .server-stop-btn { border-color: var(--accent-danger) !important; color: var(--accent-danger) !important; }
+    .server-tool-btn { border-color: var(--accent-primary) !important; color: var(--accent-primary) !important; }
+
+    .server-tool-group { margin-bottom: var(--space-md); }
+
+    .tool-item {
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--border-primary);
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-xs);
+    }
+    .tool-item:hover { border-color: var(--border-secondary); }
+
+    .tool-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+    .tool-name { font-size: 13px; font-weight: 600; color: var(--accent-primary); font-family: var(--font-mono); }
+
+    .tool-call-btn {
+      padding: 3px 10px; border: 1px solid var(--accent-primary); border-radius: var(--radius-sm);
+      background: transparent; color: var(--accent-primary); font-size: 11px; cursor: pointer;
+      font-weight: 600;
+    }
+    .tool-call-btn:hover { background: var(--accent-primary); color: #fff; }
+
+    .tool-desc { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+    .tool-params { display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+    .tool-param { font-size: 10px; padding: 1px 6px; background: var(--bg-input); border-radius: 3px; color: var(--text-muted); font-family: var(--font-mono); }
+
+    .tool-result-content {
+      font-family: var(--font-mono); font-size: 12px; line-height: 1.5;
+      padding: var(--space-sm); background: var(--bg-code);
+      border-radius: var(--radius-sm); overflow-x: auto; white-space: pre-wrap;
+      max-height: 300px; overflow-y: auto; margin-top: var(--space-xs);
+    }
+
     .mcp-category-section { margin-bottom: var(--space-lg); }
     .mcp-category-header {
       font-size: 12px; font-weight: 600; color: var(--text-muted);
@@ -705,9 +768,10 @@
         <button class="btn-primary" id="new-chat-btn">+ New Chat</button>
         <div class="sidebar-actions">
           <button id="local-models-btn">Local Models</button>
-          <button id="mcp-dashboard-btn">MCP Dashboard</button>
+          <button id="servers-btn">MCP Servers</button>
         </div>
         <div class="sidebar-actions">
+          <button id="mcp-dashboard-btn">MCP Security</button>
           <button id="settings-btn">Settings</button>
         </div>
         <div class="sidebar-actions">
@@ -801,6 +865,7 @@
           <kbd>Ctrl+Shift+,</kbd><span class="shortcut-action">Open settings</span>
           <kbd>Ctrl+Shift+L</kbd><span class="shortcut-action">Open local models</span>
           <kbd>Ctrl+Shift+M</kbd><span class="shortcut-action">Open MCP Dashboard</span>
+          <kbd>Ctrl+Shift+S</kbd><span class="shortcut-action">Open MCP Servers</span>
           <kbd>Ctrl+Shift+Del</kbd><span class="shortcut-action">Delete current conversation</span>
         </div>
       </div>
@@ -818,6 +883,21 @@
         <button id="rescan-btn">Rescan</button>
       </div>
       <div id="local-models-list"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="servers-modal">
+    <div class="modal-panel" id="servers-panel">
+      <div class="modal-header">
+        <h2>MCP Servers</h2>
+        <button class="close-btn" id="close-servers">&times;</button>
+      </div>
+      <div id="servers-list"></div>
+      <div class="settings-section" style="margin-top:var(--space-lg)">
+        <h3>Tools</h3>
+        <div id="server-tool-list"><div class="no-models">Start a server to see its tools</div></div>
+        <div id="server-tool-result" style="margin-top:var(--space-sm)"></div>
+      </div>
     </div>
   </div>
 
