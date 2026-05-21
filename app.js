@@ -749,10 +749,10 @@ class AIApp {
       btn.addEventListener('click', () => {
         this.currentProvider = 'local';
         this.elements.providerSelect.value = 'local';
-        this.currentModel = btn.dataset.model;
-        this.populateModelSelector();
-        this.elements.modelSelect.value = btn.dataset.model;
         this.onProviderChange();
+        this.currentModel = btn.dataset.model;
+        this.elements.modelSelect.value = btn.dataset.model;
+        this.updateModelInfo();
         this.hideLocalModels();
         this.addSystemMessage(`Using local model: ${btn.dataset.model}`);
       });

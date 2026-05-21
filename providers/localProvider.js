@@ -17,7 +17,8 @@ export class LocalProvider extends BaseProvider {
   }
 
   getEndpoint() {
-    return this.activeEndpoint || this.endpoints.ollama;
+    const base = this.activeEndpoint || this.endpoints.ollama;
+    return `${base}/v1`;
   }
 
   setEndpoint(type) {
@@ -26,24 +27,12 @@ export class LocalProvider extends BaseProvider {
     }
   }
 
+  getBaseEndpoint() {
+    return this.activeEndpoint || this.endpoints.ollama;
+  }
+
   buildRequestBody(model, messages, options = {}) {
-    const isOllama = this.activeEndpoint?.includes('11434');
-
-    if (isOllama) {
-      return {
-        model: model || this.defaultModel,
-        messages: messages.map(m => ({ role: m.role, content: m.content })),
-        stream: options.stream || false,
-        options: {
-          temperature: options.temperature ?? 0.7,
-          num_predict: options.maxTokens ?? 4096,
-          top_p: options.topP ?? 1,
-          stop: options.stop || [],
-        },
-      };
-    }
-
-    return {
+    const body = {
       model: model || this.defaultModel,
       messages: messages.map(m => ({ role: m.role, content: m.content })),
       temperature: options.temperature ?? 0.7,
@@ -51,33 +40,29 @@ export class LocalProvider extends BaseProvider {
       top_p: options.topP ?? 1,
       stream: options.stream || false,
     };
+    if (options.stop) body.stop = Array.isArray(options.stop) ? options.stop : [options.stop];
+    return body;
   }
 
   parseResponse(data) {
-    const isOllama = this.activeEndpoint?.includes('11434');
-
-    if (isOllama) {
-      return {
-        content: data.message?.content || data.response || '',
-        role: 'assistant',
-        model: data.model,
-        usage: data.total_duration ? {
-          totalDuration: data.total_duration,
-          loadDuration: data.load_duration,
-          promptEvalCount: data.prompt_eval_count,
-          evalCount: data.eval_count,
-        } : null,
-        done: data.done,
-      };
-    }
-
     const choice = data?.choices?.[0];
+    if (!choice) {
+      if (data.message?.content) {
+        return {
+          content: data.message.content,
+          role: data.message.role || 'assistant',
+          model: data.model,
+          done: data.done,
+        };
+      }
+      throw new Error('Invalid local provider response');
+    }
     return {
-      content: choice?.message?.content || choice?.text || '',
-      role: choice?.message?.role || 'assistant',
+      content: choice.message?.content || choice.text || '',
+      role: choice.message?.role || 'assistant',
       model: data.model,
       usage: data.usage || null,
-      finishReason: choice?.finish_reason || null,
+      finishReason: choice.finish_reason || null,
     };
   }
 
@@ -91,12 +76,19 @@ export class LocalProvider extends BaseProvider {
       if (ollamaResp.ok) {
         const data = await ollamaResp.json();
         for (const m of (data.models || [])) {
+          const details = m.details || {};
           models.push({
             id: m.name,
             provider: 'ollama',
+            source: 'Ollama',
             size: m.size,
+            sizeBytes: m.size,
             modifiedAt: m.modified_at,
-            details: m.details,
+            details: {
+              family: details.family || 'unknown',
+              parameterSize: details.parameter_size || 'unknown',
+              quantizationLevel: details.quantization_level || 'unknown',
+            },
           });
         }
       }
@@ -114,6 +106,8 @@ export class LocalProvider extends BaseProvider {
           models.push({
             id: m.id,
             provider: 'lm-studio',
+            source: 'LM Studio',
+            sizeBytes: m.size || 0,
             ownedBy: m.owned_by || 'local',
           });
         }
@@ -129,7 +123,8 @@ export class LocalProvider extends BaseProvider {
     const status = {};
     for (const [name, url] of Object.entries(this.endpoints)) {
       try {
-        const resp = await fetch(url, { signal: AbortSignal.timeout(2000) });
+        const checkUrl = name === 'ollama' ? `${url}/api/tags` : `${url}/v1/models`;
+        const resp = await fetch(checkUrl, { signal: AbortSignal.timeout(2000) });
         status[name] = { online: resp.ok, statusCode: resp.status };
       } catch {
         status[name] = { online: false, statusCode: null };
