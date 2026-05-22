@@ -63,6 +63,8 @@ class AIApp {
       console.log('[AI] autoConfigureMCP OK');
       this.initServers();
       console.log('[AI] initServers OK');
+      // start system metrics polling for right-sidebar
+      try { this.startSystemMetrics(); console.log('[AI] startSystemMetrics OK'); } catch(e){ console.warn('startSystemMetrics failed', e); }
     } catch (err) {
       console.error('[AI] Init failed at step:', err.message);
       console.error('[AI] Stack:', err.stack);
@@ -120,6 +122,17 @@ class AIApp {
       serversList: document.getElementById('servers-list'),
       serverToolList: document.getElementById('server-tool-list'),
       serverToolResult: document.getElementById('server-tool-result'),
+
+      // right sidebar elements
+      rightSidebar: document.getElementById('right-sidebar'),
+      aiThinking: document.getElementById('ai-thinking-val'),
+      aiProcessList: document.getElementById('ai-process-list'),
+      cpuBar: document.getElementById('cpu-bar'),
+      cpuValue: document.getElementById('cpu-value'),
+      memoryBar: document.getElementById('memory-bar'),
+      memoryValue: document.getElementById('memory-value'),
+      networkBar: document.getElementById('network-bar'),
+      networkValue: document.getElementById('network-value'),
     };
   }
 
@@ -269,6 +282,65 @@ class AIApp {
       el.textContent = `MCP (${this.mcpPipeline.getRegistry().getEnabled().length})`;
       el.title = 'All MCP security checks passed';
     }
+  }
+
+  // System metrics polling and right-sidebar UI
+  startSystemMetrics() {
+    if (this._systemInterval) return;
+    this.fetchSystemMetrics();
+    this._systemInterval = setInterval(() => this.fetchSystemMetrics(), 2000);
+  }
+
+  async fetchSystemMetrics() {
+    try {
+      let data = null;
+      // Try backend endpoint first
+      const res = await fetch('/api/system');
+      if (res.ok) data = await res.json();
+      if (!data) data = this.getBrowserMetrics();
+      this.updateSystemUI(data);
+    } catch (err) {
+      const data = this.getBrowserMetrics();
+      this.updateSystemUI(data);
+    }
+  }
+
+  updateSystemUI(data) {
+    try {
+      if (!this.elements) return;
+      if (this.elements.typingIndicator) this.elements.typingIndicator.classList.toggle('hidden', !this.isGenerating);
+      if (this.elements.aiThinking) this.elements.aiThinking.textContent = this.isGenerating ? 'active' : (data.aiThinking ? data.aiThinking : 'idle');
+      if (this.elements.aiProcessList && Array.isArray(data.processes)) {
+        this.elements.aiProcessList.innerHTML = data.processes.map(p=>`<li>${p.name} (${p.pid}) - ${p.cpu}%</li>`).join('')
+      }
+      const cpu = Math.round((data.cpu?.usage || 0));
+      const memUsed = data.memory?.used || 0;
+      const memTotal = data.memory?.total || (navigator.deviceMemory ? navigator.deviceMemory*1024 : 0);
+      const memPct = memTotal ? Math.round(memUsed / memTotal * 100) : 0;
+      const net = data.network?.rx ? `${data.network.rx} / ${data.network.tx}` : (data.network?.speed || '-');
+      if (this.elements.cpuValue) this.elements.cpuValue.textContent = cpu + '%';
+      if (this.elements.cpuBar) this.elements.cpuBar.style.width = Math.min(100, Math.max(0,cpu)) + '%';
+      if (this.elements.memoryValue) this.elements.memoryValue.textContent = memUsed && memTotal ? `${Math.round(memUsed/1024)}MB / ${Math.round(memTotal/1024)}MB` : '-';
+      if (this.elements.memoryBar) this.elements.memoryBar.style.width = Math.min(100, Math.max(0,memPct)) + '%';
+      if (this.elements.networkValue) this.elements.networkValue.textContent = net;
+      if (this.elements.networkBar) this.elements.networkBar.style.width = Math.min(100, Math.max(0, data.network?.usage || 0)) + '%';
+    } catch (err) { console.warn('updateSystemUI error', err); }
+  }
+
+  getBrowserMetrics() {
+    const cpu = 0;
+    const memory = { used: 0, total: (navigator.deviceMemory? navigator.deviceMemory*1024 : 0) };
+    const network = { rx: 0, tx: 0, usage: 0 };
+    try {
+      if (performance?.memory) {
+        memory.used = Math.round(performance.memory.usedJSHeapSize/1024);
+        memory.total = Math.round(performance.memory.totalJSHeapSize/1024);
+      }
+      if (navigator.connection) {
+        network.speed = navigator.connection.downlink + 'Mb/s';
+      }
+    } catch(e){}
+    return { cpu: { usage: cpu }, memory, network };
   }
 
   registerLocalScanListener() {

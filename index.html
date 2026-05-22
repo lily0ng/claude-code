@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1a1a2e" />
-  <title>AI Platform</title>
+  <title>Claude</title>
   <link rel="stylesheet" href="themes/themeManager.css" />
   <link rel="stylesheet" href="themes/dark.css" />
   <script type="module" src="app.js"></script>
@@ -27,7 +27,7 @@
 
     #app {
       display: grid;
-      grid-template-columns: 260px 1fr;
+      grid-template-columns: 260px 1fr 320px;
       grid-template-rows: 56px 1fr;
       height: 100vh;
       overflow: hidden;
@@ -41,6 +41,24 @@
       flex-direction: column;
       overflow: hidden;
     }
+
+    .right-sidebar {
+      grid-row: 1 / -1;
+      background: var(--bg-secondary);
+      border-left: 1px solid var(--border-primary);
+      padding: var(--space-sm);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      overflow-y: auto;
+    }
+    .right-sidebar-header { font-weight: 700; margin-bottom: 6px; }
+    .right-sidebar-section { padding: 8px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); }
+    .metric { margin-top: 8px; }
+    .metric label { display:block; font-size:12px; color:var(--muted-foreground); }
+    .metric .metric-value { font-size:13px; font-weight:600; margin-bottom:6px; }
+    .metric-bar { width:100%; height:10px; background:var(--secondary); border-radius:6px; overflow:hidden; }
+    .metric-bar-fill { height:100%; background:linear-gradient(90deg,var(--accent), #8b5cf6); width:0%; }
 
     .sidebar-header {
       padding: var(--space-md);
@@ -829,8 +847,8 @@
   <div id="app">
     <aside class="sidebar">
       <div class="sidebar-header">
-        <div class="logo">AI</div>
-        <h1>AI Platform</h1>
+        <!-- <div class="logo"></div> -->
+        <h1>Claude AI .v01</h1>
       </div>
       <div class="sidebar-search">
         <input type="text" id="search-input" placeholder="Search conversations..." />
@@ -919,7 +937,20 @@
             </div>
           </div>
         </div>
-      </div>
+
+      <aside class="right-sidebar" id="right-sidebar">
+        <div class="right-sidebar-header"><strong>AI Status</strong></div>
+        <div class="right-sidebar-section" id="ai-status">
+          <div class="status-row">Thinking: <span id="ai-thinking-val">idle</span></div>
+          <div class="status-row">Processes:<ul id="ai-process-list"></ul></div>
+        </div>
+        <div class="right-sidebar-section">
+          <strong>System Metrics</strong>
+          <div class="metric"><label>CPU</label><div class="metric-value" id="cpu-value">-</div><div class="metric-bar"><div id="cpu-bar" class="metric-bar-fill" style="width:0%"></div></div></div>
+          <div class="metric"><label>Memory</label><div class="metric-value" id="memory-value">-</div><div class="metric-bar"><div id="memory-bar" class="metric-bar-fill" style="width:0%"></div></div></div>
+          <div class="metric"><label>Network</label><div class="metric-value" id="network-value">-</div><div class="metric-bar"><div id="network-bar" class="metric-bar-fill" style="width:0%"></div></div></div>
+        </div>
+      </aside>
     </div>
   </div>
 
