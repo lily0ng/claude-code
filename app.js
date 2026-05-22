@@ -1620,19 +1620,41 @@ class AIApp {
 
   newConversation() {
     // prepare a fresh conversation, clear state
+    console.log('[AI] newConversation called');
     if (this.activeConversationId && this.messageHistory.length > 0) {
       this.saveCurrentConversation();
     }
     this.stopGeneration();
     this.cancelEdit();
     this.lastMCPResults = null;
-    this.activeConversationId = null;
+    // create a placeholder active conversation so it appears in the list and UI
+    const convId = `conv_${Date.now()}`;
+    this.activeConversationId = convId;
     this.messageHistory = [];
+
+    try {
+      const conversations = this.loadConversations();
+      conversations[convId] = {
+        id: convId,
+        title: 'New conversation',
+        messages: [],
+        provider: this.currentProvider,
+        model: this.currentModel,
+        updatedAt: new Date().toISOString(),
+      };
+      localStorage.setItem('conversations', JSON.stringify(conversations));
+    } catch (e) {
+      console.warn('Failed to create placeholder conversation', e);
+    }
+
     // clear UI
     if (this.elements && this.elements.chatMessages) this.elements.chatMessages.innerHTML = '';
     if (this.elements && this.elements.chatInput) {
-      this.elements.chatInput.value = '';
-      this.elements.chatInput.focus();
+      try {
+        this.elements.chatInput.removeAttribute('disabled');
+        this.elements.chatInput.value = '';
+        this.elements.chatInput.focus();
+      } catch(e) { console.warn('chatInput focus failed', e); }
     }
     this.updateSendButton();
     this.loadConversationList();
