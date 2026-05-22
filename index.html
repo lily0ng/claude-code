@@ -342,7 +342,24 @@
       flex-direction: column;
       overflow: hidden;
       background: var(--bg-primary);
+      min-height: 360px; /* ensure area doesn't collapse */
     }
+
+    /* keep input visible at bottom */
+    .chat-input-area {
+      padding: var(--space-md) var(--space-lg);
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-primary);
+      position: sticky;
+      bottom: 0;
+      z-index: 40;
+    }
+
+    .chat-messages { flex: 1; overflow-y: auto; padding: var(--space-lg); display:flex; flex-direction:column; gap:var(--space-md); min-height:240px; }
+
+    .chat-input-wrapper { z-index: 50; background: var(--bg-input); }
+
+    #chat-input { display: block; width: 100%; }
 
     .chat-messages {
       flex: 1;
@@ -543,7 +560,7 @@
       justify-content: center;
       backdrop-filter: blur(4px);
     }
-    .modal-overlay.hidden { display: none; }
+    .modal-overlay.hidden { display: none !important; }
 
     .modal-panel {
       background: var(--bg-card);
