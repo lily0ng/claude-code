@@ -91,6 +91,8 @@ export type Theme = {
 export const THEME_NAMES = [
   'dark',
   'light',
+  'solarized-light',
+  'solarized-dark',
   'light-daltonized',
   'dark-daltonized',
   'light-ansi',
@@ -595,10 +597,159 @@ const darkDaltonizedTheme: Theme = {
   rainbow_violet_shimmer: 'rgb(230,180,210)',
 }
 
+// Solarized palettes (https://ethanschoonover.com/solarized/)
+const solarizedLightTheme: Theme = {
+  autoAccept: 'rgb(181,137,0)', // yellow
+  bashBorder: 'rgb(203,75,22)', // orange
+  claude: 'rgb(203,75,22)', // orange
+  claudeShimmer: 'rgb(220,110,56)',
+  claudeBlue_FOR_SYSTEM_SPINNER: 'rgb(38,139,210)', // blue
+  claudeBlueShimmer_FOR_SYSTEM_SPINNER: 'rgb(96,160,214)',
+  permission: 'rgb(38,139,210)',
+  permissionShimmer: 'rgb(102,170,220)',
+  planMode: 'rgb(88,110,117)',
+  ide: 'rgb(101,123,131)',
+  promptBorder: 'rgb(102,102,102)',
+  promptBorderShimmer: 'rgb(142,142,142)',
+  text: 'rgb(0,43,54)', // base03
+  inverseText: 'rgb(253,246,227)', // base3
+  inactive: 'rgb(88,110,117)',
+  inactiveShimmer: 'rgb(133,153,162)',
+  subtle: 'rgb(147,161,161)',
+  suggestion: 'rgb(38,139,210)',
+  remember: 'rgb(42,161,152)', // cyan
+  background: 'rgb(253,246,227)', // base3
+  success: 'rgb(133,153,0)', // green
+  error: 'rgb(220,50,47)', // red
+  warning: 'rgb(181,137,0)', // yellow
+  merged: 'rgb(181,137,0)',
+  warningShimmer: 'rgb(220,165,40)',
+  diffAdded: 'rgb(42,161,152)',
+  diffRemoved: 'rgb(203,75,22)',
+  diffAddedDimmed: 'rgb(213,229,224)',
+  diffRemovedDimmed: 'rgb(254,227,220)',
+  diffAddedWord: 'rgb(16,124,106)',
+  diffRemovedWord: 'rgb(150,60,40)',
+  red_FOR_SUBAGENTS_ONLY: 'rgb(220,50,47)',
+  blue_FOR_SUBAGENTS_ONLY: 'rgb(38,139,210)',
+  green_FOR_SUBAGENTS_ONLY: 'rgb(133,153,0)',
+  yellow_FOR_SUBAGENTS_ONLY: 'rgb(181,137,0)',
+  purple_FOR_SUBAGENTS_ONLY: 'rgb(108,113,196)',
+  orange_FOR_SUBAGENTS_ONLY: 'rgb(203,75,22)',
+  pink_FOR_SUBAGENTS_ONLY: 'rgb(211,54,130)',
+  cyan_FOR_SUBAGENTS_ONLY: 'rgb(42,161,152)',
+  professionalBlue: 'rgb(88,110,117)',
+  chromeYellow: 'rgb(181,137,0)',
+  clawd_body: 'rgb(101,123,131)',
+  clawd_background: 'rgb(253,246,227)',
+  userMessageBackground: 'rgb(250,246,240)',
+  userMessageBackgroundHover: 'rgb(253,250,245)',
+  messageActionsBackground: 'rgb(240,244,246)',
+  selectionBg: 'rgb(253,236,196)',
+  bashMessageBackgroundColor: 'rgb(255,252,240)',
+  memoryBackgroundColor: 'rgb(253,246,227)',
+  rate_limit_fill: 'rgb(38,139,210)',
+  rate_limit_empty: 'rgb(7,54,66)',
+  fastMode: 'rgb(203,75,22)',
+  fastModeShimmer: 'rgb(222,110,70)',
+  briefLabelYou: 'rgb(38,139,210)',
+  briefLabelClaude: 'rgb(203,75,22)',
+  rainbow_red: 'rgb(220,50,47)',
+  rainbow_orange: 'rgb(203,75,22)',
+  rainbow_yellow: 'rgb(181,137,0)',
+  rainbow_green: 'rgb(133,153,0)',
+  rainbow_blue: 'rgb(38,139,210)',
+  rainbow_indigo: 'rgb(108,113,196)',
+  rainbow_violet: 'rgb(108,113,196)',
+  rainbow_red_shimmer: 'rgb(235,110,105)',
+  rainbow_orange_shimmer: 'rgb(230,126,86)',
+  rainbow_yellow_shimmer: 'rgb(240,190,90)',
+  rainbow_green_shimmer: 'rgb(180,200,70)',
+  rainbow_blue_shimmer: 'rgb(120,170,210)',
+  rainbow_indigo_shimmer: 'rgb(150,140,200)',
+  rainbow_violet_shimmer: 'rgb(180,150,200)',
+}
+
+const solarizedDarkTheme: Theme = {
+  autoAccept: 'rgb(181,137,0)',
+  bashBorder: 'rgb(203,75,22)',
+  claude: 'rgb(38,139,210)',
+  claudeShimmer: 'rgb(96,160,214)',
+  claudeBlue_FOR_SYSTEM_SPINNER: 'rgb(38,139,210)',
+  claudeBlueShimmer_FOR_SYSTEM_SPINNER: 'rgb(96,160,214)',
+  permission: 'rgb(38,139,210)',
+  permissionShimmer: 'rgb(96,160,214)',
+  planMode: 'rgb(88,110,117)',
+  ide: 'rgb(71,130,200)',
+  promptBorder: 'rgb(102,102,102)',
+  promptBorderShimmer: 'rgb(142,142,142)',
+  text: 'rgb(131,148,150)', // base0
+  inverseText: 'rgb(0,43,54)', // base03
+  inactive: 'rgb(88,110,117)',
+  inactiveShimmer: 'rgb(133,153,162)',
+  subtle: 'rgb(80,80,80)',
+  suggestion: 'rgb(38,139,210)',
+  remember: 'rgb(42,161,152)',
+  background: 'rgb(0,43,54)', // base03
+  success: 'rgb(133,153,0)',
+  error: 'rgb(220,50,47)',
+  warning: 'rgb(181,137,0)',
+  merged: 'rgb(181,137,0)',
+  warningShimmer: 'rgb(255,223,57)',
+  diffAdded: 'rgb(42,161,152)',
+  diffRemoved: 'rgb(203,75,22)',
+  diffAddedDimmed: 'rgb(38,60,60)',
+  diffRemovedDimmed: 'rgb(70,40,45)',
+  diffAddedWord: 'rgb(16,124,106)',
+  diffRemovedWord: 'rgb(150,60,40)',
+  red_FOR_SUBAGENTS_ONLY: 'rgb(220,50,47)',
+  blue_FOR_SUBAGENTS_ONLY: 'rgb(38,139,210)',
+  green_FOR_SUBAGENTS_ONLY: 'rgb(133,153,0)',
+  yellow_FOR_SUBAGENTS_ONLY: 'rgb(181,137,0)',
+  purple_FOR_SUBAGENTS_ONLY: 'rgb(108,113,196)',
+  orange_FOR_SUBAGENTS_ONLY: 'rgb(203,75,22)',
+  pink_FOR_SUBAGENTS_ONLY: 'rgb(211,54,130)',
+  cyan_FOR_SUBAGENTS_ONLY: 'rgb(42,161,152)',
+  professionalBlue: 'rgb(106,155,204)',
+  chromeYellow: 'rgb(181,137,0)',
+  clawd_body: 'rgb(101,123,131)',
+  clawd_background: 'rgb(0,43,54)',
+  userMessageBackground: 'rgb(7,54,66)',
+  userMessageBackgroundHover: 'rgb(15,76,90)',
+  messageActionsBackground: 'rgb(20,40,48)',
+  selectionBg: 'rgb(38,79,120)',
+  bashMessageBackgroundColor: 'rgb(7,54,66)',
+  memoryBackgroundColor: 'rgb(15,40,48)',
+  rate_limit_fill: 'rgb(38,139,210)',
+  rate_limit_empty: 'rgb(0,43,54)',
+  fastMode: 'rgb(203,75,22)',
+  fastModeShimmer: 'rgb(255,150,70)',
+  briefLabelYou: 'rgb(122,180,232)',
+  briefLabelClaude: 'rgb(38,139,210)',
+  rainbow_red: 'rgb(220,50,47)',
+  rainbow_orange: 'rgb(203,75,22)',
+  rainbow_yellow: 'rgb(181,137,0)',
+  rainbow_green: 'rgb(133,153,0)',
+  rainbow_blue: 'rgb(38,139,210)',
+  rainbow_indigo: 'rgb(108,113,196)',
+  rainbow_violet: 'rgb(108,113,196)',
+  rainbow_red_shimmer: 'rgb(235,110,105)',
+  rainbow_orange_shimmer: 'rgb(230,126,86)',
+  rainbow_yellow_shimmer: 'rgb(240,190,90)',
+  rainbow_green_shimmer: 'rgb(180,200,70)',
+  rainbow_blue_shimmer: 'rgb(120,170,210)',
+  rainbow_indigo_shimmer: 'rgb(150,140,200)',
+  rainbow_violet_shimmer: 'rgb(180,150,200)',
+}
+
 export function getTheme(themeName: ThemeName): Theme {
   switch (themeName) {
     case 'light':
       return lightTheme
+    case 'solarized-light':
+      return solarizedLightTheme
+    case 'solarized-dark':
+      return solarizedDarkTheme
     case 'light-ansi':
       return lightAnsiTheme
     case 'dark-ansi':

@@ -10,7 +10,9 @@
     "ollama:serve": "ollama serve",
     "ollama:pull": "ollama pull llama3.2",
     "ollama:list": "ollama list",
-    "setup": "ollama pull llama3.2 && echo 'Ready. Run: npm run dev'"
+    "setup": "ollama pull llama3.2 && echo 'Ready. Run: npm run dev'",
+    "model-pull-server": "node scripts/model-pull-server.js",
+    "model-pull": "node scripts/pull-model.js"
   },
   "engines": {
     "node": ">=18.0.0"

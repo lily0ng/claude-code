@@ -31,10 +31,19 @@ export class GoogleProvider extends BaseProvider {
     for (const msg of messages) {
       if (msg.role === 'system') {
         systemMessages.push(msg.content);
-      } else {
+      } else if (typeof msg.content === 'string') {
         contents.push({
           role: msg.role === 'assistant' ? 'model' : 'user',
           parts: [{ text: msg.content }],
+        });
+      } else if (Array.isArray(msg.content)) {
+        contents.push({
+          role: msg.role === 'assistant' ? 'model' : 'user',
+          parts: msg.content.map(p => {
+            if (p.type === 'text') return { text: p.text };
+            if (p.type === 'image_url') return { inlineData: { mimeType: 'image/jpeg', data: p.image_url?.url || '' } };
+            return { text: JSON.stringify(p) };
+          }),
         });
       }
     }
@@ -43,7 +52,7 @@ export class GoogleProvider extends BaseProvider {
       contents,
       generationConfig: {
         temperature: options.temperature ?? 0.7,
-        maxOutputTokens: options.maxTokens ?? 4096,
+        maxOutputTokens: options.maxTokens ?? 8192,
         topP: options.topP ?? 1,
         topK: options.topK ?? 40,
       },

@@ -4,6 +4,10 @@ import { WebSearchServer } from './webSearchServer.js';
 import { DatabaseServer } from './databaseServer.js';
 import { SystemServer } from './systemServer.js';
 import { CodeToolsServer } from './codeToolsServer.js';
+import { GeminiProviderMcp } from './geminiProviderMcp.js';
+import { OpenAIProviderMcp } from './openaiProviderMcp.js';
+import { AnthropicProviderMcp } from './anthropicProviderMcp.js';
+import { LocalProviderMcp } from './localProviderMcp.js';
 import { MCPProtocol } from './protocol.js';
 
 export class ServerManager {
@@ -22,6 +26,10 @@ export class ServerManager {
     this.register(new DatabaseServer());
     this.register(new SystemServer());
     this.register(new CodeToolsServer());
+    this.register(new GeminiProviderMcp());
+    this.register(new OpenAIProviderMcp());
+    this.register(new AnthropicProviderMcp());
+    this.register(new LocalProviderMcp());
   }
 
   register(server) {

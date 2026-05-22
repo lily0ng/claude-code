@@ -445,6 +445,11 @@ class AIApp {
   onProviderChange() {
     this.currentProvider = this.elements.providerSelect.value;
     this.currentModel = null;
+    if (this.currentProvider === 'local') {
+      const localProvider = this.providers.local;
+      const health = localProvider.checkHealth ? null : null;
+      localProvider.setEndpoint('ollama');
+    }
     this.populateModelSelector();
     this.checkApiKey();
     this.autoConfigureMCP();
@@ -538,13 +543,111 @@ class AIApp {
       }
 
       this.abortController = new AbortController();
-      const conversationMessages = this.messageHistory.map(m => ({ role: m.role, content: m.content }));
+      let conversationMessages = this.messageHistory.map(m => ({ role: m.role, content: m.content }));
       const startTime = performance.now();
-      let fullContent = '';
-      let streamedMessage = null;
 
-      const stream = await provider.stream(this.currentModel, conversationMessages, {
-        signal: this.abortController.signal,
+      await this._runChatWithTools(conversationMessages, processedText, mcpInputResult);
+      this.saveCurrentConversation();
+
+    } catch (err) {
+      this.isGenerating = false;
+      this.elements.stopBtn.classList.add('hidden');
+      this.abortController = null;
+      this.hideTyping();
+      this.addSystemMessage(`Error: ${err.message}`, 'error');
+    }
+  }
+
+  stopGeneration() {
+    if (this.abortController) {
+      this.abortController.abort();
+      this.abortController = null;
+    }
+    this.isGenerating = false;
+    this.elements.stopBtn.classList.add('hidden');
+  }
+
+  _getToolContext() {
+    const servers = this.serverManager.getAll().filter(s => s.status === 'running');
+    if (servers.length === 0) return '';
+    const lines = ['\n\nAvailable MCP Tools (respond with a tool call using: TOOL_CALL: serverName.toolName({"arg":"value"}) ):'];
+    for (const s of servers) {
+      const tools = this.serverManager.getTools(s.name);
+      if (tools.length === 0) continue;
+      lines.push(`\n## ${s.name} (${s.description || ''})`);
+      for (const t of tools) {
+        const params = t.inputSchema?.properties
+          ? Object.entries(t.inputSchema.properties).map(([k, v]) => `${k} (${v.type})`).join(', ')
+          : '';
+        lines.push(`  - ${t.name}: ${t.description || ''}${params ? ' [' + params + ']' : ''}`);
+        lines.push(`    Usage: TOOL_CALL: ${s.name}.${t.name}({...})`);
+      }
+    }
+    return lines.join('\n');
+  }
+
+  async _runToolCall(serverName, toolName, args) {
+    const servers = this.serverManager.getAll().filter(s => s.status === 'running');
+    if (!servers.find(s => s.name === serverName)) {
+      return `Error: Server "${serverName}" is not running`;
+    }
+    try {
+      let parsedArgs = args;
+      if (typeof args === 'string') {
+        try { parsedArgs = JSON.parse(args); }
+        catch { parsedArgs = { input: args }; }
+      }
+      const result = await this.serverManager.callToolFromChat(serverName, toolName, parsedArgs);
+      return result;
+    } catch (err) {
+      return `Error calling ${serverName}.${toolName}: ${err.message}`;
+    }
+  }
+
+  _parseToolCalls(content) {
+    const calls = [];
+    const regex = /TOOL_CALL:\s*(\w+)\.(\w+)\(({.*?})\)/gs;
+    let match;
+    while ((match = regex.exec(content)) !== null) {
+      try {
+        calls.push({
+          server: match[1],
+          tool: match[2],
+          args: JSON.parse(match[3]),
+          full: match[0],
+        });
+      } catch {
+        calls.push({
+          server: match[1],
+          tool: match[2],
+          args: match[3],
+          full: match[0],
+        });
+      }
+    }
+    return calls;
+  }
+
+  async _runChatWithTools(conversationMessages, userText, mcpInputResult) {
+    const maxToolRounds = CONFIG.mcpAutomation?.maxToolRounds || 5;
+    let toolRound = 0;
+    const provider = this.providers[this.currentProvider];
+    const toolContext = this._getToolContext();
+
+    let messages = [
+      ...conversationMessages.slice(0, -1),
+      { role: 'user', content: userText + toolContext },
+    ];
+    let fullContent = '';
+    let streamedMessage = null;
+    let startTime = performance.now();
+
+    while (toolRound <= maxToolRounds) {
+      fullContent = '';
+      streamedMessage = null;
+
+      const stream = await provider.stream(this.currentModel, messages, {
+        signal: this.abortController?.signal,
       });
 
       this.hideTyping();
@@ -568,17 +671,12 @@ class AIApp {
       } catch (err) {
         if (err.name === 'AbortError' || err.message?.includes('abort') || this.abortController?.signal.aborted) {
           this.addSystemMessage('Generation stopped', 'warning');
-        } else {
-          throw err;
+          break;
         }
+        throw err;
       }
 
-      if (this.abortController?.signal.aborted && !fullContent) {
-        this.isGenerating = false;
-        this.elements.stopBtn.classList.add('hidden');
-        this.abortController = null;
-        return;
-      }
+      if (this.abortController?.signal.aborted && !fullContent) break;
 
       const latency = performance.now() - startTime;
 
@@ -587,48 +685,76 @@ class AIApp {
         streamedMessage.latency = latency;
       }
 
-      this.isGenerating = false;
-      this.elements.stopBtn.classList.add('hidden');
-      this.abortController = null;
-
       const mcpOutputResult = await this.mcpPipeline.processOutput(fullContent, {
         provider: this.currentProvider,
         model: this.currentModel,
         latency,
-        messages: conversationMessages,
+        messages,
         finishReason: 'stop',
       });
 
       if (streamedMessage) {
         streamedMessage.content = mcpOutputResult.response || fullContent;
         this.finalizeStreamingMessage(streamedMessage);
-        this.messageHistory.push(streamedMessage);
-
-        const resultBadge = this.elements.chatMessages.lastElementChild?.querySelector('.message-mcp-badge');
-        if (resultBadge) {
-          this.renderMCPResultBadge(resultBadge, mcpInputResult.results);
-        }
       }
 
-      this.lastMCPResults = mcpInputResult.results;
-      this.saveCurrentConversation();
+      const toolCalls = this._parseToolCalls(fullContent);
+      if (toolCalls.length === 0 || toolRound >= maxToolRounds) {
+        if (streamedMessage) {
+          this.messageHistory.push(streamedMessage);
+          const resultBadge = this.elements.chatMessages.lastElementChild?.querySelector('.message-mcp-badge');
+          if (resultBadge) {
+            this.renderMCPResultBadge(resultBadge, mcpInputResult.results);
+          }
+        }
+        this.lastMCPResults = mcpInputResult.results;
+        this.isGenerating = false;
+        this.elements.stopBtn.classList.add('hidden');
+        this.abortController = null;
+        if (toolCalls.length > 0 && toolRound >= maxToolRounds) {
+          this.addSystemMessage(`Reached maximum tool call rounds (${maxToolRounds})`, 'warning');
+        }
+        return;
+      }
 
-    } catch (err) {
-      this.isGenerating = false;
-      this.elements.stopBtn.classList.add('hidden');
-      this.abortController = null;
-      this.hideTyping();
-      this.addSystemMessage(`Error: ${err.message}`, 'error');
-    }
-  }
+      toolRound++;
+      this.addSystemMessage(`Tool call round ${toolRound}: executing ${toolCalls.length} tool(s)...`, 'info');
 
-  stopGeneration() {
-    if (this.abortController) {
-      this.abortController.abort();
-      this.abortController = null;
+      for (const tc of toolCalls) {
+        const toolResult = await this._runToolCall(tc.server, tc.tool, tc.args);
+        const cleanContent = fullContent.replace(tc.full, '').trim();
+
+        if (streamedMessage) {
+          streamedMessage.content = cleanContent;
+          this.messageHistory.push(streamedMessage);
+        }
+
+        this.messageHistory.push({
+          role: 'assistant',
+          content: `[Tool Call: ${tc.server}.${tc.tool}]`,
+          toolCall: { server: tc.server, tool: tc.tool, args: tc.args },
+          timestamp: new Date().toISOString(),
+        });
+
+        this.messageHistory.push({
+          role: 'user',
+          content: `[Tool Result: ${tc.server}.${tc.tool}]\n${toolResult}`,
+          toolResult: true,
+          timestamp: new Date().toISOString(),
+        });
+
+        this.addMessage({
+          role: 'assistant',
+          content: `🔧 Called ${tc.server}.${tc.tool} — result received`,
+          isSystem: true,
+        });
+
+        const removeEl = document.getElementById('streaming-message');
+        if (removeEl) removeEl.remove();
+      }
+
+      messages = this.messageHistory.map(m => ({ role: m.role, content: m.content }));
     }
-    this.isGenerating = false;
-    this.elements.stopBtn.classList.add('hidden');
   }
 
   addStreamingMessage(message) {
@@ -924,7 +1050,9 @@ class AIApp {
       return;
     }
 
-    const modelsHtml = models.map(m => `
+    const modelsHtml = models.map(m => {
+      const endpointKey = m.provider === 'ollama' ? 'ollama' : 'lmStudio';
+      return `
       <div class="local-model-item" data-model-id="${m.id}">
         <div class="model-item-header">
           <strong>${m.id}</strong>
@@ -936,9 +1064,9 @@ class AIApp {
           ${m.details?.quantizationLevel ? `<span>Quant: ${m.details.quantizationLevel}</span>` : ''}
         </div>
         ${m.provider === 'ollama' && m.details?.family !== 'unknown' ? `<div class="model-item-family">Family: ${m.details.family}</div>` : ''}
-        <button class="use-model-btn" data-model="${m.id}">Use This Model</button>
-      </div>
-    `).join('');
+        <button class="use-model-btn" data-model="${m.id}" data-endpoint="${endpointKey}">Use This Model</button>
+      </div>`;
+    }).join('');
 
     this.elements.localModelsList.innerHTML = `<div class="conn-info">${connHtml}</div>${modelsHtml}`;
 
@@ -946,12 +1074,17 @@ class AIApp {
       btn.addEventListener('click', () => {
         this.currentProvider = 'local';
         this.elements.providerSelect.value = 'local';
-        this.onProviderChange();
+        const endpointType = btn.dataset.endpoint || 'ollama';
+        this.providers.local.setEndpoint(endpointType);
+        this.currentModel = null;
+        this.populateModelSelector();
         this.currentModel = btn.dataset.model;
         this.elements.modelSelect.value = btn.dataset.model;
         this.updateModelInfo();
+        this.checkApiKey();
+        this.autoConfigureMCP();
         this.hideLocalModels();
-        this.addSystemMessage(`Using local model: ${btn.dataset.model}`);
+        this.addSystemMessage(`Using local model: ${btn.dataset.model} (${endpointType === 'ollama' ? 'Ollama' : 'LM Studio'})`);
       });
     });
   }

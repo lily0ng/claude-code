@@ -3,15 +3,33 @@ import { CONFIG } from '../config.js';
 const MODEL_RESTRICTIONS = {
   'gpt-4': { maxTokens: 8192, allowedCategories: ['general', 'code', 'creative'] },
   'gpt-4-turbo': { maxTokens: 128000, allowedCategories: ['general', 'code', 'creative', 'analysis'] },
+  'gpt-4o': { maxTokens: 128000, allowedCategories: ['general', 'code', 'creative', 'analysis', 'research'] },
+  'gpt-4o-mini': { maxTokens: 128000, allowedCategories: ['general', 'code', 'creative', 'analysis'] },
   'gpt-3.5-turbo': { maxTokens: 16384, allowedCategories: ['general', 'code'] },
+  'o1': { maxTokens: 100000, allowedCategories: ['general', 'code', 'analysis', 'research'] },
+  'o3-mini': { maxTokens: 100000, allowedCategories: ['general', 'code', 'analysis'] },
   'claude-3-opus-20240229': { maxTokens: 200000, allowedCategories: ['general', 'code', 'creative', 'analysis', 'research'] },
   'claude-3-sonnet-20240229': { maxTokens: 200000, allowedCategories: ['general', 'code', 'creative', 'analysis'] },
   'claude-3-haiku-20240307': { maxTokens: 200000, allowedCategories: ['general', 'code'] },
-  'gemini-1.5-pro-latest': { maxTokens: 1048576, allowedCategories: ['general', 'code', 'creative', 'analysis', 'research'] },
-  'gemini-1.5-flash-latest': { maxTokens: 1048576, allowedCategories: ['general', 'code', 'analysis'] },
+  'claude-3-5-sonnet-20241022': { maxTokens: 200000, allowedCategories: ['general', 'code', 'creative', 'analysis', 'research'] },
+  'claude-sonnet-4-20250514': { maxTokens: 200000, allowedCategories: ['general', 'code', 'creative', 'analysis', 'research'] },
+  'gemini-1.5-pro': { maxTokens: 1048576, allowedCategories: ['general', 'code', 'creative', 'analysis', 'research'] },
+  'gemini-1.5-flash': { maxTokens: 1048576, allowedCategories: ['general', 'code', 'analysis'] },
+  'gemini-1.5-flash-8b': { maxTokens: 1048576, allowedCategories: ['general', 'code'] },
+  'gemini-2.0-flash': { maxTokens: 1048576, allowedCategories: ['general', 'code', 'creative', 'analysis', 'research'] },
+  'gemini-2.0-flash-lite': { maxTokens: 1048576, allowedCategories: ['general', 'code', 'analysis'] },
+  'gemini-2.5-pro-exp-03-25': { maxTokens: 1048576, allowedCategories: ['general', 'code', 'creative', 'analysis', 'research'] },
+  'llama3.2': { maxTokens: 8192, allowedCategories: ['general', 'code'] },
+  'llama3.2:3b': { maxTokens: 8192, allowedCategories: ['general', 'code'] },
+  'llama3.1:8b': { maxTokens: 8192, allowedCategories: ['general', 'code', 'creative'] },
   'llama3:70b': { maxTokens: 8192, allowedCategories: ['general', 'code', 'creative'] },
   'llama3:8b': { maxTokens: 8192, allowedCategories: ['general', 'code'] },
+  'mistral': { maxTokens: 32768, allowedCategories: ['general', 'code', 'analysis'] },
   'mistral-large': { maxTokens: 32768, allowedCategories: ['general', 'code', 'analysis'] },
+  'mixtral:8x7b': { maxTokens: 32768, allowedCategories: ['general', 'code', 'creative'] },
+  'codellama:34b': { maxTokens: 16384, allowedCategories: ['general', 'code'] },
+  'deepseek-r1:7b': { maxTokens: 32768, allowedCategories: ['general', 'code', 'analysis'] },
+  'qwen2.5:7b': { maxTokens: 32768, allowedCategories: ['general', 'code', 'creative'] },
 };
 
 const CONTENT_CATEGORIES = {
@@ -22,6 +40,8 @@ const CONTENT_CATEGORIES = {
   'general': 'allowed',
   'code': 'allowed',
   'analysis': 'allowed',
+  'creative': 'allowed',
+  'research': 'allowed',
 };
 
 export class ModelGatingMCP {
