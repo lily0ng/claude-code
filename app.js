@@ -143,6 +143,10 @@ class AIApp {
       queueValue: document.getElementById('queue-value'),
       latencyBar: document.getElementById('latency-bar'),
       latencyValue: document.getElementById('latency-value'),
+      // cards
+      cardThroughput: document.getElementById('card-throughput'),
+      cardLatency: document.getElementById('card-latency'),
+      cardErrors: document.getElementById('card-errors'),
     };
   }
 
@@ -364,8 +368,14 @@ class AIApp {
       if (this.elements.reqRateValue) this.elements.reqRateValue.textContent = data.requestRate || data.reqRate ? `${data.requestRate || data.reqRate} req/s` : '-';
       if (this.elements.queueValue) this.elements.queueValue.textContent = data.queueLength ?? '-';
 
-      // Latency
+      // Cards: throughput, latency, errors
+      if (this.elements.cardThroughput) this.elements.cardThroughput.textContent = (data.requestRate || data.reqRate) ? `${data.requestRate || data.reqRate} req/s` : '-';
       const lat = data.latency || 0;
+      if (this.elements.cardLatency) this.elements.cardLatency.textContent = lat ? `${lat} ms` : '-';
+      const errRate = data.errorRate ?? data.error_rate ?? null;
+      if (this.elements.cardErrors) this.elements.cardErrors.textContent = errRate !== null ? `${errRate}%` : '-';
+
+      // Latency (bar)
       if (this.elements.latencyValue) this.elements.latencyValue.textContent = lat ? `${lat}ms` : '-';
       if (this.elements.latencyBar) this.elements.latencyBar.style.width = Math.min(100, Math.max(0, (lat / 1000) * 100)) + '%';
 

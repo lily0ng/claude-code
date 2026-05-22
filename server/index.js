@@ -115,6 +115,9 @@ app.get('/api/system', async (req, res) => {
     const requestRate = Math.round(Math.random()*5);
     const queueLength = Math.floor(Math.random()*4);
     const latency = Math.round(Math.random()*300);
+    const activeSessions = Math.floor(Math.random()*10);
+    const errorRate = Math.round(Math.random()*5);
+    const throughput = requestRate; // alias
 
     res.json({
       cpu: { usage: cpu.avg, perCore: cpu.perCore },
@@ -126,7 +129,10 @@ app.get('/api/system', async (req, res) => {
       gpu: gpu ? { usage: gpu.avgUsage } : null,
       requestRate,
       queueLength,
-      latency
+      latency,
+      activeSessions,
+      errorRate,
+      throughput
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
