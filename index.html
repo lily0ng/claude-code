@@ -62,16 +62,30 @@
       flex-direction: column;
       gap: var(--space-sm);
       overflow-y: auto;
-      min-width: 220px;
+      min-width: 300px;
+      max-width: 420px;
     }
     .right-sidebar-header { font-weight: 700; margin-bottom: 6px; }
-    .status-cards { display:flex; gap:8px; margin-bottom:8px; }
-    .card { background:var(--card); border:1px solid var(--border); padding:8px; border-radius:8px; flex:1; }
-    .card.small { padding:10px; text-align:center; }
+    /* status cards as grid for consistent sizing */
+    .status-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
+      align-items: stretch;
+    }
+    .card { background:var(--card); border:1px solid var(--border); padding:10px; border-radius:8px; display:flex; flex-direction:column; justify-content:center; min-height:56px; }
+    .card.small { padding:12px; text-align:center; min-height:72px; }
     .card-title { font-size:12px; color:var(--muted-foreground); margin-bottom:6px; }
     .card-value { font-size:18px; font-weight:700; color:var(--text-primary); }
     .right-sidebar-section { padding: 8px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-md); }
     .metric { margin-top: 8px; }
+
+    /* charts grid */
+    .chart-cards { display: grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px; }
+    .card canvas { width: 100% !important; display: block; }
+    #cpu-spark, #mem-spark { height: 80px !important; }
+    #req-chart { height: 120px !important; }
     .metric label { display:block; font-size:12px; color:var(--muted-foreground); }
     .metric .metric-value { font-size:13px; font-weight:600; margin-bottom:6px; }
     .metric-bar { width:100%; height:10px; background:var(--secondary); border-radius:6px; overflow:hidden; }
