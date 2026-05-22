@@ -34,20 +34,39 @@ class AIApp {
   }
 
   init() {
-    this.cacheDom();
-    this.bindEvents();
-    this.syncThemeSelector();
-    this.populateProviderSelector();
-    this.populateModelSelector();
-    this.loadConversationList();
-    this.promptForApiKeys();
-    this.registerMCPListener();
-    this.registerServerListener();
-    this.registerLocalScanListener();
-    this.scanLocalModels();
-    this.loadConversation(this.activeConversationId);
-    this.autoConfigureMCP();
-    this.initServers();
+    try {
+      this.cacheDom();
+      console.log('[AI] cacheDom OK');
+      this.bindEvents();
+      console.log('[AI] bindEvents OK');
+      this.syncThemeSelector();
+      console.log('[AI] syncThemeSelector OK');
+      this.populateProviderSelector();
+      console.log('[AI] populateProviderSelector OK');
+      this.populateModelSelector();
+      console.log('[AI] populateModelSelector OK');
+      this.loadConversationList();
+      console.log('[AI] loadConversationList OK');
+      this.promptForApiKeys();
+      console.log('[AI] promptForApiKeys OK');
+      this.registerMCPListener();
+      console.log('[AI] registerMCPListener OK');
+      this.registerServerListener();
+      console.log('[AI] registerServerListener OK');
+      this.registerLocalScanListener();
+      console.log('[AI] registerLocalScanListener OK');
+      this.scanLocalModels();
+      console.log('[AI] scanLocalModels OK');
+      this.showWelcome();
+      console.log('[AI] showWelcome OK');
+      this.autoConfigureMCP();
+      console.log('[AI] autoConfigureMCP OK');
+      this.initServers();
+      console.log('[AI] initServers OK');
+    } catch (err) {
+      console.error('[AI] Init failed at step:', err.message);
+      console.error('[AI] Stack:', err.stack);
+    }
   }
 
   cacheDom() {
@@ -105,20 +124,26 @@ class AIApp {
   }
 
   bindEvents() {
-    this.elements.providerSelect.addEventListener('change', () => this.onProviderChange());
-    this.elements.modelSelect.addEventListener('change', () => this.onModelChange());
-    this.elements.modelFavBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (this.currentModel) this.toggleFavoriteModel(this.currentModel);
-    });
-    this.elements.modelInfo.addEventListener('click', (e) => {
-      e.stopPropagation();
-      this.elements.modelDetailsPopup.classList.toggle('visible');
-    });
+    this.elements.providerSelect?.addEventListener('change', () => this.onProviderChange());
+    this.elements.modelSelect?.addEventListener('change', () => this.onModelChange());
+    if (this.elements.modelFavBtn) {
+      this.elements.modelFavBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.currentModel) this.toggleFavoriteModel(this.currentModel);
+      });
+    }
+    if (this.elements.modelInfo) {
+      this.elements.modelInfo.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (this.elements.modelDetailsPopup) {
+          this.elements.modelDetailsPopup.classList.toggle('visible');
+        }
+      });
+    }
     document.addEventListener('click', () => {
       if (this.elements.modelDetailsPopup) this.elements.modelDetailsPopup.classList.remove('visible');
     });
-    this.elements.sendBtn.addEventListener('click', () => this.sendMessage());
+    this.elements.sendBtn?.addEventListener('click', () => this.sendMessage());
     this.elements.stopBtn.addEventListener('click', () => this.stopGeneration());
     this.elements.chatInput.addEventListener('keydown', e => {
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); this.sendMessage(); }
@@ -950,7 +975,38 @@ class AIApp {
       header.appendChild(badge);
     }
 
+    if (role === 'assistant' && !message.isSystem) {
+      const actions = document.createElement('div');
+      actions.className = 'message-actions';
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'msg-action-btn copy-btn';
+      copyBtn.textContent = 'Copy';
+      copyBtn.title = 'Copy to clipboard';
+      copyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(message.content).then(() => {
+          copyBtn.textContent = 'Copied!';
+          setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+        }).catch(() => {
+          const ta = document.createElement('textarea');
+          ta.value = message.content;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          copyBtn.textContent = 'Copied!';
+          setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+        });
+      });
+      actions.appendChild(copyBtn);
+      div.appendChild(actions);
+    }
+
     const footerParts = [];
+    if (message.timestamp) {
+      const t = new Date(message.timestamp);
+      footerParts.push(t.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    }
     if (message.latency) footerParts.push(`${(message.latency / 1000).toFixed(1)}s`);
     if (message.usage) {
       const input = message.usage.inputTokens || message.usage.promptTokens || '';
@@ -1008,7 +1064,8 @@ class AIApp {
 
   hideEditToolbar() {
     this.elements.editToolbar.classList.add('hidden');
-    this.elements.editToolbar.querySelector('.edit-context').textContent = '';
+    const ctx = this.elements.editToolbar.querySelector('.edit-context');
+    if (ctx) ctx.textContent = '';
   }
 
   cancelEdit() {
@@ -1046,7 +1103,9 @@ class AIApp {
     const caps = this.getModelCapabilities(model);
     const ctx = this.getModelContextWindow(model);
 
-    this.elements.modelInfoText.textContent = `${model} · ${providerName}`;
+    if (this.elements.modelInfoText) {
+      this.elements.modelInfoText.textContent = `${model} · ${providerName}`;
+    }
 
     const capsEl = this.elements.modelCapsDisplay;
     if (capsEl) {
@@ -1345,11 +1404,8 @@ class AIApp {
     }</div>`;
   }
 
-  newConversation() {
-    this.stopGeneration();
-    this.cancelEdit();
-    this.lastMCPResults = null;
-    this.activeConversationId = `conv_${Date.now()}`;
+  showWelcome() {
+    this.activeConversationId = null;
     this.messageHistory = [];
     this.elements.chatMessages.innerHTML = `
       <div class="message system welcome">
@@ -1357,14 +1413,26 @@ class AIApp {
         <div class="welcome-subtitle">Select a provider and model, then start chatting.</div>
       </div>
     `;
-    this.saveCurrentConversation();
     this.loadConversationList();
-    this.elements.chatInput.focus();
     this.updateModelInfo();
   }
 
+  newConversation() {
+    if (this.activeConversationId && this.messageHistory.length > 0) {
+      this.saveCurrentConversation();
+    }
+    this.stopGeneration();
+    this.cancelEdit();
+    this.lastMCPResults = null;
+    this.showWelcome();
+    this.loadConversationList();
+    this.elements.chatInput.focus();
+  }
+
   saveCurrentConversation() {
-    if (!this.activeConversationId) return;
+    if (!this.activeConversationId) {
+      this.activeConversationId = `conv_${Date.now()}`;
+    }
     const conversations = this.loadConversations();
     const userMsg = this.messageHistory.find(m => m.role === 'user');
     const title = userMsg?.content?.substring(0, 60) || 'New conversation';
@@ -1388,10 +1456,10 @@ class AIApp {
   }
 
   loadConversation(id) {
-    if (!id) { this.newConversation(); return; }
+    if (!id) { this.showWelcome(); return; }
     const conversations = this.loadConversations();
     const conv = conversations[id];
-    if (!conv) { this.newConversation(); return; }
+    if (!conv) { this.showWelcome(); return; }
 
     this.activeConversationId = id;
     this.messageHistory = conv.messages || [];
@@ -1443,7 +1511,7 @@ class AIApp {
     const conversations = this.loadConversations();
     delete conversations[id];
     localStorage.setItem('conversations', JSON.stringify(conversations));
-    if (id === this.activeConversationId) this.newConversation();
+    if (id === this.activeConversationId) this.showWelcome();
     else this.loadConversationList();
   }
 
@@ -1533,5 +1601,18 @@ class AIApp {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  window.app = new AIApp();
+  try {
+    window.app = new AIApp();
+  } catch (err) {
+    console.error('AI Platform initialization failed:', err);
+    const chatMessages = document.getElementById('chat-messages');
+    if (chatMessages) {
+      chatMessages.innerHTML = `
+        <div class="message system error">
+          <div style="color:var(--accent-danger);font-weight:700;margin-bottom:8px;">Failed to initialize AI Platform</div>
+          <div style="font-size:13px;color:var(--text-muted);">${err.message}</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:4px;font-family:monospace;">${err.stack?.split('\n').slice(0,3).join('<br>') || ''}</div>
+        </div>`;
+    }
+  }
 });

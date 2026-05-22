@@ -8,12 +8,12 @@ export class DatabaseServer extends MCPServer {
       description: 'Execute SQL queries, manage in-memory database, and analyze data',
     });
     this.tables = new Map();
-    this._registerDefaults();
+    this._initMetadata();
     this._registerTools();
     this._registerResources();
   }
 
-  _registerDefaults() {
+  _initMetadata() {
     this.tables.set('_metadata', {
       name: '_metadata',
       columns: ['key', 'value', 'updated_at'],
