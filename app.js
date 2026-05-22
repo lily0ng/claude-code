@@ -1479,26 +1479,42 @@ class AIApp {
   showWelcome() {
     this.activeConversationId = null;
     this.messageHistory = [];
-    this.elements.chatMessages.innerHTML = `
-      <div class="message system welcome">
-        <div class="welcome-title">AI Platform</div>
-        <div class="welcome-subtitle">Select a provider and model, then start chatting.</div>
-      </div>
-    `;
+    if (this.elements && this.elements.chatMessages) {
+      this.elements.chatMessages.innerHTML = `
+        <div class="message system welcome">
+          <div class="welcome-title">AI Platform</div>
+          <div class="welcome-subtitle">Select a provider and model, then start chatting.</div>
+        </div>
+      `;
+    }
+    // ensure input visible and enabled
+    if (this.elements && this.elements.chatInput) {
+      this.elements.chatInput.value = '';
+      this.updateSendButton();
+      this.elements.chatInput.removeAttribute('disabled');
+    }
     this.loadConversationList();
     this.updateModelInfo();
   }
 
   newConversation() {
+    // prepare a fresh conversation, clear state
     if (this.activeConversationId && this.messageHistory.length > 0) {
       this.saveCurrentConversation();
     }
     this.stopGeneration();
     this.cancelEdit();
     this.lastMCPResults = null;
-    this.showWelcome();
+    this.activeConversationId = null;
+    this.messageHistory = [];
+    // clear UI
+    if (this.elements && this.elements.chatMessages) this.elements.chatMessages.innerHTML = '';
+    if (this.elements && this.elements.chatInput) {
+      this.elements.chatInput.value = '';
+      this.elements.chatInput.focus();
+    }
+    this.updateSendButton();
     this.loadConversationList();
-    this.elements.chatInput.focus();
   }
 
   saveCurrentConversation() {
@@ -1599,8 +1615,13 @@ class AIApp {
 
   renderMessages(messages) {
     this.elements.chatMessages.innerHTML = '';
-    if (!messages || messages.length === 0) { this.newConversation(); return; }
+    if (!messages || messages.length === 0) { this.showWelcome(); return; }
     for (const msg of messages) this.addMessage(msg);
+    // after rendering messages, ensure input is enabled
+    if (this.elements && this.elements.chatInput) {
+      this.elements.chatInput.removeAttribute('disabled');
+      this.updateSendButton();
+    }
     this.scrollToBottom();
   }
 
