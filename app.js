@@ -133,6 +133,16 @@ class AIApp {
       memoryValue: document.getElementById('memory-value'),
       networkBar: document.getElementById('network-bar'),
       networkValue: document.getElementById('network-value'),
+      gpuBar: document.getElementById('gpu-bar'),
+      gpuValue: document.getElementById('gpu-value'),
+      threadsValue: document.getElementById('threads-value'),
+      diskBar: document.getElementById('disk-bar'),
+      diskValue: document.getElementById('disk-value'),
+      uptimeValue: document.getElementById('uptime-value'),
+      reqRateValue: document.getElementById('reqrate-value'),
+      queueValue: document.getElementById('queue-value'),
+      latencyBar: document.getElementById('latency-bar'),
+      latencyValue: document.getElementById('latency-value'),
     };
   }
 
@@ -309,21 +319,56 @@ class AIApp {
     try {
       if (!this.elements) return;
       if (this.elements.typingIndicator) this.elements.typingIndicator.classList.toggle('hidden', !this.isGenerating);
-      if (this.elements.aiThinking) this.elements.aiThinking.textContent = this.isGenerating ? 'active' : (data.aiThinking ? data.aiThinking : 'idle');
+      if (this.elements.aiThinking) this.elements.aiThinking.textContent = this.isGenerating ? 'active' : (data.aiThinking || 'idle');
+
       if (this.elements.aiProcessList && Array.isArray(data.processes)) {
-        this.elements.aiProcessList.innerHTML = data.processes.map(p=>`<li>${p.name} (${p.pid}) - ${p.cpu}%</li>`).join('')
+        this.elements.aiProcessList.innerHTML = data.processes.map(p => `<li>${p.name} (${p.pid}) - CPU:${p.cpu}% MEM:${p.mem ?? '-'}%</li>`).join('');
       }
-      const cpu = Math.round((data.cpu?.usage || 0));
-      const memUsed = data.memory?.used || 0;
-      const memTotal = data.memory?.total || (navigator.deviceMemory ? navigator.deviceMemory*1024 : 0);
-      const memPct = memTotal ? Math.round(memUsed / memTotal * 100) : 0;
-      const net = data.network?.rx ? `${data.network.rx} / ${data.network.tx}` : (data.network?.speed || '-');
+
+      // CPU
+      const cpu = Math.round(data.cpu?.usage || 0);
       if (this.elements.cpuValue) this.elements.cpuValue.textContent = cpu + '%';
-      if (this.elements.cpuBar) this.elements.cpuBar.style.width = Math.min(100, Math.max(0,cpu)) + '%';
+      if (this.elements.cpuBar) this.elements.cpuBar.style.width = Math.min(100, Math.max(0, cpu)) + '%';
+
+      // Memory
+      const memUsed = data.memory?.used || 0;
+      const memTotal = data.memory?.total || (navigator.deviceMemory ? navigator.deviceMemory * 1024 : 0);
+      const memPct = memTotal ? Math.round((memUsed / memTotal) * 100) : 0;
       if (this.elements.memoryValue) this.elements.memoryValue.textContent = memUsed && memTotal ? `${Math.round(memUsed/1024)}MB / ${Math.round(memTotal/1024)}MB` : '-';
-      if (this.elements.memoryBar) this.elements.memoryBar.style.width = Math.min(100, Math.max(0,memPct)) + '%';
+      if (this.elements.memoryBar) this.elements.memoryBar.style.width = Math.min(100, Math.max(0, memPct)) + '%';
+
+      // Network
+      const net = data.network?.rx ? `${data.network.rx} / ${data.network.tx}` : (data.network?.speed || '-');
       if (this.elements.networkValue) this.elements.networkValue.textContent = net;
       if (this.elements.networkBar) this.elements.networkBar.style.width = Math.min(100, Math.max(0, data.network?.usage || 0)) + '%';
+
+      // GPU
+      if (this.elements.gpuValue) this.elements.gpuValue.textContent = data.gpu?.usage ? `${data.gpu.usage}%` : (data.gpu?.name || '-');
+      if (this.elements.gpuBar) this.elements.gpuBar.style.width = Math.min(100, Math.max(0, data.gpu?.usage || 0)) + '%';
+
+      // Threads / Concurrency
+      if (this.elements.threadsValue) this.elements.threadsValue.textContent = data.threads || navigator.hardwareConcurrency || '-';
+
+      // Disk
+      if (this.elements.diskValue) this.elements.diskValue.textContent = data.disk?.used && data.disk?.total ? `${Math.round(data.disk.used/1024)}MB / ${Math.round(data.disk.total/1024)}MB` : '-';
+      if (this.elements.diskBar) this.elements.diskBar.style.width = Math.min(100, Math.max(0, data.disk?.usage || 0)) + '%';
+
+      // Uptime
+      const uptimeSecs = data.uptime || Math.floor(performance.now() / 1000);
+      if (this.elements.uptimeValue) {
+        let s = uptimeSecs; const h = Math.floor(s/3600); s%=3600; const m = Math.floor(s/60); const sec = s%60;
+        this.elements.uptimeValue.textContent = `${h}h ${m}m ${sec}s`;
+      }
+
+      // Request rate & queue
+      if (this.elements.reqRateValue) this.elements.reqRateValue.textContent = data.requestRate || data.reqRate ? `${data.requestRate || data.reqRate} req/s` : '-';
+      if (this.elements.queueValue) this.elements.queueValue.textContent = data.queueLength ?? '-';
+
+      // Latency
+      const lat = data.latency || 0;
+      if (this.elements.latencyValue) this.elements.latencyValue.textContent = lat ? `${lat}ms` : '-';
+      if (this.elements.latencyBar) this.elements.latencyBar.style.width = Math.min(100, Math.max(0, (lat / 1000) * 100)) + '%';
+
     } catch (err) { console.warn('updateSystemUI error', err); }
   }
 
