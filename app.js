@@ -30,6 +30,12 @@ class AIApp {
     this.editingMessageIndex = -1;
     this.lastMCPResults = null;
 
+    // charts/history for right sidebar
+    this.cpuHistory = Array(30).fill(0);
+    this.memHistory = Array(30).fill(0);
+    this.reqHistory = Array(60).fill(0);
+    this.charts = { cpu: null, mem: null, req: null };
+
     this.init();
   }
 
@@ -63,7 +69,8 @@ class AIApp {
       console.log('[AI] autoConfigureMCP OK');
       this.initServers();
       console.log('[AI] initServers OK');
-      // start system metrics polling for right-sidebar
+      // create charts and start system metrics polling for right-sidebar
+      try { this.createCharts(); console.log('[AI] createCharts OK'); } catch(e){ console.warn('createCharts failed', e); }
       try { this.startSystemMetrics(); console.log('[AI] startSystemMetrics OK'); } catch(e){ console.warn('startSystemMetrics failed', e); }
     } catch (err) {
       console.error('[AI] Init failed at step:', err.message);
@@ -143,6 +150,10 @@ class AIApp {
       queueValue: document.getElementById('queue-value'),
       latencyBar: document.getElementById('latency-bar'),
       latencyValue: document.getElementById('latency-value'),
+      // charts/canvases
+      cpuSpark: document.getElementById('cpu-spark'),
+      memSpark: document.getElementById('mem-spark'),
+      reqChart: document.getElementById('req-chart'),
       // cards
       cardThroughput: document.getElementById('card-throughput'),
       cardLatency: document.getElementById('card-latency'),
@@ -364,22 +375,77 @@ class AIApp {
         this.elements.uptimeValue.textContent = `${h}h ${m}m ${sec}s`;
       }
 
-      // Request rate & queue
-      if (this.elements.reqRateValue) this.elements.reqRateValue.textContent = data.requestRate || data.reqRate ? `${data.requestRate || data.reqRate} req/s` : '-';
-      if (this.elements.queueValue) this.elements.queueValue.textContent = data.queueLength ?? '-';
+      // Request rate & queue (treat 0 as valid)
+      const reqRateVal = (data.requestRate ?? data.reqRate ?? null);
+      if (this.elements.reqRateValue) this.elements.reqRateValue.textContent = reqRateVal != null ? `${reqRateVal} req/s` : '-';
+      if (this.elements.queueValue) this.elements.queueValue.textContent = (data.queueLength != null ? String(data.queueLength) : '-');
 
       // Cards: throughput, latency, errors
-      if (this.elements.cardThroughput) this.elements.cardThroughput.textContent = (data.requestRate || data.reqRate) ? `${data.requestRate || data.reqRate} req/s` : '-';
-      const lat = data.latency || 0;
-      if (this.elements.cardLatency) this.elements.cardLatency.textContent = lat ? `${lat} ms` : '-';
+      if (this.elements.cardThroughput) this.elements.cardThroughput.textContent = reqRateVal != null ? `${reqRateVal} req/s` : '-';
+      const lat = (data.latency ?? null);
+      if (this.elements.cardLatency) this.elements.cardLatency.textContent = lat != null ? `${lat} ms` : '-';
       const errRate = data.errorRate ?? data.error_rate ?? null;
-      if (this.elements.cardErrors) this.elements.cardErrors.textContent = errRate !== null ? `${errRate}%` : '-';
+      if (this.elements.cardErrors) this.elements.cardErrors.textContent = errRate != null ? `${errRate}%` : '-';
 
       // Latency (bar)
-      if (this.elements.latencyValue) this.elements.latencyValue.textContent = lat ? `${lat}ms` : '-';
-      if (this.elements.latencyBar) this.elements.latencyBar.style.width = Math.min(100, Math.max(0, (lat / 1000) * 100)) + '%';
+      if (this.elements.latencyValue) this.elements.latencyValue.textContent = lat != null ? `${lat}ms` : '-';
+      const numericLat = Number(lat) || 0;
+      if (this.elements.latencyBar) this.elements.latencyBar.style.width = Math.min(100, Math.max(0, (numericLat / 1000) * 100)) + '%';
+
+      // update charts history and redraw
+      try {
+        const reqRate = Number(data.requestRate || data.reqRate || 0);
+        // maintain rolling windows
+        if (!Array.isArray(this.cpuHistory)) this.cpuHistory = Array(30).fill(0);
+        if (!Array.isArray(this.memHistory)) this.memHistory = Array(30).fill(0);
+        if (!Array.isArray(this.reqHistory)) this.reqHistory = Array(60).fill(0);
+
+        this.cpuHistory.shift(); this.cpuHistory.push(cpu);
+        this.memHistory.shift(); this.memHistory.push(memPct);
+        this.reqHistory.shift(); this.reqHistory.push(reqRate);
+
+        if (this.charts?.cpu) { this.charts.cpu.data.datasets[0].data = this.cpuHistory; this.charts.cpu.update('none'); }
+        if (this.charts?.mem) { this.charts.mem.data.datasets[0].data = this.memHistory; this.charts.mem.update('none'); }
+        if (this.charts?.req) { this.charts.req.data.datasets[0].data = this.reqHistory; this.charts.req.update('none'); }
+      } catch (e) { /* non-fatal */ }
 
     } catch (err) { console.warn('updateSystemUI error', err); }
+  }
+
+  // create lightweight charts using Chart.js (if available)
+  createCharts() {
+    try {
+      if (!window.Chart || !this.elements) return;
+      const cpuCtx = this.elements.cpuSpark?.getContext && this.elements.cpuSpark.getContext('2d');
+      const memCtx = this.elements.memSpark?.getContext && this.elements.memSpark.getContext('2d');
+      const reqCtx = this.elements.reqChart?.getContext && this.elements.reqChart.getContext('2d');
+
+      const cpuLabels = Array(this.cpuHistory.length).fill('');
+      const memLabels = Array(this.memHistory.length).fill('');
+      const reqLabels = Array(this.reqHistory.length).fill('');
+
+      if (cpuCtx) {
+        this.charts.cpu = new Chart(cpuCtx, {
+          type: 'line',
+          data: { labels: cpuLabels, datasets: [{ data: this.cpuHistory, borderColor: '#8b5cf6', backgroundColor: 'rgba(139,92,246,0.08)', pointRadius: 0, borderWidth: 1 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } }, elements: { line: { tension: 0.3 } } }
+        });
+      }
+      if (memCtx) {
+        this.charts.mem = new Chart(memCtx, {
+          type: 'line',
+          data: { labels: memLabels, datasets: [{ data: this.memHistory, borderColor: '#06b6d4', backgroundColor: 'rgba(6,182,212,0.06)', pointRadius: 0, borderWidth: 1 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } }, elements: { line: { tension: 0.3 } } }
+        });
+      }
+      if (reqCtx) {
+        this.charts.req = new Chart(reqCtx, {
+          type: 'line',
+          data: { labels: reqLabels, datasets: [{ data: this.reqHistory, borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.06)', pointRadius: 0, borderWidth: 1 }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { beginAtZero: true, display: true, ticks: { maxTicksLimit: 3 } } }, elements: { line: { tension: 0.25 } } }
+        });
+      }
+    } catch (e) { console.warn('createCharts failed', e); }
   }
 
   getBrowserMetrics() {

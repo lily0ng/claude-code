@@ -7,6 +7,7 @@
   <title>Claude</title>
   <link rel="stylesheet" href="themes/themeManager.css" />
   <link rel="stylesheet" href="themes/dark.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script type="module" src="app.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -966,6 +967,17 @@
           <div class="card small"><div class="card-title">Errors</div><div class="card-value" id="card-errors">-</div></div>
         </div>
 
+        <div class="chart-cards" style="display:flex;gap:8px;margin-bottom:8px;">
+          <div class="card" style="flex:1;">
+            <div class="card-title">CPU (recent)</div>
+            <canvas id="cpu-spark" style="width:100%;height:60px;"></canvas>
+          </div>
+          <div class="card" style="flex:1;">
+            <div class="card-title">Memory (recent)</div>
+            <canvas id="mem-spark" style="width:100%;height:60px;"></canvas>
+          </div>
+        </div>
+
         <div class="right-sidebar-section" id="ai-status">
           <div class="status-row">Thinking: <span id="ai-thinking-val">idle</span></div>
           <div class="status-row">Processes:<ul id="ai-process-list"></ul></div>
@@ -982,6 +994,10 @@
           <div class="metric"><label>Disk</label><div class="metric-value" id="disk-value">-</div><div class="metric-bar"><div id="disk-bar" class="metric-bar-fill" style="width:0%"></div></div></div>
           <div class="metric"><label>Latency</label><div class="metric-value" id="latency-value">-</div><div class="metric-bar"><div id="latency-bar" class="metric-bar-fill" style="width:0%"></div></div></div>
           <div class="metric"><label>Uptime</label><div class="metric-value" id="uptime-value">-</div></div>
+        </div>
+
+        <div class="right-sidebar-section">
+          <div class="card"><div class="card-title">Request Rate</div><canvas id="req-chart" style="width:100%;height:120px;"></canvas></div>
         </div>
       </aside>
     
