@@ -172,6 +172,7 @@
       cursor: pointer;
       outline: none;
       transition: border-color var(--transition-fast);
+      min-width: 100px;
     }
     .topbar select:focus { border-color: var(--border-focus); }
 
@@ -194,6 +195,35 @@
     }
     .icon-btn:hover { background: var(--bg-hover); border-color: var(--border-secondary); }
 
+    .model-select-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .model-select-wrapper select {
+      min-width: 160px;
+      max-width: 240px;
+    }
+
+    .model-fav-btn {
+      width: 24px; height: 24px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 0;
+      margin-left: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .model-fav-btn:hover { color: var(--accent-warning); }
+    .model-fav-btn.favorited { color: var(--accent-warning); }
+
     .model-info {
       font-size: 12px;
       color: var(--text-muted);
@@ -201,7 +231,51 @@
       background: var(--bg-input);
       border-radius: var(--radius-md);
       white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background var(--transition-fast);
     }
+    .model-info:hover { background: var(--bg-hover); }
+
+    .model-capability {
+      display: inline-block;
+      font-size: 9px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .model-capability.code { background: rgba(38,139,210,0.15); color: rgb(38,139,210); }
+    .model-capability.vision { background: rgba(108,92,231,0.15); color: rgb(108,92,231); }
+    .model-capability.reasoning { background: rgba(0,206,201,0.15); color: rgb(0,206,201); }
+    .model-capability.fast { background: rgba(253,203,110,0.15); color: rgb(253,203,110); }
+
+    .model-details-popup {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 4px;
+      width: 320px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      z-index: var(--z-dropdown, 100);
+      padding: var(--space-md);
+    }
+    .model-details-popup.visible { display: block; }
+
+    .model-details-name { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+    .model-details-provider { font-size: 12px; color: var(--text-muted); margin-bottom: var(--space-sm); }
+    .model-details-caps { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: var(--space-sm); }
+    .model-details-row { display: flex; justify-content: space-between; font-size: 12px; padding: 3px 0; border-bottom: 1px solid var(--border-primary); }
+    .model-details-row:last-child { border-bottom: none; }
+    .model-details-label { color: var(--text-muted); }
+    .model-details-value { font-weight: 500; }
 
     .mcp-indicator {
       font-size: 11px;
@@ -790,10 +864,17 @@
         </div>
         <div class="topbar-group">
           <label for="model-select">Model</label>
-          <select id="model-select"></select>
+          <div class="model-select-wrapper">
+            <select id="model-select"></select>
+            <button class="model-fav-btn" id="model-fav-btn" title="Toggle favorite">☆</button>
+          </div>
         </div>
         <div class="topbar-spacer"></div>
-        <div class="model-info" id="model-info">Model: gpt-4 · OpenAI</div>
+        <div class="model-info" id="model-info" title="Click for details">
+          <span id="model-info-text">Model: gpt-4 · OpenAI</span>
+          <span id="model-caps-display"></span>
+        </div>
+        <div class="model-details-popup" id="model-details-popup"></div>
         <span class="mcp-indicator active" id="mcp-status" title="MCP Security Active">MCP</span>
         <span class="model-info" id="token-count"></span>
         <div class="topbar-group">
@@ -801,7 +882,8 @@
           <select id="theme-select">
             <option value="dark">Dark</option>
             <option value="light">Light</option>
-            <option value="solarized">Solarized</option>
+            <option value="solarized-light">Solarized Light</option>
+            <option value="solarized-dark">Solarized Dark</option>
             <option value="nord">Nord</option>
             <option value="dracula">Dracula</option>
             <option value="cyberpunk">Cyberpunk</option>

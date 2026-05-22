@@ -54,6 +54,11 @@ class AIApp {
     this.elements = {
       providerSelect: document.getElementById('provider-select'),
       modelSelect: document.getElementById('model-select'),
+      modelFavBtn: document.getElementById('model-fav-btn'),
+      modelInfo: document.getElementById('model-info'),
+      modelInfoText: document.getElementById('model-info-text'),
+      modelCapsDisplay: document.getElementById('model-caps-display'),
+      modelDetailsPopup: document.getElementById('model-details-popup'),
       chatMessages: document.getElementById('chat-messages'),
       chatInput: document.getElementById('chat-input'),
       sendBtn: document.getElementById('send-btn'),
@@ -75,7 +80,6 @@ class AIApp {
       scanStatus: document.getElementById('scan-status'),
       rescanBtn: document.getElementById('rescan-btn'),
       typingIndicator: document.getElementById('typing-indicator'),
-      modelInfo: document.getElementById('model-info'),
       tokenCount: document.getElementById('token-count'),
       exportBtn: document.getElementById('export-btn'),
       importBtn: document.getElementById('import-btn'),
@@ -103,6 +107,17 @@ class AIApp {
   bindEvents() {
     this.elements.providerSelect.addEventListener('change', () => this.onProviderChange());
     this.elements.modelSelect.addEventListener('change', () => this.onModelChange());
+    this.elements.modelFavBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (this.currentModel) this.toggleFavoriteModel(this.currentModel);
+    });
+    this.elements.modelInfo.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.elements.modelDetailsPopup.classList.toggle('visible');
+    });
+    document.addEventListener('click', () => {
+      if (this.elements.modelDetailsPopup) this.elements.modelDetailsPopup.classList.remove('visible');
+    });
     this.elements.sendBtn.addEventListener('click', () => this.sendMessage());
     this.elements.stopBtn.addEventListener('click', () => this.stopGeneration());
     this.elements.chatInput.addEventListener('keydown', e => {
@@ -417,6 +432,66 @@ class AIApp {
     this.elements.providerSelect.value = this.currentProvider;
   }
 
+  getModelCapabilities(modelId) {
+    const caps = [];
+    const id = modelId.toLowerCase();
+    if (id.includes('gpt-4o') || id.includes('gemini-2.0') || id.includes('gemini-1.5') || id.includes('claude-3') || id.includes('claude-sonnet-4')) caps.push('vision');
+    if (id.includes('o1') || id.includes('o3') || id.includes('deepseek-r1') || id.includes('reasoning')) caps.push('reasoning');
+    if (id.includes('flash') || id.includes('mini') || id.includes('haiku') || id.includes('8b') || id.includes('3b')) caps.push('fast');
+    if (id.includes('code') || id.includes('coder') || id.includes('codellama')) caps.push('code');
+    return caps;
+  }
+
+  getModelContextWindow(modelId) {
+    const id = modelId.toLowerCase();
+    if (id.includes('gemini')) return '1M';
+    if (id.includes('claude')) return '200K';
+    if (id.includes('gpt-4o') || id.includes('o1') || id.includes('o3')) return '128K';
+    if (id.includes('gpt-4')) return '128K';
+    if (id.includes('gpt-3.5')) return '16K';
+    if (id.includes('llama3.2') || id.includes('llama3.1')) return '128K';
+    if (id.includes('llama3')) return '8K';
+    if (id.includes('mistral') || id.includes('mixtral')) return '32K';
+    if (id.includes('deepseek') || id.includes('qwen')) return '32K';
+    if (id.includes('codellama')) return '16K';
+    return '—';
+  }
+
+  loadFavoriteModels() {
+    try {
+      return JSON.parse(localStorage.getItem('favorite_models') || '[]');
+    } catch { return []; }
+  }
+
+  saveFavoriteModels(favs) {
+    localStorage.setItem('favorite_models', JSON.stringify(favs));
+  }
+
+  isFavoriteModel(modelId) {
+    return this.loadFavoriteModels().includes(modelId);
+  }
+
+  toggleFavoriteModel(modelId) {
+    let favs = this.loadFavoriteModels();
+    if (favs.includes(modelId)) {
+      favs = favs.filter(f => f !== modelId);
+    } else {
+      favs.push(modelId);
+    }
+    this.saveFavoriteModels(favs);
+    this.updateFavButton(modelId);
+    this.populateModelSelector();
+  }
+
+  updateFavButton(modelId) {
+    const btn = this.elements.modelFavBtn;
+    if (!btn) return;
+    const isFav = this.isFavoriteModel(modelId);
+    btn.textContent = isFav ? '★' : '☆';
+    btn.classList.toggle('favorited', isFav);
+    btn.title = isFav ? 'Remove from favorites' : 'Add to favorites';
+  }
+
   populateModelSelector() {
     const provider = this.currentProvider;
     const config = CONFIG.providers[provider];
@@ -430,15 +505,38 @@ class AIApp {
       }
     }
 
-    this.elements.modelSelect.innerHTML = models.map(id =>
-      `<option value="${id}" ${id === this.currentModel || (!this.currentModel && id === config.defaultModel) ? 'selected' : ''}>
-        ${id}${isLocal && this.localScanner.getModels().find(m => m.id === id) ? '  (local)' : ''}
-      </option>`
-    ).join('');
+    const favorites = this.loadFavoriteModels();
+    const sorted = [...models].sort((a, b) => {
+      const aFav = favorites.includes(a) ? 0 : 1;
+      const bFav = favorites.includes(b) ? 0 : 1;
+      if (aFav !== bFav) return aFav - bFav;
+      return a.localeCompare(b);
+    });
+
+    const seen = new Set();
+    const options = [];
+    let favHeaderAdded = false;
+    for (const id of sorted) {
+      if (seen.has(id)) continue;
+      seen.add(id);
+      if (!favHeaderAdded && favorites.includes(id) && id === sorted[0]) {
+        options.push('<option disabled style="font-size:11px;color:var(--text-muted)">★ Favorites</option>');
+        favHeaderAdded = true;
+        seen.add('__fav_header__');
+      }
+      options.push(
+        `<option value="${id}" ${id === this.currentModel || (!this.currentModel && id === config.defaultModel) ? 'selected' : ''}>
+          ${id}${isLocal && this.localScanner.getModels().find(m => m.id === id) ? '  (local)' : ''}
+        </option>`
+      );
+    }
+
+    this.elements.modelSelect.innerHTML = options.join('');
 
     if (!this.currentModel) {
       this.currentModel = this.elements.modelSelect.value;
     }
+    this.updateFavButton(this.currentModel);
     this.updateModelInfo();
   }
 
@@ -446,9 +544,7 @@ class AIApp {
     this.currentProvider = this.elements.providerSelect.value;
     this.currentModel = null;
     if (this.currentProvider === 'local') {
-      const localProvider = this.providers.local;
-      const health = localProvider.checkHealth ? null : null;
-      localProvider.setEndpoint('ollama');
+      this.providers.local.setEndpoint('ollama');
     }
     this.populateModelSelector();
     this.checkApiKey();
@@ -458,6 +554,7 @@ class AIApp {
 
   onModelChange() {
     this.currentModel = this.elements.modelSelect.value;
+    this.updateFavButton(this.currentModel);
     this.updateModelInfo();
     this.autoConfigureMCP();
   }
@@ -943,8 +1040,35 @@ class AIApp {
   }
 
   updateModelInfo() {
-    if (this.elements.modelInfo) {
-      this.elements.modelInfo.textContent = `Model: ${this.currentModel || 'None'} \u00b7 ${CONFIG.providers[this.currentProvider]?.name || ''}`;
+    if (!this.elements.modelInfo) return;
+    const model = this.currentModel || 'None';
+    const providerName = CONFIG.providers[this.currentProvider]?.name || '';
+    const caps = this.getModelCapabilities(model);
+    const ctx = this.getModelContextWindow(model);
+
+    this.elements.modelInfoText.textContent = `${model} · ${providerName}`;
+
+    const capsEl = this.elements.modelCapsDisplay;
+    if (capsEl) {
+      capsEl.innerHTML = caps.map(c => `<span class="model-capability ${c}">${c}</span>`).join('');
+    }
+
+    const popup = this.elements.modelDetailsPopup;
+    if (popup) {
+      const isFav = this.isFavoriteModel(model);
+      popup.innerHTML = `
+        <div class="model-details-name">${model}</div>
+        <div class="model-details-provider">${providerName} ${isFav ? '★ Favorite' : ''}</div>
+        <div class="model-details-caps">${caps.map(c => `<span class="model-capability ${c}">${c}</span>`).join('')}</div>
+        <div class="model-details-row">
+          <span class="model-details-label">Context Window</span>
+          <span class="model-details-value">${ctx}</span>
+        </div>
+        <div class="model-details-row">
+          <span class="model-details-label">Provider</span>
+          <span class="model-details-value">${providerName}</span>
+        </div>
+      `;
     }
   }
 

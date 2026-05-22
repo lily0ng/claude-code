@@ -62,7 +62,7 @@ export const CONFIG = {
   },
   themes: {
     default: 'dark',
-    list: ['dark', 'light', 'solarized', 'nord', 'dracula', 'cyberpunk'],
+    list: ['dark', 'light', 'solarized-light', 'solarized-dark', 'nord', 'dracula', 'cyberpunk'],
   },
   security: {
     maxRetries: 3,
