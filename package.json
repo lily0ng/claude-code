@@ -12,9 +12,13 @@
     "ollama:list": "ollama list",
     "setup": "ollama pull llama3.2 && echo 'Ready. Run: npm run dev'",
     "model-pull-server": "node scripts/model-pull-server.js",
-    "model-pull": "node scripts/pull-model.js"
+    "model-pull": "node scripts/pull-model.js",
+    "serve-ui": "node server/index.js"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
